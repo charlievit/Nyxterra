@@ -1,3 +1,78 @@
-[gd_scene format=3 uid="uid://bv00gype30lrh"]
+[gd_scene load_steps=4 format=3 uid="uid://bv00gype30lrh"]
+
+[ext_resource type="PackedScene" uid="uid://bco7n1bvg65ic" path="res://Scenes/game_screen_ui.tscn" id="1_jjgbg"]
+
+[sub_resource type="Gradient" id="Gradient_7u77a"]
+colors = PackedColorArray(0, 0, 0, 1, 0.3665946, 0.3665946, 0.36659458, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_jjgbg"]
+gradient = SubResource("Gradient_7u77a")
 
 [node name="Main" type="Node2D"]
+
+[node name="ROOM BUTTON AREA" type="Control" parent="."]
+custom_minimum_size = Vector2(29.15, 0)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 336.0
+offset_bottom = 648.0
+size_flags_horizontal = 0
+
+[node name="LightHouseBackgroundImage" type="Sprite2D" parent="ROOM BUTTON AREA"]
+position = Vector2(168, 323.99997)
+scale = Vector2(1.3125, 647.99994)
+texture = SubResource("GradientTexture1D_jjgbg")
+
+[node name="VBox Button Container" type="VBoxContainer" parent="ROOM BUTTON AREA"]
+layout_mode = 0
+offset_left = 23.0
+offset_top = 89.0
+offset_right = 320.0
+offset_bottom = 648.0
+theme_override_constants/separation = 25
+
+[node name="TEMP_Room Button" type="Button" parent="ROOM BUTTON AREA/VBox Button Container"]
+layout_mode = 2
+text = "TEMP_ROOM BUTTON
+"
+
+[node name="TEMP_Room Button2" type="Button" parent="ROOM BUTTON AREA/VBox Button Container"]
+layout_mode = 2
+text = "TEMP_ROOM BUTTON
+"
+
+[node name="TEMP_Room Button3" type="Button" parent="ROOM BUTTON AREA/VBox Button Container"]
+layout_mode = 2
+text = "TEMP_ROOM BUTTON
+"
+
+[node name="TEMP_Room Button4" type="Button" parent="ROOM BUTTON AREA/VBox Button Container"]
+layout_mode = 2
+text = "TEMP_ROOM BUTTON
+"
+
+[node name="TEMP_Room Button5" type="Button" parent="ROOM BUTTON AREA/VBox Button Container"]
+layout_mode = 2
+text = "TEMP_ROOM BUTTON
+"
+
+[node name="TEMP_Room Button6" type="Button" parent="ROOM BUTTON AREA/VBox Button Container"]
+layout_mode = 2
+text = "TEMP_ROOM BUTTON
+"
+
+[node name="TEMP_Room Button7" type="Button" parent="ROOM BUTTON AREA/VBox Button Container"]
+layout_mode = 2
+text = "TEMP_ROOM BUTTON
+"
+
+[node name="TEMP_Room Button Area" type="Label" parent="ROOM BUTTON AREA"]
+layout_mode = 0
+offset_right = 336.0
+offset_bottom = 89.0
+theme_override_font_sizes/font_size = 30
+text = "ROOM BUTTON AREA"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GAME SCREEN UI" parent="." instance=ExtResource("1_jjgbg")]

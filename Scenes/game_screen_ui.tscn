@@ -1,0 +1,29 @@
+[gd_scene load_steps=3 format=3 uid="uid://bco7n1bvg65ic"]
+
+[sub_resource type="Gradient" id="Gradient_bo1nx"]
+offsets = PackedFloat32Array(0, 0.5617284, 0.962963)
+colors = PackedColorArray(0, 0, 0, 1, 0.3779188, 0.37791887, 0.37791884, 1, 0.601223, 0.601223, 0.6012228, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_8gbba"]
+gradient = SubResource("Gradient_bo1nx")
+
+[node name="GAME SCREEN UI" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 470.0
+offset_right = 1152.0
+offset_bottom = 648.0
+
+[node name="Desk Static Background Image" type="Sprite2D" parent="."]
+position = Vector2(290.99994, 324)
+scale = Vector2(3.0546875, 648.00006)
+texture = SubResource("GradientTexture1D_8gbba")
+
+[node name="TEMP_Desk UI Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 103.00002
+offset_top = 267.00003
+offset_right = 220.0
+offset_bottom = 290.00003
+scale = Vector2(2.8086448, 2.8086448)
+text = "Game Screen"
