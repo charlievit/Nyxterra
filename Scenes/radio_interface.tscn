@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://ciu3f5nqoeqry"]
+
+[ext_resource type="Script" uid="uid://31i38018m2dr" path="res://Scripts/radio_interface.gd" id="1_tslgi"]
+
+[sub_resource type="Gradient" id="Gradient_c8khx"]
+colors = PackedColorArray(0.19793725, 0.19793722, 0.19793722, 1, 0.25565878, 0.25565878, 0.25565878, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_1j6en"]
+gradient = SubResource("Gradient_c8khx")
+
+[node name="Radio Interface" type="Node2D"]
+script = ExtResource("1_tslgi")
+
+[node name="Screen Space Area" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 370.0
+offset_right = 1152.0
+offset_bottom = 648.0
+metadata/_edit_use_anchors_ = true
+
+[node name="TEMP_Background" type="Sprite2D" parent="Screen Space Area"]
+position = Vector2(391, 323.75)
+scale = Vector2(3.0546875, 648.5)
+texture = SubResource("GradientTexture1D_1j6en")
+
+[node name="Signal Line" type="Line2D" parent="Screen Space Area"]
+position = Vector2(216, 174)

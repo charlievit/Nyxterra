@@ -11,10 +11,20 @@ config_version=5
 [application]
 
 config/name="GitHubGameOff2025"
+run/main_scene="uid://ciu3f5nqoeqry"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 config/icon="res://Assets/Images/icon.svg"
+
+[display]
+
+window/stretch/mode="viewport"
+
+[editor]
+
+movie_writer/movie_file="C:/Users/Jordon/Nyxterra/DEBUG/MOVIE/movie.avi"
 
 [rendering]
 
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+textures/vram_compression/import_etc2_astc=true
