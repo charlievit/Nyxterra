@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://bco7n1bvg65ic"]
+[gd_scene load_steps=3 format=3 uid="uid://d04fwj1wm65nl"]
 
 [sub_resource type="Gradient" id="Gradient_bo1nx"]
 offsets = PackedFloat32Array(0, 0.5617284, 0.962963)
@@ -7,7 +7,7 @@ colors = PackedColorArray(0, 0, 0, 1, 0.3779188, 0.37791887, 0.37791884, 1, 0.60
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_8gbba"]
 gradient = SubResource("Gradient_bo1nx")
 
-[node name="Control_GAME SCREEN UI" type="Control"]
+[node name="GAME SCREEN UI" type="Control"]
 layout_mode = 3
 anchors_preset = 0
 offset_left = 336.0

@@ -1,0 +1,150 @@
+[gd_scene load_steps=9 format=3 uid="uid://cgjogtocg0588"]
+
+[ext_resource type="Script" uid="uid://nay3bnx1m8u1" path="res://Scripts/gearbox_puzzle.gd" id="1_40q7b"]
+[ext_resource type="Texture2D" uid="uid://bo6l7eq7c6jlr" path="res://Assets/Images/icon.svg" id="2_t55ma"]
+
+[sub_resource type="Gradient" id="Gradient_bo1nx"]
+offsets = PackedFloat32Array(0, 0.5617284, 0.962963)
+colors = PackedColorArray(0, 0, 0, 1, 0.3779188, 0.37791887, 0.37791884, 1, 0.601223, 0.601223, 0.6012228, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_8gbba"]
+gradient = SubResource("Gradient_bo1nx")
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pkhqx"]
+radius = 30.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5a5k6"]
+radius = 92.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_t55ma"]
+radius = 184.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_h5881"]
+radius = 276.0
+
+[node name="Control_Gearbox Puzzle" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 336.0
+offset_right = 1152.0
+offset_bottom = 648.0
+script = ExtResource("1_40q7b")
+metadata/_edit_use_anchors_ = true
+
+[node name="clippingMaskForGears" type="Control" parent="."]
+clip_contents = true
+anchors_preset = 0
+offset_right = 816.0
+offset_bottom = 647.0
+
+[node name="Sprite2D_PLACEHOLDER_Gearbox Cabinet" type="Sprite2D" parent="clippingMaskForGears"]
+position = Vector2(408, 324)
+scale = Vector2(3.1875, 648.00006)
+texture = SubResource("GradientTexture1D_8gbba")
+
+[node name="Sprite2D_PLACEHOLDER_Peg1" type="Sprite2D" parent="clippingMaskForGears"]
+modulate = Color(0.92740667, 0.44449058, 9.62615e-07, 1)
+position = Vector2(132, 554)
+scale = Vector2(0.18749982, 0.18749982)
+texture = ExtResource("2_t55ma")
+
+[node name="Area2D_GearDetector" type="Area2D" parent="clippingMaskForGears/Sprite2D_PLACEHOLDER_Peg1"]
+position = Vector2(-7.1525574e-05, -0.00012207031)
+scale = Vector2(5.3333383, 5.3333383)
+
+[node name="CollisionShape2D_CircleShape" type="CollisionShape2D" parent="clippingMaskForGears/Sprite2D_PLACEHOLDER_Peg1/Area2D_GearDetector"]
+position = Vector2(3.0517578e-05, 0)
+shape = SubResource("CircleShape2D_pkhqx")
+
+[node name="Sprite2D_PLACEHOLDER_Peg2" type="Sprite2D" parent="clippingMaskForGears"]
+modulate = Color(0.92740667, 0.44449058, 9.62615e-07, 1)
+position = Vector2(408, 94)
+scale = Vector2(0.18749982, 0.18749982)
+texture = ExtResource("2_t55ma")
+
+[node name="Area2D_GearDetector" type="Area2D" parent="clippingMaskForGears/Sprite2D_PLACEHOLDER_Peg2"]
+position = Vector2(-7.1525574e-05, -0.00012207031)
+scale = Vector2(5.3333383, 5.3333383)
+
+[node name="CollisionShape2D_CircleShape" type="CollisionShape2D" parent="clippingMaskForGears/Sprite2D_PLACEHOLDER_Peg2/Area2D_GearDetector"]
+position = Vector2(3.0517578e-05, 0)
+shape = SubResource("CircleShape2D_pkhqx")
+
+[node name="Sprite2D_PLACEHOLDER_Peg3" type="Sprite2D" parent="clippingMaskForGears"]
+modulate = Color(0.92740667, 0.44449058, 9.62615e-07, 1)
+position = Vector2(408, 462)
+scale = Vector2(0.18749982, 0.18749982)
+texture = ExtResource("2_t55ma")
+
+[node name="Area2D_GearDetector" type="Area2D" parent="clippingMaskForGears/Sprite2D_PLACEHOLDER_Peg3"]
+position = Vector2(-7.1525574e-05, -0.00012207031)
+scale = Vector2(5.3333383, 5.3333383)
+
+[node name="CollisionShape2D_CircleShape" type="CollisionShape2D" parent="clippingMaskForGears/Sprite2D_PLACEHOLDER_Peg3/Area2D_GearDetector"]
+position = Vector2(3.0517578e-05, 0)
+shape = SubResource("CircleShape2D_pkhqx")
+
+[node name="Sprite2D_PLACEHOLDER_Peg4" type="Sprite2D" parent="clippingMaskForGears"]
+modulate = Color(0.92740667, 0.44449058, 9.62615e-07, 1)
+position = Vector2(684, 462)
+scale = Vector2(0.18749982, 0.18749982)
+texture = ExtResource("2_t55ma")
+
+[node name="Area2D_GearDetector" type="Area2D" parent="clippingMaskForGears/Sprite2D_PLACEHOLDER_Peg4"]
+position = Vector2(-7.1525574e-05, -0.00012207031)
+scale = Vector2(5.3333383, 5.3333383)
+
+[node name="CollisionShape2D_CircleShape" type="CollisionShape2D" parent="clippingMaskForGears/Sprite2D_PLACEHOLDER_Peg4/Area2D_GearDetector"]
+position = Vector2(3.0517578e-05, 0)
+shape = SubResource("CircleShape2D_pkhqx")
+
+[node name="Sprite2D_PLACEHOLDER_StartingGear" type="Sprite2D" parent="clippingMaskForGears"]
+modulate = Color(1, 1, 0, 1)
+position = Vector2(132, 94)
+texture = ExtResource("2_t55ma")
+
+[node name="Sprite2D_PLACEHOLDER_StartingPeg" type="Sprite2D" parent="clippingMaskForGears"]
+modulate = Color(0.92740667, 0.44449058, 9.62615e-07, 1)
+z_index = 1
+position = Vector2(132, 96)
+scale = Vector2(0.18749982, 0.18749982)
+texture = ExtResource("2_t55ma")
+
+[node name="Sprite2D_PLACEHOLDER_EndingGear" type="Sprite2D" parent="clippingMaskForGears"]
+modulate = Color(1, 0, 0, 1)
+position = Vector2(684, 94)
+texture = ExtResource("2_t55ma")
+
+[node name="Sprite2D_PLACEHOLDER_EndingPeg" type="Sprite2D" parent="clippingMaskForGears"]
+modulate = Color(0.92740667, 0.44449058, 9.62615e-07, 1)
+z_index = 1
+position = Vector2(686.00006, 99.00001)
+scale = Vector2(0.18749982, 0.18749982)
+texture = ExtResource("2_t55ma")
+
+[node name="Sprite2D_Gear1" type="Sprite2D" parent="."]
+position = Vector2(-242, -101)
+texture = ExtResource("2_t55ma")
+
+[node name="Area2D_GearRadius" type="Area2D" parent="Sprite2D_Gear1"]
+
+[node name="CollisionShape2D_GearShape" type="CollisionShape2D" parent="Sprite2D_Gear1/Area2D_GearRadius"]
+shape = SubResource("CircleShape2D_5a5k6")
+
+[node name="Sprite2D_Gear2" type="Sprite2D" parent="."]
+position = Vector2(37, -194)
+texture = ExtResource("2_t55ma")
+
+[node name="Area2D_GearRadius" type="Area2D" parent="Sprite2D_Gear2"]
+
+[node name="CollisionShape2D_GearShape" type="CollisionShape2D" parent="Sprite2D_Gear2/Area2D_GearRadius"]
+shape = SubResource("CircleShape2D_t55ma")
+
+[node name="Sprite2D_Gear3" type="Sprite2D" parent="."]
+position = Vector2(630, -330)
+texture = ExtResource("2_t55ma")
+
+[node name="Area2D_GearRadius" type="Area2D" parent="Sprite2D_Gear3"]
+
+[node name="CollisionShape2D_GearShape" type="CollisionShape2D" parent="Sprite2D_Gear3/Area2D_GearRadius"]
+shape = SubResource("CircleShape2D_h5881")
