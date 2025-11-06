@@ -1,0 +1,105 @@
+[gd_scene load_steps=7 format=3 uid="uid://bty042lmdfi02"]
+
+[ext_resource type="Texture2D" uid="uid://dumrws8pl1suf" path="res://Assets/Images/Lighthouse/LightRoomBuild1.png" id="1_680ea"]
+[ext_resource type="Texture2D" uid="uid://bnc5fep5l67u1" path="res://Assets/Images/Lighthouse/Floor3&4SampleScene.png" id="2_qkcrh"]
+[ext_resource type="Texture2D" uid="uid://ui7san5wy5iy" path="res://Assets/Images/Lighthouse/Floor1&2Build1.png" id="3_rf6kk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qkcrh"]
+size = Vector2(253, 12)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_680ea"]
+size = Vector2(319, 4)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rf6kk"]
+size = Vector2(303, 6)
+
+[node name="LIGHTHOUSE BUTTON AREA" type="Control"]
+custom_minimum_size = Vector2(29.15, 0)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 336.0
+offset_bottom = 648.0
+size_flags_horizontal = 0
+
+[node name="TOP" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 233.0
+grow_horizontal = 2
+
+[node name="Lightroom" type="Sprite2D" parent="TOP"]
+texture_filter = 1
+position = Vector2(167, 143)
+texture = ExtResource("1_680ea")
+
+[node name="Lightroom_To_4thFloor" type="Button" parent="TOP"]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 219.0
+offset_right = 118.0
+offset_bottom = 229.0
+
+[node name="MIDDLE" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -91.0
+offset_bottom = 89.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MiddleTower" type="Sprite2D" parent="MIDDLE"]
+texture_filter = 1
+position = Vector2(167, 90)
+texture = ExtResource("2_qkcrh")
+
+[node name="Button_4thFloor_To_Lightroom" type="Button" parent="MIDDLE"]
+layout_mode = 0
+offset_left = 39.0
+offset_right = 66.0
+offset_bottom = 82.0
+
+[node name="Button_4thFloor_To_3rdFloor" type="Button" parent="MIDDLE"]
+layout_mode = 0
+offset_left = 229.0
+offset_top = 68.0
+offset_right = 280.0
+offset_bottom = 83.0
+
+[node name="3rdFloor" type="StaticBody2D" parent="MIDDLE"]
+position = Vector2(1, 91)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MIDDLE/3rdFloor"]
+position = Vector2(182.5, 94)
+shape = SubResource("RectangleShape2D_qkcrh")
+
+[node name="BOTTOM" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -235.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Sprite2D_BottomTower" type="Sprite2D" parent="BOTTOM"]
+texture_filter = 1
+position = Vector2(167, 90)
+texture = ExtResource("3_rf6kk")
+
+[node name="BottomFloor" type="StaticBody2D" parent="BOTTOM"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BOTTOM/BottomFloor"]
+position = Vector2(166.5, 181)
+shape = SubResource("RectangleShape2D_680ea")
+
+[node name="2ndFloor" type="StaticBody2D" parent="BOTTOM"]
+position = Vector2(1, -89)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BOTTOM/2ndFloor"]
+position = Vector2(165.5, 181)
+shape = SubResource("RectangleShape2D_rf6kk")
