@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="GitHubGameOff2025"
-run/main_scene="uid://ciu3f5nqoeqry"
+run/main_scene="uid://bf5g134nk8ebe"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 config/icon="res://Assets/Images/icon.svg"
 

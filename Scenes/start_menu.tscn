@@ -1,0 +1,89 @@
+[gd_scene load_steps=3 format=3 uid="uid://bf5g134nk8ebe"]
+
+[ext_resource type="Script" uid="uid://ch3y31u7yadh8" path="res://Scripts/start_menu.gd" id="1_juhg0"]
+[ext_resource type="Texture2D" uid="uid://d14tbtri0npsx" path="res://Assets/Images/LighthouseAnim2.png" id="2_jgtwh"]
+
+[node name="StartMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_right = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_juhg0")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 480.0
+offset_bottom = 270.0
+scale = Vector2(2.392908, 2.4023666)
+texture = ExtResource("2_jgtwh")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+offset_left = 511.0
+offset_top = 368.0
+offset_right = 573.0
+offset_bottom = 469.0
+scale = Vector2(2, 2)
+
+[node name="Buttons" type="VBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="StartButton" type="Button" parent="CenterContainer/Buttons"]
+layout_mode = 2
+action_mode = 0
+text = "Start
+"
+
+[node name="OptionsButton" type="Button" parent="CenterContainer/Buttons"]
+layout_mode = 2
+text = "Option"
+
+[node name="QuitButton" type="Button" parent="CenterContainer/Buttons"]
+layout_mode = 2
+text = "Quit
+"
+
+[node name="OptionsPanel" type="Panel" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(28.731138, 16.37037)
+
+[node name="Label" type="Label" parent="OptionsPanel"]
+layout_mode = 0
+offset_left = 9.049416
+offset_top = 15.088236
+offset_right = 64.049416
+offset_bottom = 38.08824
+scale = Vector2(0.087546736, 0.16159028)
+text = "Master"
+
+[node name="VolumeSlider" type="HSlider" parent="OptionsPanel"]
+layout_mode = 0
+offset_left = 15.244784
+offset_top = 14.660633
+offset_right = 55.244785
+offset_bottom = 30.660633
+rotation = 0.009336297
+scale = Vector2(0.166032, 0.2703829)
+
+[node name="ApplyButton" type="Button" parent="OptionsPanel"]
+layout_mode = 0
+offset_left = 34.213753
+offset_top = 34.635746
+offset_right = 86.21375
+offset_bottom = 65.63574
+scale = Vector2(0.1065331, 0.13782991)
+text = "Apply"
+
+[node name="BackButton" type="Button" parent="OptionsPanel"]
+layout_mode = 0
+offset_right = 61.0
+offset_bottom = 31.0
+scale = Vector2(0.120868765, 0.15913129)
+text = "Return"
