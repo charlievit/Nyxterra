@@ -1,0 +1,66 @@
+[gd_scene load_steps=3 format=3 uid="uid://q4bvqbk8pn"]
+
+[ext_resource type="Script" uid="uid://by7yfvqxg6534" path="res://Scripts/morse_puzzle.gd" id="1_sk6lw"]
+[ext_resource type="Texture2D" uid="uid://b66bji6ipdfil" path="res://Assets/Images/MorseCode/morse-chart.jpg" id="2_jhqy5"]
+
+[node name="MorsePuzzle" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_sk6lw")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 606.0
+offset_top = 3.0
+offset_right = 1152.0
+offset_bottom = 647.0
+scale = Vector2(1, 0.98498726)
+
+[node name="TargetLabel" type="RichTextLabel" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MorseLive" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+text = "Current letter: "
+
+[node name="DecodedOut" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+
+[node name="Feedback" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "\"\""
+
+[node name="MorseKey" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Morse Key
+"
+
+[node name="ReturnButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "BackSpace"
+
+[node name="Sheet" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 93.0
+offset_right = 603.0
+offset_bottom = 644.0
+texture = ExtResource("2_jhqy5")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 5.0000005
+offset_top = 17.999998
+offset_right = 200.0
+offset_bottom = 41.0
+scale = Vector2(1.6078267, 2.1969912)
+text = "Morse Code Puzzle Game"
