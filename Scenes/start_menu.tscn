@@ -1,0 +1,82 @@
+[gd_scene load_steps=2 format=3 uid="uid://bf5g134nk8ebe"]
+
+[ext_resource type="Script" uid="uid://ch3y31u7yadh8" path="res://Scripts/start_menu.gd" id="1_juhg0"]
+
+[node name="StartMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_right = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_juhg0")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+offset_left = 511.0
+offset_top = 368.0
+offset_right = 573.0
+offset_bottom = 469.0
+scale = Vector2(2, 2)
+
+[node name="Buttons" type="VBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="StartButton" type="Button" parent="CenterContainer/Buttons"]
+layout_mode = 2
+action_mode = 0
+text = "Start
+"
+
+[node name="OptionsButton" type="Button" parent="CenterContainer/Buttons"]
+layout_mode = 2
+text = "Option"
+
+[node name="QuitButton" type="Button" parent="CenterContainer/Buttons"]
+layout_mode = 2
+text = "Quit
+"
+
+[node name="OptionsPanel" type="Panel" parent="."]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(28.731138, 16.37037)
+
+[node name="Label" type="Label" parent="OptionsPanel"]
+layout_mode = 0
+offset_left = 3.1672957
+offset_top = 13.499998
+offset_right = 58.167297
+offset_bottom = 36.5
+scale = Vector2(0.20949186, 0.28750533)
+text = "Master"
+
+[node name="VolumeSlider" type="HSlider" parent="OptionsPanel"]
+layout_mode = 0
+offset_left = 16.219336
+offset_top = 13.927601
+offset_right = 56.219337
+offset_bottom = 29.9276
+rotation = 0.009336297
+scale = Vector2(0.47214022, 0.41906366)
+
+[node name="ApplyButton" type="Button" parent="OptionsPanel"]
+layout_mode = 0
+offset_left = 34.213753
+offset_top = 34.635746
+offset_right = 86.21375
+offset_bottom = 65.63574
+scale = Vector2(0.1065331, 0.13782991)
+text = "Apply"
+
+[node name="BackButton" type="Button" parent="OptionsPanel"]
+layout_mode = 0
+offset_right = 61.0
+offset_bottom = 31.0
+scale = Vector2(0.120868765, 0.15913129)
+text = "Return"
