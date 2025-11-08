@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://d0ppj86h3jp1i"]
+
+[ext_resource type="Script" uid="uid://bhu48s4eyu0b0" path="res://Scripts/GearPuzzle/heldGear.gd" id="1_bxxlj"]
+
+[node name="HeldGear" type="Sprite2D"]
+script = ExtResource("1_bxxlj")
