@@ -1,0 +1,210 @@
+[gd_scene load_steps=13 format=3 uid="uid://cgjogtocg0588"]
+
+[ext_resource type="Script" uid="uid://nay3bnx1m8u1" path="res://Scripts/GearPuzzle/gearbox_puzzle.gd" id="1_kkiwi"]
+[ext_resource type="PackedScene" uid="uid://bci03rqmrut0v" path="res://Scenes/GearPuzzle/Peg.tscn" id="2_er1fm"]
+[ext_resource type="Script" uid="uid://dp4v8os1wojjv" path="res://Scripts/GearPuzzle/clipping_mask_for_gears.gd" id="2_ojmt3"]
+[ext_resource type="Texture2D" uid="uid://duhcqc03lvp0d" path="res://Assets/Images/GearPuzzle/PLACEHOLDER_smallGear.png" id="2_si0wl"]
+[ext_resource type="Script" uid="uid://bin32awa18wuw" path="res://Scripts/GearPuzzle/BaseGear.gd" id="2_whrsu"]
+[ext_resource type="Texture2D" uid="uid://d2ydr6rkxdsxm" path="res://Assets/Images/GearPuzzle/PLACEHOLDER_mediumGear.png" id="3_whrsu"]
+[ext_resource type="Texture2D" uid="uid://dtpcujb7622km" path="res://Assets/Images/GearPuzzle/PLACEHOLDER_largeGear.png" id="4_er1fm"]
+[ext_resource type="Script" uid="uid://br24pvqm774n1" path="res://Scripts/GearPuzzle/GearButton.gd" id="5_whrsu"]
+
+[sub_resource type="Gradient" id="Gradient_bo1nx"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0.5609549, 0.5609549, 0.5609549, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_8gbba"]
+gradient = SubResource("Gradient_bo1nx")
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_t55ma"]
+radius = 96.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_40q7b"]
+radius = 48.0
+
+[node name="Control_Gearbox Puzzle" type="Control"]
+layout_mode = 3
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -816.0
+offset_top = -324.0
+offset_bottom = 324.0
+grow_horizontal = 0
+grow_vertical = 2
+script = ExtResource("1_kkiwi")
+metadata/_edit_use_anchors_ = true
+
+[node name="clippingMaskForGears" type="Control" parent="."]
+clip_contents = true
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -816.0
+offset_top = -324.0
+offset_bottom = 324.0
+grow_horizontal = 0
+grow_vertical = 2
+script = ExtResource("2_ojmt3")
+
+[node name="PLACEHOLDER_Gearbox Cabinet" type="Sprite2D" parent="clippingMaskForGears"]
+position = Vector2(408, 323.99997)
+scale = Vector2(3.1874998, 648)
+texture = SubResource("GradientTexture1D_8gbba")
+
+[node name="PLACEHOLDER_StartingPeg" type="Sprite2D" parent="clippingMaskForGears"]
+modulate = Color(0.92740667, 0.44449058, 9.62615e-07, 1)
+z_index = 1
+position = Vector2(144, 60)
+scale = Vector2(0.18749982, 0.18749982)
+
+[node name="PLACEHOLDER_EndingPeg" type="Sprite2D" parent="clippingMaskForGears"]
+modulate = Color(0.92740667, 0.44449058, 9.62615e-07, 1)
+z_index = 1
+position = Vector2(672, 588)
+scale = Vector2(0.18749982, 0.18749982)
+
+[node name="PegContainer" type="Node2D" parent="clippingMaskForGears"]
+
+[node name="PLACEHOLDER_Peg_S1" parent="clippingMaskForGears/PegContainer" instance=ExtResource("2_er1fm")]
+position = Vector2(168, 287.00003)
+
+[node name="PLACEHOLDER_Peg_S2" parent="clippingMaskForGears/PegContainer" instance=ExtResource("2_er1fm")]
+position = Vector2(323, 190)
+
+[node name="PLACEHOLDER_Peg_S3" parent="clippingMaskForGears/PegContainer" instance=ExtResource("2_er1fm")]
+position = Vector2(434, 113)
+
+[node name="PLACEHOLDER_Peg_S4" parent="clippingMaskForGears/PegContainer" instance=ExtResource("2_er1fm")]
+position = Vector2(599, 187)
+
+[node name="PLACEHOLDER_Peg_S5" parent="clippingMaskForGears/PegContainer" instance=ExtResource("2_er1fm")]
+position = Vector2(545, 312)
+
+[node name="PLACEHOLDER_Peg_S6" parent="clippingMaskForGears/PegContainer" instance=ExtResource("2_er1fm")]
+position = Vector2(519, 493)
+
+[node name="PLACEHOLDER_Peg_X1" parent="clippingMaskForGears/PegContainer" instance=ExtResource("2_er1fm")]
+position = Vector2(390, 333)
+
+[node name="PLACEHOLDER_Peg_X2" parent="clippingMaskForGears/PegContainer" instance=ExtResource("2_er1fm")]
+position = Vector2(733, 70)
+
+[node name="PLACEHOLDER_Peg_X3" parent="clippingMaskForGears/PegContainer" instance=ExtResource("2_er1fm")]
+position = Vector2(716, 425)
+
+[node name="PLACEHOLDER_Peg_X4" parent="clippingMaskForGears/PegContainer" instance=ExtResource("2_er1fm")]
+position = Vector2(124, 529)
+
+[node name="PLACEHOLDER_Peg_X5" parent="clippingMaskForGears/PegContainer" instance=ExtResource("2_er1fm")]
+position = Vector2(284, 442)
+
+[node name="GearContainer" type="Node2D" parent="clippingMaskForGears"]
+
+[node name="StartingGear" type="Area2D" parent="clippingMaskForGears/GearContainer" groups=["Gears"]]
+position = Vector2(144, 60)
+script = ExtResource("2_whrsu")
+radius = 96
+
+[node name="Sprite" type="Sprite2D" parent="clippingMaskForGears/GearContainer/StartingGear"]
+modulate = Color(0.45068944, 0.9999997, 0.55303675, 1)
+scale = Vector2(2, 2)
+texture = ExtResource("3_whrsu")
+
+[node name="MeshShape" type="CollisionShape2D" parent="clippingMaskForGears/GearContainer/StartingGear"]
+shape = SubResource("CircleShape2D_t55ma")
+
+[node name="EndingGear" type="Area2D" parent="clippingMaskForGears/GearContainer" groups=["Gears"]]
+position = Vector2(672, 588)
+script = ExtResource("2_whrsu")
+radius = 48
+
+[node name="Sprite" type="Sprite2D" parent="clippingMaskForGears/GearContainer/EndingGear"]
+modulate = Color(1, 0.65910804, 0.6318934, 1)
+scale = Vector2(2, 2)
+texture = ExtResource("2_si0wl")
+
+[node name="MeshShape" type="CollisionShape2D" parent="clippingMaskForGears/GearContainer/EndingGear"]
+shape = SubResource("CircleShape2D_40q7b")
+debug_color = Color(18.892157, 0, 0, 0.19607843)
+
+[node name="gearStorageArea" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = -336.0
+offset_top = -324.0
+offset_bottom = 324.0
+grow_vertical = 2
+
+[node name="Button_SmallGear1" type="Button" parent="gearStorageArea" groups=["Gear Buttons"]]
+texture_filter = 1
+layout_mode = 0
+offset_left = 237.0
+offset_top = 90.0
+offset_right = 285.0
+offset_bottom = 138.0
+icon = ExtResource("2_si0wl")
+script = ExtResource("5_whrsu")
+
+[node name="Button_SmallGear2" type="Button" parent="gearStorageArea" groups=["Gear Buttons"]]
+texture_filter = 1
+layout_mode = 0
+offset_left = 79.0
+offset_top = 252.0
+offset_right = 127.0
+offset_bottom = 300.0
+icon = ExtResource("2_si0wl")
+script = ExtResource("5_whrsu")
+
+[node name="Button_MediumGear1" type="Button" parent="gearStorageArea" groups=["Gear Buttons"]]
+texture_filter = 1
+layout_mode = 0
+offset_left = 178.0
+offset_top = 254.0
+offset_right = 274.0
+offset_bottom = 350.0
+icon = ExtResource("3_whrsu")
+script = ExtResource("5_whrsu")
+gearRadius = 96
+
+[node name="Button_MediumGear2" type="Button" parent="gearStorageArea" groups=["Gear Buttons"]]
+texture_filter = 1
+layout_mode = 0
+offset_left = 41.0
+offset_top = 374.0
+offset_right = 137.0
+offset_bottom = 470.0
+icon = ExtResource("3_whrsu")
+script = ExtResource("5_whrsu")
+gearRadius = 96
+
+[node name="Button_LargeGear1" type="Button" parent="gearStorageArea" groups=["Gear Buttons"]]
+texture_filter = 1
+layout_mode = 0
+offset_left = 160.0
+offset_top = 431.53125
+offset_right = 304.0
+offset_bottom = 575.53125
+icon = ExtResource("4_er1fm")
+script = ExtResource("5_whrsu")
+gearRadius = 144
+
+[node name="Button_LargeGear2" type="Button" parent="gearStorageArea" groups=["Gear Buttons"]]
+texture_filter = 1
+layout_mode = 0
+offset_left = 37.0
+offset_top = 44.0
+offset_right = 181.0
+offset_bottom = 188.0
+icon = ExtResource("4_er1fm")
+script = ExtResource("5_whrsu")
+gearRadius = 144
+
+[node name="PLACEHOLDER_GearStorageBackground" type="Sprite2D" parent="gearStorageArea"]

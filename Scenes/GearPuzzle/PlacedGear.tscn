@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://c1xcmm03cgyni"]
+
+[ext_resource type="Script" uid="uid://bin32awa18wuw" path="res://Scripts/GearPuzzle/BaseGear.gd" id="1_q8ah3"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_h7l3o"]
+
+[node name="BaseGear" type="Area2D" groups=["Gears"]]
+script = ExtResource("1_q8ah3")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+
+[node name="MeshShape" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_h7l3o")

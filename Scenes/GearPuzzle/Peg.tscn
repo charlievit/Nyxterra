@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://bci03rqmrut0v"]
+
+[ext_resource type="Script" uid="uid://bwybdqmhva6ia" path="res://Scripts/GearPuzzle/Peg.gd" id="1_s3a2y"]
+[ext_resource type="Texture2D" uid="uid://bo6l7eq7c6jlr" path="res://Assets/Images/icon.svg" id="2_trtwu"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pkhqx"]
+radius = 5.9999776
+
+[node name="Peg" type="Node2D"]
+modulate = Color(0.92740667, 0.44449058, 9.62615e-07, 1)
+script = ExtResource("1_s3a2y")
+
+[node name="Area2D_GearDetector" type="Area2D" parent="."]
+position = Vector2(-7.1525574e-05, -0.00012207031)
+scale = Vector2(5.3333383, 5.3333383)
+
+[node name="CollisionShape2D_CircleShape" type="CollisionShape2D" parent="Area2D_GearDetector"]
+position = Vector2(3.0517578e-05, 0)
+shape = SubResource("CircleShape2D_pkhqx")
+debug_color = Color(18.892157, 18.892157, 18.892157, 0)
+
+[node name="Sprite2D_PLACEHOLDER" type="Sprite2D" parent="."]
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("2_trtwu")

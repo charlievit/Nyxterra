@@ -21,7 +21,12 @@ window/stretch/mode="viewport"
 
 [editor]
 
-movie_writer/movie_file="C:/Users/Jordon/Nyxterra/DEBUG/MOVIE/playerMovementDemoWithZoom.avi"
+movie_writer/movie_file="C:/Users/Jordon/Nyxterra/DEBUG_VIDS/gearboxPuzzleUpdate.avi"
+
+[global_group]
+
+Gears="The gears used in the Gearbox Puzzle."
+"Gear Buttons"="Buttons used in the Gearbox Puzzle."
 
 [rendering]
 
