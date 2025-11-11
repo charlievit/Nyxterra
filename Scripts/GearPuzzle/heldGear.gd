@@ -1,7 +1,7 @@
 extends Sprite2D
 
 @export var puzzleAreaX_threshold: int = 336
-@export var transitionSpeed: float = 8.0 #need to adjust to make size change look good
+@export var transitionSpeed: float = 4.0 #need to adjust to make size change look good
 
 var fullScale: float = 2.0
 var smallScale: float = 1.0

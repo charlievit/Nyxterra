@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b7mloo2wyt7kx"
-path="res://.godot/imported/Floor3&4Build1.png-54d100d3e22d08cd6219e93f9140b559.ctex"
+uid="uid://cl4juhau8f85h"
+path="res://.godot/imported/Pin.png-2b61a66d924eb1bf7921645bbeefc35e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Images/Lighthouse/Floor3&4Build1.png"
-dest_files=["res://.godot/imported/Floor3&4Build1.png-54d100d3e22d08cd6219e93f9140b559.ctex"]
+source_file="res://Assets/Images/GearPuzzle/Pin.png"
+dest_files=["res://.godot/imported/Pin.png-2b61a66d924eb1bf7921645bbeefc35e.ctex"]
 
 [params]
 

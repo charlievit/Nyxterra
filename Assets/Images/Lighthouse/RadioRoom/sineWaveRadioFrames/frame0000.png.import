@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ui7san5wy5iy"
-path="res://.godot/imported/Floor1&2Build1.png-2d8307e24697c676e1f2dbd069cabeb4.ctex"
+uid="uid://dwrvospshx5r0"
+path="res://.godot/imported/frame0000.png-66edb8b062dc14b9fc36a2af725428c4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Images/Lighthouse/Floor1&2Build1.png"
-dest_files=["res://.godot/imported/Floor1&2Build1.png-2d8307e24697c676e1f2dbd069cabeb4.ctex"]
+source_file="res://Assets/Images/Lighthouse/RadioRoom/sineWaveRadioFrames/frame0000.png"
+dest_files=["res://.godot/imported/frame0000.png-66edb8b062dc14b9fc36a2af725428c4.ctex"]
 
 [params]
 

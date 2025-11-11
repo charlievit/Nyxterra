@@ -1,0 +1,52 @@
+[gd_scene load_steps=11 format=3 uid="uid://cuku1ylw6a6a6"]
+
+[ext_resource type="Script" uid="uid://bbtm0mg0iq1k4" path="res://Scenes/RadioPuzzle/smallPixelRadio.gd" id="1_h5l5h"]
+[ext_resource type="Texture2D" uid="uid://dwrvospshx5r0" path="res://Assets/Images/Lighthouse/RadioRoom/sineWaveRadioFrames/frame0000.png" id="2_dj3x0"]
+[ext_resource type="Texture2D" uid="uid://0qy3pr43un5p" path="res://Assets/Images/Lighthouse/RadioRoom/sineWaveRadioFrames/frame0001.png" id="3_aef67"]
+[ext_resource type="Texture2D" uid="uid://dicw72ea3ucti" path="res://Assets/Images/Lighthouse/RadioRoom/sineWaveRadioFrames/frame0002.png" id="4_t2own"]
+[ext_resource type="Texture2D" uid="uid://fpmnprsgnr5" path="res://Assets/Images/Lighthouse/RadioRoom/sineWaveRadioFrames/frame0003.png" id="5_tea04"]
+[ext_resource type="Texture2D" uid="uid://bkqdcckcnqw2b" path="res://Assets/Images/Lighthouse/RadioRoom/sineWaveRadioFrames/frame0004.png" id="6_v2snb"]
+[ext_resource type="Texture2D" uid="uid://cjl5fbmgyhg0g" path="res://Assets/Images/Lighthouse/RadioRoom/sineWaveRadioFrames/frame0005.png" id="7_kj1kx"]
+[ext_resource type="Texture2D" uid="uid://clwgrswj6govv" path="res://Assets/Images/Lighthouse/RadioRoom/sineWaveRadioFrames/frame0006.png" id="8_nykkp"]
+[ext_resource type="Texture2D" uid="uid://dmcf8fsbmegog" path="res://Assets/Images/Lighthouse/RadioRoom/sineWaveRadioFrames/frame0007.png" id="9_2qpnj"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6nisa"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_dj3x0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_aef67")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_t2own")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_tea04")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_v2snb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_kj1kx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_nykkp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_2qpnj")
+}],
+"loop": true,
+"name": &"sineWaveRadio",
+"speed": 10.0
+}]
+
+[node name="RadioPxArt" type="Node2D"]
+script = ExtResource("1_h5l5h")
+
+[node name="RadioSprite" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(559, 324.99997)
+sprite_frames = SubResource("SpriteFrames_6nisa")
+animation = &"sineWaveRadio"

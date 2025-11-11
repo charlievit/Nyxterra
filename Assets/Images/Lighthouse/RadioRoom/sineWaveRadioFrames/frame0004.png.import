@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bnc5fep5l67u1"
-path="res://.godot/imported/Floor3&4SampleScene.png-72621423b9194f6b659d3fe031b45fc6.ctex"
+uid="uid://bkqdcckcnqw2b"
+path="res://.godot/imported/frame0004.png-06526efc922c1c7316e9ab54cd332c4b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Images/Lighthouse/Floor3&4SampleScene.png"
-dest_files=["res://.godot/imported/Floor3&4SampleScene.png-72621423b9194f6b659d3fe031b45fc6.ctex"]
+source_file="res://Assets/Images/Lighthouse/RadioRoom/sineWaveRadioFrames/frame0004.png"
+dest_files=["res://.godot/imported/frame0004.png-06526efc922c1c7316e9ab54cd332c4b.ctex"]
 
 [params]
 

@@ -14,8 +14,7 @@ script = ExtResource("1_8gbba")
 [node name="PlayerPlaceholder" type="Sprite2D" parent="."]
 z_index = 1
 texture_filter = 1
-position = Vector2(256, 206.00003)
-scale = Vector2(1.031, 1.031)
+position = Vector2(261, 463)
 texture = ExtResource("2_jjvhh")
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="PlayerPlaceholder"]

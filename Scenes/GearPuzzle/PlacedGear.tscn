@@ -8,6 +8,7 @@
 script = ExtResource("1_q8ah3")
 
 [node name="Sprite" type="Sprite2D" parent="."]
+offset = Vector2(-0.5, -0.5)
 
 [node name="MeshShape" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_h7l3o")

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d2ydr6rkxdsxm"
-path="res://.godot/imported/PLACEHOLDER_mediumGear.png-94174f6d3fb8cf553ff85a7f1470241d.ctex"
+uid="uid://clwgrswj6govv"
+path="res://.godot/imported/frame0006.png-10b5f629d562ceceffa2981bb266a314.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Images/GearPuzzle/PLACEHOLDER_mediumGear.png"
-dest_files=["res://.godot/imported/PLACEHOLDER_mediumGear.png-94174f6d3fb8cf553ff85a7f1470241d.ctex"]
+source_file="res://Assets/Images/Lighthouse/RadioRoom/sineWaveRadioFrames/frame0006.png"
+dest_files=["res://.godot/imported/frame0006.png-10b5f629d562ceceffa2981bb266a314.ctex"]
 
 [params]
 
