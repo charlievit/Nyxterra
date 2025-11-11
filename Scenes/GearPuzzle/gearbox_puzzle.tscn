@@ -4,29 +4,21 @@
 [ext_resource type="PackedScene" uid="uid://bci03rqmrut0v" path="res://Scenes/GearPuzzle/Peg.tscn" id="2_er1fm"]
 [ext_resource type="Script" uid="uid://dp4v8os1wojjv" path="res://Scripts/GearPuzzle/clipping_mask_for_gears.gd" id="2_ojmt3"]
 [ext_resource type="Script" uid="uid://bin32awa18wuw" path="res://Scripts/GearPuzzle/BaseGear.gd" id="2_whrsu"]
-[ext_resource type="Texture2D" uid="uid://cl4juhau8f85h" path="res://Assets/Images/GearPuzzle/Pin.png" id="3_a1smn"]
+[ext_resource type="Texture2D" uid="uid://bxhlfogarrm4o" path="res://Assets/Images/GearPuzzle/Pins/Pin.png" id="3_a1smn"]
+[ext_resource type="Texture2D" uid="uid://crwbc8bthjbux" path="res://Assets/Images/GearPuzzle/Structure/Gearbox.png" id="3_ufuea"]
+[ext_resource type="Texture2D" uid="uid://bgfmv3j3g4vis" path="res://Assets/Images/GearPuzzle/Structure/GearboxFrame.png" id="4_5ladj"]
 [ext_resource type="Script" uid="uid://br24pvqm774n1" path="res://Scripts/GearPuzzle/GearButton.gd" id="5_whrsu"]
-[ext_resource type="Texture2D" uid="uid://rrlym8voq0fp" path="res://Assets/Images/GearPuzzle/gear20t.png" id="6_a1smn"]
-[ext_resource type="Texture2D" uid="uid://c8y1ucm6iusqn" path="res://Assets/Images/GearPuzzle/gear10t.png" id="7_np238"]
-[ext_resource type="Texture2D" uid="uid://q6q0hok24jr8" path="res://Assets/Images/GearPuzzle/gear30t.png" id="9_ufuea"]
-
-[sub_resource type="Gradient" id="Gradient_bo1nx"]
-offsets = PackedFloat32Array(0)
-colors = PackedColorArray(0.5609549, 0.5609549, 0.5609549, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_8gbba"]
-gradient = SubResource("Gradient_bo1nx")
+[ext_resource type="Texture2D" uid="uid://c3wpl7kf4tnih" path="res://Assets/Images/GearPuzzle/Gears/Colored/gear20tColoured.png" id="7_5ladj"]
+[ext_resource type="Texture2D" uid="uid://dy8chuh8dscrw" path="res://Assets/Images/GearPuzzle/Gears/Colored/gear10tColured.png" id="8_y2vhw"]
+[ext_resource type="Texture2D" uid="uid://qucqhoaonapk" path="res://Assets/Images/GearPuzzle/Pins/GearMounting.png" id="9_iw1ll"]
+[ext_resource type="Texture2D" uid="uid://bso61ejk5ooaj" path="res://Assets/Images/GearPuzzle/Gears/Colored/gear30tColoured.png" id="11_nrv7i"]
+[ext_resource type="Texture2D" uid="uid://dj6psk0y5b1n1" path="res://Assets/Images/GearPuzzle/Structure/Plaque.png" id="13_y2vhw"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_t55ma"]
 radius = 96.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_40q7b"]
 radius = 48.0
-
-[sub_resource type="Gradient" id="Gradient_a1smn"]
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_np238"]
-gradient = SubResource("Gradient_a1smn")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_a1smn"]
 
@@ -70,13 +62,20 @@ grow_horizontal = 0
 grow_vertical = 2
 script = ExtResource("2_ojmt3")
 
-[node name="PLACEHOLDER_Gearbox Cabinet" type="Sprite2D" parent="clippingMaskForGears"]
-position = Vector2(408, 323.99997)
-scale = Vector2(3.1874998, 648)
-texture = SubResource("GradientTexture1D_8gbba")
+[node name="Gearbox Cabinet" type="Sprite2D" parent="clippingMaskForGears"]
+texture_filter = 1
+position = Vector2(239.99997, 325)
+scale = Vector2(2.3999999, 2.3925927)
+texture = ExtResource("3_ufuea")
+
+[node name="Gearbox Frame" type="Sprite2D" parent="clippingMaskForGears"]
+z_index = 1
+texture_filter = 1
+position = Vector2(239.99997, 324)
+scale = Vector2(2.3999999, 2.4000003)
+texture = ExtResource("4_5ladj")
 
 [node name="StartingPeg" type="Sprite2D" parent="clippingMaskForGears"]
-modulate = Color(0.92740667, 0.44449058, 9.62615e-07, 1)
 z_index = 1
 texture_filter = 1
 position = Vector2(144, 60)
@@ -85,7 +84,6 @@ texture = ExtResource("3_a1smn")
 offset = Vector2(-0.5, -0.5)
 
 [node name="EndingPeg" type="Sprite2D" parent="clippingMaskForGears"]
-modulate = Color(0.92740667, 0.44449058, 9.62615e-07, 1)
 z_index = 1
 texture_filter = 1
 position = Vector2(673.00006, 589)
@@ -137,10 +135,9 @@ radius = 96
 toothCount = 20
 
 [node name="Sprite" type="Sprite2D" parent="clippingMaskForGears/GearContainer/StartingGear"]
-modulate = Color(0.45068944, 0.9999997, 0.55303675, 1)
 texture_filter = 1
 scale = Vector2(2, 2)
-texture = ExtResource("6_a1smn")
+texture = ExtResource("7_5ladj")
 offset = Vector2(-0.5, -0.5)
 
 [node name="MeshShape" type="CollisionShape2D" parent="clippingMaskForGears/GearContainer/StartingGear"]
@@ -153,10 +150,9 @@ radius = 48
 toothCount = 10
 
 [node name="Sprite" type="Sprite2D" parent="clippingMaskForGears/GearContainer/EndingGear"]
-modulate = Color(1, 0.65910804, 0.6318934, 1)
 texture_filter = 1
 scale = Vector2(2, 2)
-texture = ExtResource("7_np238")
+texture = ExtResource("8_y2vhw")
 offset = Vector2(-0.5, -0.5)
 
 [node name="MeshShape" type="CollisionShape2D" parent="clippingMaskForGears/GearContainer/EndingGear"]
@@ -173,81 +169,55 @@ offset_top = -324.0
 offset_bottom = 324.0
 grow_vertical = 2
 
-[node name="PLACEHOLDER_GearStorageBackground" type="Sprite2D" parent="gearStorageArea"]
-position = Vector2(168, 325.00006)
-scale = Vector2(5.25, 10.093751)
-texture = SubResource("GradientTexture2D_np238")
+[node name="GearStorageBackground" type="Sprite2D" parent="gearStorageArea"]
+z_index = -1
+texture_filter = 1
+position = Vector2(576, 323.49997)
+scale = Vector2(2.3999999, 2.4037035)
+texture = ExtResource("3_ufuea")
 
 [node name="storagePeg1" type="Sprite2D" parent="gearStorageArea"]
-modulate = Color(0.92740667, 0.44449058, 9.62615e-07, 1)
-z_index = 1
 texture_filter = 1
-position = Vector2(94, 154)
-scale = Vector2(1.0833334, 1.0833334)
-texture = ExtResource("3_a1smn")
+position = Vector2(93.5, 154.49998)
+scale = Vector2(0.85, 0.85)
+texture = ExtResource("9_iw1ll")
 
 [node name="storagePeg2" type="Sprite2D" parent="gearStorageArea"]
-modulate = Color(0.92740667, 0.44449058, 9.62615e-07, 1)
-z_index = 1
 texture_filter = 1
-position = Vector2(222, 155.00002)
-scale = Vector2(1.0833334, 1.0833334)
-texture = ExtResource("3_a1smn")
+position = Vector2(222.5, 153.5)
+scale = Vector2(0.85, 0.85)
+texture = ExtResource("9_iw1ll")
 
 [node name="storagePeg3" type="Sprite2D" parent="gearStorageArea"]
-modulate = Color(0.92740667, 0.44449058, 9.62615e-07, 1)
-z_index = 1
 texture_filter = 1
-position = Vector2(93.00001, 287)
-scale = Vector2(1.0833334, 1.0833334)
-texture = ExtResource("3_a1smn")
+position = Vector2(92.5, 287.49997)
+scale = Vector2(0.85, 0.85)
+texture = ExtResource("9_iw1ll")
 
 [node name="storagePeg4" type="Sprite2D" parent="gearStorageArea"]
-modulate = Color(0.92740667, 0.44449058, 9.62615e-07, 1)
-z_index = 1
 texture_filter = 1
-position = Vector2(228, 284)
-scale = Vector2(1.0833334, 1.0833334)
-texture = ExtResource("3_a1smn")
+position = Vector2(227.5, 284.49997)
+scale = Vector2(0.85, 0.85)
+texture = ExtResource("9_iw1ll")
 
 [node name="storagePeg5" type="Sprite2D" parent="gearStorageArea"]
-modulate = Color(0.92740667, 0.44449058, 9.62615e-07, 1)
-z_index = 1
 texture_filter = 1
-position = Vector2(93.000015, 469.00003)
-scale = Vector2(1.0833334, 1.0833334)
-texture = ExtResource("3_a1smn")
+position = Vector2(92.50001, 469.49997)
+scale = Vector2(0.85, 0.85)
+texture = ExtResource("9_iw1ll")
 
 [node name="storagePeg6" type="Sprite2D" parent="gearStorageArea"]
-modulate = Color(0.92740667, 0.44449058, 9.62615e-07, 1)
-z_index = 1
 texture_filter = 1
-position = Vector2(230.00002, 469)
-scale = Vector2(1.0833334, 1.0833334)
-texture = ExtResource("3_a1smn")
+position = Vector2(229.50002, 469.49997)
+scale = Vector2(0.85, 0.85)
+texture = ExtResource("9_iw1ll")
 
 [node name="Button_SmallGear1" type="Button" parent="gearStorageArea" groups=["Gear Buttons"]]
 texture_filter = 1
 layout_mode = 0
-offset_left = 202.0
-offset_top = 135.0
-offset_right = 242.0
-offset_bottom = 175.0
-theme_override_styles/normal = SubResource("StyleBoxEmpty_a1smn")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_np238")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_ufuea")
-theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_5ladj")
-theme_override_styles/disabled = SubResource("StyleBoxEmpty_iw1ll")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_y2vhw")
-icon = ExtResource("7_np238")
-script = ExtResource("5_whrsu")
-
-[node name="Button_SmallGear2" type="Button" parent="gearStorageArea" groups=["Gear Buttons"]]
-texture_filter = 1
-layout_mode = 0
-offset_left = 74.0
+offset_left = 203.0
 offset_top = 134.0
-offset_right = 114.0
+offset_right = 243.0
 offset_bottom = 174.0
 theme_override_styles/normal = SubResource("StyleBoxEmpty_a1smn")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_np238")
@@ -255,7 +225,23 @@ theme_override_styles/hover = SubResource("StyleBoxEmpty_ufuea")
 theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_5ladj")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_iw1ll")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_y2vhw")
-icon = ExtResource("7_np238")
+icon = ExtResource("8_y2vhw")
+script = ExtResource("5_whrsu")
+
+[node name="Button_SmallGear2" type="Button" parent="gearStorageArea" groups=["Gear Buttons"]]
+texture_filter = 1
+layout_mode = 0
+offset_left = 74.0
+offset_top = 135.0
+offset_right = 114.0
+offset_bottom = 175.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_a1smn")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_np238")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_ufuea")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_5ladj")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_iw1ll")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_y2vhw")
+icon = ExtResource("8_y2vhw")
 icon_alignment = 1
 script = ExtResource("5_whrsu")
 
@@ -263,16 +249,16 @@ script = ExtResource("5_whrsu")
 texture_filter = 1
 layout_mode = 0
 offset_left = 188.0
-offset_top = 240.0
+offset_top = 241.0
 offset_right = 276.0
-offset_bottom = 328.0
+offset_bottom = 329.0
 theme_override_styles/normal = SubResource("StyleBoxEmpty_a1smn")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_np238")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_ufuea")
 theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_5ladj")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_iw1ll")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_y2vhw")
-icon = ExtResource("6_a1smn")
+icon = ExtResource("7_5ladj")
 script = ExtResource("5_whrsu")
 gearRadius = 96
 gearTeeth = 20
@@ -281,16 +267,16 @@ gearTeeth = 20
 texture_filter = 1
 layout_mode = 0
 offset_left = 53.0
-offset_top = 243.0
+offset_top = 244.0
 offset_right = 141.0
-offset_bottom = 331.0
+offset_bottom = 332.0
 theme_override_styles/normal = SubResource("StyleBoxEmpty_a1smn")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_np238")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_ufuea")
 theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_5ladj")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_iw1ll")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_y2vhw")
-icon = ExtResource("6_a1smn")
+icon = ExtResource("7_5ladj")
 script = ExtResource("5_whrsu")
 gearRadius = 96
 gearTeeth = 20
@@ -299,16 +285,16 @@ gearTeeth = 20
 texture_filter = 1
 layout_mode = 0
 offset_left = 170.0
-offset_top = 405.0
+offset_top = 406.0
 offset_right = 298.0
-offset_bottom = 533.0
+offset_bottom = 534.0
 theme_override_styles/normal = SubResource("StyleBoxEmpty_a1smn")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_np238")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_ufuea")
 theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_5ladj")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_iw1ll")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_y2vhw")
-icon = ExtResource("9_ufuea")
+icon = ExtResource("11_nrv7i")
 script = ExtResource("5_whrsu")
 gearRadius = 144
 gearTeeth = 30
@@ -317,16 +303,34 @@ gearTeeth = 30
 texture_filter = 1
 layout_mode = 0
 offset_left = 33.0
-offset_top = 409.0
+offset_top = 410.0
 offset_right = 153.0
-offset_bottom = 529.0
+offset_bottom = 530.0
 theme_override_styles/normal = SubResource("StyleBoxEmpty_a1smn")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_np238")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_ufuea")
 theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_5ladj")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_iw1ll")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_y2vhw")
-icon = ExtResource("9_ufuea")
+icon = ExtResource("11_nrv7i")
 script = ExtResource("5_whrsu")
 gearRadius = 144
 gearTeeth = 30
+
+[node name="Plaque" type="Sprite2D" parent="gearStorageArea"]
+texture_filter = 1
+position = Vector2(168.00002, 71)
+scale = Vector2(3.024078, 3.024078)
+texture = ExtResource("13_y2vhw")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="gearStorageArea/Plaque"]
+offset_left = -38.028126
+offset_top = -7.936303
+offset_right = 39.020153
+offset_bottom = 6.9442644
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 10
+bbcode_enabled = true
+text = "Gear Storage"
+horizontal_alignment = 1
+vertical_alignment = 1

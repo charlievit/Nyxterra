@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://rrlym8voq0fp"
-path="res://.godot/imported/gear20t.png-4516b52fc54fd018a0f2e6475e43347d.ctex"
+uid="uid://dvumqq6xwcegw"
+path="res://.godot/imported/OfficeTable.png-f83ea846317ac33fc28d27688ae3e086.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Images/GearPuzzle/gear20t.png"
-dest_files=["res://.godot/imported/gear20t.png-4516b52fc54fd018a0f2e6475e43347d.ctex"]
+source_file="res://Assets/Images/Lighthouse/Props/OfficeTable.png"
+dest_files=["res://.godot/imported/OfficeTable.png-f83ea846317ac33fc28d27688ae3e086.ctex"]
 
 [params]
 

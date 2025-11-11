@@ -5,8 +5,8 @@
 [ext_resource type="Texture2D" uid="uid://c2bjfaemqpvp3" path="res://Assets/Images/PLACEHOLDER_DUDE.png" id="2_jjvhh"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8gbba"]
-radius = 7.759445
-height = 42.67697
+radius = 7.0
+height = 40.0
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_8gbba")
@@ -14,12 +14,13 @@ script = ExtResource("1_8gbba")
 [node name="PlayerPlaceholder" type="Sprite2D" parent="."]
 z_index = 1
 texture_filter = 1
-position = Vector2(261, 463)
+position = Vector2(52, 480)
 texture = ExtResource("2_jjvhh")
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="PlayerPlaceholder"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerPlaceholder/CharacterBody2D"]
+position = Vector2(0, 1)
 shape = SubResource("CapsuleShape2D_8gbba")
 
 [node name="MainStaticCamera" type="Camera2D" parent="."]
@@ -55,3 +56,5 @@ zoom = Vector2(6.19, 6.19)
 limit_enabled = false
 
 [node name="Control_LIGHTHOUSE BUTTON AREA" parent="." instance=ExtResource("1_bo1nx")]
+offset_left = -2.0
+offset_right = 334.0
