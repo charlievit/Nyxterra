@@ -6,6 +6,7 @@ signal gearButtonPressed(buttonData: Dictionary) # send data to the main puzzle 
 # INSPECTOR VARIABLES
 # Set this variables in the inspector to ensure that the game knows which button holds which gear
 @export var gearRadius: int = 48
+@export var gearTeeth: int = 10
 @export var gearSmallScale: float = 1.0 #scale when in the UI
 
 var originalIconTexture: Texture
@@ -27,6 +28,7 @@ func _on_pressed():
 	var data = {
 		"button": self,
 		"radius": gearRadius,
+		"teeth": gearTeeth,
 		"texture": originalIconTexture,
 		"smallScale": gearSmallScale
 	}

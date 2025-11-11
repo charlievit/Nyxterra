@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://ciu3f5nqoeqry"]
 
-[ext_resource type="Script" uid="uid://31i38018m2dr" path="res://Scripts/radio_interface.gd" id="1_tslgi"]
+[ext_resource type="Script" uid="uid://31i38018m2dr" path="res://Scripts/RadioPuzzle/radio_interface.gd" id="1_tslgi"]
 
 [sub_resource type="Gradient" id="Gradient_c8khx"]
 colors = PackedColorArray(0.19793725, 0.19793722, 0.19793722, 1, 0.25565878, 0.25565878, 0.25565878, 1)

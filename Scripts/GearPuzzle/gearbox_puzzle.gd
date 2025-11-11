@@ -6,7 +6,7 @@ extends Control
 signal puzzle_solved #Need to connect all Gear Buttons ("gearButtonPressed") signal to this function
 
 # CONSTANTS
-const SNAP_DISTANCE = 10
+const SNAP_DISTANCE = 20
 
 # PRELOADS
 const heldGearScene = preload("res://Scenes/GearPuzzle/heldGear.tscn")
@@ -121,6 +121,7 @@ func placeGearOnPeg(peg: Node2D):
 	gearContainer.add_child(newGear)
 	newGear.setup(
 		heldGearData["radius"],
+		heldGearData["teeth"],
 		heldGearData["texture"],
 		heldGearData["button"],
 		peg
@@ -174,7 +175,10 @@ func _process(_delta):
 	# FIRST: Reset all gears, except the start gear
 	for gear in allGears:
 		if gear != startingGear:
+			if not gear.isPowered:
+				gear.currentDriver = null
 			gear.isPowered = false
+			gear.rotationSpeed = 0.0
 	
 	# SECOND: Create a queue of gears to check, starting with the source of power
 	var processingQueue = [startingGear]
