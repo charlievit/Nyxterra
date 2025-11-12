@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dtpcujb7622km"
-path="res://.godot/imported/PLACEHOLDER_largeGear.png-c40954e41d1e98002eb5e725f13e32c4.ctex"
+uid="uid://cbtxqobmvf11d"
+path="res://.godot/imported/Bed2.png-d61358bc0cf4564d7db661dc4d4f655e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Images/GearPuzzle/PLACEHOLDER_ASSETS_TO_BE_PURGED/PLACEHOLDER_largeGear.png"
-dest_files=["res://.godot/imported/PLACEHOLDER_largeGear.png-c40954e41d1e98002eb5e725f13e32c4.ctex"]
+source_file="res://Assets/Images/Lighthouse/Props/Bed2.png"
+dest_files=["res://.godot/imported/Bed2.png-d61358bc0cf4564d7db661dc4d4f655e.ctex"]
 
 [params]
 

@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://bty042lmdfi02"]
+[gd_scene load_steps=7 format=3 uid="uid://bty042lmdfi02"]
 
 [ext_resource type="Texture2D" uid="uid://dumrws8pl1suf" path="res://Assets/Images/Lighthouse/Structure/LightRoomBuild1.png" id="1_680ea"]
 [ext_resource type="Texture2D" uid="uid://bnc5fep5l67u1" path="res://Assets/Images/Lighthouse/Structure/Floor3&4SampleScene.png" id="2_qkcrh"]
 [ext_resource type="PackedScene" uid="uid://cuku1ylw6a6a6" path="res://Scenes/RadioPuzzle/radioAnimated.tscn" id="3_qkcrh"]
 [ext_resource type="Texture2D" uid="uid://ui7san5wy5iy" path="res://Assets/Images/Lighthouse/Structure/Floor1&2Build1.png" id="3_rf6kk"]
+[ext_resource type="Texture2D" uid="uid://dsnuq07k0kmpv" path="res://Assets/Images/Lighthouse/Props/Wall.png" id="4_b2lj4"]
 [ext_resource type="Texture2D" uid="uid://c2bjfaemqpvp3" path="res://Assets/Images/PLACEHOLDER_DUDE.png" id="5_rf6kk"]
 
 [node name="LIGHTHOUSE BUTTON AREA" type="Control"]
@@ -26,13 +27,6 @@ texture_filter = 1
 position = Vector2(167, 143)
 texture = ExtResource("1_680ea")
 
-[node name="Lightroom_To_4thFloor" type="Button" parent="TOP"]
-layout_mode = 0
-offset_left = 64.0
-offset_top = 219.0
-offset_right = 118.0
-offset_bottom = 229.0
-
 [node name="MIDDLE" type="Control" parent="."]
 layout_mode = 1
 anchors_preset = 14
@@ -49,21 +43,14 @@ texture_filter = 1
 position = Vector2(167, 90)
 texture = ExtResource("2_qkcrh")
 
-[node name="Button_4thFloor_To_Lightroom" type="Button" parent="MIDDLE"]
-layout_mode = 0
-offset_left = 39.0
-offset_right = 66.0
-offset_bottom = 82.0
-
-[node name="Button_4thFloor_To_3rdFloor" type="Button" parent="MIDDLE"]
-layout_mode = 0
-offset_left = 229.0
-offset_top = 68.0
-offset_right = 280.0
-offset_bottom = 83.0
-
 [node name="RadioPxArt" parent="MIDDLE" instance=ExtResource("3_qkcrh")]
 position = Vector2(-330, -188)
+
+[node name="Door and Wall" type="Sprite2D" parent="MIDDLE"]
+z_index = 1
+texture_filter = 1
+position = Vector2(180, 135)
+texture = ExtResource("4_b2lj4")
 
 [node name="BOTTOM" type="Control" parent="."]
 layout_mode = 1
@@ -82,16 +69,13 @@ texture = ExtResource("3_rf6kk")
 
 [node name="PlaceholderDude" type="Sprite2D" parent="."]
 texture_filter = 1
-position = Vector2(140, 203)
+position = Vector2(164, 387)
 texture = ExtResource("5_rf6kk")
 
 [node name="Lighthouse Collision" type="StaticBody2D" parent="."]
+z_index = 2
 position = Vector2(1, 324)
-
-[node name="BottomFloorAndWalls" type="CollisionPolygon2D" parent="Lighthouse Collision"]
-position = Vector2(167, 276)
-polygon = PackedVector2Array(158, -7, 158, -5, 156, -5, -161, -6, -161, -7, -161, -47, -159, -47, -159, -7, 157, -7, 154, -52, 158, -52)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Lighthouse Collision"]
 position = Vector2(163, 165)
-polygon = PackedVector2Array(-149, 13, -145, -30, -148, -30, -151, 13, -157, 64, -155, 64, -79, 42, 90, 42, 90, 53, 107, 59, 118, 59, 121, 61, 125, 61, 128, 59, 162, 59, 162, 42, 162, 13, 110, -4, 110, -45, 110, -74, 146, -74, 151, -74, 151, -76, 147, -123, 142, -123, 146, -76, 110, -76, 107, -76, 29, -76, 29, -80, 21, -80, 21, -76, -72, -76, -97, -87, -120, -87, -120, -129, -67, -134, -65, -126, -58, -126, -18, -126, -17, -138, 21, -138, 21, -126, 29, -126, 29, -138, 53, -138, 55, -122, 68, -121, 90, -121, 101, -120, 104, -119, 108, -119, 111, -121, 142, -123, 90, -141, 55, -141, 29, -141, 29, -166, 88, -166, 88, -184, 88, -226, 87, -257, -25, -257, -47, -270, -60, -270, -70, -270, -78, -215, -88, -215, -98, -215, -125, -215, -132, -207, -129, -205, -117, -212, -98, -212, -95, -210, -91, -210, -88, -212, -71, -212, -61, -229, 41, -229, 73, -227, 81, -223, 85, -184, 65, -184, 65, -167, 29, -167, 21, -167, 20, -167, 20, -179, 18, -183, 13, -185, -7, -185, -12, -183, -14, -179, -14, -168, -18, -167, -130, -167, -129, -205, -132, -207, -132, -167, -132, -166, -130, -166, -18, -166, -14, -166, 20, -166, 21, -166, 21, -141, -17, -141, -58, -128, -67, -136, -120, -131, -137, -133, -146, -87, -145, -30, -115, -30, -112, -29, -108, -29, -105.031845, -30, -94, -30, -72, -49, 21, -49, 29, -49, 57, -49, 107, -45, 107, -4, 87, -4, 87, 13)
+polygon = PackedVector2Array(-149, 13, -145, -30, -148, -30, -151, 13, -157, 64, -155, 64, -79, 42, 90, 42, 90, 53, 107, 59, 118, 59, 121, 61, 125, 61, 128, 59, 158, 59, 160, 102, -155, 102, -155, 64, -157, 64, -157, 102, -157, 105, -155, 105, 160, 105, 162, 105, 162, 102, 162, 59, 162, 42, 162, 13, 110, -4, 110, -45, 110, -74, 146, -74, 151, -74, 151, -76, 147, -123, 142, -123, 146, -76, 110, -76, 107, -76, 29, -76, 29, -80, 21, -80, 21, -76, -72, -76, -97, -87, -120, -87, -120, -129, -67, -134, -65, -126, -58, -126, -18, -126, -17, -138, 21, -138, 21, -126, 29, -126, 29, -138, 53, -138, 55, -122, 68, -121, 90, -121, 101, -120, 104, -119, 108, -119, 111, -121, 142, -123, 90, -141, 55, -141, 29, -141, 29, -166, 88, -166, 88, -184, 88, -226, 87, -252, 122, -252, 126, -252, 126, -257, 126, -299, 122, -303, 122, -299, 122, -257, 87, -257, -25, -257, -47, -270, -60, -270, -70, -270, -70, -313, -52, -313, -15, -315, -9, -305, -5, -301, 11, -301, 15, -305, 21, -314, 46, -313, 122, -299, 122, -303, 46, -318, 21, -320, -15, -320, -52, -318, -70, -318, -120, -318, -120, -313, -120, -258, -132, -207, -129, -205, -117, -212, -98, -212, -95, -210, -91, -210, -88, -212, -71, -212, -61, -229, 41, -229, 73, -227, 81, -223, 85, -184, 65, -184, 65, -167, 29, -167, 21, -167, 20, -167, 20, -179, 18, -183, 13, -185, -7, -185, -12, -183, -14, -179, -14, -168, -18, -167, -130, -167, -129, -205, -132, -207, -132, -167, -132, -166, -130, -166, -18, -166, -14, -166, 20, -166, 21, -166, 21, -141, -17, -141, -58, -128, -67, -136, -120, -131, -137, -133, -146, -87, -145, -30, -115, -30, -112, -29, -108, -29, -105.031845, -30, -94, -30, -72, -49, 21, -49, 29, -49, 57, -49, 97, -48, 107, -45, 107, -4, 87, -4, 87, 13)

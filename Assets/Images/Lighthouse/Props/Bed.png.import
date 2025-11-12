@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b8fqahkq751bj"
-path="res://.godot/imported/GearboxBackground.png-da830ac8cdb02ec1b13ef05e20c28d46.ctex"
+uid="uid://blyp3iqrmjq8"
+path="res://.godot/imported/Bed.png-600fa683156d8cedc22b6829f153a00b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Images/GearPuzzle/GearboxBackground.png"
-dest_files=["res://.godot/imported/GearboxBackground.png-da830ac8cdb02ec1b13ef05e20c28d46.ctex"]
+source_file="res://Assets/Images/Lighthouse/Props/Bed.png"
+dest_files=["res://.godot/imported/Bed.png-600fa683156d8cedc22b6829f153a00b.ctex"]
 
 [params]
 

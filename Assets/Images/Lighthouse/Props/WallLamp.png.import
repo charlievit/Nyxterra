@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://duhcqc03lvp0d"
-path="res://.godot/imported/PLACEHOLDER_smallGear.png-1d0324d42f93b99746a33084ccab9143.ctex"
+uid="uid://daw4rmvtwdbyg"
+path="res://.godot/imported/WallLamp.png-7dd4e003eafb4879d11096f19572fdce.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Images/GearPuzzle/PLACEHOLDER_ASSETS_TO_BE_PURGED/PLACEHOLDER_smallGear.png"
-dest_files=["res://.godot/imported/PLACEHOLDER_smallGear.png-1d0324d42f93b99746a33084ccab9143.ctex"]
+source_file="res://Assets/Images/Lighthouse/Props/WallLamp.png"
+dest_files=["res://.godot/imported/WallLamp.png-7dd4e003eafb4879d11096f19572fdce.ctex"]
 
 [params]
 

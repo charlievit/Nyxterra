@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://q6q0hok24jr8"
-path="res://.godot/imported/gear30t.png-351f45b1bf3671ca3c35f15ffcff2397.ctex"
+uid="uid://c3wpl7kf4tnih"
+path="res://.godot/imported/gear20tColoured.png-7ec195db7ec9a31fadafa7a8169a8f7b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Images/GearPuzzle/gear30t.png"
-dest_files=["res://.godot/imported/gear30t.png-351f45b1bf3671ca3c35f15ffcff2397.ctex"]
+source_file="res://Assets/Images/GearPuzzle/Gears/Colored/gear20tColoured.png"
+dest_files=["res://.godot/imported/gear20tColoured.png-7ec195db7ec9a31fadafa7a8169a8f7b.ctex"]
 
 [params]
 
