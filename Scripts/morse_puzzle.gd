@@ -22,13 +22,18 @@ const MORSE: Dictionary[String, String] = {
 var REVERSE: Dictionary[String, String] = {}
 
 # --- Nodes ---
-@onready var label_target: RichTextLabel  = $VBoxContainer/TargetLabel
-@onready var label_morse: Label      = $VBoxContainer/MorseLive
-@onready var label_out: Label        = $VBoxContainer/DecodedOut
-@onready var label_feedback: Label   = $VBoxContainer/Feedback
-@onready var morse_key: Button       = $VBoxContainer/MorseKey
-@onready var return_button: Button   = $VBoxContainer/ReturnButton
+@onready var label_target: RichTextLabel  = $TargetLabel
+@onready var label_morse: Label      = $MorseLive
+@onready var label_out: Label        = $DecodedOut
+@onready var label_feedback: Label   = $Feedback
+@onready var morse_key: Button       = $MorseKey
+@onready var return_button: Button   = $ReturnButton
 @onready var sheet: TextureRect      = $Sheet
+@onready var background: TextureRect = $Background
+
+# --- Background textures ---
+const TEX_UP   := preload("res://Assets/Images/MorseCode/1MorseCodeMachineClipboard.png")
+const TEX_DOWN := preload("res://Assets/Images/MorseCode/1MorseCodeMachineDownClickClipboard.png")
 
 # --- State for button-based Morse input ---
 var pressing: bool = false
@@ -58,6 +63,9 @@ func _ready() -> void:
 	morse_key.button_down.connect(_on_morse_key_down)
 	morse_key.button_up.connect(_on_morse_key_up)
 	return_button.pressed.connect(_on_backspace_pressed)
+	
+	if is_instance_valid(background):
+		background.texture = TEX_UP
 
 func _process(_delta: float) -> void:
 	# After a release, watch the silence gap to end letter or word
@@ -74,19 +82,20 @@ func _process(_delta: float) -> void:
 # --- MorseKey handlers (button press duration decides dot vs dash) ---
 func _on_morse_key_down() -> void:
 	pressing = true
+	background.texture = TEX_DOWN
 	press_started_at = Time.get_ticks_msec() / 1000.0
-	morse_key.text = "●"  # simple visual press state
+	
 
 func _on_morse_key_up() -> void:
 	if !pressing:
 		return
 	pressing = false
+	background.texture = TEX_UP
 	var now: float = Time.get_ticks_msec() / 1000.0
 	var dur: float = now - press_started_at
 	current_symbol += "." if dur <= DOT_MAX else "-"
 	last_release_at = now
 	_update_labels()
-	morse_key.text = "Morse Key"
 
 # --- Commit helpers ---
 func _commit_letter_if_any() -> void:
