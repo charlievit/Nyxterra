@@ -28,6 +28,9 @@ var overlappingTeleporters: Array[Area2D] = []
 
 
 func _ready():
+	
+	GameState.player = self
+	
 	# Store the sprite's default state
 	if sprite:
 		baseScale = sprite.scale

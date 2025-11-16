@@ -1,15 +1,17 @@
-[gd_scene load_steps=4 format=3 uid="uid://bv00gype30lrh"]
+[gd_scene load_steps=5 format=3 uid="uid://bv00gype30lrh"]
 
 [ext_resource type="Script" uid="uid://dmv4o0wqsh26h" path="res://Scripts/main.gd" id="1_8gbba"]
 [ext_resource type="PackedScene" uid="uid://bty042lmdfi02" path="res://Scenes/lighthouse_button_area.tscn" id="1_bo1nx"]
 [ext_resource type="PackedScene" uid="uid://ctuyv2i3q62q" path="res://Scenes/player.tscn" id="2_8gbba"]
+[ext_resource type="PackedScene" uid="uid://6825wwab2n3q" path="res://Scenes/PauseMenu.tscn" id="4_jjvhh"]
 
 [node name="Main" type="Node2D"]
+position = Vector2(0, -1)
 scale = Vector2(1.3964909, 1.3964909)
 script = ExtResource("1_8gbba")
 
 [node name="Player" parent="." instance=ExtResource("2_8gbba")]
-position = Vector2(90.94224, 276.4071)
+position = Vector2(88.07791, 276.4071)
 slide_on_ceiling = false
 
 [node name="MainStaticCamera" type="Camera2D" parent="."]
@@ -54,3 +56,10 @@ scale = Vector2(0.718, 0.718)
 
 [node name="DELETE_THIS_PointFinder" type="Node2D" parent="."]
 position = Vector2(103.1156, 155.38948)
+
+[node name="CanvasLayer_UI" type="CanvasLayer" parent="."]
+
+[node name="PauseMenu" parent="CanvasLayer_UI" instance=ExtResource("4_jjvhh")]
+visible = false
+offset_left = 1.0
+offset_right = 1.0

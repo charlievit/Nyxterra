@@ -23,10 +23,10 @@ texture = ExtResource("2_jgtwh")
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 layout_mode = 1
-offset_left = 511.0
-offset_top = 368.0
-offset_right = 573.0
-offset_bottom = 469.0
+offset_left = 482.0
+offset_top = 356.0
+offset_right = 575.0
+offset_bottom = 457.0
 scale = Vector2(2, 2)
 
 [node name="Buttons" type="VBoxContainer" parent="CenterContainer"]
@@ -36,8 +36,11 @@ theme_override_constants/separation = 4
 [node name="StartButton" type="Button" parent="CenterContainer/Buttons"]
 layout_mode = 2
 action_mode = 0
-text = "Start
-"
+text = "New Game"
+
+[node name="ContinueButton" type="Button" parent="CenterContainer/Buttons"]
+layout_mode = 2
+text = "Continue"
 
 [node name="OptionsButton" type="Button" parent="CenterContainer/Buttons"]
 layout_mode = 2
