@@ -3,5 +3,6 @@
 [ext_resource type="Script" uid="uid://bhu48s4eyu0b0" path="res://Scripts/GearPuzzle/heldGear.gd" id="1_bxxlj"]
 
 [node name="HeldGear" type="Sprite2D"]
+scale = Vector2(1.384, 1.384)
 offset = Vector2(-0.5, -0.5)
 script = ExtResource("1_bxxlj")

@@ -1,0 +1,187 @@
+# Copyright (C) 2025 Nyxterra Team & CyberSugar Studios
+extends RigidBody2D
+
+# Define ingredient types, WHOLE and CHOPPABLE are kinda the same type but used in a boolean style for recipes
+enum IngredientType {WHOLE, CHOPPABLE, POURABLE, SHAKER}
+
+#region VARIABLES
+#region INGREDIENT LOGIC
+@export var sprite: Sprite2D = null
+
+@export var ingredientName: String = "WARNING: UNNAMED INGREDIENT"
+@export var ingredientType: IngredientType = IngredientType.WHOLE
+
+@export_group("Choppable")
+@export var isChoppable: bool = false
+@export var chopsNeeded: int = 5
+@export var isChopped: bool = false
+@export var wholeSprite: Sprite2D = null # TODO: Implement sprite swapping
+@export var choppedSprite: Sprite2D = null # TODO: Implement sprite swapping
+var chopCount: int = 0
+
+@export_group("PourableOrShaker")
+@export var pourRate: float = 1.0 ## units per second
+@export var shakeAmount: int = 1 ## units per shake
+@export var shakeThreshold: float = 800.0 ## mouse velocity threshold to "shake"
+
+# NODES
+@export var potDetectorArea: Area2D
+@export var amountLabel: RichTextLabel
+
+# STATES
+var isOverPot: bool = false
+var spawnPosition: Vector2
+var currentAmount: float = 0.0
+#endregion INGREDIENT LOGIC
+
+#region CONTROLS
+@export var followSpeed: float = 30.0 # snappiness of the object to the mouse cursor
+@export var defaultGravityScale: float = 1.0
+var isHeld: bool = false
+
+# Variables to track the mouse's velocity for a "throw" effect on drop
+var mouseVelocity: Vector2 = Vector2.ZERO
+var lastMousePosition: Vector2 = Vector2.ZERO
+var lastMouseVelocity: Vector2 = Vector2.ZERO # shake detections TODO: refine to feel better and more consistent
+#endregion CONTROLS
+#endregion VARIABLES
+
+func _ready() -> void:
+	# Set up defaults
+	gravity_scale = defaultGravityScale
+	set_pickable(true)
+	if is_inside_tree():
+		lastMousePosition = get_global_mouse_position()
+	
+	spawnPosition = global_position #initial position for resetting shakers and pourables
+	
+	# CONNECTIONS
+	if not potDetectorArea:
+		push_error("ERROR: NEEDS POT DETECTOR IN SCENE!")
+	else:
+		potDetectorArea.area_entered.connect(OnPotAreaEntered)
+		potDetectorArea.area_exited.connect(OnPotAreaExited)
+	
+	# shaker and pourables indicator TODO: counter-rotate  the text when over pot and remove the ".0"
+	if not amountLabel:
+		push_error("ERROR: AMOUNT LABEL MISSING")
+	else:
+		amountLabel.text = ""
+
+func OnPotAreaEntered(area: Area2D):
+	if area.is_in_group("pot"):
+		isOverPot = true
+
+func OnPotAreaExited(area: Area2D):
+	if area.is_in_group("pot"):
+		isOverPot = false
+		rotation_degrees = 0.0
+
+func Chop():
+	if not isChoppable or isChopped:
+		return
+	
+	chopCount += 1
+	
+	print("Chop! %d / %d" % [chopCount, chopsNeeded])
+	#KitchenController.TESTING_RECIPE_NOTIFICATION_FEED.text += "\n"
+	#KitchenController.TESTING_RECIPE_NOTIFICATION_FEED.text += "Chop! %d / %d" % [chopCount, chopsNeeded]
+	
+	if chopCount >= chopsNeeded:
+		isChopped = true
+		if not "(Chopped)" in ingredientName:
+			ingredientName += " (Chopped)"
+		print("Chopped. It's now: %s" % ingredientName)
+		KitchenController.TESTING_RECIPE_NOTIFICATION_FEED.text += "\n"
+		KitchenController.TESTING_RECIPE_NOTIFICATION_FEED.text += "Chopped. It's now: %s" % ingredientName
+		# TODO: Set "Chopped" sprite here
+
+func ResetPosition(): # just for shaker and pourables so their "containers" can't be added to the pot
+	freeze_mode = RigidBody2D.FREEZE_MODE_STATIC
+	freeze = true
+	linear_velocity = Vector2.ZERO
+	angular_velocity = 0.0
+	
+	# Return to start position
+	global_position = spawnPosition
+	rotation_degrees = 0.0
+	isHeld = false
+	currentAmount = 0.0
+	if amountLabel:
+		amountLabel.text = ""
+	
+	# Reset
+	set_sleeping(false)
+	freeze = false
+	gravity_scale = defaultGravityScale
+
+func PickupAndHold():
+	isHeld = true
+	freeze_mode = RigidBody2D.FREEZE_MODE_STATIC
+	freeze = true
+	set_sleeping(false)
+	
+	if is_inside_tree():
+		global_position = get_global_mouse_position()
+		lastMousePosition = get_global_mouse_position()
+
+func _input_event(_viewport: Node, event: InputEvent, _shape_idx: int): #initial click on ingredient
+	if event is InputEventMouseButton:
+		if event.button_index == MOUSE_BUTTON_LEFT and event.is_pressed():
+			PickupAndHold()
+
+
+func _input(event: InputEvent): # release click on ingredient
+	if event is InputEventMouseButton:
+		if event.button_index == MOUSE_BUTTON_LEFT and not event.is_pressed():
+			if isHeld: # Drop it
+				isHeld = false
+				freeze = false
+				gravity_scale = defaultGravityScale
+				linear_velocity = mouseVelocity
+				set_sleeping(false)
+				
+				if ingredientType == IngredientType.POURABLE or ingredientType == IngredientType.SHAKER:
+					var amountToSend = floor(currentAmount)
+					if amountToSend > 0.0:
+						KitchenController.AddPartialIngredient(ingredientName, amountToSend)
+					ResetPosition()
+
+
+func _physics_process(delta: float):
+	# FIRST: Track the mouse velocity
+	var currentMousePosition: Vector2 = get_global_mouse_position()
+	# Then Calculate velocity
+	if lastMousePosition != Vector2.ZERO:
+		mouseVelocity = (currentMousePosition - lastMousePosition) / delta
+	# Then update mouse position for next frame
+	lastMousePosition = currentMousePosition
+	
+	# SECOND: make object follow the mouse
+	if isHeld:
+		var newPosisiton = global_position.lerp(currentMousePosition, delta * followSpeed)
+		set_global_position(newPosisiton)
+		
+		# THIRD: handle held item logic
+		if isOverPot and amountLabel:
+			if ingredientType == IngredientType.POURABLE:
+				# Pout over time and tilt
+				currentAmount += pourRate * delta
+				amountLabel.text = str(floor(currentAmount))
+				# TODO: Counter rotate label
+				rotation_degrees = lerp(rotation_degrees, -45.0, delta * 5.0)
+			elif ingredientType == IngredientType.SHAKER:
+				# Check for a mouse "shake"
+				var mouseVel = mouseVelocity
+				if abs(mouseVel.x) > shakeThreshold and sign(mouseVel.x) != sign(lastMouseVelocity.x):
+					currentAmount += shakeAmount
+					amountLabel.text = str(floor(currentAmount))
+				
+				lastMouseVelocity.x = mouseVel.x
+				# Tilt over pot
+				rotation_degrees = lerp(rotation_degrees, -145.0, delta * 5.0)
+		else:
+			# Not over pot, reset tilt
+			rotation_degrees = lerp(rotation_degrees, 0.0, delta * 5.0)
+			if ingredientType == IngredientType.SHAKER:
+				lastMouseVelocity = Vector2.ZERO

@@ -1,30 +1,20 @@
-[gd_scene load_steps=5 format=3 uid="uid://bv00gype30lrh"]
+[gd_scene load_steps=4 format=3 uid="uid://bv00gype30lrh"]
 
 [ext_resource type="Script" uid="uid://dmv4o0wqsh26h" path="res://Scripts/main.gd" id="1_8gbba"]
 [ext_resource type="PackedScene" uid="uid://bty042lmdfi02" path="res://Scenes/lighthouse_button_area.tscn" id="1_bo1nx"]
-[ext_resource type="Texture2D" uid="uid://c2bjfaemqpvp3" path="res://Assets/Images/PLACEHOLDER_DUDE.png" id="2_jjvhh"]
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8gbba"]
-radius = 7.0
-height = 40.0
+[ext_resource type="PackedScene" uid="uid://ctuyv2i3q62q" path="res://Scenes/player.tscn" id="2_8gbba"]
 
 [node name="Main" type="Node2D"]
+scale = Vector2(1.3964909, 1.3964909)
 script = ExtResource("1_8gbba")
 
-[node name="PlayerPlaceholder" type="Sprite2D" parent="."]
-z_index = 1
-texture_filter = 1
-position = Vector2(52, 480)
-texture = ExtResource("2_jjvhh")
-
-[node name="CharacterBody2D" type="CharacterBody2D" parent="PlayerPlaceholder"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerPlaceholder/CharacterBody2D"]
-position = Vector2(0, 1)
-shape = SubResource("CapsuleShape2D_8gbba")
+[node name="Player" parent="." instance=ExtResource("2_8gbba")]
+position = Vector2(90.94224, 276.4071)
+slide_on_ceiling = false
 
 [node name="MainStaticCamera" type="Camera2D" parent="."]
-position = Vector2(576, 324)
+position = Vector2(411.7463, 231.29399)
+scale = Vector2(0.84105986, 0.93627286)
 
 [node name="Control_GAME SCREEN UI" type="CanvasLayer" parent="."]
 metadata/_edit_use_anchors_ = true
@@ -35,16 +25,18 @@ anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -816.0
+offset_left = -817.0
 offset_top = -324.0
-offset_bottom = 324.0
+offset_right = 27.733276
+offset_bottom = 348.9997
 grow_horizontal = 0
 grow_vertical = 2
+scale = Vector2(0.9671691, 0.96285325)
 stretch = true
 
 [node name="SubViewport" type="SubViewport" parent="Control_GAME SCREEN UI/SubViewportContainer"]
 handle_input_locally = false
-size = Vector2i(816, 648)
+size = Vector2i(844, 672)
 size_2d_override_stretch = true
 render_target_update_mode = 4
 
@@ -56,5 +48,9 @@ zoom = Vector2(6.19, 6.19)
 limit_enabled = false
 
 [node name="Control_LIGHTHOUSE BUTTON AREA" parent="." instance=ExtResource("1_bo1nx")]
-offset_left = -2.0
-offset_right = 334.0
+offset_top = 0.0
+offset_bottom = 648.0
+scale = Vector2(0.718, 0.718)
+
+[node name="DELETE_THIS_PointFinder" type="Node2D" parent="."]
+position = Vector2(103.1156, 155.38948)

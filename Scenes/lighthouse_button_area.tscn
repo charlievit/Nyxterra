@@ -1,18 +1,26 @@
-[gd_scene load_steps=7 format=3 uid="uid://bty042lmdfi02"]
+[gd_scene load_steps=9 format=3 uid="uid://bty042lmdfi02"]
 
 [ext_resource type="Texture2D" uid="uid://dumrws8pl1suf" path="res://Assets/Images/Lighthouse/Structure/LightRoomBuild1.png" id="1_680ea"]
 [ext_resource type="Texture2D" uid="uid://bnc5fep5l67u1" path="res://Assets/Images/Lighthouse/Structure/Floor3&4SampleScene.png" id="2_qkcrh"]
 [ext_resource type="PackedScene" uid="uid://cuku1ylw6a6a6" path="res://Scenes/RadioPuzzle/radioAnimated.tscn" id="3_qkcrh"]
 [ext_resource type="Texture2D" uid="uid://ui7san5wy5iy" path="res://Assets/Images/Lighthouse/Structure/Floor1&2Build1.png" id="3_rf6kk"]
 [ext_resource type="Texture2D" uid="uid://dsnuq07k0kmpv" path="res://Assets/Images/Lighthouse/Props/Wall.png" id="4_b2lj4"]
+[ext_resource type="Script" uid="uid://cuipkjxvfn1xp" path="res://Scripts/teleporterHandler.gd" id="5_0t6ev"]
 [ext_resource type="Texture2D" uid="uid://c2bjfaemqpvp3" path="res://Assets/Images/PLACEHOLDER_DUDE.png" id="5_rf6kk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b2lj4"]
+size = Vector2(22.97748, 42.957886)
 
 [node name="LIGHTHOUSE BUTTON AREA" type="Control"]
 custom_minimum_size = Vector2(29.15, 0)
 layout_mode = 3
-anchors_preset = 0
-offset_right = 336.0
-offset_bottom = 648.0
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -324.0
+offset_right = 335.67096
+offset_bottom = 324.0
+grow_vertical = 2
 size_flags_horizontal = 0
 
 [node name="TOP" type="Control" parent="."]
@@ -26,6 +34,24 @@ grow_horizontal = 2
 texture_filter = 1
 position = Vector2(167, 143)
 texture = ExtResource("1_680ea")
+
+[node name="TopToF4Teleporter" type="Area2D" parent="TOP"]
+position = Vector2(104.89717, 199.80414)
+script = ExtResource("5_0t6ev")
+direction = "Down"
+targetFloor = 4
+targetTeleporter = NodePath("../../MIDDLE/F4toTopTeleporter")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TOP/TopToF4Teleporter"]
+position = Vector2(1.4985504, -2.4974976)
+shape = SubResource("RectangleShape2D_b2lj4")
+
+[node name="ButtonPrompt" type="RichTextLabel" parent="TOP/TopToF4Teleporter"]
+offset_left = -21.978455
+offset_top = -23.976496
+offset_right = 18.021545
+offset_bottom = 16.023504
+text = "E"
 
 [node name="MIDDLE" type="Control" parent="."]
 layout_mode = 1
@@ -44,13 +70,90 @@ position = Vector2(167, 90)
 texture = ExtResource("2_qkcrh")
 
 [node name="RadioPxArt" parent="MIDDLE" instance=ExtResource("3_qkcrh")]
-position = Vector2(-330, -188)
+position = Vector2(229, 137)
 
 [node name="Door and Wall" type="Sprite2D" parent="MIDDLE"]
 z_index = 1
 texture_filter = 1
-position = Vector2(180, 135)
+position = Vector2(180, 135.5)
+scale = Vector2(1, 1.0111111)
 texture = ExtResource("4_b2lj4")
+
+[node name="F3toF2Teleporter" type="Area2D" parent="MIDDLE"]
+position = Vector2(60.94026, 144.62984)
+script = ExtResource("5_0t6ev")
+direction = "Down"
+targetFloor = 2
+targetTeleporter = NodePath("../../BOTTOM/F2toF3Teleporter")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MIDDLE/F3toF2Teleporter"]
+position = Vector2(-6.493637, 3.4964294)
+shape = SubResource("RectangleShape2D_b2lj4")
+
+[node name="ButtonPrompt" type="RichTextLabel" parent="MIDDLE/F3toF2Teleporter"]
+texture_filter = 1
+offset_left = 6.993145
+offset_top = -23.976496
+offset_right = 46.993145
+offset_bottom = 16.023504
+text = "E"
+
+[node name="F3toF4Teleporter" type="Area2D" parent="MIDDLE"]
+position = Vector2(287.71796, 153.62102)
+script = ExtResource("5_0t6ev")
+direction = "Up"
+targetFloor = 4
+targetTeleporter = NodePath("../F4toF3Teleporter")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MIDDLE/F3toF4Teleporter"]
+position = Vector2(3.496582, 3.4964294)
+shape = SubResource("RectangleShape2D_b2lj4")
+
+[node name="ButtonPrompt" type="RichTextLabel" parent="MIDDLE/F3toF4Teleporter"]
+texture_filter = 1
+offset_left = -21.978455
+offset_top = -19.980413
+offset_right = 18.021545
+offset_bottom = 20.019587
+text = "E"
+
+[node name="F4toF3Teleporter" type="Area2D" parent="MIDDLE"]
+position = Vector2(232.77182, 47.724823)
+script = ExtResource("5_0t6ev")
+direction = "Down"
+targetFloor = 3
+targetTeleporter = NodePath("../F3toF4Teleporter")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MIDDLE/F4toF3Teleporter"]
+position = Vector2(5.9941254, 3.4963074)
+shape = SubResource("RectangleShape2D_b2lj4")
+
+[node name="ButtonPrompt" type="RichTextLabel" parent="MIDDLE/F4toF3Teleporter"]
+texture_filter = 1
+offset_left = 18.981396
+offset_top = -22.977476
+offset_right = 58.981396
+offset_bottom = 17.022524
+text = "E"
+
+[node name="F4toTopTeleporter" type="Area2D" parent="MIDDLE"]
+position = Vector2(52.94809, 63.709152)
+script = ExtResource("5_0t6ev")
+direction = "Up"
+targetFloor = 5
+targetTeleporter = NodePath("../../TOP/TopToF4Teleporter")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MIDDLE/F4toTopTeleporter"]
+position = Vector2(-2.4975471, 3.4963074)
+shape = SubResource("RectangleShape2D_b2lj4")
+
+[node name="ButtonPrompt" type="RichTextLabel" parent="MIDDLE/F4toTopTeleporter"]
+texture_filter = 1
+offset_left = 12.987279
+offset_top = -21.978455
+offset_right = 52.987278
+offset_bottom = 18.021545
+text = "E"
 
 [node name="BOTTOM" type="Control" parent="."]
 layout_mode = 1
@@ -67,9 +170,67 @@ texture_filter = 1
 position = Vector2(167, 90)
 texture = ExtResource("3_rf6kk")
 
-[node name="PlaceholderDude" type="Sprite2D" parent="."]
+[node name="F1ToF2Teleporter" type="Area2D" parent="BOTTOM"]
+position = Vector2(306.69934, 152.44571)
+script = ExtResource("5_0t6ev")
+direction = "Up"
+targetFloor = 2
+targetTeleporter = NodePath("../F2toF1Teleporter")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BOTTOM/F1ToF2Teleporter"]
+position = Vector2(1.4985657, 3.9958496)
+shape = SubResource("RectangleShape2D_b2lj4")
+
+[node name="ButtonPrompt" type="RichTextLabel" parent="BOTTOM/F1ToF2Teleporter"]
 texture_filter = 1
-position = Vector2(164, 387)
+offset_left = -23.976498
+offset_top = -19.980413
+offset_right = 16.023502
+offset_bottom = 20.019587
+text = "E"
+
+[node name="F2toF1Teleporter" type="Area2D" parent="BOTTOM"]
+position = Vector2(260.7444, 49.54658)
+script = ExtResource("5_0t6ev")
+direction = "Down"
+targetTeleporter = NodePath("../F1ToF2Teleporter")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BOTTOM/F2toF1Teleporter"]
+position = Vector2(0.99905396, 0.99902344)
+shape = SubResource("RectangleShape2D_b2lj4")
+
+[node name="ButtonPrompt" type="RichTextLabel" parent="BOTTOM/F2toF1Teleporter"]
+texture_filter = 1
+offset_left = 20.979435
+offset_top = -22.977476
+offset_right = 60.979435
+offset_bottom = 17.022524
+text = "E"
+
+[node name="F2toF3Teleporter" type="Area2D" parent="BOTTOM"]
+position = Vector2(33.966705, 64.53189)
+script = ExtResource("5_0t6ev")
+direction = "Up"
+targetFloor = 3
+targetTeleporter = NodePath("../../MIDDLE/F3toF2Teleporter")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BOTTOM/F2toF3Teleporter"]
+position = Vector2(-1.998045, 3.4964294)
+shape = SubResource("RectangleShape2D_b2lj4")
+
+[node name="ButtonPrompt" type="RichTextLabel" parent="BOTTOM/F2toF3Teleporter"]
+texture_filter = 1
+offset_left = 15.984331
+offset_top = -21.978455
+offset_right = 55.98433
+offset_bottom = 18.021545
+text = "E"
+
+[node name="PlaceholderDude" type="Sprite2D" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0.3764706)
+texture_filter = 1
+position = Vector2(167, 194)
 texture = ExtResource("5_rf6kk")
 
 [node name="Lighthouse Collision" type="StaticBody2D" parent="."]
@@ -78,4 +239,4 @@ position = Vector2(1, 324)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Lighthouse Collision"]
 position = Vector2(163, 165)
-polygon = PackedVector2Array(-149, 13, -145, -30, -148, -30, -151, 13, -157, 64, -155, 64, -79, 42, 90, 42, 90, 53, 107, 59, 118, 59, 121, 61, 125, 61, 128, 59, 158, 59, 160, 102, -155, 102, -155, 64, -157, 64, -157, 102, -157, 105, -155, 105, 160, 105, 162, 105, 162, 102, 162, 59, 162, 42, 162, 13, 110, -4, 110, -45, 110, -74, 146, -74, 151, -74, 151, -76, 147, -123, 142, -123, 146, -76, 110, -76, 107, -76, 29, -76, 29, -80, 21, -80, 21, -76, -72, -76, -97, -87, -120, -87, -120, -129, -67, -134, -65, -126, -58, -126, -18, -126, -17, -138, 21, -138, 21, -126, 29, -126, 29, -138, 53, -138, 55, -122, 68, -121, 90, -121, 101, -120, 104, -119, 108, -119, 111, -121, 142, -123, 90, -141, 55, -141, 29, -141, 29, -166, 88, -166, 88, -184, 88, -226, 87, -252, 122, -252, 126, -252, 126, -257, 126, -299, 122, -303, 122, -299, 122, -257, 87, -257, -25, -257, -47, -270, -60, -270, -70, -270, -70, -313, -52, -313, -15, -315, -9, -305, -5, -301, 11, -301, 15, -305, 21, -314, 46, -313, 122, -299, 122, -303, 46, -318, 21, -320, -15, -320, -52, -318, -70, -318, -120, -318, -120, -313, -120, -258, -132, -207, -129, -205, -117, -212, -98, -212, -95, -210, -91, -210, -88, -212, -71, -212, -61, -229, 41, -229, 73, -227, 81, -223, 85, -184, 65, -184, 65, -167, 29, -167, 21, -167, 20, -167, 20, -179, 18, -183, 13, -185, -7, -185, -12, -183, -14, -179, -14, -168, -18, -167, -130, -167, -129, -205, -132, -207, -132, -167, -132, -166, -130, -166, -18, -166, -14, -166, 20, -166, 21, -166, 21, -141, -17, -141, -58, -128, -67, -136, -120, -131, -137, -133, -146, -87, -145, -30, -115, -30, -112, -29, -108, -29, -105.031845, -30, -94, -30, -72, -49, 21, -49, 29, -49, 57, -49, 97, -48, 107, -45, 107, -4, 87, -4, 87, 13)
+polygon = PackedVector2Array(-149, 13, -145, -30, -148, -30, -151, 13, -157, 64, -155, 65, -79, 43, 90, 43, 90, 53, 107, 59, 118, 59, 121, 61, 125, 61, 128, 59, 158, 59, 160, 103, -155, 103, -155, 65, -157, 64, -157, 102, -157, 105, -155, 105, 160, 105, 162, 105, 162, 102, 162, 59, 162, 42, 162, 13, 110, -4, 110, -45, 110, -74, 146, -74, 151, -74, 151, -76, 147, -123, 142, -123, 146, -77, 110, -77, 107, -77, 41, -77, 30, -80, 29, -80, 21, -80, 20, -80, 2, -80, -72, -77, -97, -88, -120, -88, -120, -127, -67, -133, -65, -126, -58, -126, -23, -126, -23, -137, 21, -137, 21, -126, 29, -126, 29, -136, 55, -136, 58, -124, 68, -120, 90, -120, 101, -120, 104, -118, 108, -118, 111, -121, 142, -123, 90, -141, 55, -141, 29, -141, 29, -166, 88, -166, 88, -184, 88, -226, 87, -252, 122, -252, 126, -252, 126, -257, 126, -299, 122, -303, 120, -298, 122, -257, 87, -257, -27, -257, -45, -269, -60, -269, -66, -270, -66, -309, -52, -310, -12, -311, -9, -304, -5, -300, 3, -300, 11, -300, 15, -304, 18, -311, 46, -312, 120, -298, 122, -303, 46, -318, 21, -320, -15, -320, -52, -318, -70, -318, -120, -318, -120, -313, -120, -258, -132, -207, -129, -205, -117, -212, -100, -212, -95, -208, -91, -208, -86, -212, -71, -212, -61, -227, 41, -227, 73, -224, 84, -221, 85, -184, 65, -184, 65, -167, 29, -167, 21, -167, 20, -167, 20, -179, 18, -183, 13, -185, -7, -185, -12, -183, -14, -179, -14, -168, -18, -167, -130, -167, -129, -205, -132, -207, -132, -167, -132, -166, -130, -166, -18, -166, -14, -166, 20, -166, 21, -166, 21, -141, -17, -141, -58, -128, -67, -136, -120, -131, -137, -133, -146, -87, -145, -30, -115, -30, -112, -29, -108, -29, -105.031845, -30, -94, -30, -77, -39, -77, -47, 57, -47, 97, -44, 107, -40, 107, -4, 87, -4, 87, 13)

@@ -2,7 +2,7 @@ extends Node2D
 
 #region Variable Declaration
 # Camera Variables
-@onready var player = $PlayerPlaceholder
+@onready var player = $Player
 @onready var mainCamera = $MainStaticCamera
 @onready var zoomCamera = $"Control_GAME SCREEN UI/SubViewportContainer/SubViewport/ZoomCamera"
 @onready var SubVPort = $"Control_GAME SCREEN UI/SubViewportContainer/SubViewport"
