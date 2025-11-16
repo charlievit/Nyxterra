@@ -138,3 +138,19 @@ func UpdateAnimation(_inputVector: Vector2):
 		# Player is idle
 		# animSprite.play("idle")
 		pass
+
+
+
+func write_save_data() -> void:
+	# Copy the player’s state into the SaveData resource
+	SaveManager.current_save.player_position = global_position
+	SaveManager.current_save.player_floor = currentFloor
+
+
+func apply_save_data() -> void:
+	# Read state back from SaveData and apply it to this player
+	if SaveManager.current_save == null:
+		return
+
+	SetFloor(SaveManager.current_save.player_floor)
+	global_position = SaveManager.current_save.player_position

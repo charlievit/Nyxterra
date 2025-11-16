@@ -19,7 +19,7 @@ func _ready() -> void:
 	
 	if SaveManager.has_save():
 		SaveManager.reload_from_disk()
-		player.global_position = SaveManager.current_save.player_position
+		player.apply_save_data()
 		
 	
 func _process(_delta):

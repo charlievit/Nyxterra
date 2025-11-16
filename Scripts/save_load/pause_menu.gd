@@ -58,21 +58,24 @@ func _on_resume_pressed() -> void:
 
 
 func _on_save_pressed() -> void:
-	SaveManager.save_game()
+	var player := GameState.player
+	player.write_save_data()           # player → SaveData
+	SaveManager.save_game()               # SaveData → disk
 	_update_load_button_state()
-
 
 func _on_load_pressed() -> void:
 	get_tree().paused = false
 	hide()
 
-	if SaveManager.has_save():
-		SaveManager.reload_from_disk()
+	SaveManager.reload_from_disk()
 
-		# Switch to the saved scene
-		var path := SaveManager.current_save.current_scene_path
-		if path != "":
-			get_tree().change_scene_to_file(path)
+	# Switch to the saved scene
+	var path := SaveManager.current_save.current_scene_path
+	if path != "":
+		get_tree().change_scene_to_file(path)
+		
+	var player := GameState.player
+	player.apply_save_data()
 
 func _on_main_menu_pressed() -> void:
 	# Optional: auto-save here if you want
