@@ -3,7 +3,7 @@ extends Control
 
 #region Variable Declaration
 # SIGNALS
-signal puzzle_solved #Need to connect all Gear Buttons ("gearButtonPressed") signal to this function
+signal puzzle_solved
 
 # CONSTANTS
 const SNAP_DISTANCE = 20

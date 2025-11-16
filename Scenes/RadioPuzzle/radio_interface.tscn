@@ -1,17 +1,54 @@
-[gd_scene load_steps=4 format=3 uid="uid://ciu3f5nqoeqry"]
+[gd_scene load_steps=22 format=3 uid="uid://ciu3f5nqoeqry"]
 
 [ext_resource type="Script" uid="uid://31i38018m2dr" path="res://Scripts/RadioPuzzle/radio_interface.gd" id="1_tslgi"]
+[ext_resource type="PackedScene" uid="uid://chjypho1fx1ro" path="res://Scenes/RadioPuzzle/radio_dial.tscn" id="2_7vb88"]
+[ext_resource type="PackedScene" uid="uid://p3dt7x8y3xh2" path="res://Scenes/RadioPuzzle/animated_sine_wave_radio_face.tscn" id="2_a32ht"]
+[ext_resource type="Texture2D" uid="uid://bnqjl032swx14" path="res://Assets/Images/RadioPuzzle/SineMachineOffNoButtons.png" id="2_idvtb"]
 
-[sub_resource type="Gradient" id="Gradient_c8khx"]
-colors = PackedColorArray(0.19793725, 0.19793722, 0.19793722, 1, 0.25565878, 0.25565878, 0.25565878, 1)
+[sub_resource type="Gradient" id="Gradient_653e8"]
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_1j6en"]
-gradient = SubResource("Gradient_c8khx")
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_7vb88"]
+gradient = SubResource("Gradient_653e8")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7vb88"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_idvtb"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_a32ht"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_v2hhe"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_l0haa"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0biu6"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3on24"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_147d8"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_i3xni"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_eniyr"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jq8j2"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_e0nau"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pmdoa"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_oqs4a"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_a53gj"]
 
 [node name="Radio Interface" type="Node2D"]
+scale = Vector2(0.9999893, 0.9999893)
 script = ExtResource("1_tslgi")
+lineLength = 800
+lineSegments = 1000
+lineWidth = 2.5
 
-[node name="Screen Space Area" type="Control" parent="."]
+[node name="RadioFace" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
 offset_left = 370.0
@@ -19,10 +56,75 @@ offset_right = 1152.0
 offset_bottom = 648.0
 metadata/_edit_use_anchors_ = true
 
-[node name="TEMP_Background" type="Sprite2D" parent="Screen Space Area"]
-position = Vector2(391, 323.75)
-scale = Vector2(3.0546875, 648.5)
-texture = SubResource("GradientTexture1D_1j6en")
+[node name="BlackWaveBackground" type="Sprite2D" parent="RadioFace"]
+position = Vector2(127.505325, 288.00305)
+scale = Vector2(3.253941, 514.0055)
+texture = SubResource("GradientTexture1D_7vb88")
 
-[node name="Signal Line" type="Line2D" parent="Screen Space Area"]
-position = Vector2(216, 174)
+[node name="Player Wave" type="Line2D" parent="RadioFace"]
+position = Vector2(-243.99864, 287.00308)
+scale = Vector2(0.99999994, 0.99999994)
+
+[node name="Target Wave" type="Line2D" parent="RadioFace"]
+position = Vector2(-243.99864, 287.00308)
+scale = Vector2(0.99999994, 0.99999994)
+
+[node name="animatedSineWaveRadioFace" parent="RadioFace" instance=ExtResource("2_a32ht")]
+visible = false
+position = Vector2(206.00616, 324.0035)
+scale = Vector2(2.4, 2.4)
+
+[node name="SineWaveRadioOff" type="Sprite2D" parent="RadioFace"]
+position = Vector2(206.00616, 324.00345)
+scale = Vector2(2.4000258, 2.4000256)
+texture = ExtResource("2_idvtb")
+
+[node name="AmplitudeDial" parent="RadioFace" instance=ExtResource("2_7vb88")]
+layout_mode = 1
+offset_left = 571.0101
+offset_top = 192.00206
+offset_right = 837.01294
+offset_bottom = 226.00244
+scale = Vector2(0.18, 0.18)
+theme_override_styles/normal = SubResource("StyleBoxEmpty_7vb88")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_idvtb")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_a32ht")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_v2hhe")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_l0haa")
+clickLineColor = Color(0, 1, 1, 1)
+clickLineWidth = 0.5
+
+[node name="FrequencyDial" parent="RadioFace" instance=ExtResource("2_7vb88")]
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 569.01013
+offset_top = 332.00357
+offset_right = 1630.1322
+offset_bottom = 948.6769
+grow_horizontal = 1
+grow_vertical = 1
+scale = Vector2(0.18, 0.18)
+theme_override_styles/normal = SubResource("StyleBoxEmpty_0biu6")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_3on24")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_147d8")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_i3xni")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_eniyr")
+clickLineColor = Color(0, 1, 1, 1)
+clickLineWidth = 0.5
+
+[node name="powerButton" type="Button" parent="RadioFace"]
+layout_mode = 0
+offset_left = 555.00995
+offset_top = 538.0058
+offset_right = 672.0112
+offset_bottom = 595.0064
+theme_override_styles/normal = SubResource("StyleBoxEmpty_jq8j2")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_e0nau")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_pmdoa")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_oqs4a")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_a53gj")
+toggle_mode = true
+
+[connection signal="pressed" from="RadioFace/powerButton" to="." method="_on_power_button_pressed"]

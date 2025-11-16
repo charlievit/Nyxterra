@@ -1,0 +1,46 @@
+[gd_scene load_steps=6 format=3 uid="uid://q3vj4se52lc7"]
+
+[ext_resource type="Script" uid="uid://dl1l46fikvopu" path="res://Scripts/CookingMinigame/ingredient.gd" id="1_kvk3b"]
+[ext_resource type="Texture2D" uid="uid://bo6l7eq7c6jlr" path="res://Assets/Images/icon.svg" id="2_84m0t"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_kvk3b"]
+rough = true
+bounce = 0.2
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_22j6g"]
+radius = 33.01515
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_veqd3"]
+radius = 38.052597
+
+[node name="Ingredient" type="RigidBody2D" node_paths=PackedStringArray("sprite", "potDetectorArea", "amountLabel") groups=["ingredients"]]
+input_pickable = true
+physics_material_override = SubResource("PhysicsMaterial_kvk3b")
+script = ExtResource("1_kvk3b")
+sprite = NodePath("Sprite")
+ingredientName = "Potato"
+ingredientType = 1
+isChoppable = true
+chopsNeeded = 7
+potDetectorArea = NodePath("potDetectionArea")
+amountLabel = NodePath("PourOrShake Amount Label")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+scale = Vector2(0.53014815, 0.53014815)
+texture = ExtResource("2_84m0t")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["ingredients"]]
+shape = SubResource("CircleShape2D_22j6g")
+
+[node name="potDetectionArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="potDetectionArea"]
+shape = SubResource("CircleShape2D_veqd3")
+
+[node name="PourOrShake Amount Label" type="RichTextLabel" parent="."]
+offset_left = 29.0
+offset_top = -60.0
+offset_right = 69.0
+offset_bottom = -20.0
+bbcode_enabled = true
+text = "100"

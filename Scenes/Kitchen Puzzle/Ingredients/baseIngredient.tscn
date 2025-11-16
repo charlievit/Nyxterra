@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3 uid="uid://875gfdfht70s"]
+
+[ext_resource type="Texture2D" uid="uid://bo6l7eq7c6jlr" path="res://Assets/Images/icon.svg" id="1_jpg5c"]
+[ext_resource type="Script" uid="uid://dl1l46fikvopu" path="res://Scripts/CookingMinigame/ingredient.gd" id="1_wea3k"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_22j6g"]
+radius = 33.01515
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_veqd3"]
+radius = 38.052597
+
+[node name="baseIngredient" type="RigidBody2D" node_paths=PackedStringArray("sprite", "potDetectorArea", "amountLabel") groups=["ingredients"]]
+input_pickable = true
+script = ExtResource("1_wea3k")
+sprite = NodePath("Sprite")
+potDetectorArea = NodePath("potDetectionArea")
+amountLabel = NodePath("PourOrShake Amount Label")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+scale = Vector2(0.53014815, 0.53014815)
+texture = ExtResource("1_jpg5c")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["ingredients"]]
+shape = SubResource("CircleShape2D_22j6g")
+
+[node name="potDetectionArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="potDetectionArea"]
+shape = SubResource("CircleShape2D_veqd3")
+
+[node name="PourOrShake Amount Label" type="RichTextLabel" parent="."]
+offset_left = 29.0
+offset_top = -60.0
+offset_right = 69.0
+offset_bottom = -20.0
+bbcode_enabled = true
+text = "100"

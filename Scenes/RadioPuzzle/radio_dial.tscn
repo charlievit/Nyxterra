@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://chjypho1fx1ro"]
+
+[ext_resource type="Script" uid="uid://ee2ng88kikll" path="res://Scripts/RadioPuzzle/radioDial.gd" id="1_77yqg"]
+[ext_resource type="Texture2D" uid="uid://b5ojirsr8trwp" path="res://Assets/Images/RadioPuzzle/Button.png" id="2_77yqg"]
+
+[node name="RadioDial" type="Button"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_77yqg")
+clickLineColor = Color(0, 0.202968, 0.20296797, 1)
+clickLineWidth = 1.0
+
+[node name="DialArt" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(537, 317.52)
+scale = Vector2(13.055, 13)
+texture = ExtResource("2_77yqg")
+offset = Vector2(0.5, 0.5)
+
+[node name="ClickIndicatorLine" type="Line2D" parent="."]

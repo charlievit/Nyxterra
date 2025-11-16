@@ -1,0 +1,100 @@
+[gd_scene load_steps=23 format=3 uid="uid://p3dt7x8y3xh2"]
+
+[ext_resource type="Texture2D" uid="uid://blbbjq6nmcnss" path="res://Assets/Images/RadioPuzzle/SineMachineOnAnim/frame0000.png" id="1_61f7s"]
+[ext_resource type="Texture2D" uid="uid://bd0d6wjf7g5ov" path="res://Assets/Images/RadioPuzzle/SineMachineOnAnim/frame0001.png" id="2_5yrtx"]
+[ext_resource type="Texture2D" uid="uid://rfb0uj241gdn" path="res://Assets/Images/RadioPuzzle/SineMachineOnAnim/frame0002.png" id="3_2w7xa"]
+[ext_resource type="Texture2D" uid="uid://skiaw37qf72y" path="res://Assets/Images/RadioPuzzle/SineMachineOnAnim/frame0003.png" id="4_aps2s"]
+[ext_resource type="Texture2D" uid="uid://vft2cxtci3s0" path="res://Assets/Images/RadioPuzzle/SineMachineOnAnim/frame0004.png" id="5_62fo0"]
+[ext_resource type="Texture2D" uid="uid://dkf6s0j5wnrxh" path="res://Assets/Images/RadioPuzzle/SineMachineOnAnim/frame0005.png" id="6_tsnx2"]
+[ext_resource type="Texture2D" uid="uid://bu0ib6et3ru0b" path="res://Assets/Images/RadioPuzzle/SineMachineOnAnim/frame0006.png" id="7_ng0qb"]
+[ext_resource type="Texture2D" uid="uid://bfvrpg8802oid" path="res://Assets/Images/RadioPuzzle/SineMachineOnAnim/frame0007.png" id="8_rq4js"]
+[ext_resource type="Texture2D" uid="uid://sin7rmj10cy6" path="res://Assets/Images/RadioPuzzle/SineMachineOnAnim/frame0008.png" id="9_wgf10"]
+[ext_resource type="Texture2D" uid="uid://xbflhsd7r7ol" path="res://Assets/Images/RadioPuzzle/SineMachineOnAnim/frame0009.png" id="10_ifktn"]
+[ext_resource type="Texture2D" uid="uid://bsdwa4al1imvs" path="res://Assets/Images/RadioPuzzle/SineMachineOnAnim/frame0010.png" id="11_q5ls5"]
+[ext_resource type="Texture2D" uid="uid://cshqdi2xont0y" path="res://Assets/Images/RadioPuzzle/SineMachineOnAnim/frame0011.png" id="12_f3gvc"]
+[ext_resource type="Texture2D" uid="uid://bggrs8v44ed4p" path="res://Assets/Images/RadioPuzzle/SineMachineOnAnim/frame0012.png" id="13_140y7"]
+[ext_resource type="Texture2D" uid="uid://ipvg2vcyns4m" path="res://Assets/Images/RadioPuzzle/SineMachineOnAnim/frame0013.png" id="14_po6yq"]
+[ext_resource type="Texture2D" uid="uid://blficu1h1ot5i" path="res://Assets/Images/RadioPuzzle/SineMachineOnAnim/frame0014.png" id="15_vgvh3"]
+[ext_resource type="Texture2D" uid="uid://7wmx1x3isn6l" path="res://Assets/Images/RadioPuzzle/SineMachineOnAnim/frame0015.png" id="16_hjguh"]
+[ext_resource type="Texture2D" uid="uid://cuptbccee3o1d" path="res://Assets/Images/RadioPuzzle/SineMachineOnAnim/frame0016.png" id="17_3ifej"]
+[ext_resource type="Texture2D" uid="uid://w0foo3u1edg1" path="res://Assets/Images/RadioPuzzle/SineMachineOnAnim/frame0017.png" id="18_x3dix"]
+[ext_resource type="Texture2D" uid="uid://dy4wrvk86c457" path="res://Assets/Images/RadioPuzzle/SineMachineOnAnim/frame0018.png" id="19_onjp2"]
+[ext_resource type="Texture2D" uid="uid://bs8jfkw80qnx4" path="res://Assets/Images/RadioPuzzle/SineMachineOnAnim/frame0019.png" id="20_y1lk7"]
+[ext_resource type="Texture2D" uid="uid://dm0uexokn7f7e" path="res://Assets/Images/RadioPuzzle/SineMachineOnAnim/frame0020.png" id="21_2cjqs"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vpf6t"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_61f7s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_5yrtx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_2w7xa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_aps2s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_62fo0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_tsnx2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_ng0qb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_rq4js")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_wgf10")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_ifktn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_q5ls5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_f3gvc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_140y7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_po6yq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_vgvh3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_hjguh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_3ifej")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_x3dix")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_onjp2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_y1lk7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_2cjqs")
+}],
+"loop": true,
+"name": &"FullSizeRadio",
+"speed": 6.0
+}]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_vpf6t")
+animation = &"FullSizeRadio"
+frame = 6
+frame_progress = 0.08525653

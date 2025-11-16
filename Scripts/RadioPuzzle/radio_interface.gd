@@ -1,73 +1,174 @@
 # Copyright (C) 2025 Nyxterra Team & CyberSugar Studios
 extends Node2D
-#var to hold the copyright string, printed in _ready()
-var C = "Copyright (C) 2025 Nyxterra Team & CyberSugar Studios"
 
+signal stationTuned
 
 #region Variable Declaration
-# INSPECTOR VARIABLES
-# These variables are marked with @export to adjust them in the Inpector panel
-@export var lineLength: int = 500 # The total horizontal length of the line in pixels.
-@export var lineSegments: int = 1000 # The number of points used to draw the line. More segments = a smoother, more detailed curve.
-@export var lineWidth: float = 2.5 # The thickness (width) of the line in pixels.
-@export var speed: float = 1.0 # Controls the animation speed of the wave. 1.0 is normal, 2.0 is double speed, 0.5 is half speed.
+# INSPECTOR
+@export var lineLength: int = 500
+@export var lineSegments: int = 50
+@export var lineWidth: float = 6
+@export var lineSpeed: float = 1.0
 
-# SCENE VARIABLES
-@onready var wave: Line2D = $"Screen Space Area/Signal Line" # A direct reference to the Line2D node that will be drawn to.
+# SCENE
+@onready var playerWave: Line2D = $"RadioFace/Player Wave"
+@onready var targetWave: Line2D = $"RadioFace/Target Wave"
+@onready var amplitudeDial: Button = $RadioFace/AmplitudeDial
+@onready var frequencyDial: Button = $RadioFace/FrequencyDial
+@onready var machineOff: Sprite2D = $RadioFace/SineWaveRadioOff
+@onready var machineOn: AnimatedSprite2D = $RadioFace/animatedSineWaveRadioFace
+@onready var powerButton: Button = $RadioFace/powerButton
 
-# WAVE SHAPE VARIABLES
-var amplitude: float = 50 # The maximum height (and depth) of the wave from the center line, in pixels.
-var frequency: float = 5 # The number of full wave cycles that will appear across the 'lineLength'.
-var phase: float # The starting offset of the wave, in radians. This value is animated over time to make the wave move.
+# COLORS
+@export var playerWaveColor: Color = Color.CYAN
+@export var targetWaveColor: Color = Color(1.0, 1.0, 0.5, 0.4) #semi-transparent yellow
+@export var tunedInColor: Color = Color.LIME
+
+# PLAYER WAVE
+var playerAmplitude: float = 50.0
+var playerFrequency: float = 5.0
+
+# TARGET WAVE
+var targetAmplitude: float
+var targetFrequency: float
+
+# LOGIC & TOLERANCES
+var animationPhase: float = 0.0
+var currentStationIsTuned: bool = false
+var isPoweredOn: bool = false
+@export var amplitudeTolerance: float = 2.0 #pixels
+@export var frequencyTolerance: float = 0.1 #cycles
+# TESTING
+#@onready var sensitivityTESTINGLabel = $RadioFace/sensitivityUINum
+# -------
 #endregion
 
 func _ready():
-	print(C) # Print Copyright info to the console.
-
-# Each frame, update the phase of the line to animate it. Then, draw the updated line.
-# TAU = 2 * Pi (a full circle measured in radians)
+	# Set the initial wave colors
+	playerWave.default_color = playerWaveColor
+	targetWave.default_color = targetWaveColor
+	
+	amplitudeDial.ValueChanged.connect(SetPlayerAmplitude)
+	frequencyDial.ValueChanged.connect(SetPlayerFrequency)
+	
+	machineOn.speed_scale = 1
+	
+	# TESTING
+	SetTargetStation(randf_range(10.0, 100.0), randf_range(1.0, 10.0))
+	# -------
+	
 func _process(delta):
-	wave.width = lineWidth # Allow the line width to be updated live from the inspector.
+	if not isPoweredOn:
+		return
 	
-	# ANIMATE THE WAVE
-	# To make the wave move, we continuously add to its phase offset.
-	# We multiply by 'speed' to control the rate.
-	# We multiply by 'TAU' to work in radians (one full cycle).
-	# We multiply by 'delta' to make the animation smooth and frame-rate independent.
-	phase += speed * TAU * delta
+	# TESTING
+	playerWave.width = lineWidth
+	targetWave.width = lineWidth
+	# -------
 	
-	# WRAP THE PHASE
-	# We use fmod (floating-point modulo) to wrap the phase value back to the 0.0 to TAU range. This prevents 'phase' from becoming an infinitely large number, which can lead to floating-point precision errors over time.
-	phase = fmod(phase, TAU)
+	var averageFrequency = (playerFrequency + targetFrequency) / 2.0
 	
-	# After we have recaculated the phase for this phrame, we redraw the line.
-	_drawWaves()
+	machineOn.speed_scale = averageFrequency * lineSpeed
+	print(machineOn.speed_scale)
+	
+	# ANIMATE THE WAVES
+	animationPhase += lineSpeed * TAU * delta
+	animationPhase = fmod(animationPhase, TAU)
+	
+	# REDRAW WAVES
+	DrawWave(playerWave, playerAmplitude, playerFrequency)
+	if targetAmplitude != null:
+		DrawWave(targetWave, targetAmplitude, targetFrequency)
+	
+	if currentStationIsTuned:
+		ToggleButtons(currentStationIsTuned)
+		return
+	
+	# CHECK FOR TUNING
+	CheckForMatch()
 
-# This function calculates and sets all the points for the Line2D.
-func _drawWaves():
-	# Create an empty array to hold all the (x, y) coordinates for our line.
-	var points = PackedVector2Array()
+func _on_power_button_pressed():
+	isPoweredOn = not isPoweredOn
 	
-	# Calculate the horizontal distance (x-step) between each point.
+	machineOff.visible = not isPoweredOn
+	machineOn.visible = isPoweredOn
+	
+	playerWave.visible = isPoweredOn
+	targetWave.visible = isPoweredOn
+	
+	if isPoweredOn:
+		machineOn.play()
+	else:
+		machineOn.stop()
+
+func ToggleButtons(toggleState: bool):
+	amplitudeDial.disabled = toggleState
+	frequencyDial.disabled = toggleState
+
+func DrawWave(line: Line2D, amp: float, freq: float):
+	var points = PackedVector2Array()
 	var step = lineLength / float(lineSegments)
 	
-	# Loop from 0 to lineSegments. We use 'lineSegments + 1' because N segments require N+1 points.
 	for i in lineSegments + 1:
-		var x = i * step # The x position is simply the current point index (i) times the step distance.
+		var x = i * step
 		
-		# CALCULATE THE Y POSITION
-		# 1. x / lineLength normalized x from 0.0 to 1.0
-		# 2. Multiplying by TAU scales this from 0.0 to TAU (a full radian circle)
-		# 3. Multiplying by frequency is to draw the cycles across the line's length
-		# 4. Adding phase applies the time-based offset to animate the wave
-		var angle = (x / lineLength) * TAU * frequency + phase
+		var angle = (x / lineLength) * TAU * freq + animationPhase
 		
-		# 5. sin(angle) produces a value between -1.0 and 1.0
-		# 6. Muliplying by amplitude scales this value to the desired wave height
-		var y = sin(angle) * amplitude
+		var y = sin(angle) * amp
 		
-		# x and y are calculated, append that point to our array
 		points.append(Vector2(x, y))
 	
-	# Finally, assign the completeled array of points to the Line2D node.
-	wave.points = points
+	line.points = points
+
+func CheckForMatch():
+	if targetAmplitude == null or currentStationIsTuned:
+		return
+	
+	var ampMatch = abs(playerAmplitude - targetAmplitude) < amplitudeTolerance
+	var freqMatch = abs(playerFrequency - targetFrequency) < frequencyTolerance
+
+	
+	if ampMatch and freqMatch:
+		if not currentStationIsTuned:
+			playerAmplitude = targetAmplitude
+			playerFrequency = targetFrequency
+			print("Station tuned in.")
+			currentStationIsTuned = true
+			ToggleButtons(currentStationIsTuned)
+			playerWave.default_color = tunedInColor
+			emit_signal("stationTuned")
+			# TODO: audioStationNoiseLoopHere.play()
+
+# PUBLIC FUNCTION
+# TODO: call this in the main game sript to set the target radio station for the day
+func SetTargetStation(newAmp: float, newFreq: float):
+	print("New Station Set: A=%.2f, F=%.2f" % [newAmp, newFreq])
+	
+	targetAmplitude = newAmp
+	targetFrequency = newFreq
+	
+	# reset tuning status
+	currentStationIsTuned = false
+	ToggleButtons(currentStationIsTuned)
+	playerWave.default_color = playerWaveColor
+
+func SetPlayerAmplitude(newAmp: float):
+	playerAmplitude = newAmp
+	playerAmplitude = clamp(playerAmplitude, 5.0, 100)
+	print(playerAmplitude)
+
+func SetPlayerFrequency(newFreq: float):
+	playerFrequency = newFreq / 10
+	playerFrequency = clamp(playerFrequency, 0.5, 10.0)
+	print(playerFrequency)
+
+
+#region TESTING
+#func _on_sensitivity_down_button_pressed() -> void:
+#	amplitudeDial.sensitivity -= 0.1
+#	frequencyDial.sensitivity -= 0.1
+
+#func _on_sensitivity_up_button_pressed() -> void:
+#	amplitudeDial.sensitivity += 0.1
+#	frequencyDial.sensitivity += 0.1
+#endregion TESTING

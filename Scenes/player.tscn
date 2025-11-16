@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://ctuyv2i3q62q"]
+
+[ext_resource type="Script" uid="uid://bthfal06ejpjt" path="res://Scripts/characterController.gd" id="1_cvnsp"]
+[ext_resource type="Texture2D" uid="uid://c2bjfaemqpvp3" path="res://Assets/Images/PLACEHOLDER_DUDE.png" id="2_6t5aa"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8gbba"]
+radius = 7.0
+height = 40.0
+
+[node name="CharacterBody2D" type="CharacterBody2D" groups=["player"]]
+scale = Vector2(0.71975875, 0.71977925)
+script = ExtResource("1_cvnsp")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+z_index = 1
+texture_filter = 1
+scale = Vector2(0.9999998, 0.9999998)
+texture = ExtResource("2_6t5aa")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+z_index = 1
+position = Vector2(0, 1)
+shape = SubResource("CapsuleShape2D_8gbba")

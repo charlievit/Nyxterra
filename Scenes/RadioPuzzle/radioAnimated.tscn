@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=3 uid="uid://cuku1ylw6a6a6"]
 
-[ext_resource type="Script" uid="uid://bbtm0mg0iq1k4" path="res://Scenes/RadioPuzzle/smallPixelRadio.gd" id="1_h5l5h"]
+[ext_resource type="Script" uid="uid://bbtm0mg0iq1k4" path="res://Scripts/RadioPuzzle/smallPixelRadio.gd" id="1_h5l5h"]
 [ext_resource type="Texture2D" uid="uid://dwrvospshx5r0" path="res://Assets/Images/Lighthouse/RadioRoom/sineWaveRadioFrames/frame0000.png" id="2_dj3x0"]
 [ext_resource type="Texture2D" uid="uid://0qy3pr43un5p" path="res://Assets/Images/Lighthouse/RadioRoom/sineWaveRadioFrames/frame0001.png" id="3_aef67"]
 [ext_resource type="Texture2D" uid="uid://dicw72ea3ucti" path="res://Assets/Images/Lighthouse/RadioRoom/sineWaveRadioFrames/frame0002.png" id="4_t2own"]
@@ -47,6 +47,5 @@ script = ExtResource("1_h5l5h")
 
 [node name="RadioSprite" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
-position = Vector2(559, 324.99997)
 sprite_frames = SubResource("SpriteFrames_6nisa")
 animation = &"sineWaveRadio"
