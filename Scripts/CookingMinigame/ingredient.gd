@@ -6,7 +6,7 @@ enum IngredientType {WHOLE, CHOPPABLE, POURABLE, SHAKER}
 
 #region VARIABLES
 #region INGREDIENT LOGIC
-@export var sprite: Sprite2D = null
+@onready var sprite: Sprite2D = $Sprite
 
 @export var ingredientName: String = "WARNING: UNNAMED INGREDIENT"
 @export var ingredientType: IngredientType = IngredientType.WHOLE
@@ -15,8 +15,7 @@ enum IngredientType {WHOLE, CHOPPABLE, POURABLE, SHAKER}
 @export var isChoppable: bool = false
 @export var chopsNeeded: int = 5
 @export var isChopped: bool = false
-@export var wholeSprite: Sprite2D = null # TODO: Implement sprite swapping
-@export var choppedSprite: Sprite2D = null # TODO: Implement sprite swapping
+@onready var choppedSprite: Sprite2D = $ChoppedSprite
 var chopCount: int = 0
 
 @export_group("PourableOrShaker")
@@ -89,6 +88,8 @@ func Chop():
 	
 	if chopCount >= chopsNeeded:
 		isChopped = true
+		sprite.visible = false
+		choppedSprite.visible = true
 		if not "(Chopped)" in ingredientName:
 			ingredientName += " (Chopped)"
 		print("Chopped. It's now: %s" % ingredientName)

@@ -8,16 +8,20 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_veqd3"]
 radius = 38.052597
 
-[node name="baseIngredient" type="RigidBody2D" node_paths=PackedStringArray("sprite", "potDetectorArea", "amountLabel") groups=["ingredients"]]
+[node name="baseIngredient" type="RigidBody2D" node_paths=PackedStringArray("potDetectorArea", "amountLabel") groups=["ingredients"]]
 input_pickable = true
 script = ExtResource("1_s4ee8")
-sprite = NodePath("Sprite")
 ingredientName = "Water"
 ingredientType = 2
 potDetectorArea = NodePath("potDetectionArea")
 amountLabel = NodePath("PourOrShake Amount Label")
 
 [node name="Sprite" type="Sprite2D" parent="."]
+scale = Vector2(0.53014815, 0.53014815)
+texture = ExtResource("2_untll")
+
+[node name="ChoppedSprite" type="Sprite2D" parent="."]
+visible = false
 scale = Vector2(0.53014815, 0.53014815)
 texture = ExtResource("2_untll")
 

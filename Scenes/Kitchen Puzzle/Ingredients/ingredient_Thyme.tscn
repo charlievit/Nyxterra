@@ -1,23 +1,23 @@
 [gd_scene load_steps=6 format=3 uid="uid://dtuobmmuu4lwv"]
 
 [ext_resource type="Script" uid="uid://dl1l46fikvopu" path="res://Scripts/CookingMinigame/ingredient.gd" id="1_bb1dm"]
-[ext_resource type="Texture2D" uid="uid://bo6l7eq7c6jlr" path="res://Assets/Images/icon.svg" id="2_ls3a3"]
+[ext_resource type="Texture2D" uid="uid://d0rwkl75jf3tq" path="res://Assets/Images/KitchenPuzzle/Ingredients/ingredientThyme.png" id="2_bb1dm"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_kvk3b"]
 rough = true
 absorbent = true
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_22j6g"]
-radius = 33.01515
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ls3a3"]
+radius = 7.0
+height = 62.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_veqd3"]
 radius = 38.052597
 
-[node name="baseIngredient" type="RigidBody2D" node_paths=PackedStringArray("sprite", "potDetectorArea", "amountLabel") groups=["ingredients"]]
+[node name="baseIngredient" type="RigidBody2D" node_paths=PackedStringArray("potDetectorArea", "amountLabel") groups=["ingredients"]]
 input_pickable = true
 physics_material_override = SubResource("PhysicsMaterial_kvk3b")
 script = ExtResource("1_bb1dm")
-sprite = NodePath("Sprite")
 ingredientName = "Thyme"
 ingredientType = 1
 isChoppable = true
@@ -26,11 +26,16 @@ potDetectorArea = NodePath("potDetectionArea")
 amountLabel = NodePath("PourOrShake Amount Label")
 
 [node name="Sprite" type="Sprite2D" parent="."]
+scale = Vector2(2.2526984, 2.2526984)
+texture = ExtResource("2_bb1dm")
+
+[node name="ChoppedSprite" type="Sprite2D" parent="."]
+visible = false
 scale = Vector2(0.53014815, 0.53014815)
-texture = ExtResource("2_ls3a3")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["ingredients"]]
-shape = SubResource("CircleShape2D_22j6g")
+rotation = 0.67013687
+shape = SubResource("CapsuleShape2D_ls3a3")
 
 [node name="potDetectionArea" type="Area2D" parent="."]
 

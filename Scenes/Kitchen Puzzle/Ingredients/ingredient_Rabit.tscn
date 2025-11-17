@@ -1,23 +1,19 @@
-[gd_scene load_steps=6 format=3 uid="uid://d0lu0vehydu2w"]
+[gd_scene load_steps=5 format=3 uid="uid://d0lu0vehydu2w"]
 
 [ext_resource type="Script" uid="uid://dl1l46fikvopu" path="res://Scripts/CookingMinigame/ingredient.gd" id="1_dwwci"]
-[ext_resource type="Texture2D" uid="uid://bo6l7eq7c6jlr" path="res://Assets/Images/icon.svg" id="2_3n6cv"]
+[ext_resource type="Texture2D" uid="uid://bjd8bwmwpt1mc" path="res://Assets/Images/KitchenPuzzle/Ingredients/ingredientRabbit.png" id="2_bs41o"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_kvk3b"]
 rough = true
 bounce = 0.6
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_22j6g"]
-radius = 33.01515
-
 [sub_resource type="CircleShape2D" id="CircleShape2D_veqd3"]
 radius = 38.052597
 
-[node name="baseIngredient" type="RigidBody2D" node_paths=PackedStringArray("sprite", "potDetectorArea", "amountLabel") groups=["ingredients"]]
+[node name="baseIngredient" type="RigidBody2D" node_paths=PackedStringArray("potDetectorArea", "amountLabel") groups=["ingredients"]]
 input_pickable = true
 physics_material_override = SubResource("PhysicsMaterial_kvk3b")
 script = ExtResource("1_dwwci")
-sprite = NodePath("Sprite")
 ingredientName = "Rabbit"
 ingredientType = 1
 isChoppable = true
@@ -26,11 +22,16 @@ potDetectorArea = NodePath("potDetectionArea")
 amountLabel = NodePath("PourOrShake Amount Label")
 
 [node name="Sprite" type="Sprite2D" parent="."]
-scale = Vector2(0.53014815, 0.53014815)
-texture = ExtResource("2_3n6cv")
+position = Vector2(2, 21)
+scale = Vector2(3.7087154, 3.7087154)
+texture = ExtResource("2_bs41o")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["ingredients"]]
-shape = SubResource("CircleShape2D_22j6g")
+[node name="ChoppedSprite" type="Sprite2D" parent="."]
+visible = false
+scale = Vector2(0.53014815, 0.53014815)
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="." groups=["ingredients"]]
+polygon = PackedVector2Array(9, -27, 24, -27, 32, -23, 39, -9, 39, 3, 32, 14, 32, 29, 35, 36, 35, 51, 32, 51, 24, 43, 20, 43, 13, 36, 6, 32, -2, 25, -2, 17, -9, 17, -13, 25, -16, 36, -24, 43, -28, 43, -28, 28, -39, 36, -43, 36, -43, 25, -39, 17, -35, 3, -39, 3, -39, -5, -43, -5, -43, -16, -28, -31, -13, -31, 2, -24)
 
 [node name="potDetectionArea" type="Area2D" parent="."]
 

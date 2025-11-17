@@ -1,23 +1,19 @@
-[gd_scene load_steps=6 format=3 uid="uid://blpt56it1yhxo"]
+[gd_scene load_steps=5 format=3 uid="uid://blpt56it1yhxo"]
 
 [ext_resource type="Script" uid="uid://dl1l46fikvopu" path="res://Scripts/CookingMinigame/ingredient.gd" id="1_xrj6t"]
-[ext_resource type="Texture2D" uid="uid://bo6l7eq7c6jlr" path="res://Assets/Images/icon.svg" id="2_bcpbd"]
+[ext_resource type="Texture2D" uid="uid://c5f1vj36ah14f" path="res://Assets/Images/KitchenPuzzle/Ingredients/ingredientCarrot.png" id="2_xrj6t"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_kvk3b"]
 rough = true
 bounce = 0.3
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_22j6g"]
-radius = 33.01515
-
 [sub_resource type="CircleShape2D" id="CircleShape2D_veqd3"]
 radius = 38.052597
 
-[node name="baseIngredient" type="RigidBody2D" node_paths=PackedStringArray("sprite", "potDetectorArea", "amountLabel") groups=["ingredients"]]
+[node name="baseIngredient" type="RigidBody2D" node_paths=PackedStringArray("potDetectorArea", "amountLabel") groups=["ingredients"]]
 input_pickable = true
 physics_material_override = SubResource("PhysicsMaterial_kvk3b")
 script = ExtResource("1_xrj6t")
-sprite = NodePath("Sprite")
 ingredientName = "Carrot"
 ingredientType = 1
 isChoppable = true
@@ -26,11 +22,22 @@ potDetectorArea = NodePath("potDetectionArea")
 amountLabel = NodePath("PourOrShake Amount Label")
 
 [node name="Sprite" type="Sprite2D" parent="."]
-scale = Vector2(0.53014815, 0.53014815)
-texture = ExtResource("2_bcpbd")
+position = Vector2(17.017607, -1.9823912)
+rotation = 1.5707964
+scale = Vector2(2.8823817, 5.3754296)
+texture = ExtResource("2_xrj6t")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["ingredients"]]
-shape = SubResource("CircleShape2D_22j6g")
+[node name="ChoppedSprite" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(17.017607, -1.9823912)
+rotation = 1.5707964
+scale = Vector2(4.0011005, 4.0011005)
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="." groups=["ingredients"]]
+position = Vector2(0.017608643, 0.017608643)
+rotation = 1.5707964
+scale = Vector2(0.7203972, 1.3434877)
+polygon = PackedVector2Array(-22.01761, -40.98239, -17.01761, -44.98239, 17.98239, -44.98239, 21.98239, -40.98239, 21.982391, -4.9823923, 17.982391, 11.017608, 13.982392, 23.017609, 9.982393, 35.01761, 5.9823933, 43.01761, 1.9823935, 47.01761, -2.0176067, 47.01761, -6.0176067, 43.01761, -10.017607, 35.01761, -14.017608, 27.017609, -18.017609, 15.01761, -22.017609, -4.9823904)
 
 [node name="potDetectionArea" type="Area2D" parent="."]
 
