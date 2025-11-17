@@ -1,23 +1,19 @@
-[gd_scene load_steps=6 format=3 uid="uid://bmfhh4qeiwle4"]
+[gd_scene load_steps=5 format=3 uid="uid://bmfhh4qeiwle4"]
 
 [ext_resource type="Script" uid="uid://dl1l46fikvopu" path="res://Scripts/CookingMinigame/ingredient.gd" id="1_dyqf5"]
-[ext_resource type="Texture2D" uid="uid://bo6l7eq7c6jlr" path="res://Assets/Images/icon.svg" id="2_o0qnn"]
+[ext_resource type="Texture2D" uid="uid://cj8l223c7imly" path="res://Assets/Images/KitchenPuzzle/Ingredients/ingredientRosemary.png" id="2_dyqf5"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_kvk3b"]
 rough = true
 absorbent = true
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_22j6g"]
-radius = 33.01515
-
 [sub_resource type="CircleShape2D" id="CircleShape2D_veqd3"]
 radius = 38.052597
 
-[node name="baseIngredient" type="RigidBody2D" node_paths=PackedStringArray("sprite", "potDetectorArea", "amountLabel") groups=["ingredients"]]
+[node name="baseIngredient" type="RigidBody2D" node_paths=PackedStringArray("potDetectorArea", "amountLabel") groups=["ingredients"]]
 input_pickable = true
 physics_material_override = SubResource("PhysicsMaterial_kvk3b")
 script = ExtResource("1_dyqf5")
-sprite = NodePath("Sprite")
 ingredientName = "Rosemary"
 ingredientType = 1
 isChoppable = true
@@ -26,11 +22,15 @@ potDetectorArea = NodePath("potDetectionArea")
 amountLabel = NodePath("PourOrShake Amount Label")
 
 [node name="Sprite" type="Sprite2D" parent="."]
-scale = Vector2(0.53014815, 0.53014815)
-texture = ExtResource("2_o0qnn")
+scale = Vector2(2.0108953, 2.0108953)
+texture = ExtResource("2_dyqf5")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["ingredients"]]
-shape = SubResource("CircleShape2D_22j6g")
+[node name="ChoppedSprite" type="Sprite2D" parent="."]
+visible = false
+scale = Vector2(0.53014815, 0.53014815)
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="." groups=["ingredients"]]
+polygon = PackedVector2Array(18, -14, 23, -10, 18, 7, 12, 16, 2, 25, -6, 15, -18, 0, -21, -18, -18, -24, -10, -17, -7, -6, -3, 4, 7, 5, 12, -8)
 
 [node name="potDetectionArea" type="Area2D" parent="."]
 

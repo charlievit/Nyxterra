@@ -326,28 +326,18 @@ position = Vector2(34, 17)
 position = Vector2(-52, 594)
 shakeThreshold = 400.0
 
-[node name="Salt" type="RichTextLabel" parent="Ingredients Area/Ingredients/Salt Shaker"]
-offset_left = -14.0
-offset_top = 15.0
-offset_right = 26.0
-offset_bottom = 55.0
-mouse_filter = 2
-text = "Salt
-"
-
 [node name="Pepper Shaker" parent="Ingredients Area/Ingredients" instance=ExtResource("9_et0ww")]
 position = Vector2(39, 597)
 ingredientName = "Pepper"
 shakeThreshold = 400.0
 
-[node name="Pepper" type="RichTextLabel" parent="Ingredients Area/Ingredients/Pepper Shaker"]
-offset_left = -28.0
-offset_top = 12.0
-offset_right = 32.0
-offset_bottom = 52.0
-mouse_filter = 2
-text = "Pepper
-"
+[node name="JarLabel" parent="Ingredients Area/Ingredients/Pepper Shaker" index="5"]
+offset_left = -13.0
+offset_top = -27.0
+offset_right = -1.5161419
+offset_bottom = -6.185507
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+text = "P"
 
 [node name="Water Jug" parent="Ingredients Area/Ingredients" instance=ExtResource("10_aecf8")]
 position = Vector2(-298, 595)
@@ -429,6 +419,7 @@ polygon = PackedVector2Array(-239, -190, -231, 851, 1395, 837, 1350, -227, -203,
 script = ExtResource("19_p4ma4")
 
 [node name="RecipeBookScreen" type="Control" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -465,3 +456,5 @@ text = "X"
 [connection signal="pressed" from="Ingredients Area/Chopping Area/ChopButton" to="Ingredients Area/Chopping Area" method="_on_chop_button_pressed"]
 [connection signal="pressed" from="Ingredients Area/RecipeBookButton" to="." method="_on_recipe_book_button_pressed"]
 [connection signal="pressed" from="RecipeBookScreen/Close" to="." method="_on_close_pressed"]
+
+[editable path="Ingredients Area/Ingredients/Pepper Shaker"]

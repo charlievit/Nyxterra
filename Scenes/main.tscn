@@ -1,20 +1,92 @@
-[gd_scene load_steps=4 format=3 uid="uid://bv00gype30lrh"]
+[gd_scene load_steps=22 format=3 uid="uid://bv00gype30lrh"]
 
 [ext_resource type="Script" uid="uid://dmv4o0wqsh26h" path="res://Scripts/main.gd" id="1_8gbba"]
 [ext_resource type="PackedScene" uid="uid://bty042lmdfi02" path="res://Scenes/lighthouse_button_area.tscn" id="1_bo1nx"]
 [ext_resource type="PackedScene" uid="uid://ctuyv2i3q62q" path="res://Scenes/player.tscn" id="2_8gbba"]
+[ext_resource type="Texture2D" uid="uid://beh61gyk2osti" path="res://Assets/Images/Lighthouse/Structure/External/skyDayBackground.png" id="3_6bp64"]
+[ext_resource type="Texture2D" uid="uid://bovyawkuo6lur" path="res://Assets/Images/Lighthouse/Structure/External/skyNightBackground.png" id="4_344ge"]
+[ext_resource type="Texture2D" uid="uid://c7hjergqch8wo" path="res://Assets/Images/Lighthouse/Structure/External/moon.png" id="5_344ge"]
+[ext_resource type="Texture2D" uid="uid://b4jv1oji3w6r8" path="res://Assets/Images/Lighthouse/Structure/External/sun.png" id="6_ynf5e"]
+[ext_resource type="Texture2D" uid="uid://14gkei0ba86i" path="res://Assets/Images/Lighthouse/Structure/External/moonPhaseCutOut.png" id="7_hptm8"]
+[ext_resource type="Texture2D" uid="uid://b50ouydunlm4h" path="res://Assets/Images/Lighthouse/Structure/External/ocean.png" id="8_6iyac"]
+[ext_resource type="Texture2D" uid="uid://lypiwr3j1btd" path="res://Assets/Images/Lighthouse/Structure/External/sunRiseAndSetGradient.png" id="8_jkdf5"]
+[ext_resource type="Texture2D" uid="uid://0i1i1vxxbigj" path="res://Assets/Images/Lighthouse/Structure/External/oceanAnim-sheet.png" id="9_fdnlq"]
+[ext_resource type="Texture2D" uid="uid://cu2sj1oh20tes" path="res://Assets/Images/Lighthouse/Structure/External/groundSnow.png" id="9_hptm8"]
+[ext_resource type="Texture2D" uid="uid://liqced3k5bpj" path="res://Assets/Images/Lighthouse/Structure/External/SnowAnim/Snow-0000.png" id="10_d1ilt"]
+[ext_resource type="Script" uid="uid://cnb0vt0q0rkq1" path="res://Scripts/Main/ocean_waves.gd" id="10_fdnlq"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jkdf5"]
+atlas = ExtResource("9_fdnlq")
+region = Rect2(0, 0, 337, 521)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wsu2k"]
+atlas = ExtResource("9_fdnlq")
+region = Rect2(337, 0, 337, 521)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k12tt"]
+atlas = ExtResource("9_fdnlq")
+region = Rect2(674, 0, 337, 521)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h1bgf"]
+atlas = ExtResource("9_fdnlq")
+region = Rect2(1011, 0, 337, 521)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_b3802"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jkdf5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wsu2k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k12tt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h1bgf")
+}],
+"loop": true,
+"name": &"default",
+"speed": 7.0
+}]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hptm8"]
+texture = ExtResource("10_d1ilt")
+0:0/size_in_atlas = Vector2i(2, 2)
+0:0/animation_columns = 16
+0:0/animation_speed = 16.0
+0:0/animation_frame_0/duration = 1.0
+0:0/animation_frame_1/duration = 1.0
+0:0/animation_frame_2/duration = 1.0
+0:0/animation_frame_3/duration = 1.0
+0:0/animation_frame_4/duration = 1.0
+0:0/animation_frame_5/duration = 1.0
+0:0/animation_frame_6/duration = 1.0
+0:0/animation_frame_7/duration = 1.0
+0:0/animation_frame_8/duration = 1.0
+0:0/animation_frame_9/duration = 1.0
+0:0/animation_frame_10/duration = 1.0
+0:0/animation_frame_11/duration = 1.0
+0:0/animation_frame_12/duration = 1.0
+0:0/animation_frame_13/duration = 1.0
+0:0/animation_frame_14/duration = 1.0
+0:0/animation_frame_15/duration = 1.0
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_d1ilt"]
+sources/0 = SubResource("TileSetAtlasSource_hptm8")
 
 [node name="Main" type="Node2D"]
 scale = Vector2(1.3964909, 1.3964909)
 script = ExtResource("1_8gbba")
 
 [node name="Player" parent="." instance=ExtResource("2_8gbba")]
-position = Vector2(90.94224, 276.4071)
+position = Vector2(50.125656, 405.3016)
 slide_on_ceiling = false
 
 [node name="MainStaticCamera" type="Camera2D" parent="."]
-position = Vector2(411.7463, 231.29399)
-scale = Vector2(0.84105986, 0.93627286)
+position = Vector2(412.4624, 232.0101)
 
 [node name="Control_GAME SCREEN UI" type="CanvasLayer" parent="."]
 metadata/_edit_use_anchors_ = true
@@ -47,8 +119,68 @@ enabled = false
 zoom = Vector2(6.19, 6.19)
 limit_enabled = false
 
+[node name="SkyDayBackground" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(124.598, 230.21991)
+scale = Vector2(0.90519387, 0.99371636)
+texture = ExtResource("3_6bp64")
+
+[node name="Sun" type="Sprite2D" parent="SkyDayBackground"]
+texture_filter = 1
+position = Vector2(-4.7464523, 32.787674)
+scale = Vector2(1.1047356, 1.0063233)
+texture = ExtResource("6_ynf5e")
+
+[node name="SkyNightBackground" type="Sprite2D" parent="."]
+visible = false
+texture_filter = 1
+position = Vector2(121.73369, 225.56537)
+texture = ExtResource("4_344ge")
+
+[node name="Moon" type="Sprite2D" parent="SkyNightBackground"]
+texture_filter = 1
+position = Vector2(26.494986, -29.359306)
+scale = Vector2(0.9999998, 1)
+texture = ExtResource("5_344ge")
+
+[node name="MoonPhaseCutOut" type="Sprite2D" parent="SkyNightBackground/Moon"]
+texture_filter = 1
+position = Vector2(10.741213, -38.668354)
+scale = Vector2(1.1586818, 1.1901596)
+texture = ExtResource("7_hptm8")
+
+[node name="SunRiseAndSetGradient" type="Sprite2D" parent="."]
+position = Vector2(115.28897, 448.98248)
+texture = ExtResource("8_jkdf5")
+
+[node name="Ocean" type="Sprite2D" parent="."]
+position = Vector2(123.165855, 225.56537)
+texture = ExtResource("8_6iyac")
+
+[node name="OceanWaves" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(120.19099, 212.75258)
+scale = Vector2(0.710362, 0.81611997)
+sprite_frames = SubResource("SpriteFrames_b3802")
+frame_progress = 0.952234
+script = ExtResource("10_fdnlq")
+
+[node name="AnimatedSnowMap" type="TileMap" parent="."]
+visible = false
+texture_filter = 1
+tile_set = SubResource("TileSet_d1ilt")
+rendering_quadrant_size = 32
+format = 2
+layer_0/modulate = Color(1, 1, 1, 0.24705882)
+layer_0/tile_data = PackedInt32Array(0, 0, 1879048192, 2, 0, 1879048192, 4, 0, 1879048192, 6, 0, 1879048192, 8, 0, 1879048192, 10, 0, 1879048192, 12, 0, 1879048192, 14, 0, 1879048192, 131086, 0, 1879048192, 131084, 0, 1879048192, 131082, 0, 1879048192, 131080, 0, 1879048192, 131078, 0, 1879048192, 131076, 0, 1879048192, 131074, 0, 1879048192, 131072, 0, 1879048192, 262144, 0, 1879048192, 262146, 0, 1879048192, 262148, 0, 1879048192, 262150, 0, 1879048192, 262152, 0, 1879048192, 262154, 0, 1879048192, 262156, 0, 1879048192, 262158, 0, 1879048192, 393230, 0, 1879048192, 393228, 0, 1879048192, 393226, 0, 1879048192, 393224, 0, 1879048192, 393222, 0, 1879048192, 393220, 0, 1879048192, 393218, 0, 1879048192, 393216, 0, 1879048192, 524288, 0, 1879048192, 524290, 0, 1879048192, 524292, 0, 1879048192, 524294, 0, 1879048192, 524296, 0, 1879048192, 524298, 0, 1879048192, 524300, 0, 1879048192, 524302, 0, 1879048192, 655374, 0, 1879048192, 655372, 0, 1879048192, 655370, 0, 1879048192, 655368, 0, 1879048192, 655366, 0, 1879048192, 655364, 0, 1879048192, 655362, 0, 1879048192, 655360, 0, 1879048192, 786432, 0, 1879048192, 786434, 0, 1879048192, 786436, 0, 1879048192, 786438, 0, 1879048192, 786440, 0, 1879048192, 786442, 0, 1879048192, 786444, 0, 1879048192, 786446, 0, 1879048192, 917518, 0, 1879048192, 1048590, 0, 1879048192, 1179662, 0, 1879048192, 1310734, 0, 1879048192, 1441806, 0, 1879048192, 1572878, 0, 1879048192, 1703950, 0, 1879048192, 917504, 0, 1879048192, 1048576, 0, 1879048192, 1179648, 0, 1879048192, 1310720, 0, 1879048192, 1441792, 0, 1879048192, 1572864, 0, 1879048192, 1703936, 0, 1879048192, 1769470, 0, 1879048192, 1638398, 0, 1879048192, 1507326, 0, 1879048192, 1376254, 0, 1879048192, 1245182, 0, 1879048192, 1114110, 0, 1879048192, 983038, 0, 1879048192, 851966, 0, 1879048192, 720894, 0, 1879048192, 589822, 0, 1879048192, 458750, 0, 1879048192, 327678, 0, 1879048192, 196606, 0, 1879048192, 65534, 0, 1879048192)
+
+[node name="Ground" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(119.58544, 464.73627)
+scale = Vector2(0.7132711, 0.7125864)
+texture = ExtResource("9_hptm8")
+
 [node name="Control_LIGHTHOUSE BUTTON AREA" parent="." instance=ExtResource("1_bo1nx")]
-offset_top = 0.0
 offset_bottom = 648.0
 scale = Vector2(0.718, 0.718)
 

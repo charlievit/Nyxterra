@@ -14,14 +14,11 @@ size = Vector2(22.97748, 42.957886)
 [node name="LIGHTHOUSE BUTTON AREA" type="Control"]
 custom_minimum_size = Vector2(29.15, 0)
 layout_mode = 3
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_top = -324.0
-offset_right = 335.67096
-offset_bottom = 324.0
+anchor_right = 0.29138103
+anchor_bottom = 1.0
 grow_vertical = 2
 size_flags_horizontal = 0
+metadata/_edit_use_anchors_ = true
 
 [node name="TOP" type="Control" parent="."]
 layout_mode = 1
@@ -47,6 +44,7 @@ position = Vector2(1.4985504, -2.4974976)
 shape = SubResource("RectangleShape2D_b2lj4")
 
 [node name="ButtonPrompt" type="RichTextLabel" parent="TOP/TopToF4Teleporter"]
+texture_filter = 1
 offset_left = -21.978455
 offset_top = -23.976496
 offset_right = 18.021545

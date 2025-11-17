@@ -13,7 +13,7 @@ extends CharacterBody2D
 #@onready var animSprite: AnimatedSprite2D = $AnimatedSprite2D
 
 # Stores the current floor the player is of for latter mapping of Y-values
-var currentFloor: int = 3
+var currentFloor: int = 1
 
 # Stores the sprite's starting scale and color (this should be the same at the bottom of each floor)
 var baseScale: Vector2 = Vector2.ONE

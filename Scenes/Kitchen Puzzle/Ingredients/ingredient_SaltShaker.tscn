@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://xe1o4gn70jd"]
 
 [ext_resource type="Script" uid="uid://dl1l46fikvopu" path="res://Scripts/CookingMinigame/ingredient.gd" id="1_kqqo6"]
-[ext_resource type="Texture2D" uid="uid://bo6l7eq7c6jlr" path="res://Assets/Images/icon.svg" id="2_38osd"]
+[ext_resource type="Texture2D" uid="uid://ksd571booj23" path="res://Assets/Images/KitchenPuzzle/Ingredients/ingredientShaker.png" id="2_kqqo6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kqqo6"]
 size = Vector2(36, 68)
@@ -9,18 +9,21 @@ size = Vector2(36, 68)
 [sub_resource type="CircleShape2D" id="CircleShape2D_veqd3"]
 radius = 38.052597
 
-[node name="baseIngredient" type="RigidBody2D" node_paths=PackedStringArray("sprite", "potDetectorArea", "amountLabel") groups=["ingredients"]]
+[node name="baseIngredient" type="RigidBody2D" node_paths=PackedStringArray("potDetectorArea", "amountLabel") groups=["ingredients"]]
 input_pickable = true
 script = ExtResource("1_kqqo6")
-sprite = NodePath("Sprite")
 ingredientName = "Salt"
 ingredientType = 3
 potDetectorArea = NodePath("potDetectionArea")
 amountLabel = NodePath("PourOrShake Amount Label")
 
 [node name="Sprite" type="Sprite2D" parent="."]
+scale = Vector2(2.6321673, 2.6321673)
+texture = ExtResource("2_kqqo6")
+
+[node name="ChoppedSprite" type="Sprite2D" parent="."]
+visible = false
 scale = Vector2(0.53014815, 0.53014815)
-texture = ExtResource("2_38osd")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["ingredients"]]
 shape = SubResource("RectangleShape2D_kqqo6")
@@ -37,3 +40,16 @@ offset_right = 69.0
 offset_bottom = -20.0
 bbcode_enabled = true
 text = "100"
+
+[node name="JarLabel" type="RichTextLabel" parent="."]
+offset_left = -16.0
+offset_top = -24.0
+offset_right = -4.516142
+offset_bottom = -3.1855068
+scale = Vector2(2.78652, 2.78652)
+mouse_filter = 2
+bbcode_enabled = true
+text = "S"
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1

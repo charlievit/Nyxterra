@@ -1,23 +1,23 @@
 [gd_scene load_steps=6 format=3 uid="uid://q3vj4se52lc7"]
 
 [ext_resource type="Script" uid="uid://dl1l46fikvopu" path="res://Scripts/CookingMinigame/ingredient.gd" id="1_kvk3b"]
-[ext_resource type="Texture2D" uid="uid://bo6l7eq7c6jlr" path="res://Assets/Images/icon.svg" id="2_84m0t"]
+[ext_resource type="Texture2D" uid="uid://dejhftkmsbflx" path="res://Assets/Images/KitchenPuzzle/Ingredients/ingredientPotato.png" id="2_kvk3b"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_kvk3b"]
 rough = true
 bounce = 0.2
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_22j6g"]
-radius = 33.01515
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_84m0t"]
+radius = 17.02692
+height = 66.26483
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_veqd3"]
 radius = 38.052597
 
-[node name="Ingredient" type="RigidBody2D" node_paths=PackedStringArray("sprite", "potDetectorArea", "amountLabel") groups=["ingredients"]]
+[node name="Ingredient" type="RigidBody2D" node_paths=PackedStringArray("potDetectorArea", "amountLabel") groups=["ingredients"]]
 input_pickable = true
 physics_material_override = SubResource("PhysicsMaterial_kvk3b")
 script = ExtResource("1_kvk3b")
-sprite = NodePath("Sprite")
 ingredientName = "Potato"
 ingredientType = 1
 isChoppable = true
@@ -26,11 +26,19 @@ potDetectorArea = NodePath("potDetectionArea")
 amountLabel = NodePath("PourOrShake Amount Label")
 
 [node name="Sprite" type="Sprite2D" parent="."]
+position = Vector2(-3.3137016, -2.3137016)
+rotation = 0.878045
+scale = Vector2(2.4272254, 2.4272254)
+texture = ExtResource("2_kvk3b")
+
+[node name="ChoppedSprite" type="Sprite2D" parent="."]
+visible = false
 scale = Vector2(0.53014815, 0.53014815)
-texture = ExtResource("2_84m0t")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["ingredients"]]
-shape = SubResource("CircleShape2D_22j6g")
+position = Vector2(-0.31370163, -0.31370163)
+rotation = 1.4950166
+shape = SubResource("CapsuleShape2D_84m0t")
 
 [node name="potDetectionArea" type="Area2D" parent="."]
 
