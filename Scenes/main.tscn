@@ -1,11 +1,14 @@
-[gd_scene load_steps=20 format=3 uid="uid://bv00gype30lrh"]
+[gd_scene load_steps=25 format=3 uid="uid://bv00gype30lrh"]
 
 [ext_resource type="Script" uid="uid://dmv4o0wqsh26h" path="res://Scripts/main.gd" id="1_8gbba"]
 [ext_resource type="PackedScene" uid="uid://bty042lmdfi02" path="res://Scenes/lighthouse_button_area.tscn" id="1_bo1nx"]
 [ext_resource type="PackedScene" uid="uid://ctuyv2i3q62q" path="res://Scenes/player.tscn" id="2_8gbba"]
 [ext_resource type="Texture2D" uid="uid://beh61gyk2osti" path="res://Assets/Images/Lighthouse/Structure/External/skyDayBackground.png" id="3_6bp64"]
+[ext_resource type="Script" uid="uid://c1ano0mxhou43" path="res://Scripts/UI/task_menu.gd" id="3_k12tt"]
 [ext_resource type="Texture2D" uid="uid://bovyawkuo6lur" path="res://Assets/Images/Lighthouse/Structure/External/skyNightBackground.png" id="4_344ge"]
 [ext_resource type="Texture2D" uid="uid://c7hjergqch8wo" path="res://Assets/Images/Lighthouse/Structure/External/moon.png" id="5_344ge"]
+[ext_resource type="Texture2D" uid="uid://bsrqyi7a25v3a" path="res://Assets/Images/UI/taskMenu_Arrow.png" id="5_h1bgf"]
+[ext_resource type="Texture2D" uid="uid://ccivhor1sy68x" path="res://Assets/Images/UI/taskMenu_Alert.png" id="6_b3802"]
 [ext_resource type="Texture2D" uid="uid://b4jv1oji3w6r8" path="res://Assets/Images/Lighthouse/Structure/External/sun.png" id="6_ynf5e"]
 [ext_resource type="Texture2D" uid="uid://14gkei0ba86i" path="res://Assets/Images/Lighthouse/Structure/External/moonPhaseCutOut.png" id="7_hptm8"]
 [ext_resource type="Texture2D" uid="uid://b50ouydunlm4h" path="res://Assets/Images/Lighthouse/Structure/External/ocean.png" id="8_6iyac"]
@@ -14,6 +17,10 @@
 [ext_resource type="Texture2D" uid="uid://cu2sj1oh20tes" path="res://Assets/Images/Lighthouse/Structure/External/groundSnow.png" id="9_hptm8"]
 [ext_resource type="Script" uid="uid://cnb0vt0q0rkq1" path="res://Scripts/Main/ocean_waves.gd" id="10_fdnlq"]
 [ext_resource type="PackedScene" uid="uid://cpmufmthgj1px" path="res://Scenes/animated_snow_map.tscn" id="12_jkdf5"]
+[ext_resource type="Texture2D" uid="uid://cx2lxil4ct2c3" path="res://Assets/Images/UI/taskMenuPopDownButton.png" id="15_wsu2k"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wsu2k"]
+bg_color = Color(0.39607844, 0.36862746, 0.3372549, 1)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jkdf5"]
 atlas = ExtResource("9_fdnlq")
@@ -97,6 +104,67 @@ enabled = false
 zoom = Vector2(6.19, 6.19)
 limit_enabled = false
 
+[node name="TaskMenu" type="CanvasLayer" parent="."]
+script = ExtResource("3_k12tt")
+
+[node name="SlideController" type="Control" parent="TaskMenu"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 940.0
+offset_top = 103.0
+offset_right = 980.0
+offset_bottom = 143.0
+
+[node name="TaskPanel" type="PanelContainer" parent="TaskMenu/SlideController"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 0
+offset_left = -97.0
+offset_top = -103.0
+offset_right = 212.0
+offset_bottom = 109.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_wsu2k")
+
+[node name="VBox" type="VBoxContainer" parent="TaskMenu/SlideController/TaskPanel"]
+layout_mode = 2
+
+[node name="TitleLabel" type="Label" parent="TaskMenu/SlideController/TaskPanel/VBox"]
+layout_mode = 2
+text = "   Today's Tasks"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="TaskMenu/SlideController/TaskPanel/VBox"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="TaskList" type="VBoxContainer" parent="TaskMenu/SlideController/TaskPanel/VBox/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="TabButton" type="TextureButton" parent="TaskMenu/SlideController"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 134.0
+offset_top = 108.0
+offset_right = 212.0
+offset_bottom = 166.0
+texture_normal = ExtResource("15_wsu2k")
+stretch_mode = 0
+
+[node name="ArrowIcon" type="Sprite2D" parent="TaskMenu/SlideController/TabButton"]
+texture_filter = 1
+position = Vector2(49, 14)
+scale = Vector2(2.072903, 2.072903)
+texture = ExtResource("5_h1bgf")
+offset = Vector2(-5, 7)
+
+[node name="AlertIcon" type="Sprite2D" parent="TaskMenu/SlideController/TabButton"]
+visible = false
+texture_filter = 1
+position = Vector2(39, 28)
+scale = Vector2(2.072903, 2.072903)
+texture = ExtResource("6_b3802")
+offset = Vector2(-0.205, 0.265)
+
 [node name="SkyDayBackground" type="Sprite2D" parent="."]
 texture_filter = 1
 position = Vector2(121.733696, 225.56537)
@@ -152,8 +220,7 @@ scale = Vector2(0.7132711, 0.7125864)
 texture = ExtResource("9_hptm8")
 
 [node name="Control_LIGHTHOUSE BUTTON AREA" parent="." instance=ExtResource("1_bo1nx")]
+texture_filter = 1
+offset_right = 29.15
 offset_bottom = 648.0
 scale = Vector2(0.718, 0.718)
-
-[node name="DELETE_THIS_PointFinder" type="Node2D" parent="."]
-position = Vector2(103.1156, 155.38948)
