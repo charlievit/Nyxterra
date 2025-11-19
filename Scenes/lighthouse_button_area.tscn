@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bty042lmdfi02"]
+[gd_scene load_steps=29 format=3 uid="uid://bty042lmdfi02"]
 
 [ext_resource type="Texture2D" uid="uid://dumrws8pl1suf" path="res://Assets/Images/Lighthouse/Structure/LightRoomBuild1.png" id="1_680ea"]
 [ext_resource type="Texture2D" uid="uid://bnc5fep5l67u1" path="res://Assets/Images/Lighthouse/Structure/Floor3&4SampleScene.png" id="2_qkcrh"]
@@ -7,11 +7,92 @@
 [ext_resource type="Texture2D" uid="uid://dsnuq07k0kmpv" path="res://Assets/Images/Lighthouse/Props/Wall.png" id="4_b2lj4"]
 [ext_resource type="Script" uid="uid://cuipkjxvfn1xp" path="res://Scripts/teleporterHandler.gd" id="5_0t6ev"]
 [ext_resource type="Texture2D" uid="uid://c2bjfaemqpvp3" path="res://Assets/Images/PLACEHOLDER_DUDE.png" id="5_rf6kk"]
+[ext_resource type="Texture2D" uid="uid://bxt10ujll7gdy" path="res://Assets/Images/Lighthouse/Structure/Turny Thing/frame0000.png" id="6_x8n6x"]
+[ext_resource type="Texture2D" uid="uid://blj3msakscu8k" path="res://Assets/Images/Lighthouse/Structure/Turny Thing/frame0001.png" id="7_kx1qn"]
+[ext_resource type="Texture2D" uid="uid://deiaeyfkba3ii" path="res://Assets/Images/Lighthouse/Structure/Turny Thing/frame0002.png" id="8_e3oeg"]
+[ext_resource type="Texture2D" uid="uid://dc5f8367krwwc" path="res://Assets/Images/Lighthouse/Structure/Turny Thing/frame0003.png" id="9_cln54"]
+[ext_resource type="Texture2D" uid="uid://14u4rnhmpubv" path="res://Assets/Images/Lighthouse/Structure/Turny Thing/frame0004.png" id="10_mn0ts"]
+[ext_resource type="Texture2D" uid="uid://drh8bbi3j6o61" path="res://Assets/Images/Lighthouse/Structure/Turny Thing/frame0005.png" id="11_aikw8"]
+[ext_resource type="Texture2D" uid="uid://dgn2nk1cuys3c" path="res://Assets/Images/Lighthouse/Structure/Turny Thing/frame0006.png" id="12_ngg57"]
+[ext_resource type="Texture2D" uid="uid://b8kthrj1xx502" path="res://Assets/Images/Lighthouse/Structure/Turny Thing/frame0007.png" id="13_06hmx"]
+[ext_resource type="Texture2D" uid="uid://b45vwbmp7asko" path="res://Assets/Images/Lighthouse/Structure/Turny Thing/frame0008.png" id="14_ll23y"]
+[ext_resource type="Texture2D" uid="uid://b8fj2wlmoaw11" path="res://Assets/Images/Lighthouse/Structure/Turny Thing/frame0009.png" id="15_phxvw"]
+[ext_resource type="Texture2D" uid="uid://ddyho2p08t0qs" path="res://Assets/Images/Lighthouse/Structure/Turny Thing/frame0010.png" id="16_tilvm"]
+[ext_resource type="Texture2D" uid="uid://cl6ogqo20ree2" path="res://Assets/Images/Lighthouse/Structure/Turny Thing/frame0011.png" id="17_ywuvv"]
+[ext_resource type="Texture2D" uid="uid://b32h6jxdte6rq" path="res://Assets/Images/Lighthouse/Structure/Turny Thing/frame0012.png" id="18_o4csw"]
+[ext_resource type="Texture2D" uid="uid://dinr6qew3h6if" path="res://Assets/Images/Lighthouse/Structure/Turny Thing/frame0013.png" id="19_4kp5b"]
+[ext_resource type="Texture2D" uid="uid://ri416smngjk1" path="res://Assets/Images/Lighthouse/Structure/Turny Thing/frame0014.png" id="20_kwddd"]
+[ext_resource type="Texture2D" uid="uid://dxoqxrv8bmy5q" path="res://Assets/Images/Lighthouse/Structure/Turny Thing/frame0015.png" id="21_m5krq"]
+[ext_resource type="Texture2D" uid="uid://duwb0ja6ld5j2" path="res://Assets/Images/Lighthouse/Structure/Turny Thing/frame0016.png" id="22_5xqbu"]
+[ext_resource type="Texture2D" uid="uid://6m75sw3kdspu" path="res://Assets/Images/Lighthouse/Structure/Turny Thing/frame0017.png" id="23_2tttr"]
+[ext_resource type="Script" uid="uid://qxikudipxih8" path="res://Scripts/mainGearAnimation.gd" id="24_kx1qn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b2lj4"]
 size = Vector2(22.97748, 42.957886)
 
-[node name="LIGHTHOUSE BUTTON AREA" type="Control"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_nobdy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_x8n6x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_kx1qn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_e3oeg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_cln54")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_mn0ts")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_aikw8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_ngg57")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_06hmx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_ll23y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_phxvw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_tilvm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_ywuvv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_o4csw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_4kp5b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_kwddd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_m5krq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_5xqbu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_2tttr")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
+
+[node name="LIGHTHOUSE MINI MAP" type="Control"]
 custom_minimum_size = Vector2(29.15, 0)
 layout_mode = 3
 anchor_right = 0.29138103
@@ -153,6 +234,14 @@ offset_right = 52.987278
 offset_bottom = 18.021545
 text = "E"
 
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="MIDDLE"]
+z_index = 2
+texture_filter = 1
+position = Vector2(167, 45)
+sprite_frames = SubResource("SpriteFrames_nobdy")
+frame_progress = 0.5776877
+script = ExtResource("24_kx1qn")
+
 [node name="BOTTOM" type="Control" parent="."]
 layout_mode = 1
 anchors_preset = 12
@@ -237,4 +326,4 @@ position = Vector2(1, 324)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Lighthouse Collision"]
 position = Vector2(163, 165)
-polygon = PackedVector2Array(-149, 13, -145, -30, -148, -30, -151, 13, -157, 64, -155, 65, -79, 43, 90, 43, 90, 53, 107, 59, 118, 59, 121, 61, 125, 61, 128, 59, 158, 59, 160, 103, -155, 103, -155, 65, -157, 64, -157, 102, -157, 105, -155, 105, 160, 105, 162, 105, 162, 102, 162, 59, 162, 42, 162, 13, 110, -4, 110, -45, 110, -74, 146, -74, 151, -74, 151, -76, 147, -123, 142, -123, 146, -77, 110, -77, 107, -77, 41, -77, 30, -80, 29, -80, 21, -80, 20, -80, 2, -80, -72, -77, -97, -88, -120, -88, -120, -127, -67, -133, -65, -126, -58, -126, -23, -126, -23, -137, 21, -137, 21, -126, 29, -126, 29, -136, 55, -136, 58, -124, 68, -120, 90, -120, 101, -120, 104, -118, 108, -118, 111, -121, 142, -123, 90, -141, 55, -141, 29, -141, 29, -166, 88, -166, 88, -184, 88, -226, 87, -252, 122, -252, 126, -252, 126, -257, 126, -299, 122, -303, 120, -298, 122, -257, 87, -257, -27, -257, -45, -269, -60, -269, -66, -270, -66, -309, -52, -310, -12, -311, -9, -304, -5, -300, 3, -300, 11, -300, 15, -304, 18, -311, 46, -312, 120, -298, 122, -303, 46, -318, 21, -320, -15, -320, -52, -318, -70, -318, -120, -318, -120, -313, -120, -258, -132, -207, -129, -205, -117, -212, -100, -212, -95, -208, -91, -208, -86, -212, -71, -212, -61, -227, 41, -227, 73, -224, 84, -221, 85, -184, 65, -184, 65, -167, 29, -167, 21, -167, 20, -167, 20, -179, 18, -183, 13, -185, -7, -185, -12, -183, -14, -179, -14, -168, -18, -167, -130, -167, -129, -205, -132, -207, -132, -167, -132, -166, -130, -166, -18, -166, -14, -166, 20, -166, 21, -166, 21, -141, -17, -141, -58, -128, -67, -136, -120, -131, -137, -133, -146, -87, -145, -30, -115, -30, -112, -29, -108, -29, -105.031845, -30, -94, -30, -77, -39, -77, -47, 57, -47, 97, -44, 107, -40, 107, -4, 87, -4, 87, 13)
+polygon = PackedVector2Array(-149, 13, -145, -30, -148, -30, -151, 13, -157, 64, -155, 65, -79, 43, 90, 43, 90, 53, 107, 59, 118, 59, 121, 61, 125, 61, 128, 59, 158, 59, 160, 103, -155, 103, -155, 65, -157, 64, -157, 102, -157, 105, -155, 105, 160, 105, 162, 105, 162, 102, 162, 59, 162, 42, 162, 13, 110, -4, 110, -45, 110, -74, 146, -74, 151, -74, 151, -76, 147, -123, 142, -123, 146, -77, 110, -77, 107, -77, 41, -77, 30, -80, 29, -80, 21, -80, 20, -80, 2, -80, -72, -77, -97, -88, -120, -88, -120, -127, -67, -133, -65, -126, -58, -126, -23, -126, -23, -137, 21, -137, 21, -126, 29, -126, 29, -136, 55, -136, 58, -124, 68, -120, 90, -120, 101, -120, 104, -118, 108, -118, 111, -121, 142, -123, 90, -141, 55, -141, 29, -141, 29, -166, 88, -166, 88, -184, 88, -226, 87, -252, 122, -252, 126, -252, 126, -257, 126, -299, 122, -303, 120, -298, 122, -257, 87, -257, -27, -257, -45, -269, -60, -269, -66, -270, -66, -309, -52, -310, -12, -311, -9, -304, -5, -300, 3, -300, 11, -300, 15, -304, 18, -311, 46, -312, 120, -298, 122, -303, 46, -318, 21, -320, -15, -320, -52, -318, -70, -318, -120, -318, -120, -313, -120, -258, -132, -207, -129, -205, -117, -212, -100, -212, -95, -208, -91, -208, -86, -212, -71, -212, -61, -227, 41, -227, 73, -224, 84, -221, 85, -184, 65, -184, 65, -167, 29, -167, 21, -167, 20, -167, 21, -179, 18, -183, 13, -185, -7, -185, -12, -183, -15, -179, -14, -168, -18, -167, -130, -167, -129, -205, -132, -207, -132, -167, -132, -166, -130, -166, -18, -166, -14, -166, 20, -166, 21, -166, 21, -141, -17, -141, -58, -128, -67, -136, -120, -131, -137, -133, -146, -87, -145, -30, -115, -30, -112, -29, -108, -29, -105.031845, -30, -94, -30, -77, -39, -77, -47, 57, -47, 97, -44, 107, -40, 107, -4, 87, -4, 87, 13)

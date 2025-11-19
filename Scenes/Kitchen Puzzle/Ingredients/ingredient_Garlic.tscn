@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://dpm626644s83k"]
+[gd_scene load_steps=6 format=3 uid="uid://dpm626644s83k"]
 
 [ext_resource type="Script" uid="uid://dl1l46fikvopu" path="res://Scripts/CookingMinigame/ingredient.gd" id="1_k8psb"]
 [ext_resource type="Texture2D" uid="uid://b1id5fpl1tgdl" path="res://Assets/Images/KitchenPuzzle/Ingredients/ingredientGarlic.png" id="2_k8psb"]
+[ext_resource type="Texture2D" uid="uid://bkhp1so1jedur" path="res://Assets/Images/KitchenPuzzle/Ingredients/ingredientGarlicChopped.png" id="3_6k1va"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_kvk3b"]
 rough = true
@@ -27,7 +28,9 @@ texture = ExtResource("2_k8psb")
 
 [node name="ChoppedSprite" type="Sprite2D" parent="."]
 visible = false
+position = Vector2(0, 3.9999998)
 scale = Vector2(2.2761865, 2.2761865)
+texture = ExtResource("3_6k1va")
 
 [node name="CollisionShape2D" type="CollisionPolygon2D" parent="." groups=["ingredients"]]
 polygon = PackedVector2Array(0, -18, 7, -16, 18, -4, 18, 7, 16, 11, 11, 16, 4, 18, -5, 18, -11, 16, -16, 11, -18, 7, -18, -2, -16, -7, -7, -16)

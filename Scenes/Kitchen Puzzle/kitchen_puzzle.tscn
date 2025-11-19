@@ -1,36 +1,216 @@
-[gd_scene load_steps=26 format=3 uid="uid://b268fafjkgqee"]
+[gd_scene load_steps=86 format=3 uid="uid://b268fafjkgqee"]
 
 [ext_resource type="Script" uid="uid://dgrielhvrnwwo" path="res://Scripts/CookingMinigame/kitchenMinigameLoader.gd" id="1_aecf8"]
-[ext_resource type="Texture2D" uid="uid://bo6l7eq7c6jlr" path="res://Assets/Images/icon.svg" id="1_sfbg2"]
-[ext_resource type="PackedScene" uid="uid://chjypho1fx1ro" path="res://Scenes/RadioPuzzle/radio_dial.tscn" id="2_diqre"]
-[ext_resource type="Script" uid="uid://bow2yn8alfsqv" path="res://Scripts/CookingMinigame/kitchenHeatDial.gd" id="3_meprl"]
+[ext_resource type="PackedScene" uid="uid://cpmufmthgj1px" path="res://Scenes/animated_snow_map.tscn" id="2_5165p"]
+[ext_resource type="Texture2D" uid="uid://beh61gyk2osti" path="res://Assets/Images/Lighthouse/Structure/External/skyDayBackground.png" id="2_pjven"]
+[ext_resource type="Texture2D" uid="uid://dgxdq0boqv10u" path="res://Assets/Images/KitchenPuzzle/Kitchen.png" id="2_xey2f"]
+[ext_resource type="Texture2D" uid="uid://cf4bdb0ln48n8" path="res://Assets/Images/KitchenPuzzle/Pot.png" id="3_5165p"]
+[ext_resource type="Texture2D" uid="uid://bovyawkuo6lur" path="res://Assets/Images/Lighthouse/Structure/External/skyNightBackground.png" id="3_l8dvu"]
 [ext_resource type="Script" uid="uid://v4ii2b5a0pex" path="res://Scripts/CookingMinigame/potDetectionArea.gd" id="4_bbavm"]
+[ext_resource type="PackedScene" uid="uid://baa6ykqv50wlv" path="res://Scenes/Kitchen Puzzle/heat_dial.tscn" id="5_p4ma4"]
+[ext_resource type="Texture2D" uid="uid://dsiywd30ai8cv" path="res://Assets/Images/KitchenPuzzle/windowTransparent.png" id="6_ev2ve"]
+[ext_resource type="Texture2D" uid="uid://41wil12mx6ub" path="res://Assets/Images/KitchenPuzzle/Knife.png" id="7_5165p"]
 [ext_resource type="Script" uid="uid://ctptcvf0m3mad" path="res://Scripts/CookingMinigame/ingredientSpawner.gd" id="7_e2d3g"]
+[ext_resource type="Texture2D" uid="uid://r85o7k4toril" path="res://Assets/Images/KitchenPuzzle/ChoppingBoard.png" id="7_xey2f"]
 [ext_resource type="PackedScene" uid="uid://q3vj4se52lc7" path="res://Scenes/Kitchen Puzzle/Ingredients/ingredient_Potato.tscn" id="8_bbavm"]
 [ext_resource type="Script" uid="uid://drq0ebv8jnmed" path="res://Scripts/CookingMinigame/chopping_area.gd" id="8_et0ww"]
 [ext_resource type="PackedScene" uid="uid://xe1o4gn70jd" path="res://Scenes/Kitchen Puzzle/Ingredients/ingredient_SaltShaker.tscn" id="9_et0ww"]
 [ext_resource type="PackedScene" uid="uid://blpt56it1yhxo" path="res://Scenes/Kitchen Puzzle/Ingredients/ingredient_Carrot.tscn" id="9_g8ilx"]
-[ext_resource type="PackedScene" uid="uid://dlm3uh1yphpiq" path="res://Scenes/Kitchen Puzzle/Ingredients/ingredient_WaterJug.tscn" id="10_aecf8"]
 [ext_resource type="PackedScene" uid="uid://d0lu0vehydu2w" path="res://Scenes/Kitchen Puzzle/Ingredients/ingredient_Rabit.tscn" id="10_iyue1"]
 [ext_resource type="PackedScene" uid="uid://dpm626644s83k" path="res://Scenes/Kitchen Puzzle/Ingredients/ingredient_Garlic.tscn" id="11_7ixlp"]
 [ext_resource type="PackedScene" uid="uid://omg246ey4a6o" path="res://Scenes/Kitchen Puzzle/Ingredients/ingredient_Onion.tscn" id="12_8vdg4"]
+[ext_resource type="Texture2D" uid="uid://dejhftkmsbflx" path="res://Assets/Images/KitchenPuzzle/Ingredients/ingredientPotato.png" id="12_w0ewu"]
 [ext_resource type="PackedScene" uid="uid://dtuobmmuu4lwv" path="res://Scenes/Kitchen Puzzle/Ingredients/ingredient_Thyme.tscn" id="13_8vdg4"]
+[ext_resource type="PackedScene" uid="uid://brv7qa76d10o8" path="res://Scenes/Kitchen Puzzle/Ingredients/ingredient_PepperShaker.tscn" id="14_4ky7u"]
 [ext_resource type="PackedScene" uid="uid://c61x5fipalpux" path="res://Scenes/Kitchen Puzzle/Ingredients/ingredient_Parsley.tscn" id="14_fkt1q"]
+[ext_resource type="PackedScene" uid="uid://kjdhnyujwwxq" path="res://Scenes/Kitchen Puzzle/Ingredients/ingredient_WaterBottle.tscn" id="14_gafdi"]
+[ext_resource type="Texture2D" uid="uid://c5f1vj36ah14f" path="res://Assets/Images/KitchenPuzzle/Ingredients/ingredientCarrot.png" id="15_1w6r2"]
 [ext_resource type="PackedScene" uid="uid://bmfhh4qeiwle4" path="res://Scenes/Kitchen Puzzle/Ingredients/ingredient_Rosemary.tscn" id="15_anlll"]
+[ext_resource type="PackedScene" uid="uid://c8hhrtsrt6m12" path="res://Scenes/Kitchen Puzzle/Ingredients/ingredient_CookingOil.tscn" id="15_t2jly"]
+[ext_resource type="PackedScene" uid="uid://vofwv43u6yru" path="res://Scenes/Kitchen Puzzle/Ingredients/ingredient_StockBox.tscn" id="16_gafdi"]
+[ext_resource type="Texture2D" uid="uid://bjd8bwmwpt1mc" path="res://Assets/Images/KitchenPuzzle/Ingredients/ingredientRabbit.png" id="17_jr42w"]
 [ext_resource type="Script" uid="uid://t6y7cipu5e3g" path="res://Scripts/CookingMinigame/trashKitchen.gd" id="18_eyoxt"]
+[ext_resource type="Texture2D" uid="uid://b1id5fpl1tgdl" path="res://Assets/Images/KitchenPuzzle/Ingredients/ingredientGarlic.png" id="19_5rybu"]
 [ext_resource type="Script" uid="uid://c4u7gtpwnlxe2" path="res://Scripts/CookingMinigame/recipeParser.gd" id="19_p4ma4"]
+[ext_resource type="Texture2D" uid="uid://dlekutnnm866s" path="res://Assets/Images/KitchenPuzzle/Ingredients/ingredientOnion.png" id="21_aqppm"]
+[ext_resource type="Texture2D" uid="uid://d0rwkl75jf3tq" path="res://Assets/Images/KitchenPuzzle/Ingredients/ingredientThyme.png" id="23_gjttk"]
+[ext_resource type="Texture2D" uid="uid://b2vtbn53wku5m" path="res://Assets/Images/KitchenPuzzle/Ingredients/ingredientParsley.png" id="25_juoly"]
+[ext_resource type="Texture2D" uid="uid://cj8l223c7imly" path="res://Assets/Images/KitchenPuzzle/Ingredients/ingredientRosemary.png" id="27_itpps"]
+[ext_resource type="Texture2D" uid="uid://cl7nrsogsgyw2" path="res://Assets/Images/KitchenPuzzle/Fire Animation/frame0000.png" id="30_ygqbd"]
+[ext_resource type="Script" uid="uid://b05cdjf2nrsqh" path="res://Scripts/CookingMinigame/out_of_bounds_detection_area.gd" id="31_1w6r2"]
+[ext_resource type="Texture2D" uid="uid://dwls6qg0jv1qr" path="res://Assets/Images/KitchenPuzzle/Fire Animation/frame0001.png" id="31_xneen"]
+[ext_resource type="Texture2D" uid="uid://d12jkpm8qbwi0" path="res://Assets/Images/KitchenPuzzle/Fire Animation/frame0002.png" id="32_8vs61"]
+[ext_resource type="Texture2D" uid="uid://bs7yy6osows7i" path="res://Assets/Images/KitchenPuzzle/Fire Animation/frame0003.png" id="33_pjven"]
+[ext_resource type="Texture2D" uid="uid://bisatxhcrwi0j" path="res://Assets/Images/KitchenPuzzle/Fire Animation/frame0004.png" id="34_l8dvu"]
+[ext_resource type="Texture2D" uid="uid://dfekni28ycw4y" path="res://Assets/Images/KitchenPuzzle/Fire Animation/frame0005.png" id="35_ev2ve"]
+[ext_resource type="Texture2D" uid="uid://dpnaop7m36ffp" path="res://Assets/Images/KitchenPuzzle/Fire Animation/frame0006.png" id="36_piw3g"]
+[ext_resource type="Texture2D" uid="uid://cpk3vwbecp7i1" path="res://Assets/Images/KitchenPuzzle/Fire Animation/frame0007.png" id="37_b0jp3"]
+[ext_resource type="Texture2D" uid="uid://rwx2008bspbj" path="res://Assets/Images/KitchenPuzzle/Fire Animation/frame0008.png" id="38_b1jti"]
+[ext_resource type="Texture2D" uid="uid://bqxs8vemx826d" path="res://Assets/Images/KitchenPuzzle/Fire Animation/frame0009.png" id="39_2x1pi"]
+[ext_resource type="Texture2D" uid="uid://xjspctt5dc1b" path="res://Assets/Images/KitchenPuzzle/Fire Animation/frame0010.png" id="40_p6g0q"]
+[ext_resource type="Texture2D" uid="uid://bxe4a3am3af4b" path="res://Assets/Images/KitchenPuzzle/Fire Animation/frame0011.png" id="41_d33ql"]
+[ext_resource type="Texture2D" uid="uid://bbj3wipsmdy8t" path="res://Assets/Images/KitchenPuzzle/Fire Animation/frame0012.png" id="42_c7jxk"]
+[ext_resource type="Texture2D" uid="uid://bd1gskhtw576f" path="res://Assets/Images/KitchenPuzzle/Steam Animation/frame0000.png" id="46_vxs6e"]
+[ext_resource type="Texture2D" uid="uid://c2rcq3ue0hxhu" path="res://Assets/Images/KitchenPuzzle/Steam Animation/frame0001.png" id="47_t2jly"]
+[ext_resource type="Texture2D" uid="uid://2mbqdmcf006h" path="res://Assets/Images/KitchenPuzzle/Steam Animation/frame0002.png" id="48_gafdi"]
+[ext_resource type="Texture2D" uid="uid://dvgl7g2cdd3f" path="res://Assets/Images/KitchenPuzzle/Steam Animation/frame0003.png" id="49_4ky7u"]
+[ext_resource type="Texture2D" uid="uid://13bgj5nh544j" path="res://Assets/Images/KitchenPuzzle/Steam Animation/frame0004.png" id="50_17xo3"]
+[ext_resource type="Texture2D" uid="uid://c3hvvbss22ekb" path="res://Assets/Images/KitchenPuzzle/Steam Animation/frame0005.png" id="51_ojgxo"]
+[ext_resource type="Texture2D" uid="uid://cgqq1yoyixq5j" path="res://Assets/Images/KitchenPuzzle/Steam Animation/frame0006.png" id="52_utraj"]
+[ext_resource type="Texture2D" uid="uid://3v6l04ohuhdn" path="res://Assets/Images/KitchenPuzzle/Steam Animation/frame0007.png" id="53_dc1ry"]
+[ext_resource type="Texture2D" uid="uid://bowuogmrjhjeq" path="res://Assets/Images/KitchenPuzzle/Steam Animation/frame0008.png" id="54_304jc"]
+[ext_resource type="Texture2D" uid="uid://b6g832jyo8y6j" path="res://Assets/Images/KitchenPuzzle/Steam Animation/frame0009.png" id="55_ayc4h"]
+[ext_resource type="Texture2D" uid="uid://b7oh5atu2ubxf" path="res://Assets/Images/KitchenPuzzle/Steam Animation/frame0010.png" id="56_0xrck"]
+[ext_resource type="Texture2D" uid="uid://rnndc4v3m02a" path="res://Assets/Images/KitchenPuzzle/Steam Animation/frame0011.png" id="57_kr3yy"]
+[ext_resource type="Texture2D" uid="uid://bf0elhfhyy7vi" path="res://Assets/Images/KitchenPuzzle/Steam Animation/frame0012.png" id="58_k2y4e"]
+[ext_resource type="AudioStream" uid="uid://crhsv0uepb1pk" path="res://Assets/Audio/Cooking Minigame/Boiling.mp3" id="64_17xo3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_meprl"]
-size = Vector2(99.7603, 20)
+size = Vector2(87.01253, 13.205734)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bbavm"]
-size = Vector2(104.41504, 125.864044)
+size = Vector2(94.339905, 125.023254)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_aecf8"]
-size = Vector2(207, 62)
+size = Vector2(306.5, 45)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1s044"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_56nxb"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_avvmv"]
+bg_color = Color(1, 1, 1, 0.043137256)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_o7q6h"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yuwkw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p4ma4"]
-size = Vector2(89.5, 110.5)
+size = Vector2(283.75, 77)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5165p"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_w0ewu"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1w6r2"]
+bg_color = Color(1, 1, 1, 0.2627451)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wt4ar"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1w6r2"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jr42w"]
+bg_color = Color(1, 1, 1, 0.101960786)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_camc3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("30_ygqbd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("31_xneen")
+}, {
+"duration": 1.0,
+"texture": ExtResource("32_8vs61")
+}, {
+"duration": 1.0,
+"texture": ExtResource("33_pjven")
+}],
+"loop": true,
+"name": &"default",
+"speed": 16.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gs72e"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("34_l8dvu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("35_ev2ve")
+}, {
+"duration": 1.0,
+"texture": ExtResource("36_piw3g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("37_b0jp3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("38_b1jti")
+}],
+"loop": true,
+"name": &"default",
+"speed": 16.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ph7d2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("39_2x1pi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("40_p6g0q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("41_d33ql")
+}, {
+"duration": 1.0,
+"texture": ExtResource("42_c7jxk")
+}],
+"loop": true,
+"name": &"default",
+"speed": 16.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qs5ct"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("46_vxs6e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("47_t2jly")
+}, {
+"duration": 1.0,
+"texture": ExtResource("48_gafdi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("49_4ky7u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("50_17xo3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("51_ojgxo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("52_utraj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("53_dc1ry")
+}, {
+"duration": 1.0,
+"texture": ExtResource("54_304jc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("55_ayc4h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("56_0xrck")
+}, {
+"duration": 1.0,
+"texture": ExtResource("57_kr3yy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("58_k2y4e")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
 
 [sub_resource type="Gradient" id="Gradient_p4ma4"]
 colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
@@ -38,7 +218,7 @@ colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_xey2f"]
 gradient = SubResource("Gradient_p4ma4")
 
-[node name="Kitchen Puzzle" type="Control" node_paths=PackedStringArray("heatDial", "potArea", "progressBar", "TESTING_RECIPE_NOTIFICATION_FEED", "recipeParser", "recipeDisplayLocation")]
+[node name="Kitchen Puzzle" type="Control" node_paths=PackedStringArray("heatDial", "potArea", "progressBar", "recipeParser", "fireAnimLow", "fireAnimMedium", "fireAnimHigh", "steamAnim", "oneShotAudioPlayer", "constantAudioPlayer", "recipeDisplayLocation")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -50,9 +230,39 @@ script = ExtResource("1_aecf8")
 heatDial = NodePath("Pot Area/HeatDial")
 potArea = NodePath("Pot Area/Pot/IngredientDeletePoint")
 progressBar = NodePath("Pot Area/ProgressBar")
-TESTING_RECIPE_NOTIFICATION_FEED = NodePath("Ingredients Area/StepsLog")
 recipeParser = NodePath("RecipeParser")
+fireAnimLow = NodePath("Pot/FireAnim_LOW")
+fireAnimMedium = NodePath("Pot/FireAnim_MED")
+fireAnimHigh = NodePath("Pot/FireAnim_HIGH")
+steamAnim = NodePath("Pot/SteamAnim")
+oneShotAudioPlayer = NodePath("OneShotSounds")
+constantAudioPlayer = NodePath("ConstantSounds")
 recipeDisplayLocation = NodePath("RecipeBookScreen/Recipe Instructions")
+
+[node name="SkyDayBackground" type="Sprite2D" parent="."]
+position = Vector2(799.80005, 329.41754)
+scale = Vector2(2.4166172, 1.3803548)
+texture = ExtResource("2_pjven")
+
+[node name="SkyNightBackground" type="Sprite2D" parent="."]
+position = Vector2(799.80005, 329.41754)
+scale = Vector2(2.4166172, 1.3803548)
+texture = ExtResource("3_l8dvu")
+
+[node name="AnimatedSnowMap" parent="." instance=ExtResource("2_5165p")]
+visible = true
+position = Vector2(-212, -543)
+scale = Vector2(6.6318603, 6.6318603)
+
+[node name="KitchenStoveOffBackground" type="Sprite2D" parent="."]
+position = Vector2(576, 324.5)
+scale = Vector2(2.4, 2.403704)
+texture = ExtResource("2_xey2f")
+
+[node name="WindowTransparent" type="Sprite2D" parent="KitchenStoveOffBackground"]
+position = Vector2(0, -0.2079773)
+scale = Vector2(1, 0.99845916)
+texture = ExtResource("6_ev2ve")
 
 [node name="Pot Area" type="Control" parent="."]
 layout_mode = 1
@@ -62,144 +272,55 @@ offset_right = 336.0
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="TEMP_Background" type="ColorRect" parent="Pot Area"]
-layout_mode = 0
-offset_right = 339.0
-offset_bottom = 648.0
-mouse_filter = 2
-color = Color(0.1728327, 0.17283267, 0.17283267, 1)
-
-[node name="Pot" type="Sprite2D" parent="Pot Area"]
-position = Vector2(167.00002, 339.00003)
+[node name="Pot" type="Control" parent="Pot Area"]
+anchors_preset = 0
+offset_left = 139.00002
+offset_top = 394.0
+offset_right = 139.00002
+offset_bottom = 394.0
 scale = Vector2(2.1835938, 2.1835938)
-texture = ExtResource("1_sfbg2")
+mouse_filter = 2
 
 [node name="PotCatchCollisionArea" type="StaticBody2D" parent="Pot Area/Pot"]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Pot Area/Pot/PotCatchCollisionArea"]
-polygon = PackedVector2Array(57.24508, 57.24507, 57.24508, -53.581406, 50.375664, -53.581406, 50.375664, 51.29158, -52.207523, 51.29158, -52.207523, -52.20752, -58.618973, -52.20752, -58.618973, 57.24507)
+polygon = PackedVector2Array(-57.703053, 23.355988, -49.45976, 34.805008, -43.50627, 39.842575, 29.309479, 40.300537, 37.094803, 34.347046, 43.96422, 22.440063, 46.25402, -25.645798, 41.674416, -22.89804, 39.842567, 21.52414, 33.43112, 30.683365, 26.561714, 35.720932, -40.758507, 35.720932, -46.254036, 32.057236, -53.123444, 21.982101, -54.955288, 7.785324, -54.955288, -25.645798, -63.65654, -32.973175, -59.992855, -25.645798, -59.992855, 7.785324)
 
 [node name="IngredientDeletePoint" type="Area2D" parent="Pot Area/Pot"]
 script = ExtResource("4_bbavm")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Pot Area/Pot/IngredientDeletePoint"]
-position = Vector2(-0.87836456, 39.38463)
+position = Vector2(-6.8694158, 11.449018)
 shape = SubResource("RectangleShape2D_meprl")
 
 [node name="Pot Area For Partial Ingredients" type="Area2D" parent="Pot Area/Pot" groups=["pot"]]
-position = Vector2(-6.987925e-06, -76.9374)
+position = Vector2(-7.6293945e-06, -76.93741)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Pot Area/Pot/Pot Area For Partial Ingredients"]
-position = Vector2(-1.3738785, -13.547394)
+position = Vector2(-6.4114494, -13.967789)
 shape = SubResource("RectangleShape2D_bbavm")
 
-[node name="HeatDial" parent="Pot Area" instance=ExtResource("2_diqre")]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -96.0
-offset_top = 187.00003
-offset_right = 928.3993
-offset_bottom = 779.07056
-scale = Vector2(0.17396575, 0.17396575)
-script = ExtResource("3_meprl")
-initialSetting = 1
-clickLineColor = Color(0, 1, 1, 1)
-clickLineWidth = 6.0
-
-[node name="TEMP_POT_LABEL" type="Label" parent="Pot Area"]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -168.0
-offset_right = 168.0
-offset_bottom = 68.0
-grow_horizontal = 2
-theme_override_font_sizes/font_size = 56
-text = "POT"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="FireOffLabel" type="Label" parent="Pot Area"]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -96.0
-offset_top = -30.0
-offset_right = 83.0
-grow_horizontal = 2
-grow_vertical = 0
-theme_override_font_sizes/font_size = 21
-text = "OFF"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="FireLowLabel" type="Label" parent="Pot Area"]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -165.0
-offset_top = -98.0
-offset_right = -98.0
-offset_bottom = -68.0
-grow_horizontal = 2
-grow_vertical = 0
-theme_override_font_sizes/font_size = 21
-text = "LOW"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="FireMediumLabel" type="Label" parent="Pot Area"]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -93.0
-offset_top = -164.0
-offset_right = 86.0
-offset_bottom = -134.0
-grow_horizontal = 2
-grow_vertical = 0
-theme_override_font_sizes/font_size = 21
-text = "MEDIUM"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="FireHighLabel" type="Label" parent="Pot Area"]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = 84.0
-offset_top = -93.0
-offset_right = 170.0
-offset_bottom = -63.0
-grow_horizontal = 2
-grow_vertical = 0
-theme_override_font_sizes/font_size = 21
-text = "HIGH"
-horizontal_alignment = 1
-vertical_alignment = 1
+[node name="HeatDial" parent="Pot Area" instance=ExtResource("5_p4ma4")]
+layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 85.0
+offset_top = 546.0
+offset_right = 792.03577
+offset_bottom = 971.3711
+grow_horizontal = 1
+grow_vertical = 1
+scale = Vector2(0.12710886, 0.12710886)
 
 [node name="ProgressBar" type="ProgressBar" parent="Pot Area"]
 layout_mode = 0
-offset_top = 75.0
-offset_right = 336.0
-offset_bottom = 102.0
+offset_left = 7.0
+offset_top = 500.0
+offset_right = 252.0
+offset_bottom = 512.0
 show_percentage = false
 
 [node name="Ingredients Area" type="Control" parent="."]
@@ -210,41 +331,110 @@ offset_bottom = 648.0
 mouse_filter = 2
 
 [node name="Chopping Area" type="Area2D" parent="Ingredients Area"]
+position = Vector2(-76, -153)
 script = ExtResource("8_et0ww")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ingredients Area/Chopping Area"]
-position = Vector2(200.5, 610)
+position = Vector2(248.75, 589.5)
 shape = SubResource("RectangleShape2D_aecf8")
 
-[node name="Cuttingboard Label" type="RichTextLabel" parent="Ingredients Area/Chopping Area"]
-offset_left = 145.0
-offset_top = 602.0
-offset_right = 267.0
-offset_bottom = 636.0
-mouse_filter = 2
-text = "Cutting Board"
-
 [node name="ChopButton" type="Button" parent="Ingredients Area/Chopping Area"]
-offset_left = 312.0
-offset_top = 579.0
-offset_right = 361.0
-offset_bottom = 644.0
-text = "Chop
-"
+offset_left = 416.0
+offset_top = 453.0
+offset_right = 428.43298
+offset_bottom = 518.526
+rotation = 0.32729906
+scale = Vector2(2.5382888, 2.5382888)
+theme_override_styles/normal = SubResource("StyleBoxEmpty_1s044")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_56nxb")
+theme_override_styles/hover = SubResource("StyleBoxFlat_avvmv")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_o7q6h")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_yuwkw")
 
-[node name="Ingredients" type="VBoxContainer" parent="Ingredients Area"]
+[node name="Knife" type="Sprite2D" parent="Ingredients Area/Chopping Area"]
+position = Vector2(403, 545)
+rotation = 0.30805305
+scale = Vector2(3.019906, 3.019906)
+texture = ExtResource("7_5165p")
+
+[node name="CuttingBoard" type="Sprite2D" parent="Ingredients Area/Chopping Area"]
+position = Vector2(251, 658.00006)
+scale = Vector2(2.27147, 2.27147)
+texture = ExtResource("7_xey2f")
+
+[node name="TrashIcon" type="Area2D" parent="Ingredients Area"]
+position = Vector2(-787, 151)
+script = ExtResource("18_eyoxt")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ingredients Area/TrashIcon"]
+position = Vector2(864.125, 457.5)
+shape = SubResource("RectangleShape2D_p4ma4")
+
+[node name="Label" type="Label" parent="Ingredients Area/TrashIcon"]
+offset_left = 833.0
+offset_top = 435.0
+offset_right = 884.0
+offset_bottom = 458.0
+text = "TRASH"
+
+[node name="RecipeBookButton" type="Button" parent="Ingredients Area"]
+layout_mode = 0
+offset_left = 71.0
+offset_top = 27.0
+offset_right = 169.0
+offset_bottom = 161.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_5165p")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_w0ewu")
+theme_override_styles/hover = SubResource("StyleBoxFlat_1w6r2")
+
+[node name="Salt Shaker" parent="Ingredients Area" instance=ExtResource("9_et0ww")]
+position = Vector2(41, 125)
+shakeThreshold = 400.0
+
+[node name="Pepper Shaker" parent="Ingredients Area" instance=ExtResource("14_4ky7u")]
+position = Vector2(198, 125)
+
+[node name="Water Jug" parent="Ingredients Area" instance=ExtResource("14_gafdi")]
+position = Vector2(616, 453)
+
+[node name="Cooking Oil Jug" parent="Ingredients Area" instance=ExtResource("15_t2jly")]
+position = Vector2(698, 431)
+
+[node name="Stock Box" parent="Ingredients Area" instance=ExtResource("16_gafdi")]
+position = Vector2(773, 446)
+
+[node name="Ingredients" type="HBoxContainer" parent="Ingredients Area"]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
+offset_left = -336.0
+offset_top = 497.0
+offset_right = -10.0
+offset_bottom = 544.0
 grow_horizontal = 0
 theme_override_constants/separation = 10
 alignment = 1
 
+[node name="Rabbit" type="Button" parent="Ingredients Area/Ingredients" node_paths=PackedStringArray("spawnParentNode")]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_wt4ar")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_1w6r2")
+theme_override_styles/hover = SubResource("StyleBoxFlat_jr42w")
+icon = ExtResource("17_jr42w")
+script = ExtResource("7_e2d3g")
+ingredientScene = ExtResource("10_iyue1")
+spawnParentNode = NodePath("SpawnPoint")
+
+[node name="SpawnPoint" type="Node2D" parent="Ingredients Area/Ingredients/Rabbit"]
+position = Vector2(34, 17)
+
 [node name="SackOfPotatos" type="Button" parent="Ingredients Area/Ingredients" node_paths=PackedStringArray("spawnParentNode")]
 layout_mode = 2
-text = "Potatos
-"
+theme_override_styles/normal = SubResource("StyleBoxEmpty_wt4ar")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_1w6r2")
+theme_override_styles/hover = SubResource("StyleBoxFlat_jr42w")
+icon = ExtResource("12_w0ewu")
 script = ExtResource("7_e2d3g")
 ingredientScene = ExtResource("8_bbavm")
 spawnParentNode = NodePath("SpawnPoint")
@@ -254,7 +444,10 @@ position = Vector2(34, 17)
 
 [node name="BundleOfCarrots" type="Button" parent="Ingredients Area/Ingredients" node_paths=PackedStringArray("spawnParentNode")]
 layout_mode = 2
-text = "Carrots"
+theme_override_styles/normal = SubResource("StyleBoxEmpty_wt4ar")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_1w6r2")
+theme_override_styles/hover = SubResource("StyleBoxFlat_jr42w")
+icon = ExtResource("15_1w6r2")
 script = ExtResource("7_e2d3g")
 ingredientScene = ExtResource("9_g8ilx")
 spawnParentNode = NodePath("SpawnPoint")
@@ -262,29 +455,12 @@ spawnParentNode = NodePath("SpawnPoint")
 [node name="SpawnPoint" type="Node2D" parent="Ingredients Area/Ingredients/BundleOfCarrots"]
 position = Vector2(34, 17)
 
-[node name="Rabbit" type="Button" parent="Ingredients Area/Ingredients" node_paths=PackedStringArray("spawnParentNode")]
-layout_mode = 2
-text = "Rabbit"
-script = ExtResource("7_e2d3g")
-ingredientScene = ExtResource("10_iyue1")
-spawnParentNode = NodePath("SpawnPoint")
-
-[node name="SpawnPoint" type="Node2D" parent="Ingredients Area/Ingredients/Rabbit"]
-position = Vector2(34, 17)
-
-[node name="BundleOfGarlic" type="Button" parent="Ingredients Area/Ingredients" node_paths=PackedStringArray("spawnParentNode")]
-layout_mode = 2
-text = "Garlic"
-script = ExtResource("7_e2d3g")
-ingredientScene = ExtResource("11_7ixlp")
-spawnParentNode = NodePath("SpawnPoint")
-
-[node name="SpawnPoint" type="Node2D" parent="Ingredients Area/Ingredients/BundleOfGarlic"]
-position = Vector2(34, 17)
-
 [node name="SackOfOnions" type="Button" parent="Ingredients Area/Ingredients" node_paths=PackedStringArray("spawnParentNode")]
 layout_mode = 2
-text = "Onions"
+theme_override_styles/normal = SubResource("StyleBoxEmpty_wt4ar")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_1w6r2")
+theme_override_styles/hover = SubResource("StyleBoxFlat_jr42w")
+icon = ExtResource("21_aqppm")
 script = ExtResource("7_e2d3g")
 ingredientScene = ExtResource("12_8vdg4")
 spawnParentNode = NodePath("SpawnPoint")
@@ -292,9 +468,25 @@ spawnParentNode = NodePath("SpawnPoint")
 [node name="SpawnPoint" type="Node2D" parent="Ingredients Area/Ingredients/SackOfOnions"]
 position = Vector2(34, 17)
 
+[node name="BundleOfGarlic" type="Button" parent="Ingredients Area/Ingredients" node_paths=PackedStringArray("spawnParentNode")]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_wt4ar")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_1w6r2")
+theme_override_styles/hover = SubResource("StyleBoxFlat_jr42w")
+icon = ExtResource("19_5rybu")
+script = ExtResource("7_e2d3g")
+ingredientScene = ExtResource("11_7ixlp")
+spawnParentNode = NodePath("SpawnPoint")
+
+[node name="SpawnPoint" type="Node2D" parent="Ingredients Area/Ingredients/BundleOfGarlic"]
+position = Vector2(34, 17)
+
 [node name="BundleOfThyme" type="Button" parent="Ingredients Area/Ingredients" node_paths=PackedStringArray("spawnParentNode")]
 layout_mode = 2
-text = "Thyme"
+theme_override_styles/normal = SubResource("StyleBoxEmpty_wt4ar")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_1w6r2")
+theme_override_styles/hover = SubResource("StyleBoxFlat_jr42w")
+icon = ExtResource("23_gjttk")
 script = ExtResource("7_e2d3g")
 ingredientScene = ExtResource("13_8vdg4")
 spawnParentNode = NodePath("SpawnPoint")
@@ -304,7 +496,10 @@ position = Vector2(34, 17)
 
 [node name="BundleOfParsely" type="Button" parent="Ingredients Area/Ingredients" node_paths=PackedStringArray("spawnParentNode")]
 layout_mode = 2
-text = "Parsely"
+theme_override_styles/normal = SubResource("StyleBoxEmpty_wt4ar")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_1w6r2")
+theme_override_styles/hover = SubResource("StyleBoxFlat_jr42w")
+icon = ExtResource("25_juoly")
 script = ExtResource("7_e2d3g")
 ingredientScene = ExtResource("14_fkt1q")
 spawnParentNode = NodePath("SpawnPoint")
@@ -314,7 +509,10 @@ position = Vector2(34, 17)
 
 [node name="BundleOfRosemary" type="Button" parent="Ingredients Area/Ingredients" node_paths=PackedStringArray("spawnParentNode")]
 layout_mode = 2
-text = "Rosemary"
+theme_override_styles/normal = SubResource("StyleBoxEmpty_wt4ar")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_1w6r2")
+theme_override_styles/hover = SubResource("StyleBoxFlat_jr42w")
+icon = ExtResource("27_itpps")
 script = ExtResource("7_e2d3g")
 ingredientScene = ExtResource("15_anlll")
 spawnParentNode = NodePath("SpawnPoint")
@@ -322,98 +520,39 @@ spawnParentNode = NodePath("SpawnPoint")
 [node name="SpawnPoint" type="Node2D" parent="Ingredients Area/Ingredients/BundleOfRosemary"]
 position = Vector2(34, 17)
 
-[node name="Salt Shaker" parent="Ingredients Area/Ingredients" instance=ExtResource("9_et0ww")]
-position = Vector2(-52, 594)
-shakeThreshold = 400.0
+[node name="Pot" type="Sprite2D" parent="."]
+position = Vector2(141, 394)
+scale = Vector2(2.2060719, 2.2060719)
+texture = ExtResource("3_5165p")
 
-[node name="Pepper Shaker" parent="Ingredients Area/Ingredients" instance=ExtResource("9_et0ww")]
-position = Vector2(39, 597)
-ingredientName = "Pepper"
-shakeThreshold = 400.0
-
-[node name="JarLabel" parent="Ingredients Area/Ingredients/Pepper Shaker" index="5"]
-offset_left = -13.0
-offset_top = -27.0
-offset_right = -1.5161419
-offset_bottom = -6.185507
-theme_override_colors/default_color = Color(0, 0, 0, 1)
-text = "P"
-
-[node name="Water Jug" parent="Ingredients Area/Ingredients" instance=ExtResource("10_aecf8")]
-position = Vector2(-298, 595)
-pourRate = 2.0
-
-[node name="Water" type="RichTextLabel" parent="Ingredients Area/Ingredients/Water Jug"]
-offset_left = -21.0
-offset_top = 14.0
-offset_right = 39.0
-offset_bottom = 54.0
-mouse_filter = 2
-text = "Water"
-
-[node name="Cooking Oil Jug" parent="Ingredients Area/Ingredients" instance=ExtResource("10_aecf8")]
-position = Vector2(-212, 595)
-ingredientName = "Oil"
-pourRate = 0.5
-
-[node name="Oil" type="RichTextLabel" parent="Ingredients Area/Ingredients/Cooking Oil Jug"]
-offset_left = -10.0
-offset_top = 15.0
-offset_right = 50.0
-offset_bottom = 55.0
-mouse_filter = 2
-text = "Oil"
-
-[node name="Stock Box" parent="Ingredients Area/Ingredients" instance=ExtResource("10_aecf8")]
-position = Vector2(-134, 594)
-ingredientName = "Stock"
-pourRate = 2.0
-
-[node name="Stock" type="RichTextLabel" parent="Ingredients Area/Ingredients/Stock Box"]
-offset_left = -21.0
-offset_top = 16.0
-offset_right = 39.0
-offset_bottom = 56.0
-mouse_filter = 2
-text = "Stock
-"
-
-[node name="StepsLog" type="RichTextLabel" parent="Ingredients Area"]
+[node name="FireAnim_LOW" type="AnimatedSprite2D" parent="Pot"]
 visible = false
-layout_mode = 0
-offset_left = 1100.0
-offset_top = 19.0
-offset_right = 1812.0
-offset_bottom = 331.0
-scroll_following = true
+position = Vector2(196.72978, -31.503967)
+scale = Vector2(1.0860178, 1.0895854)
+sprite_frames = SubResource("SpriteFrames_camc3")
+frame = 3
+frame_progress = 0.9656681
 
-[node name="TrashIcon" type="Area2D" parent="Ingredients Area"]
-script = ExtResource("18_eyoxt")
+[node name="FireAnim_MED" type="AnimatedSprite2D" parent="Pot"]
+visible = false
+position = Vector2(196.72978, -31.503967)
+scale = Vector2(1.0860178, 1.0895854)
+sprite_frames = SubResource("SpriteFrames_gs72e")
+frame_progress = 0.7723872
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Ingredients Area/TrashIcon"]
-position = Vector2(767, 394)
-shape = SubResource("RectangleShape2D_p4ma4")
+[node name="FireAnim_HIGH" type="AnimatedSprite2D" parent="Pot"]
+visible = false
+position = Vector2(196.72978, -31.503967)
+scale = Vector2(1.0860178, 1.0895854)
+sprite_frames = SubResource("SpriteFrames_ph7d2")
+frame_progress = 0.5564189
 
-[node name="Label" type="Label" parent="Ingredients Area/TrashIcon"]
-offset_left = 740.0
-offset_top = 420.0
-offset_right = 791.0
-offset_bottom = 443.0
-text = "TRASH"
-
-[node name="RecipeBookButton" type="Button" parent="Ingredients Area"]
-layout_mode = 0
-offset_left = 9.0
-offset_top = 9.0
-offset_right = 76.0
-offset_bottom = 109.0
-text = "Recipes
-Book"
-
-[node name="SceneBorder" type="StaticBody2D" parent="."]
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="SceneBorder"]
-polygon = PackedVector2Array(-239, -190, -231, 851, 1395, 837, 1350, -227, -203, -199, 0, 0, 1152, 0, 1152, 648, 650, 648, 650, 623, 643, 623, 643, 641, 436, 641, 436, 621, 429, 621, 429, 648, 356, 648, 292, 464, 278, 464, 339, 648, 0, 648, 0, 224.70769, 52, 225, 0, 0)
+[node name="SteamAnim" type="AnimatedSprite2D" parent="Pot"]
+visible = false
+position = Vector2(196.72978, -31.503967)
+scale = Vector2(1.0860178, 1.0895854)
+sprite_frames = SubResource("SpriteFrames_qs5ct")
+frame_progress = 0.053408246
 
 [node name="RecipeParser" type="Node" parent="."]
 script = ExtResource("19_p4ma4")
@@ -453,8 +592,41 @@ offset_right = 1140.0
 offset_bottom = 70.0
 text = "X"
 
+[node name="SceneBorder" type="StaticBody2D" parent="."]
+
+[node name="Border" type="CollisionPolygon2D" parent="SceneBorder"]
+polygon = PackedVector2Array(-202, -198, -214, 762, 1312, 772, 1350, -227, -203, -199, 0, 0, 1152, 0, 1152, 489, 0, 492, 0, 0)
+
+[node name="Shelf" type="CollisionPolygon2D" parent="SceneBorder"]
+polygon = PackedVector2Array(347, 160, 347, 177, 568, 177, 568, 160, 507, 160, 507, 29, 412, 28, 410, 160)
+
+[node name="WindowSeal" type="CollisionPolygon2D" parent="SceneBorder"]
+position = Vector2(281, 161)
+polygon = PackedVector2Array(286, 154, 286, 178, 638, 178, 638, 154)
+
+[node name="Cutting Board" type="CollisionPolygon2D" parent="SceneBorder"]
+position = Vector2(72, 308)
+polygon = PackedVector2Array(285, 152, 285, 183, 595, 183, 595, 152, 595, 147, 580, 152, 299, 152, 285, 147)
+
+[node name="OutOfBoundsDetectionArea" type="Area2D" parent="."]
+script = ExtResource("31_1w6r2")
+
+[node name="Border2" type="CollisionPolygon2D" parent="OutOfBoundsDetectionArea"]
+position = Vector2(-445, -273)
+scale = Vector2(1.8484533, 2.2646596)
+polygon = PackedVector2Array(-258.59457, -226.08255, -242.3648, 798.35394, 1403.8765, 796.1461, 1414.6963, -248.60248, -258.59457, -226.08255, 0, 0, 1152, 0, 1152, 489, 0, 492, 0, 0)
+
+[node name="OneShotSounds" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(610, 327)
+volume_db = 6.0
+
+[node name="ConstantSounds" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(610, 327)
+stream = ExtResource("64_17xo3")
+volume_db = -80.0
+autoplay = true
+parameters/looping = true
+
 [connection signal="pressed" from="Ingredients Area/Chopping Area/ChopButton" to="Ingredients Area/Chopping Area" method="_on_chop_button_pressed"]
 [connection signal="pressed" from="Ingredients Area/RecipeBookButton" to="." method="_on_recipe_book_button_pressed"]
 [connection signal="pressed" from="RecipeBookScreen/Close" to="." method="_on_close_pressed"]
-
-[editable path="Ingredients Area/Ingredients/Pepper Shaker"]

@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://omg246ey4a6o"]
+[gd_scene load_steps=7 format=3 uid="uid://omg246ey4a6o"]
 
 [ext_resource type="Script" uid="uid://dl1l46fikvopu" path="res://Scripts/CookingMinigame/ingredient.gd" id="1_3ab74"]
 [ext_resource type="Texture2D" uid="uid://dlekutnnm866s" path="res://Assets/Images/KitchenPuzzle/Ingredients/ingredientOnion.png" id="2_3ab74"]
+[ext_resource type="Texture2D" uid="uid://bcc07bxjv4fbc" path="res://Assets/Images/KitchenPuzzle/Ingredients/ingredientOnionChopped.png" id="3_7gabc"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_kvk3b"]
 rough = true
@@ -31,7 +32,9 @@ texture = ExtResource("2_3ab74")
 
 [node name="ChoppedSprite" type="Sprite2D" parent="."]
 visible = false
-scale = Vector2(0.53014815, 0.53014815)
+position = Vector2(3, 17)
+scale = Vector2(3.5221577, 3.5221577)
+texture = ExtResource("3_7gabc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["ingredients"]]
 position = Vector2(2, 6.9999995)

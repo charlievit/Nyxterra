@@ -1,0 +1,52 @@
+[gd_scene load_steps=6 format=3 uid="uid://vofwv43u6yru"]
+
+[ext_resource type="Script" uid="uid://dl1l46fikvopu" path="res://Scripts/CookingMinigame/ingredient.gd" id="1_6cc8g"]
+[ext_resource type="Texture2D" uid="uid://b3xyosqx7xt6a" path="res://Assets/Images/KitchenPuzzle/Ingredients/stockBox.png" id="2_c3y45"]
+[ext_resource type="Texture2D" uid="uid://bo6l7eq7c6jlr" path="res://Assets/Images/icon.svg" id="3_43ums"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s4ee8"]
+size = Vector2(26.426224, 25.2047)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ojgxo"]
+size = Vector2(50, 86)
+
+[node name="Stock Box" type="RigidBody2D" node_paths=PackedStringArray("potDetectorArea", "amountLabel") groups=["ingredients"]]
+input_pickable = true
+script = ExtResource("1_6cc8g")
+ingredientName = "Stock"
+ingredientType = 2
+pourRate = 2.0
+potDetectorArea = NodePath("potDetectionArea")
+amountLabel = NodePath("PourOrShake Amount Label")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+position = Vector2(0, -8)
+scale = Vector2(3.5777142, 3.5777142)
+texture = ExtResource("2_c3y45")
+
+[node name="ChoppedSprite" type="Sprite2D" parent="."]
+visible = false
+scale = Vector2(0.53014815, 0.53014815)
+texture = ExtResource("3_43ums")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["ingredients"]]
+position = Vector2(0, -1)
+scale = Vector2(1.8920621, 3.4120615)
+shape = SubResource("RectangleShape2D_s4ee8")
+
+[node name="potDetectionArea" type="Area2D" parent="."]
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="potDetectionArea"]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_ojgxo")
+
+[node name="PourOrShake Amount Label" type="RichTextLabel" parent="."]
+offset_left = 49.0
+offset_top = -60.0
+offset_right = 89.0
+offset_bottom = -20.0
+scale = Vector2(1.6869065, 1.6869065)
+theme_override_colors/default_color = Color(1, 0.84313726, 0.7647059, 1)
+bbcode_enabled = true
+text = "100"

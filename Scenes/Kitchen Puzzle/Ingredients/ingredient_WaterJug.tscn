@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bo6l7eq7c6jlr" path="res://Assets/Images/icon.svg" id="2_untll"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s4ee8"]
+size = Vector2(26.426224, 25.2047)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_veqd3"]
 radius = 38.052597
@@ -30,6 +31,7 @@ scale = Vector2(1.8920621, 3.4120615)
 shape = SubResource("RectangleShape2D_s4ee8")
 
 [node name="potDetectionArea" type="Area2D" parent="."]
+monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="potDetectionArea"]
 shape = SubResource("CircleShape2D_veqd3")

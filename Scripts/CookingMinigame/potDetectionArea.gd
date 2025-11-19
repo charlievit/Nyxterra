@@ -8,14 +8,17 @@ func _ready():
 	# Connect
 	self.body_entered.connect(OnBodyEntered)
 
-func OnBodyEntered(body: Node2D):
+func OnBodyEntered(body: RigidBody2D):
+	KitchenController.oneShotAudioPlayer.stream = KitchenController.plopSound
+	KitchenController.oneShotAudioPlayer.play()
+	
 	# Check if an ingredient entered
 	if not "ingredientType" in body:
 		return
 	
 	var type = body.get("ingredientType")
-	
-	if type == body.IngredientType.WHOLE or type == body.IngredientType.CHOPPABLE:
+	print(type)
+	if type == 0 or type == 1:
 		var ingredientID = body.get("ingredientName")
 		if body.get("isChopped"): # check against recipe
 			if not "(Chopped)" in ingredientID:
@@ -26,6 +29,10 @@ func OnBodyEntered(body: Node2D):
 		
 		# Delete the ingredient to prevent stacking in the pot and overflow
 		body.queue_free()
-	elif type == body.IngredientType.POURABLE or type == body.IngredientType.SHAKER: #this shouldn't be needed, but keeping just in case player manages to push containers into the pot
-		if body.has_method("ResetPosition"):
-			body.ResetPosition()
+	elif type == 2 or type == 3:
+		print("Opps, that doesn't go there!")
+		body.call_deferred("ResetPosition")
+		if type == 2:
+			KitchenController.ApplyPenalty(1)
+		else:
+			KitchenController.ApplyPenalty(2)
