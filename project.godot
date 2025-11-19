@@ -17,7 +17,9 @@ config/icon="res://Assets/Images/icon.svg"
 
 [autoload]
 
+TaskManager="*res://Scenes/UI/task_menu.tscn"
 KitchenController="*res://Scripts/CookingMinigame/kitchen_puzzle.gd"
+GameManager="*res://Scripts/GameManager.gd"
 
 [display]
 

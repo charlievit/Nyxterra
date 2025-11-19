@@ -12,19 +12,36 @@ const SNAP_DISTANCE = 20
 const heldGearScene = preload("res://Scenes/GearPuzzle/heldGear.tscn")
 const placedGearScene = preload("res://Scenes/GearPuzzle/placedGear.tscn")
 
+# EXPORT AUDIO
+@export_group("Audio Streams")
+@export var pickUpSound: AudioStream
+@export var placeSound: AudioStream
+@export var mainGameScenePath: String = "res://Scenes/main.tscn"
+
+# EXPORT RETURN SETTINGS
+@export_group("Return Settings")
+@export var returnFloorIndex = 4
+@export var returnPosition: Vector2 = Vector2(80, 208)
+
 # SCENE NODES
 @onready var startingGear: Area2D = $clippingMaskForGears/GearContainer/StartingGear
 @onready var endingGear: Area2D = $clippingMaskForGears/GearContainer/EndingGear
 @onready var pegContainer: Node2D = $clippingMaskForGears/PegContainer
 @onready var gearContainer: Node2D = $clippingMaskForGears/GearContainer
 
+# AUDIO NODES
+@onready var sfxPlayer: AudioStreamPlayer2D = $OneShotAudioPlayer
+@onready var loopPlayer: AudioStreamPlayer = $LoopAudioPlayer
+
 # STATES
 var isHoldingGear = false
 var heldGearInstance = null 
 var heldGearData = {}
 
+# LOGIC
 var allGears = []
 var puzzleSolved = false
+var lastPoweredCount = 0
 #endregion
 
 func _ready():
@@ -42,9 +59,19 @@ func _ready():
 	var allButtons = get_tree().get_nodes_in_group("Gear Buttons")
 	for button in allButtons:
 		button.gearButtonPressed.connect(onGearButtonPressed)
+	
+	# Start looping audio at base (-25.0) volume
+	if loopPlayer:
+		if not loopPlayer.playing:
+			loopPlayer.play()
+		loopPlayer.volume_db = -25.0
+	
+	TaskManager.shouldBeHidden = true
 
 # Called by the Gear Button signal to assign data to the instantiated held gear
 func onGearButtonPressed(buttonData: Dictionary):
+	PlaySFX(pickUpSound) # play pickup sound
+	
 	if isHoldingGear:
 		returnHeldGear()
 	
@@ -116,6 +143,8 @@ func handleGearDrop(_mousePosition: Vector2):
 		returnHeldGear()
 
 func placeGearOnPeg(peg: Node2D):
+	PlaySFX(placeSound) # play place sound
+	
 	# FIRST: Create and add a new "permanent" gear
 	var newGear = placedGearScene.instantiate()
 	gearContainer.add_child(newGear)
@@ -146,6 +175,8 @@ func placeGearOnPeg(peg: Node2D):
 func _on_placed_gear_clicked(gearToRemove: Area2D):
 	if isHoldingGear or puzzleSolved:
 		return
+	
+	PlaySFX(pickUpSound) # picking up a gear
 
 	if gearToRemove.originatingButton:
 		gearToRemove.originatingButton.returnGear()
@@ -158,6 +189,8 @@ func _on_placed_gear_clicked(gearToRemove: Area2D):
 	gearToRemove.queue_free()
 
 func returnHeldGear():
+	PlaySFX(placeSound) # putting gear back plays place sound
+	
 	#tell the original button to reappear
 	heldGearData["button"].returnGear()
 	
@@ -201,8 +234,47 @@ func _process(_delta):
 				#add it to the queue
 				processingQueue.append(otherGear)
 	
+	UpdateLoopVolume()
+	
 	# WIN CHECK
 	if not puzzleSolved and endingGear.isPowered == true:
-		puzzleSolved = true
 		emit_signal("puzzle_solved")
-		print("Puzzle Solved!")
+		TriggerWinState()
+
+func UpdateLoopVolume():
+	var currentPoweredCount = 0
+	
+	for gear in allGears:
+		if gear.isPowered:
+			currentPoweredCount += 1
+	
+	if currentPoweredCount != lastPoweredCount:
+		lastPoweredCount = currentPoweredCount
+		
+		var targetVolume = -25.0 + (float(currentPoweredCount) * 3.0)
+		
+		targetVolume = clamp(targetVolume, -25.0, -4.0)
+		
+		loopPlayer.volume_db = targetVolume
+
+func PlaySFX(stream: AudioStream):
+	if sfxPlayer and stream:
+		sfxPlayer.stream = stream
+		sfxPlayer.play()
+
+func TriggerWinState():
+	puzzleSolved = true
+	print("Puzzle Solved!")
+	TaskManager.CompleteTask("oneTime_gearBox")
+	loopPlayer.volume_db += 5.0
+	
+	GameManager.SetPlayerSpawn(returnFloorIndex, returnPosition)
+	
+	await get_tree().create_timer(3.0).timeout
+	TaskManager.shouldBeHidden = false
+	GameManager.needGearBox = false
+	
+	if ResourceLoader.exists(mainGameScenePath):
+		get_tree().change_scene_to_file(mainGameScenePath)
+	else:
+		push_error("ERROR: Main game scene path not found.")

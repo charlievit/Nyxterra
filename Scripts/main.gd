@@ -57,6 +57,8 @@ func _ready() -> void:
 	
 	currentState = DayState.NIGHT_IDLE
 	
+	TaskManager.shouldBeHidden = false
+	
 func _process(delta):
 	# Force the zoomed-in camera to follow the player every frame without showing off-screen details
 	var visibleSize = Vector2(SubVPort.size) / zoomCamera.zoom

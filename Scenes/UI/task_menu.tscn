@@ -1,0 +1,71 @@
+[gd_scene load_steps=6 format=3 uid="uid://bxfmchwss31t7"]
+
+[ext_resource type="Script" uid="uid://c1ano0mxhou43" path="res://Scripts/UI/task_menu.gd" id="1_wbwnl"]
+[ext_resource type="Texture2D" uid="uid://cx2lxil4ct2c3" path="res://Assets/Images/UI/taskMenuPopDownButton.png" id="2_8qum5"]
+[ext_resource type="Texture2D" uid="uid://bsrqyi7a25v3a" path="res://Assets/Images/UI/taskMenu_Arrow.png" id="3_gccdi"]
+[ext_resource type="Texture2D" uid="uid://ccivhor1sy68x" path="res://Assets/Images/UI/taskMenu_Alert.png" id="4_om70i"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wsu2k"]
+bg_color = Color(0.39607844, 0.36862746, 0.3372549, 1)
+
+[node name="TaskMenu" type="CanvasLayer"]
+layer = 100
+script = ExtResource("1_wbwnl")
+
+[node name="SlideController" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 940.0
+offset_top = 103.0
+offset_right = 980.0
+offset_bottom = 143.0
+
+[node name="TaskPanel" type="PanelContainer" parent="SlideController"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 0
+offset_left = -97.0
+offset_top = -103.0
+offset_right = 212.0
+offset_bottom = 109.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_wsu2k")
+
+[node name="VBox" type="VBoxContainer" parent="SlideController/TaskPanel"]
+layout_mode = 2
+
+[node name="TitleLabel" type="Label" parent="SlideController/TaskPanel/VBox"]
+layout_mode = 2
+text = "   Today's Tasks"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="SlideController/TaskPanel/VBox"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="TaskList" type="VBoxContainer" parent="SlideController/TaskPanel/VBox/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="TabButton" type="TextureButton" parent="SlideController"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 134.0
+offset_top = 108.0
+offset_right = 212.0
+offset_bottom = 166.0
+texture_normal = ExtResource("2_8qum5")
+stretch_mode = 0
+
+[node name="ArrowIcon" type="Sprite2D" parent="SlideController/TabButton"]
+texture_filter = 1
+position = Vector2(49, 14)
+scale = Vector2(2.072903, 2.072903)
+texture = ExtResource("3_gccdi")
+offset = Vector2(-5, 7)
+
+[node name="AlertIcon" type="Sprite2D" parent="SlideController/TabButton"]
+visible = false
+texture_filter = 1
+position = Vector2(39, 28)
+scale = Vector2(2.072903, 2.072903)
+texture = ExtResource("4_om70i")
+offset = Vector2(-0.205, 0.265)

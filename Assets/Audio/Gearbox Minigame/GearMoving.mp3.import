@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://c8sm3bxq23v6j"
+path="res://.godot/imported/GearMoving.mp3-cdf8533241f04de0349667acda8c9b38.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/Gearbox Minigame/GearMoving.mp3"
+dest_files=["res://.godot/imported/GearMoving.mp3-cdf8533241f04de0349667acda8c9b38.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

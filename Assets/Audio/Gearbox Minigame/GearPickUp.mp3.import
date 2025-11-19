@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://b0514jqjbkwn"
+path="res://.godot/imported/GearPickUp.mp3-6bfe139e2f3cafe0563aa7cd8cec8cd9.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/Gearbox Minigame/GearPickUp.mp3"
+dest_files=["res://.godot/imported/GearPickUp.mp3-6bfe139e2f3cafe0563aa7cd8cec8cd9.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

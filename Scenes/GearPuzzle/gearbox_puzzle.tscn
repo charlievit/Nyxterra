@@ -1,10 +1,12 @@
-[gd_scene load_steps=22 format=3 uid="uid://cgjogtocg0588"]
+[gd_scene load_steps=25 format=3 uid="uid://cgjogtocg0588"]
 
 [ext_resource type="Script" uid="uid://nay3bnx1m8u1" path="res://Scripts/GearPuzzle/gearbox_puzzle.gd" id="1_kkiwi"]
 [ext_resource type="PackedScene" uid="uid://bci03rqmrut0v" path="res://Scenes/GearPuzzle/Peg.tscn" id="2_er1fm"]
+[ext_resource type="AudioStream" uid="uid://b0514jqjbkwn" path="res://Assets/Audio/Gearbox Minigame/GearPickUp.mp3" id="2_lkrri"]
 [ext_resource type="Script" uid="uid://dp4v8os1wojjv" path="res://Scripts/GearPuzzle/clipping_mask_for_gears.gd" id="2_ojmt3"]
 [ext_resource type="Script" uid="uid://bin32awa18wuw" path="res://Scripts/GearPuzzle/BaseGear.gd" id="2_whrsu"]
 [ext_resource type="Texture2D" uid="uid://bxhlfogarrm4o" path="res://Assets/Images/GearPuzzle/Pins/Pin.png" id="3_a1smn"]
+[ext_resource type="AudioStream" uid="uid://chku86cxtix4c" path="res://Assets/Audio/Gearbox Minigame/GearPlaced.mp3" id="3_auwkq"]
 [ext_resource type="Texture2D" uid="uid://crwbc8bthjbux" path="res://Assets/Images/GearPuzzle/Structure/Gearbox.png" id="3_ufuea"]
 [ext_resource type="Texture2D" uid="uid://bgfmv3j3g4vis" path="res://Assets/Images/GearPuzzle/Structure/GearboxFrame.png" id="4_5ladj"]
 [ext_resource type="Script" uid="uid://br24pvqm774n1" path="res://Scripts/GearPuzzle/GearButton.gd" id="5_whrsu"]
@@ -13,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://qucqhoaonapk" path="res://Assets/Images/GearPuzzle/Pins/GearMounting.png" id="9_iw1ll"]
 [ext_resource type="Texture2D" uid="uid://bso61ejk5ooaj" path="res://Assets/Images/GearPuzzle/Gears/Colored/gear30tColoured.png" id="11_nrv7i"]
 [ext_resource type="Texture2D" uid="uid://dj6psk0y5b1n1" path="res://Assets/Images/GearPuzzle/Structure/Plaque.png" id="13_y2vhw"]
+[ext_resource type="AudioStream" uid="uid://c8sm3bxq23v6j" path="res://Assets/Audio/Gearbox Minigame/GearMoving.mp3" id="14_iw1ll"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_t55ma"]
 radius = 96.0
@@ -45,6 +48,8 @@ offset_bottom = 324.0
 grow_horizontal = 0
 grow_vertical = 2
 script = ExtResource("1_kkiwi")
+pickUpSound = ExtResource("2_lkrri")
+placeSound = ExtResource("3_auwkq")
 metadata/_edit_use_anchors_ = true
 
 [node name="clippingMaskForGears" type="Control" parent="."]
@@ -334,3 +339,11 @@ bbcode_enabled = true
 text = "Gear Storage"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="LoopAudioPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("14_iw1ll")
+volume_db = -25.0
+autoplay = true
+
+[node name="OneShotAudioPlayer" type="AudioStreamPlayer2D" parent="."]
+volume_db = 5.0

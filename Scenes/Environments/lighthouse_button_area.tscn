@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://bty042lmdfi02"]
+[gd_scene load_steps=32 format=3 uid="uid://bty042lmdfi02"]
 
 [ext_resource type="Texture2D" uid="uid://dumrws8pl1suf" path="res://Assets/Images/Lighthouse/Structure/LightRoomBuild1.png" id="1_680ea"]
 [ext_resource type="Texture2D" uid="uid://bnc5fep5l67u1" path="res://Assets/Images/Lighthouse/Structure/Floor3&4SampleScene.png" id="2_qkcrh"]
@@ -26,6 +26,8 @@
 [ext_resource type="Texture2D" uid="uid://duwb0ja6ld5j2" path="res://Assets/Images/Lighthouse/Structure/Turny Thing/frame0016.png" id="22_5xqbu"]
 [ext_resource type="Texture2D" uid="uid://6m75sw3kdspu" path="res://Assets/Images/Lighthouse/Structure/Turny Thing/frame0017.png" id="23_2tttr"]
 [ext_resource type="Script" uid="uid://qxikudipxih8" path="res://Scripts/mainGearAnimation.gd" id="24_kx1qn"]
+[ext_resource type="Texture2D" uid="uid://ca6i11k6uooa2" path="res://Assets/Images/icon2.svg" id="25_e3oeg"]
+[ext_resource type="Script" uid="uid://fo1o3pb5mktu" path="res://Scripts/GearPuzzle/gearBoxDetectionForMainScene.gd" id="26_cln54"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b2lj4"]
 size = Vector2(22.97748, 42.957886)
@@ -91,6 +93,9 @@ animations = [{
 "name": &"default",
 "speed": 12.0
 }]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e3oeg"]
+size = Vector2(35.241516, 28.88556)
 
 [node name="LIGHTHOUSE MINI MAP" type="Control"]
 custom_minimum_size = Vector2(29.15, 0)
@@ -234,13 +239,35 @@ offset_right = 52.987278
 offset_bottom = 18.021545
 text = "E"
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="MIDDLE"]
+[node name="MainGearTurningThingy" type="AnimatedSprite2D" parent="MIDDLE"]
 z_index = 2
 texture_filter = 1
 position = Vector2(167, 45)
 sprite_frames = SubResource("SpriteFrames_nobdy")
 frame_progress = 0.5776877
 script = ExtResource("24_kx1qn")
+
+[node name="PLACEHOLDER_GearBox" type="Sprite2D" parent="MIDDLE"]
+z_index = 2
+position = Vector2(134, 69)
+scale = Vector2(0.23770347, 0.3177035)
+texture = ExtResource("25_e3oeg")
+
+[node name="MinigameDetectionArea" type="Area2D" parent="MIDDLE/PLACEHOLDER_GearBox"]
+script = ExtResource("26_cln54")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MIDDLE/PLACEHOLDER_GearBox/MinigameDetectionArea"]
+position = Vector2(-63.103836, 40.918697)
+shape = SubResource("RectangleShape2D_e3oeg")
+
+[node name="ButtonPrompt" type="RichTextLabel" parent="MIDDLE/PLACEHOLDER_GearBox/MinigameDetectionArea"]
+texture_filter = 1
+offset_left = -189.31146
+offset_top = -141.64151
+offset_right = -84.600266
+offset_bottom = -116.861725
+scale = Vector2(2.3704095, 1.65129)
+text = "Gearbox 'E'"
 
 [node name="BOTTOM" type="Control" parent="."]
 layout_mode = 1
