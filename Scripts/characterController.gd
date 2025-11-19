@@ -29,6 +29,11 @@ var overlappingTeleporters: Array[Area2D] = []
 
 
 func _ready():
+	GameManager.ConsumeSpawnData(self)
+	
+	self.position = GameManager.playerSpawnPosition
+	currentFloor = GameManager.playerSpawnFloor
+	
 	# Store the sprite's default state
 	if sprite:
 		baseScale = sprite.scale

@@ -2,8 +2,9 @@ extends CanvasLayer
 
 # CONFIG
 @export var slideSpeed: float = 0.3
-var closedPosition: Vector2 = Vector2(940, -108)
+var closedPosition: Vector2 = Vector2(940, -110)
 var openPosition: Vector2 = Vector2(940, 103)
+var shouldBeHidden: bool = false
 
 # NODES
 @onready var slideController = $SlideController
@@ -26,12 +27,12 @@ func _ready():
 	
 	alertIcon.visible = false
 	alertIcon.rotation = 0
-	
-	# TEST
-	AddTask("daily_daughterCheck", "Check on daughter")
-	AddTask("oneTime_gearBoxGame", "Investigate gear box")
-	AddTask("daily_cookingGame", "Cook dinner")
-	
+
+func _process(_delta):
+	if shouldBeHidden:
+		self.visible = false
+	else:
+		self.visible = true
 
 func _input(event):
 	if event.is_action_pressed("toggle_tasks"):
@@ -136,6 +137,7 @@ func AddTask(task_ID: String, taskText: String):
 	TriggerNotification()
 
 func CompleteTask(task_ID: String):
+	print("Completing task...")
 	if not task_ID in activeTasks:
 		print("Error: Task ID not found -> ", task_ID)
 		return
