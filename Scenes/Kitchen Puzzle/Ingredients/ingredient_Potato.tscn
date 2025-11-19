@@ -1,11 +1,13 @@
-[gd_scene load_steps=6 format=3 uid="uid://q3vj4se52lc7"]
+[gd_scene load_steps=7 format=3 uid="uid://q3vj4se52lc7"]
 
 [ext_resource type="Script" uid="uid://dl1l46fikvopu" path="res://Scripts/CookingMinigame/ingredient.gd" id="1_kvk3b"]
 [ext_resource type="Texture2D" uid="uid://dejhftkmsbflx" path="res://Assets/Images/KitchenPuzzle/Ingredients/ingredientPotato.png" id="2_kvk3b"]
+[ext_resource type="Texture2D" uid="uid://c4kmff77105e" path="res://Assets/Images/KitchenPuzzle/Ingredients/ingredientPotatoChopped.png" id="3_84m0t"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_kvk3b"]
 rough = true
-bounce = 0.2
+bounce = 0.05
+absorbent = true
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_84m0t"]
 radius = 17.02692
@@ -27,17 +29,20 @@ amountLabel = NodePath("PourOrShake Amount Label")
 
 [node name="Sprite" type="Sprite2D" parent="."]
 position = Vector2(-3.3137016, -2.3137016)
-rotation = 0.878045
+rotation = 0.93758875
 scale = Vector2(2.4272254, 2.4272254)
 texture = ExtResource("2_kvk3b")
 
 [node name="ChoppedSprite" type="Sprite2D" parent="."]
 visible = false
-scale = Vector2(0.53014815, 0.53014815)
+position = Vector2(0, -3)
+rotation = -0.018204233
+scale = Vector2(2.6834228, 2.6834228)
+texture = ExtResource("3_84m0t")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["ingredients"]]
 position = Vector2(-0.31370163, -0.31370163)
-rotation = 1.4950166
+rotation = 1.5545603
 shape = SubResource("CapsuleShape2D_84m0t")
 
 [node name="potDetectionArea" type="Area2D" parent="."]

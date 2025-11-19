@@ -7,14 +7,25 @@ var heatDial: Button
 var potArea: Area2D
 var progressBar: ProgressBar
 var recipeInstructions: Node
+var fireAnimLow: AnimatedSprite2D
+var fireAnimMedium: AnimatedSprite2D
+var fireAnimHigh: AnimatedSprite2D
+var steamAnim: AnimatedSprite2D
+var steamUpdate: int = 0
+var currentSteamSpeed: float = 0.0
+const STEAM_STEP_DELAY: float = 6.0
+var oneShotAudioPlayer: AudioStreamPlayer2D
+var constantAudioPlayer: AudioStreamPlayer2D
+var currentSizzleVolume: float = 0.0
 #endregion NODES
-#region DELETE THIS LATER
-var TESTING_RECIPE_NOTIFICATION_FEED: RichTextLabel
-	#region _PRIVATES
-var _newText: String
-var _indent: String = "\n"
-	#endregion _PRIVATES
-#endregion DELETE THIS LATER
+
+#region SOUNDS
+var chopSound: AudioStreamMP3
+var plopSound: AudioStreamMP3
+var boilingSound: AudioStreamMP3
+var stoveOffSound: AudioStreamMP3
+var stoveOnSound: AudioStreamMP3
+#endregion SOUNDS
 
 #region PROGRESS BAR
 var barStyleWait: StyleBoxFlat
@@ -40,42 +51,180 @@ const STEP_END_COLOR = Color.DARK_RED
 #	Wait time is the amount of time it takes to cook those ingredients
 #	"time" is the challenge timer, the amount of time you have to complete the step before you risk burning or overcooking the food
 #		a "time" of 0.0 means that there is no time limit to this step (rewarding mise en place)
-var recipes = { # TODO: make easier recipes for early-game
-	"TestRecipeHard": [
+var recipes = {
+	# LEVEL 1: Beginner
+	# Goal: Tutorial pace. Impossible to fail unless AFK.
+	"BarfitStovies": [
+		# Step 1: Heat oil (Low Heat)
+		# Burn Timer: 0.0 (Start)
 		{"heat": 50.0, "ingredients": [
-			{"name": "Oil", "type": "Pourable", "amount": 2}
-		], "wait": 2.0, "time": 0.0},
+			{"name": "Oil", "type": "Pourable", "amount": 5}
+		], "wait": 10.0, "time": 0.0},
 		
+		# Step 2: Caramelize onions (Low Heat)
+		# Burn Timer: 60.0 (Oil takes a long time to smoke at low heat)
+		{"heat": 25.0, "ingredients": [
+			{"name": "Onion (Chopped)", "type": "Whole", "amount": 5},
+			{"name": "Salt", "type": "Shaker", "amount": 5}
+		], "wait": 45.0, "time": 60.0},
+		
+		# Step 3: Steam Potatoes (Medium Heat)
+		# Burn Timer: 45.0 (Onions are caramelized, plenty of time)
+		{"heat": 50.0, "ingredients": [
+			{"name": "Potato (Chopped)", "type": "Whole", "amount": 5},
+			{"name": "Stock", "type": "Pourable", "amount": 10}
+		], "wait": 30.0, "time": 45.0},
+		
+		# Step 4: Simmer (Low Heat)
+		# Burn Timer: 99.0 (Liquid stock prevents burning entirely)
+		{"heat": 25.0, "ingredients": [], "wait": 15.0, "time": 99.0},
+		
+		# Step 5: Season
+		# Burn Timer: 60.0 (Simmering stew is safe)
+		{"heat": 25.0, "ingredients": [
+			{"name": "Parsley", "type": "Whole", "amount": 1},
+			{"name": "Pepper", "type": "Shaker", "amount": 5}
+		], "wait": 5.0, "time": 60.0},
+		
+		# END MARKER
+		{"heat": 0.0, "ingredients": [], "wait": 0.0, "time": 0.0}
+	],
+
+	# LEVEL 2: Easy
+	# Goal: Introduction to timing. The "Glaze" step introduces a risk of burning at the end.
+	"BraisedRoots": [
+		# Step 1: Heat oil
+		{"heat": 50.0, "ingredients": [
+			{"name": "Oil", "type": "Pourable", "amount": 3},
+		], "wait": 10.0, "time": 0.0},
+		
+		# Step 2: Combine ingredients
+		# Burn Timer: 40.0 (Oil is hot, but forgiving)
+		{"heat": 50.0, "ingredients": [
+			{"name": "Carrot (Chopped)", "type": "Whole", "amount": 2},
+			{"name": "Potato (Chopped)", "type": "Whole", "amount": 4},
+			{"name": "Garlic (Chopped)", "type": "Whole", "amount": 1}
+		], "wait": 25.0, "time": 40.0},
+		
+		# Step 3: Braise
+		# Burn Timer: 30.0 (Garlic/Veg sauteing)
+		{"heat": 50.0, "ingredients": [
+			{"name": "Stock", "type": "Pourable", "amount": 5},
+			{"name": "Thyme", "type": "Whole", "amount": 2},
+			{"name": "Salt", "type": "Shaker", "amount": 3}
+		], "wait": 30.0, "time": 30.0},
+		
+		# Step 4: Glaze (High Heat Reduction)
+		# Burn Timer: 99.0 (Liquid won't burn yet)
+		{"heat": 100.0, "ingredients": [], "wait": 15.0, "time": 99.0},
+
+		# Step 5: Deglaze / Finish (DANGER STEP)
+		# Burn Timer: 8.0 (The glaze has reduced to sugar/fat and is on High Heat. Add water fast!)
+		{"heat": 25.0, "ingredients": [
+			{"name": "Water", "type": "Pourable", "amount": 2}
+		], "wait": 5.0, "time": 8.0},
+		
+		# END MARKER
+		{"heat": 0.0, "ingredients": [], "wait": 0.0, "time": 0.0}
+	],
+
+	# LEVEL 3: Moderate
+	# Goal: Consistent pace required.
+	"ScotchTattieSoup": [
+		# Step 1: Slowly heat oil
+		{"heat": 25.0, "ingredients": [
+			{"name": "Oil", "type": "Pourable", "amount": 3},
+		], "wait": 10.0, "time": 0.0},
+		
+		# Step 2: Saute onions
+		# Burn Timer: 30.0
+		{"heat": 50.0, "ingredients": [
+			{"name": "Onion (Chopped)", "type": "Whole", "amount": 1},
+			{"name": "Pepper", "type": "Shaker", "amount": 6},
+			{"name": "Salt", "type": "Shaker", "amount": 3},
+		], "wait": 20.0, "time": 30.0},
+		
+		# Step 3: Saute aromatics
+		# Burn Timer: 20.0 (Onions are cooking)
+		{"heat": 50.0, "ingredients": [
+			{"name": "Carrot (Chopped)", "type": "Whole", "amount": 2},
+			{"name": "Garlic (Chopped)", "type": "Whole", "amount": 1}
+		], "wait": 20.0, "time": 20.0},
+		
+		# Step 4: Add liquids
+		# Burn Timer: 15.0 (Garlic is in the pan! Hurry!)
+		{"heat": 50.0, "ingredients": [
+			{"name": "Stock", "type": "Pourable", "amount": 10},
+			{"name": "Water", "type": "Pourable", "amount": 5},
+		], "wait": 5.0, "time": 15.0},
+		
+		# Step 5: Bring to a boil
+		# Burn Timer: 99.0 (Liquid safe)
+		{"heat": 100.0, "ingredients": [], "wait": 25.0, "time": 99.0},
+		
+		# Step 6: Add potatoes and thyme
+		# Burn Timer: 45.0 (Reduction taking place)
+		{"heat": 100.0, "ingredients": [
+			{"name": "Potato (Chopped)", "type": "Whole", "amount": 4},
+			{"name": "Thyme", "type": "Whole", "amount": 2}
+		], "wait": 40.0, "time": 45.0},
+		
+		# END MARKER
+		{"heat": 0.0, "ingredients": [], "wait": 0.0, "time": 0.0}
+	],
+
+	# LEVEL 4: Hardest
+	# Goal: Mise en place is mandatory. Garlic burns instantly.
+	"RabbitStew": [
+		# Step 1: Heat Oil
+		{"heat": 25.0, "ingredients": [
+			{"name": "Oil", "type": "Pourable", "amount": 2},
+			{"name": "Pepper", "type": "Shaker", "amount": 2}
+		], "wait": 5.0, "time": 0.0},
+		
+		# Step 2: Add Onions
+		# Burn Timer: 15.0 (Hot oil)
 		{"heat": 50.0, "ingredients": [
 			{"name": "Onion (Chopped)", "type": "Whole", "amount": 2}
-		], "wait": 2.0, "time": 30.0},
+		], "wait": 15.0, "time": 15.0},
 		
+		# Step 3: Add Garlic
+		# Burn Timer: 15.0 (Onions browning)
 		{"heat": 25.0, "ingredients": [
 			{"name": "Garlic (Chopped)", "type": "Whole", "amount": 1}
-		], "wait": 2.0, "time": 35.0},
+		], "wait": 10.0, "time": 15.0},
 		
+		# Step 4: Add Veg & Water (CRITICAL STEP)
+		# Burn Timer: 5.0 (Garlic burns in 5 seconds! Must have potatoes ready!)
 		{"heat": 100.0, "ingredients": [
 			{"name": "Potato (Chopped)", "type": "Whole", "amount": 3},
 			{"name": "Carrot (Chopped)", "type": "Whole", "amount": 1},
-			{"name": "Water", "type": "Pourable", "amount": 10}
-		], "wait": 2.0, "time": 45.0},
+			{"name": "Water", "type": "Pourable", "amount": 20}
+		], "wait": 20.0, "time": 18.0},
 		
+		# Step 5: Add Rabbit & Stock
+		# Burn Timer: 45.0 (Water prevents burning)
 		{"heat": 25.0, "ingredients": [
 			{"name": "Rabbit (Chopped)", "type": "Whole", "amount": 1},
-			{"name": "Stock", "type": "Pourable", "amount": 5},
-		], "wait": 2.0, "time": 30.0},
+			{"name": "Stock", "type": "Pourable", "amount": 10},
+		], "wait": 30.0, "time": 45.0},
 		
+		# Step 6: Herbs
+		# Burn Timer: 30.0 (Simmering)
 		{"heat": 25.0, "ingredients": [
 			{"name": "Thyme", "type": "Whole", "amount": 2},
 			{"name": "Parsley", "type": "Whole", "amount": 2},
 			{"name": "Rosemary", "type": "Whole", "amount": 1}
-		], "wait": 2.0, "time": 30.0},
+		], "wait": 10.0, "time": 30.0},
 		
+		# Step 7: Final Seasoning
+		# Burn Timer: 30.0
 		{"heat": 25.0, "ingredients": [
-			{"name": "Salt", "type": "Shaker", "amount": 8},
-			{"name": "Pepper", "type": "Shaker", "amount": 4}
-		], "wait": 2.0, "time": 15.0},
+			{"name": "Salt", "type": "Shaker", "amount": 10},
+			{"name": "Pepper", "type": "Shaker", "amount": 2}
+		], "wait": 5.0, "time": 30.0},
 		
+		# END MARKER
 		{"heat": 0.0, "ingredients": [], "wait": 0.0, "time": 0.0}
 	]
 }
@@ -137,6 +286,9 @@ func _ready():
 	
 	set_process(false)
 
+func OnLoopSound(player):
+	player.play()
+
 func _process(_delta): #this is purely for the progress bar
 	if isWaiting:
 		# Blue bar, counts up
@@ -170,19 +322,26 @@ func UpdateStepTimerColor(percent: float): # This function lerps the color of th
 	
 	progressBar.add_theme_stylebox_override("fill", barStyleStep)
 
-func RegisterNodes(heatDialNode: Button, potAreaNode: Area2D, progressBarNode: ProgressBar, notifications: RichTextLabel, recipeParser: Node):
+func RegisterNodes(heatDialNode: Button, potAreaNode: Area2D, progressBarNode: ProgressBar, recipeParser: Node, fireAnimNodeLow: AnimatedSprite2D, fireAnimNodeMedium: AnimatedSprite2D, fireAnimNodeHigh: AnimatedSprite2D, steamAnimNode: AnimatedSprite2D, oneShotAudioNode: AudioStreamPlayer2D, constantAudioNode: AudioStreamPlayer2D):
 	# This func is called by the Autoload to reference all needed nodes
 	heatDial = heatDialNode
 	potArea = potAreaNode
 	progressBar = progressBarNode
-	TESTING_RECIPE_NOTIFICATION_FEED = notifications
 	recipeInstructions = recipeParser
+	fireAnimLow = fireAnimNodeLow
+	fireAnimMedium = fireAnimNodeMedium
+	fireAnimHigh = fireAnimNodeHigh
+	steamAnim = steamAnimNode
+	steamAnim.speed_scale = 1.0
+	oneShotAudioPlayer = oneShotAudioNode
+	constantAudioPlayer = constantAudioNode
 	
 	# Connect to the heat dial's signal
 	if heatDial:
 		heatDial.connect("ValueChanged", OnHeatDialValueChanged)
 		if heatDial.has_method("GetValue"):
 			currentHeat = heatDial.GetValue()
+			SetFireAndSteamAnimations(currentHeat)
 			print("Heat Dial Value: %.0f" % currentHeat)
 		else:
 			push_error("ERROR: Heat dial missing GetValue() method") 
@@ -203,6 +362,13 @@ func RegisterNodes(heatDialNode: Button, potAreaNode: Area2D, progressBarNode: P
 	
 	set_process(true)
 
+func PrepareSounds(chopSoundFile, plopSoundFile, boilingSoundFile, stoveOffSoundFile, stoveOnSoundFile):
+	chopSound = chopSoundFile
+	plopSound = plopSoundFile
+	boilingSound = boilingSoundFile
+	stoveOffSound = stoveOffSoundFile
+	stoveOnSound = stoveOnSoundFile
+
 # Reset the recipe if beyond a failure threshold or on button press at player-will
 func ResetRecipe():
 	if activeRecipe.is_empty():
@@ -213,9 +379,12 @@ func ResetRecipe():
 	print("Resetting recipe...")
 	StartRecipe(currentRecipeName)
 
+func ApplyPenalty(amount: int):
+	recipeQuality -= amount
+	print("Penalty applied: -%d. New quality: %d" % [amount, recipeQuality])
+
 func StartRecipe(recipeName: String):
 	print("Starting recipe: %s" % recipeName)
-	TESTING_RECIPE_NOTIFICATION_FEED.text = "Starting recipe: %s" % recipeName
 	
 	currentRecipeName = recipeName #store in case of reset needed
 	
@@ -258,63 +427,157 @@ func LoadStep(index: int):
 	
 	# Print debug stuff for playtesting
 	print("STEP %d" % (index + 1))
-	_newText = "STEP %d" % (index + 1)
-	TESTING_RECIPE_NOTIFICATION_FEED.text += _indent
-	TESTING_RECIPE_NOTIFICATION_FEED.text += _newText
 	print("Set heat to: %.0f" % currentStepData["heat"])
-	_newText = "Set heat to: %.0f" % currentStepData["heat"]
-	TESTING_RECIPE_NOTIFICATION_FEED.text += _indent
-	TESTING_RECIPE_NOTIFICATION_FEED.text += _newText
 	
 	# Logic checks to ingredients needed
 	for solidName in currentStepIngredientsNeeded:
 		var solidData = currentStepIngredientsNeeded[solidName]
 		print("Add: %d of %s" % [solidData.needed, solidName])
-		_newText = "Add: %d of %s" % [solidData.needed, solidName]
-		TESTING_RECIPE_NOTIFICATION_FEED.text += _indent
-		TESTING_RECIPE_NOTIFICATION_FEED.text += _newText
 	for liquidName in currentStepPartialIngredientsNeeded:
 		var liquidData = currentStepPartialIngredientsNeeded[liquidName]
 		print("Add: %.0f of %s" % [liquidData.needed, liquidName])
-		_newText = "Add: %.0f of %s" % [liquidData.needed, liquidName]
-		TESTING_RECIPE_NOTIFICATION_FEED.text += _indent
-		TESTING_RECIPE_NOTIFICATION_FEED.text += _newText
 
 func OnHeatDialValueChanged(newHeatValue: float):
 	print("Heat set to: %.0f" % newHeatValue)
-	_newText = "Heat set to: %.0f" % newHeatValue
-	TESTING_RECIPE_NOTIFICATION_FEED.text += _indent
-	TESTING_RECIPE_NOTIFICATION_FEED.text += _newText
+	if newHeatValue > currentHeat:
+		oneShotAudioPlayer.stream = stoveOnSound
+		oneShotAudioPlayer.play()
+	else:
+		oneShotAudioPlayer.stream = stoveOffSound
+		oneShotAudioPlayer.play()
+	
+	if currentHeat == 0 and newHeatValue > 0:
+		constantAudioPlayer.stream = boilingSound
+		constantAudioPlayer.volume_db = -45.0
+		constantAudioPlayer.play()
+		constantAudioPlayer.autoplay = true
+	
 	currentHeat = newHeatValue
+	
+	SetFireAndSteamAnimations(currentHeat)
 	
 	# Check for wrong heat
 	if currentHeat != currentStepData["heat"]:
 		print("WRONG HEAT! Expected %.0f" % currentStepData["heat"])
-		_newText = "WRONG HEAT! Expected %.0f" % currentStepData["heat"]
-		TESTING_RECIPE_NOTIFICATION_FEED.text += _indent
-		TESTING_RECIPE_NOTIFICATION_FEED.text += _newText
 	else:
 		print("Correct heat set.")
-		_newText = "Correct heat set."
-		TESTING_RECIPE_NOTIFICATION_FEED.text += _indent
-		TESTING_RECIPE_NOTIFICATION_FEED.text += _newText
 	
 	# Check if this step is done now
 	CheckStepComplete()
 
+func SetFireAndSteamAnimations(heatLevel: float):
+	# FIRST: Reset everything 
+	fireAnimLow.visible = false
+	fireAnimLow.stop()
+	fireAnimMedium.visible = false
+	fireAnimMedium.stop()
+	fireAnimHigh.visible = false
+	fireAnimHigh.stop()
+	
+	var targetSteamSpeed: float = 0.0
+	var targetVolume: float = -80.0
+	
+	# SECOND: Set targets based on heat level
+	match heatLevel:
+		0.0:
+			targetSteamSpeed = 0.0
+			targetVolume = -80.0
+			pass
+		25.0:
+			fireAnimLow.visible = true
+			fireAnimLow.play("default")
+			targetSteamSpeed = 1.0
+			targetVolume = -12.0
+		50.0:
+			fireAnimMedium.visible = true
+			fireAnimMedium.play("default")
+			targetSteamSpeed = 2.0
+			targetVolume = -8.0
+		100.0:
+			fireAnimHigh.visible = true
+			fireAnimHigh.play("default")
+			targetSteamSpeed = 3.0
+			targetVolume = -4.0
+		_:
+			push_error("Heat value (%f) outside expected ranges." % heatLevel)
+			return
+	
+	# THIRD: Calculate the sync between the steam animation and the boiling sounds
+	var speedDiff = abs(targetSteamSpeed - currentSteamSpeed)
+	var fadeDuration = speedDiff * STEAM_STEP_DELAY
+	
+	# FOURTH: Tween the audio slowly to target value
+	var audioTween = get_tree().create_tween()
+	
+	if heatLevel > 0.0:
+		if not constantAudioPlayer.playing:
+			constantAudioPlayer.volume_db = -80.0
+			constantAudioPlayer.play()
+		
+		audioTween.tween_property(constantAudioPlayer, "volume_db", targetVolume, fadeDuration)
+	else:
+		audioTween.tween_property(constantAudioPlayer, "volume_db", targetVolume, fadeDuration)
+	
+	# FIFTH: Update steam animation to target values
+	steamUpdate += 1
+	var currentUpdate = steamUpdate
+	
+	var startSpeed = currentSteamSpeed
+	var endSpeed = targetSteamSpeed
+	
+	if startSpeed < endSpeed: # Heating up
+		var speedToSet = startSpeed + 1.0
+		
+		while speedToSet <= endSpeed:
+			await get_tree().create_timer(STEAM_STEP_DELAY).timeout
+			
+			if currentUpdate != steamUpdate:
+				return
+			
+			steamAnim.visible = true
+			if not steamAnim.is_playing():
+				steamAnim.play("default")
+			
+			await  get_tree().create_timer(STEAM_STEP_DELAY).timeout
+			steamAnim.speed_scale = speedToSet
+			currentSteamSpeed = speedToSet
+			
+			speedToSet += 1
+	elif startSpeed > endSpeed: # Cooling down
+		var speedToSet = startSpeed - 1.0
+		
+		while speedToSet >= endSpeed:
+			await get_tree().create_timer(STEAM_STEP_DELAY).timeout
+			
+			if currentUpdate != steamUpdate:
+				return
+			
+			currentSteamSpeed = speedToSet
+			
+			if speedToSet == 0.0:
+				steamAnim.visible = false
+				steamAnim.stop()
+			else:
+				steamAnim.speed_scale = speedToSet
+			
+			speedToSet -= 1.0
+	
+	# FINAL: Cleanup
+	if heatLevel == 0.0:
+		if audioTween.is_running():
+			await audioTween.finished
+		# Quick check to see if new targets assigned while waiting
+		if currentUpdate == steamUpdate:
+			constantAudioPlayer.stop()
+	
+
 func OnPotIngredientAdded(ingredientName: String): # This is for the WHOLE or CHOPPED ingredients
 	print("Solid ingredient added to pot: %s" % ingredientName)
-	_newText = "Solid ingredient added to pot: %s" % ingredientName
-	TESTING_RECIPE_NOTIFICATION_FEED.text += _indent
-	TESTING_RECIPE_NOTIFICATION_FEED.text += _newText
 	
 	# Reduce quality if heat is wrong
 	if currentHeat != currentStepData["heat"]:
 		print("Added %s at the wrong temperature! Expected %.0f." % [ingredientName, currentStepData["heat"]])
-		_newText = "Added %s at the wrong temperature! Expected %.0f." % [ingredientName, currentStepData["heat"]]
-		TESTING_RECIPE_NOTIFICATION_FEED.text += _indent
-		TESTING_RECIPE_NOTIFICATION_FEED.text += _newText
-		recipeQuality -= 5
+		ApplyPenalty(5)
 
 	if currentStepIngredientsNeeded.has(ingredientName):
 		# Ingredient needed, update
@@ -324,23 +587,14 @@ func OnPotIngredientAdded(ingredientName: String): # This is for the WHOLE or CH
 		if solidData.current > solidData.needed:
 			# Too many added
 			print("Added too many %s. (%d / %d)" % [ingredientName, solidData.current, solidData.needed])
-			_newText = "Added too many %s. (%d / %d)" % [ingredientName, solidData.current, solidData.needed]
-			TESTING_RECIPE_NOTIFICATION_FEED.text += _indent
-			TESTING_RECIPE_NOTIFICATION_FEED.text += _newText
-			recipeQuality -= 5 # Penalty for over-adding
+			ApplyPenalty(5) # Penalty for over-adding
 		else:
 			# Correct additions
 			print("Correctly added %s. (%d / %d)" % [ingredientName, solidData.current, solidData.needed])
-			_newText = "Correctly added %s. (%d / %d)" % [ingredientName, solidData.current, solidData.needed]
-			TESTING_RECIPE_NOTIFICATION_FEED.text += _indent
-			TESTING_RECIPE_NOTIFICATION_FEED.text += _newText
 	else:
 		# Ingredient was not needed
 		print("%s not needed for this step." % ingredientName)
-		_newText = "%s not needed for this step." % ingredientName
-		TESTING_RECIPE_NOTIFICATION_FEED.text += _indent
-		TESTING_RECIPE_NOTIFICATION_FEED.text += _newText
-		recipeQuality -= 5
+		ApplyPenalty(5)
 	
 	# Check to end this step
 	CheckStepComplete()
@@ -349,27 +603,18 @@ func AddPartialIngredient(ingredientName: String, amount: float): # This is for 
 	# Ensure correct heat, or else
 	if currentHeat != currentStepData["heat"]:
 		print("Added %s at the wrong temperature." % ingredientName)
-		_newText = "Added %s at the wrong temperature." % ingredientName
-		TESTING_RECIPE_NOTIFICATION_FEED.text += _indent
-		TESTING_RECIPE_NOTIFICATION_FEED.text += _newText
-		recipeQuality -= 5
+		ApplyPenalty(5)
 	
 	if currentStepPartialIngredientsNeeded.has(ingredientName):
 		# Ingredient needed
 		var liquidData = currentStepPartialIngredientsNeeded[ingredientName]
 		liquidData.current += amount
 		print("Added %.0f of %s. Total: %.0f / %.0f" % [amount, ingredientName, liquidData.current, liquidData.needed])
-		_newText = "Added %.0f of %s. Total: %.0f / %.0f" % [amount, ingredientName, liquidData.current, liquidData.needed]
-		TESTING_RECIPE_NOTIFICATION_FEED.text += _indent
-		TESTING_RECIPE_NOTIFICATION_FEED.text += _newText
 		CheckStepComplete()
 	else:
 		# Ingredient not needed
 		print("%s not needed for this step." % ingredientName)
-		_newText = "%s not needed for this step." % ingredientName
-		TESTING_RECIPE_NOTIFICATION_FEED.text += _indent
-		TESTING_RECIPE_NOTIFICATION_FEED.text += _newText
-		recipeQuality -= 5
+		ApplyPenalty(10)
 
 func CheckStepComplete():
 	# This is the main logic, called after any player action
@@ -398,9 +643,6 @@ func CheckStepComplete():
 	# Reset timers
 	if isStepTiming or isOvertime:
 		print("Step %d complete." % (currentStepIndex + 1))
-		_newText = "Step %d complete." % (currentStepIndex + 1)
-		TESTING_RECIPE_NOTIFICATION_FEED.text += _indent
-		TESTING_RECIPE_NOTIFICATION_FEED.text += _newText
 		stepTimer.stop()
 		overtimeTimer.stop()
 		isStepTiming = false
@@ -414,10 +656,7 @@ func CheckStepComplete():
 		if overdose > 0:
 			totalOverdose += overdose
 			print("Too much %s by %.0f." % [liquidName, overdose])
-			_newText = "Too much %s by %.0f." % [liquidName, overdose]
-			TESTING_RECIPE_NOTIFICATION_FEED.text += _indent
-			TESTING_RECIPE_NOTIFICATION_FEED.text += _newText
-	recipeQuality -= floor(totalOverdose)
+	ApplyPenalty(floor(totalOverdose))
 	
 	# FIFTH. Start wait timer
 	StartWaitTimer()
@@ -429,9 +668,6 @@ func StartWaitTimer():
 	if waitTime > 0:
 		if waitTimer.is_stopped():
 			print("Waiting %.0f seconds..." % waitTime)
-			_newText = "Waiting %.0f seconds..." % waitTime
-			TESTING_RECIPE_NOTIFICATION_FEED.text += _indent
-			TESTING_RECIPE_NOTIFICATION_FEED.text += _newText
 			progressBar.visible = true
 			progressBar.max_value = waitTime
 			progressBar.value = 0
@@ -440,18 +676,12 @@ func StartWaitTimer():
 			waitTimer.start()
 	else:
 		print("No wait time, proceed to next step.")
-		_newText = "No wait time, proceed to next step."
-		TESTING_RECIPE_NOTIFICATION_FEED.text += _indent
-		TESTING_RECIPE_NOTIFICATION_FEED.text += _newText
 		OnWaitTimerTimeout()
 
 func OnWaitTimerTimeout():
 	waitTimer.stop()
 	isWaiting = false
 	print("Wait complete.")
-	_newText = "Wait complete."
-	TESTING_RECIPE_NOTIFICATION_FEED.text += _indent
-	TESTING_RECIPE_NOTIFICATION_FEED.text += _newText
 	
 	AdvanceToNextStep()
 
@@ -476,20 +706,13 @@ func OnStepTimerTimeout():
 	isStepTiming = false
 	isOvertime = true
 	print("Food is being overcooked.")
-	_newText = "Food is being overcooked."
-	TESTING_RECIPE_NOTIFICATION_FEED.text += _indent
-	TESTING_RECIPE_NOTIFICATION_FEED.text += _newText
 	
 	progressBar.add_theme_stylebox_override("fill", barStyleOvertime) # setting to red
 	progressBar.value = progressBar.max_value
 	overtimeTimer.start()
 
 func OnOvertimeTimerTimeout():
-	recipeQuality -= 1
-	print("Overcooked | -1 quality. Total %d" % recipeQuality)
-	_newText = "Overcooked | -1 quality. Total %d" % recipeQuality
-	TESTING_RECIPE_NOTIFICATION_FEED.text += _indent
-	TESTING_RECIPE_NOTIFICATION_FEED.text += _newText
+	ApplyPenalty(1)
 
 func AdvanceToNextStep():
 	currentStepIndex += 1
@@ -497,9 +720,6 @@ func AdvanceToNextStep():
 	if currentStepIndex >= activeRecipe.size():
 		# Recipe finished
 		print("Recipe complete. Final Quality: %d" % recipeQuality)
-		_newText = "Recipe complete. Final Quality: %d" % recipeQuality
-		TESTING_RECIPE_NOTIFICATION_FEED.text += _indent
-		TESTING_RECIPE_NOTIFICATION_FEED.text += _newText
 		progressBar.visible = false
 	else:
 		# Load next step and start new timer

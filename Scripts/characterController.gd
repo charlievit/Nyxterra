@@ -2,21 +2,22 @@
 extends CharacterBody2D
 
 #region VARIABLES
-@export var moveSpeed: float = 60.0
+@export var moveSpeed: float = 90.0
 
 @export_group("Floor Effects")
 @export var scalePerFloor: float = 0.1
 @export var darkenPerFloor: float = 0.25
 
 # PLACEHOLDER
-@onready var sprite: Sprite2D = $Sprite
-#@onready var animSprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var sprite: Sprite2D = $Sprite2D
+@onready var animSprite: AnimatedSprite2D = $Sprite
 
 # Stores the current floor the player is of for latter mapping of Y-values
 var currentFloor: int = 1
 
 # Stores the sprite's starting scale and color (this should be the same at the bottom of each floor)
 var baseScale: Vector2 = Vector2.ONE
+var animBaseScale: Vector2 = Vector2(0.124, 0.124)
 var baseModulation: Color = Color.WHITE
 
 # Y-boundaries
@@ -32,6 +33,8 @@ func _ready():
 	if sprite:
 		baseScale = sprite.scale
 		baseModulation = sprite.modulate
+	if animSprite:
+		animBaseScale = animSprite.scale
 	
 	# Set initial floor boundaries
 	SetFloor(currentFloor)
@@ -48,6 +51,13 @@ func _physics_process(_delta):
 	
 	# Update Animation NOTE: PLACEHOLDER
 	UpdateAnimation(inputVector)
+	
+	if Input.is_action_pressed("sprint"):
+		moveSpeed = 120
+		animSprite.speed_scale = 2.0
+	else:
+		moveSpeed = 60
+		animSprite.speed_scale = 1.0
 
 
 func _unhandled_input(event: InputEvent):
@@ -111,27 +121,36 @@ func UpdateSpriteEffects(): # Runs every frame
 	
 	# Apply the new values
 	sprite.scale = baseScale * scaleAmount
+	animSprite.scale = animBaseScale * scaleAmount
 	
 	# Modulate RGB only, keeping alpha unchanged
 	sprite.modulate.r = baseModulation.r * colorAmount
 	sprite.modulate.g = baseModulation.g * colorAmount
 	sprite.modulate.b = baseModulation.b * colorAmount
 	sprite.modulate.a = baseModulation.a
+	
+	animSprite.modulate.r = baseModulation.r * colorAmount
+	animSprite.modulate.g = baseModulation.g * colorAmount
+	animSprite.modulate.b = baseModulation.b * colorAmount
+	animSprite.modulate.a = baseModulation.a
 
 
 func UpdateAnimation(_inputVector: Vector2):
-	# TODO: animation functions
-	
 	if velocity.length() > 0:
 		# Player is moving
-		# animSprite.play("walk") 
+		animSprite.visible = true
+		sprite.visible = false
+		animSprite.play("walk")
+		
 		
 		# Simple flip for placeholder sprite
-		if sprite and velocity.x < 0:
+		if velocity.x < 0:
 			sprite.flip_h = true
-		elif sprite and velocity.x > 0:
+			animSprite.flip_h = true
+		elif velocity.x > 0:
 			sprite.flip_h = false
+			animSprite.flip_h = false
 	else:
-		# Player is idle
-		# animSprite.play("idle")
+		animSprite.visible = false
+		sprite.visible = true
 		pass

@@ -1,0 +1,88 @@
+[gd_scene load_steps=11 format=3 uid="uid://kjdhnyujwwxq"]
+
+[ext_resource type="Script" uid="uid://dl1l46fikvopu" path="res://Scripts/CookingMinigame/ingredient.gd" id="1_jf0ra"]
+[ext_resource type="Texture2D" uid="uid://b0sqwltykofvo" path="res://Assets/Images/KitchenPuzzle/Ingredients/waterBottle.png" id="2_21guq"]
+[ext_resource type="Texture2D" uid="uid://bo6l7eq7c6jlr" path="res://Assets/Images/icon.svg" id="3_ad2ek"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1868s"]
+atlas = ExtResource("2_21guq")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v3uwo"]
+atlas = ExtResource("2_21guq")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xxxvx"]
+atlas = ExtResource("2_21guq")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gf263"]
+atlas = ExtResource("2_21guq")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qm8gi"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1868s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v3uwo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xxxvx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gf263")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s4ee8"]
+size = Vector2(33.82553, 40.737835)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jf0ra"]
+size = Vector2(64, 139)
+
+[node name="Water Jug" type="RigidBody2D" node_paths=PackedStringArray("potDetectorArea", "amountLabel") groups=["ingredients"]]
+input_pickable = true
+script = ExtResource("1_jf0ra")
+ingredientName = "Water"
+ingredientType = 2
+pourRate = 2.0
+potDetectorArea = NodePath("potDetectionArea")
+amountLabel = NodePath("PourOrShake Amount Label")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -33)
+scale = Vector2(4.638966, 4.638966)
+sprite_frames = SubResource("SpriteFrames_qm8gi")
+
+[node name="ChoppedSprite" type="Sprite2D" parent="."]
+visible = false
+scale = Vector2(0.53014815, 0.53014815)
+texture = ExtResource("3_ad2ek")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["ingredients"]]
+position = Vector2(0, -32.5)
+scale = Vector2(1.8920621, 3.4120615)
+shape = SubResource("RectangleShape2D_s4ee8")
+
+[node name="potDetectionArea" type="Area2D" parent="."]
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="potDetectionArea"]
+position = Vector2(0, -32.5)
+shape = SubResource("RectangleShape2D_jf0ra")
+
+[node name="PourOrShake Amount Label" type="RichTextLabel" parent="."]
+offset_left = 34.0
+offset_top = -104.0
+offset_right = 74.0
+offset_bottom = -64.0
+scale = Vector2(1.3870325, 1.3870325)
+theme_override_colors/default_color = Color(0.64705884, 0.98039216, 0.9843137, 1)
+bbcode_enabled = true
+text = "100"

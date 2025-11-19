@@ -6,7 +6,7 @@ enum IngredientType {WHOLE, CHOPPABLE, POURABLE, SHAKER}
 
 #region VARIABLES
 #region INGREDIENT LOGIC
-@onready var sprite: Sprite2D = $Sprite
+@onready var sprite = $Sprite
 
 @export var ingredientName: String = "WARNING: UNNAMED INGREDIENT"
 @export var ingredientType: IngredientType = IngredientType.WHOLE
@@ -21,16 +21,20 @@ var chopCount: int = 0
 @export_group("PourableOrShaker")
 @export var pourRate: float = 1.0 ## units per second
 @export var shakeAmount: int = 1 ## units per shake
-@export var shakeThreshold: float = 800.0 ## mouse velocity threshold to "shake"
+@export var shakeThreshold: float = 1000.0 ## mouse velocity threshold to "shake"
 
 # NODES
 @export var potDetectorArea: Area2D
 @export var amountLabel: RichTextLabel
+@onready var collisionShape = $CollisionShape2D
 
 # STATES
 var isOverPot: bool = false
 var spawnPosition: Vector2
 var currentAmount: float = 0.0
+
+# PHYSICS TIMER
+var resetTimer: Timer
 #endregion INGREDIENT LOGIC
 
 #region CONTROLS
@@ -66,20 +70,36 @@ func _ready() -> void:
 		push_error("ERROR: AMOUNT LABEL MISSING")
 	else:
 		amountLabel.text = ""
+	
+	if (sprite and sprite is AnimatedSprite2D):
+		sprite.frame = 0
+	
+	resetTimer = Timer.new()
+	resetTimer.one_shot = true
+	resetTimer.wait_time = 0.1
+	resetTimer.connect("timeout", OnResetTimerTimeout)
+	add_child(resetTimer)
 
 func OnPotAreaEntered(area: Area2D):
 	if area.is_in_group("pot"):
 		isOverPot = true
+	if (sprite and sprite is AnimatedSprite2D):
+		sprite.play("default")
 
 func OnPotAreaExited(area: Area2D):
 	if area.is_in_group("pot"):
 		isOverPot = false
 		rotation_degrees = 0.0
+	if (sprite and sprite is AnimatedSprite2D):
+		sprite.play_backwards("default")
 
 func Chop():
 	if not isChoppable or isChopped:
 		return
 	
+	KitchenController.oneShotAudioPlayer.stream = KitchenController.chopSound
+	KitchenController.oneShotAudioPlayer.volume_db = 0.0
+	KitchenController.oneShotAudioPlayer.play()
 	chopCount += 1
 	
 	print("Chop! %d / %d" % [chopCount, chopsNeeded])
@@ -93,9 +113,8 @@ func Chop():
 		if not "(Chopped)" in ingredientName:
 			ingredientName += " (Chopped)"
 		print("Chopped. It's now: %s" % ingredientName)
-		KitchenController.TESTING_RECIPE_NOTIFICATION_FEED.text += "\n"
-		KitchenController.TESTING_RECIPE_NOTIFICATION_FEED.text += "Chopped. It's now: %s" % ingredientName
-		# TODO: Set "Chopped" sprite here
+		choppedSprite.visible = isChopped
+		sprite.visible = not isChopped
 
 func ResetPosition(): # just for shaker and pourables so their "containers" can't be added to the pot
 	freeze_mode = RigidBody2D.FREEZE_MODE_STATIC
@@ -103,7 +122,7 @@ func ResetPosition(): # just for shaker and pourables so their "containers" can'
 	linear_velocity = Vector2.ZERO
 	angular_velocity = 0.0
 	
-	# Return to start position
+		# Return to start position
 	global_position = spawnPosition
 	rotation_degrees = 0.0
 	isHeld = false
@@ -111,16 +130,24 @@ func ResetPosition(): # just for shaker and pourables so their "containers" can'
 	if amountLabel:
 		amountLabel.text = ""
 	
-	# Reset
 	set_sleeping(false)
 	freeze = false
 	gravity_scale = defaultGravityScale
+	resetTimer.stop()
+	# Reset
+	resetTimer.start()
+
+func OnResetTimerTimeout():
+	pass
 
 func PickupAndHold():
 	isHeld = true
 	freeze_mode = RigidBody2D.FREEZE_MODE_STATIC
 	freeze = true
 	set_sleeping(false)
+	
+	# NOTE: Turning off collision while holding the object to prevent knocking around things accidentally
+	collisionShape.disabled = true
 	
 	if is_inside_tree():
 		global_position = get_global_mouse_position()
@@ -137,6 +164,7 @@ func _input(event: InputEvent): # release click on ingredient
 		if event.button_index == MOUSE_BUTTON_LEFT and not event.is_pressed():
 			if isHeld: # Drop it
 				isHeld = false
+				collisionShape.disabled = false
 				freeze = false
 				gravity_scale = defaultGravityScale
 				linear_velocity = mouseVelocity
@@ -157,6 +185,9 @@ func _physics_process(delta: float):
 		mouseVelocity = (currentMousePosition - lastMousePosition) / delta
 	# Then update mouse position for next frame
 	lastMousePosition = currentMousePosition
+	
+	if amountLabel:
+		amountLabel.rotation_degrees = -self.rotation_degrees
 	
 	# SECOND: make object follow the mouse
 	if isHeld:

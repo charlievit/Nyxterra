@@ -1,0 +1,93 @@
+[gd_scene load_steps=12 format=3 uid="uid://c8hhrtsrt6m12"]
+
+[ext_resource type="Script" uid="uid://dl1l46fikvopu" path="res://Scripts/CookingMinigame/ingredient.gd" id="1_kd3tk"]
+[ext_resource type="Texture2D" uid="uid://cydmclxo2tbg6" path="res://Assets/Images/KitchenPuzzle/Ingredients/oilBottle.png" id="2_s21o0"]
+[ext_resource type="Texture2D" uid="uid://bo6l7eq7c6jlr" path="res://Assets/Images/icon.svg" id="3_u2hyo"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_utraj"]
+atlas = ExtResource("2_s21o0")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dc1ry"]
+atlas = ExtResource("2_s21o0")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_304jc"]
+atlas = ExtResource("2_s21o0")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ayc4h"]
+atlas = ExtResource("2_s21o0")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0xrck"]
+atlas = ExtResource("2_s21o0")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kr3yy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_utraj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dc1ry")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_304jc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ayc4h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0xrck")
+}],
+"loop": false,
+"name": &"default",
+"speed": 8.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s4ee8"]
+size = Vector2(22.16217, 20.070503)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kd3tk"]
+size = Vector2(32, 68)
+
+[node name="Cooking Oil Jug" type="RigidBody2D" node_paths=PackedStringArray("potDetectorArea", "amountLabel") groups=["ingredients"]]
+input_pickable = true
+script = ExtResource("1_kd3tk")
+ingredientName = "Oil"
+ingredientType = 2
+pourRate = 0.5
+potDetectorArea = NodePath("potDetectionArea")
+amountLabel = NodePath("PourOrShake Amount Label")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+scale = Vector2(3.9766037, 3.9766037)
+sprite_frames = SubResource("SpriteFrames_kr3yy")
+
+[node name="ChoppedSprite" type="Sprite2D" parent="."]
+visible = false
+scale = Vector2(0.53014815, 0.53014815)
+texture = ExtResource("3_u2hyo")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["ingredients"]]
+scale = Vector2(2.519771, 5.912544)
+shape = SubResource("RectangleShape2D_s4ee8")
+
+[node name="potDetectionArea" type="Area2D" parent="."]
+scale = Vector2(1.7451147, 1.7451147)
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="potDetectionArea"]
+shape = SubResource("RectangleShape2D_kd3tk")
+
+[node name="PourOrShake Amount Label" type="RichTextLabel" parent="."]
+offset_left = 29.0
+offset_top = -60.0
+offset_right = 69.0
+offset_bottom = -20.0
+scale = Vector2(1.7451147, 1.7451147)
+theme_override_colors/default_color = Color(1, 1, 0.8392157, 1)
+bbcode_enabled = true
+text = "100"

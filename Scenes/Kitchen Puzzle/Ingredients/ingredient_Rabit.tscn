@@ -1,11 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://d0lu0vehydu2w"]
+[gd_scene load_steps=6 format=3 uid="uid://d0lu0vehydu2w"]
 
 [ext_resource type="Script" uid="uid://dl1l46fikvopu" path="res://Scripts/CookingMinigame/ingredient.gd" id="1_dwwci"]
 [ext_resource type="Texture2D" uid="uid://bjd8bwmwpt1mc" path="res://Assets/Images/KitchenPuzzle/Ingredients/ingredientRabbit.png" id="2_bs41o"]
+[ext_resource type="Texture2D" uid="uid://74rhrx47ef1w" path="res://Assets/Images/KitchenPuzzle/Ingredients/ingredientRabbitChopped.png" id="3_3n6cv"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_kvk3b"]
 rough = true
-bounce = 0.6
+bounce = 0.2
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_veqd3"]
 radius = 38.052597
@@ -22,15 +23,21 @@ potDetectorArea = NodePath("potDetectionArea")
 amountLabel = NodePath("PourOrShake Amount Label")
 
 [node name="Sprite" type="Sprite2D" parent="."]
-position = Vector2(2, 21)
+position = Vector2(-6, -23)
+rotation = 3.022026
 scale = Vector2(3.7087154, 3.7087154)
 texture = ExtResource("2_bs41o")
 
 [node name="ChoppedSprite" type="Sprite2D" parent="."]
 visible = false
-scale = Vector2(0.53014815, 0.53014815)
+position = Vector2(5.9604645e-08, -3)
+rotation = -0.017427832
+scale = Vector2(5.0784845, 5.0784845)
+texture = ExtResource("3_3n6cv")
 
 [node name="CollisionShape2D" type="CollisionPolygon2D" parent="." groups=["ingredients"]]
+position = Vector2(-2.0000002, -2.0000002)
+rotation = 3.0075824
 polygon = PackedVector2Array(9, -27, 24, -27, 32, -23, 39, -9, 39, 3, 32, 14, 32, 29, 35, 36, 35, 51, 32, 51, 24, 43, 20, 43, 13, 36, 6, 32, -2, 25, -2, 17, -9, 17, -13, 25, -16, 36, -24, 43, -28, 43, -28, 28, -39, 36, -43, 36, -43, 25, -39, 17, -35, 3, -39, 3, -39, -5, -43, -5, -43, -16, -28, -31, -13, -31, 2, -24)
 
 [node name="potDetectionArea" type="Area2D" parent="."]

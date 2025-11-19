@@ -1,0 +1,50 @@
+[gd_scene load_steps=9 format=3 uid="uid://baa6ykqv50wlv"]
+
+[ext_resource type="Script" uid="uid://bow2yn8alfsqv" path="res://Scripts/CookingMinigame/kitchenHeatDial.gd" id="1_isk16"]
+[ext_resource type="Texture2D" uid="uid://6weksoqcau0u" path="res://Assets/Images/KitchenPuzzle/CookerButton.png" id="2_yw3nq"]
+[ext_resource type="Texture2D" uid="uid://dochv2w8mxac5" path="res://Assets/Images/KitchenPuzzle/Icons.png" id="3_8vqcg"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_isk16"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1s044"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_56nxb"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_avvmv"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_o7q6h"]
+
+[node name="HeatDial" type="Button"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -576.0
+offset_top = -324.0
+offset_right = 131.03577
+offset_bottom = 101.37109
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.17396575, 0.17396575)
+theme_override_styles/normal = SubResource("StyleBoxEmpty_isk16")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_1s044")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_56nxb")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_avvmv")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_o7q6h")
+script = ExtResource("1_isk16")
+clickLineWidth = 6.0
+
+[node name="DialArt" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(344.89548, 235.67854)
+scale = Vector2(17.41247, 17.339111)
+texture = ExtResource("2_yw3nq")
+offset = Vector2(1, 1)
+
+[node name="ClickIndicatorLine" type="Line2D" parent="."]
+
+[node name="Icons" type="Sprite2D" parent="."]
+position = Vector2(379.38507, 218.43378)
+scale = Vector2(17.576277, 17.576277)
+texture = ExtResource("3_8vqcg")
