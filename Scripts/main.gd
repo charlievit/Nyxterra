@@ -72,13 +72,13 @@ func _process(delta):
 	
 	zoomCamera.global_position = targetPosition
 	
-	print(player.global_position)
-	print(zoomCamera.global_position)
+	#print(player.global_position)
+	#print(zoomCamera.global_position)
 	#print("State: ", DayState.keys()[currentState]) # Debugging done, safe to remove
 	
 	match currentState:
 		DayState.SUN_RISING:
-			print("Sun rising.")
+			#print("Sun rising.")
 			cycleProgress += delta / riseDuration
 			
 			# Move Sun Up and fade night sky out
@@ -102,7 +102,7 @@ func _process(delta):
 				nightBackground.modulate.a = 0.0
 				snowFall.modulate.a = 0.0
 				
-				print("Sun risen. Wait to start night...")
+				#print("Sun risen. Wait to start night...")
 				emit_signal("dayArrived")
 		
 		DayState.DAY_IDLE:
@@ -110,11 +110,11 @@ func _process(delta):
 			sunRiseGradient.position = gradientStartPosition
 			nightBackground.modulate.a = 0.0
 			snowFall.modulate.a = 0.0
-			print("Day idling.")
+			#print("Day idling.")
 			StartNightCycle()
 		
 		DayState.NIGHT_FADING:
-			print("Night fading.")
+			#print("Night fading.")
 			cycleProgress += delta / riseDuration
 			
 			# Sun is still off screen, fade the night sky back in
@@ -131,7 +131,7 @@ func _process(delta):
 				snowFall.modulate.a = 1.0
 		
 		DayState.MOON_RISING:
-			print("Moon rising.")
+			#print("Moon rising.")
 			cycleProgress += delta / riseDuration
 			
 			# Move Moon Up
@@ -150,12 +150,12 @@ func _process(delta):
 			nightBackground.modulate.a = 1.0
 			snowFall.modulate.a = 1.0
 			sunRiseGradient.position = gradientStartPosition
-			print("Night idling.")
+			#print("Night idling.")
 			StartDayCycle()
 
 func StartNightCycle():
 	if currentState == DayState.NIGHT_IDLE:
-		print("Starting night cycle.")
+		#print("Starting night cycle.")
 		currentState = DayState.NIGHT_FADING
 		cycleProgress = 0.0
 	else:
@@ -164,7 +164,7 @@ func StartNightCycle():
 
 func StartDayCycle():
 	if currentState == DayState.NIGHT_IDLE:
-		print("Starting day cycle.")
+		#print("Starting day cycle.")
 		currentState = DayState.SUN_RISING
 		cycleProgress = 0.0
 		

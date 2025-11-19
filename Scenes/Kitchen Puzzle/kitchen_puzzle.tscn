@@ -1,4 +1,4 @@
-[gd_scene load_steps=86 format=3 uid="uid://b268fafjkgqee"]
+[gd_scene load_steps=91 format=3 uid="uid://b268fafjkgqee"]
 
 [ext_resource type="Script" uid="uid://dgrielhvrnwwo" path="res://Scripts/CookingMinigame/kitchenMinigameLoader.gd" id="1_aecf8"]
 [ext_resource type="PackedScene" uid="uid://cpmufmthgj1px" path="res://Scenes/animated_snow_map.tscn" id="2_5165p"]
@@ -63,6 +63,7 @@
 [ext_resource type="Texture2D" uid="uid://b7oh5atu2ubxf" path="res://Assets/Images/KitchenPuzzle/Steam Animation/frame0010.png" id="56_0xrck"]
 [ext_resource type="Texture2D" uid="uid://rnndc4v3m02a" path="res://Assets/Images/KitchenPuzzle/Steam Animation/frame0011.png" id="57_kr3yy"]
 [ext_resource type="Texture2D" uid="uid://bf0elhfhyy7vi" path="res://Assets/Images/KitchenPuzzle/Steam Animation/frame0012.png" id="58_k2y4e"]
+[ext_resource type="Texture2D" uid="uid://d3w71wsyc0vn5" path="res://Assets/Images/KitchenPuzzle/CookbookRibbon.png" id="63_ojgxo"]
 [ext_resource type="AudioStream" uid="uid://crhsv0uepb1pk" path="res://Assets/Audio/Cooking Minigame/Boiling.mp3" id="64_17xo3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_meprl"]
@@ -213,12 +214,29 @@ animations = [{
 }]
 
 [sub_resource type="Gradient" id="Gradient_p4ma4"]
-colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
+colors = PackedColorArray(0, 0, 0, 0.7490196, 0, 0, 0, 0.7490196)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_xey2f"]
 gradient = SubResource("Gradient_p4ma4")
 
-[node name="Kitchen Puzzle" type="Control" node_paths=PackedStringArray("heatDial", "potArea", "progressBar", "recipeParser", "fireAnimLow", "fireAnimMedium", "fireAnimHigh", "steamAnim", "oneShotAudioPlayer", "constantAudioPlayer", "recipeDisplayLocation")]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_17xo3"]
+bg_color = Color(0.54901963, 0.32156864, 0.30980393, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ojgxo"]
+bg_color = Color(0.49440128, 0.28464895, 0.27399936, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_utraj"]
+bg_color = Color(0.6436347, 0.3906458, 0.37691635, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dc1ry"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.8141041, 0.5762769, 0.5602711, 1)
+
+[node name="Kitchen Puzzle" type="Control" node_paths=PackedStringArray("heatDial", "potArea", "progressBar", "recipeParser", "fireAnimLow", "fireAnimMedium", "fireAnimHigh", "steamAnim", "oneShotAudioPlayer", "constantAudioPlayer", "recipeDisplayLocation", "recipeDisplayLocation2")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -237,7 +255,8 @@ fireAnimHigh = NodePath("Pot/FireAnim_HIGH")
 steamAnim = NodePath("Pot/SteamAnim")
 oneShotAudioPlayer = NodePath("OneShotSounds")
 constantAudioPlayer = NodePath("ConstantSounds")
-recipeDisplayLocation = NodePath("RecipeBookScreen/Recipe Instructions")
+recipeDisplayLocation = NodePath("RecipeBookScreen/Recipe Instructions Page 1")
+recipeDisplayLocation2 = NodePath("RecipeBookScreen/Recipe Instructions Page 2")
 
 [node name="SkyDayBackground" type="Sprite2D" parent="."]
 position = Vector2(799.80005, 329.41754)
@@ -576,23 +595,54 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("GradientTexture1D_xey2f")
 
-[node name="Recipe Instructions" type="RichTextLabel" parent="RecipeBookScreen"]
+[node name="openBook" type="Sprite2D" parent="RecipeBookScreen"]
+position = Vector2(567.99994, 385.96872)
+scale = Vector2(2.9041667, 2.8520832)
+texture = ExtResource("63_ojgxo")
+
+[node name="Recipe Instructions Page 1" type="RichTextLabel" parent="RecipeBookScreen"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 273.0
+offset_top = 44.0
+offset_right = -596.0
+offset_bottom = -46.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_colors/default_color = Color(0.13725491, 0.12156863, 0.1254902, 1)
+bbcode_enabled = true
+
+[node name="Recipe Instructions Page 2" type="RichTextLabel" parent="RecipeBookScreen"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 613.0
+offset_top = 46.0
+offset_right = -278.0
+offset_bottom = -44.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/default_color = Color(0.13725491, 0.12156863, 0.1254902, 1)
+bbcode_enabled = true
 
 [node name="Close" type="Button" parent="RecipeBookScreen"]
 layout_mode = 0
-offset_left = 1074.0
+offset_left = 1084.0
 offset_top = 12.0
 offset_right = 1140.0
-offset_bottom = 70.0
-text = "X"
+offset_bottom = 72.0
+theme_override_font_sizes/font_size = 37
+theme_override_styles/normal = SubResource("StyleBoxFlat_17xo3")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ojgxo")
+theme_override_styles/hover = SubResource("StyleBoxFlat_utraj")
+theme_override_styles/focus = SubResource("StyleBoxFlat_dc1ry")
+text = "x"
 
 [node name="SceneBorder" type="StaticBody2D" parent="."]
+visible = false
 
 [node name="Border" type="CollisionPolygon2D" parent="SceneBorder"]
 polygon = PackedVector2Array(-202, -198, -214, 762, 1312, 772, 1350, -227, -203, -199, 0, 0, 1152, 0, 1152, 489, 0, 492, 0, 0)

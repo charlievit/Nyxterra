@@ -25,7 +25,8 @@ extends Control
 @export var constantAudioPlayer: AudioStreamPlayer2D
 
 @export var recipeDisplayLocation: RichTextLabel
-var recipeText: String
+@export var recipeDisplayLocation2: RichTextLabel
+var recipeText: Dictionary
 
 # PRELOAD
 var chopSound = preload("res://Assets/Audio/Cooking Minigame/Chop.mp3")
@@ -73,7 +74,17 @@ func _ready():
 	KitchenController.StartRecipe("RabbitStew")
 	
 	recipeText = recipeParser.ParseRecipeToInstructions("RabbitStew")
-	recipeDisplayLocation.text = recipeText
+	recipeDisplayLocation.bbcode_enabled = true
+	if recipeDisplayLocation2:
+		recipeDisplayLocation2.bbcode_enabled = true
+	
+	# Call the new parser function
+	recipeText = recipeParser.ParseRecipeToInstructions("RabbitStew")
+	
+	# Assign text to respective labels
+	recipeDisplayLocation.text = recipeText["left"]
+	if recipeDisplayLocation2:
+		recipeDisplayLocation2.text = recipeText["right"]
 	
 	recipeBookScreen.visible = false
 	
