@@ -29,6 +29,8 @@ var overlappingTeleporters: Array[Area2D] = []
 
 
 func _ready():
+	#save & load
+	GameState.player = self
 	GameManager.ConsumeSpawnData(self)
 	
 	self.position = GameManager.playerSpawnPosition
@@ -159,3 +161,22 @@ func UpdateAnimation(_inputVector: Vector2):
 		animSprite.visible = false
 		sprite.visible = true
 		pass
+
+func write_save_data() -> void:
+	# Copy the player’s state into the SaveData resource
+	SaveManager.current_save.player_position = global_position
+	SaveManager.current_save.player_floor = currentFloor
+
+
+func apply_save_data() -> void:
+	# Read state back from SaveData and apply it to this player
+	if SaveManager.current_save == null:
+		return
+
+	# Floor first (so any SetFloor spawn logic runs first)
+	if has_method("SetFloor"):
+		SetFloor(SaveManager.current_save.player_floor)
+
+	# Then override with exact saved position
+	global_position = SaveManager.current_save.player_position
+	

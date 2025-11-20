@@ -39,6 +39,11 @@ action_mode = 0
 text = "Start
 "
 
+[node name="ContinueButton" type="Button" parent="CenterContainer/Buttons"]
+layout_mode = 2
+text = "Continue
+"
+
 [node name="OptionsButton" type="Button" parent="CenterContainer/Buttons"]
 layout_mode = 2
 text = "Option"

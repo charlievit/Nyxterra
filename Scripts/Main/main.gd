@@ -47,6 +47,9 @@ var cycleProgress: float = 0.0
 @onready var moon: Sprite2D = $Moon
 @onready var moonPhase: Sprite2D = $Moon/MoonPhaseCutOut
 @onready var snowFall: TileMap = $AnimatedSnowMap
+
+#save & load
+@onready var pause_menu : Control = $"Control_GAME SCREEN UI/PauseMenu"
 #endregion
 
 func _ready() -> void:
@@ -64,6 +67,11 @@ func _ready() -> void:
 	currentState = DayState.NIGHT_IDLE
 	
 	TaskManager.shouldBeHidden = false
+	
+	#save & load
+	if SaveManager.has_save():
+		SaveManager.reload_from_disk()
+		player.global_position = SaveManager.current_save.player_position
 	
 func _process(delta):
 	# Force the zoomed-in camera to follow the player every frame without showing off-screen details
@@ -200,7 +208,9 @@ func ToggleMap():
 	tweenPosition.tween_property(subVPortContainer, "position", targetPosition, 1.0)
 	tweenSize.tween_property(subVPort, "size", targetSize, 1.0)
 	
-
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("ui_cancel"):
+		pause_menu.toggle()
 
 func _on_toggle_map_pressed() -> void:
 	ToggleMap()

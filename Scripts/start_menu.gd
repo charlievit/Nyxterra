@@ -13,6 +13,7 @@ const SETTINGS_KEY_VOLUME := "master_volume"   # linear 0..1
 @onready var volume_slider: HSlider = $OptionsPanel/VolumeSlider
 @onready var apply_button: Button   = $OptionsPanel/ApplyButton
 @onready var back_button: Button    = $OptionsPanel/BackButton
+@onready var continue_button: Button = $CenterContainer/Buttons/ContinueButton
 
 var _cached_volume_db: float = 0.0   # for Return (revert)
 var _master_bus: int = 0
@@ -29,7 +30,8 @@ func _ready() -> void:
 	start_button.pressed.connect(_on_start_pressed)
 	options_button.pressed.connect(_on_options_pressed)
 	quit_button.pressed.connect(_on_quit_pressed)
-
+	continue_button.pressed.connect(_on_continue_pressed)
+	continue_button.disabled = !SaveManager.has_save()
 	apply_button.pressed.connect(_on_apply_pressed)
 	back_button.pressed.connect(_on_back_pressed)
 	volume_slider.value_changed.connect(_on_volume_changed)
@@ -37,6 +39,7 @@ func _ready() -> void:
 	options_panel.visible = false
 
 func _on_start_pressed() -> void:
+	SaveManager.clear_save()
 	get_tree().change_scene_to_file(GAME_SCENE)
 
 func _on_options_pressed() -> void:
@@ -62,6 +65,20 @@ func _on_quit_pressed() -> void:
 	else:
 		get_tree().quit()
 
+func _on_continue_pressed() -> void:
+	if SaveManager.has_save():
+		# Reload save resource from disk to be safe
+		SaveManager.reload_from_disk()
+
+		# Use the scene path stored in the save
+		if SaveManager.current_save.current_scene_path != "":
+			get_tree().change_scene_to_file(SaveManager.current_save.current_scene_path)
+		else:
+			# Fallback: if no path saved, just start main scene
+			get_tree().change_scene_to_file(GAME_SCENE)
+	else:
+		print("No save file found.")
+		
 # --- Volume helpers ---
 func _on_volume_changed(value: float) -> void:
 	_set_master_linear(value)  # live preview
