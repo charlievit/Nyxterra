@@ -16,7 +16,13 @@ signal nightArrived
 @onready var player = $Player
 @onready var mainCamera = $MainStaticCamera
 @onready var zoomCamera = $"Control_GAME SCREEN UI/SubViewportContainer/SubViewport/ZoomCamera"
-@onready var SubVPort = $"Control_GAME SCREEN UI/SubViewportContainer/SubViewport"
+@onready var subVPort = $"Control_GAME SCREEN UI/SubViewportContainer/SubViewport"
+@onready var subVPortContainer = $"Control_GAME SCREEN UI/SubViewportContainer"
+var viewportMapShownSize: Vector2i = Vector2i(817, 648)
+var viewportMapShowPosition: Vector2 = Vector2(335, 0)
+var viewportMapHiddenSize: Vector2i = Vector2i(1150, 648)
+var viewportMapHiddenPosition: Vector2 = Vector2(0, 0)
+var isMapHidden: bool = false
 
 # Camera Boundaries
 @export_group("Camera Limits")
@@ -48,7 +54,7 @@ func _ready() -> void:
 	mainCamera.enabled = false
 	zoomCamera.enabled = true
 	zoomCamera.make_current()
-	SubVPort.world_2d = get_world_2d()
+	subVPort.world_2d = get_world_2d()
 	
 	sun.position = sunStartPosition
 	moon.position = moonStartPosition
@@ -61,7 +67,7 @@ func _ready() -> void:
 	
 func _process(delta):
 	# Force the zoomed-in camera to follow the player every frame without showing off-screen details
-	var visibleSize = Vector2(SubVPort.size) / zoomCamera.zoom
+	var visibleSize = Vector2(subVPort.size) / zoomCamera.zoom
 	var halfWidth = visibleSize.x / 2.0
 	
 	var minX = cameraLimitLeft + halfWidth
@@ -175,3 +181,26 @@ func StartDayCycle():
 	else:
 		currentState = DayState.NIGHT_IDLE
 		StartDayCycle()
+
+func _input(input: InputEvent):
+	if input.is_action_pressed("toggleMap"):
+		ToggleMap()
+
+func ToggleMap():
+	print("Toggling the map...")
+	
+	isMapHidden = !isMapHidden
+	
+	var targetPosition = viewportMapShowPosition if not isMapHidden else viewportMapHiddenPosition
+	var targetSize = viewportMapShownSize if not isMapHidden else viewportMapHiddenSize
+	
+	var tweenPosition = create_tween().set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
+	var tweenSize = create_tween().set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
+	
+	tweenPosition.tween_property(subVPortContainer, "position", targetPosition, 1.0)
+	tweenSize.tween_property(subVPort, "size", targetSize, 1.0)
+	
+
+
+func _on_toggle_map_pressed() -> void:
+	ToggleMap()

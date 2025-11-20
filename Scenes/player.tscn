@@ -1,6 +1,6 @@
 [gd_scene load_steps=14 format=3 uid="uid://ctuyv2i3q62q"]
 
-[ext_resource type="Script" uid="uid://bthfal06ejpjt" path="res://Scripts/characterController.gd" id="1_cvnsp"]
+[ext_resource type="Script" uid="uid://bthfal06ejpjt" path="res://Scripts/Main/characterController.gd" id="1_cvnsp"]
 [ext_resource type="Texture2D" uid="uid://c2bjfaemqpvp3" path="res://Assets/Images/PLACEHOLDER_DUDE.png" id="2_6t5aa"]
 [ext_resource type="Texture2D" uid="uid://brbbvqioqjn4p" path="res://Assets/Images/Walk_sutherland.png" id="2_cvnsp"]
 

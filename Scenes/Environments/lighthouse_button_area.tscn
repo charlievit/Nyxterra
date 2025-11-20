@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://cuku1ylw6a6a6" path="res://Scenes/RadioPuzzle/radioAnimated.tscn" id="3_qkcrh"]
 [ext_resource type="Texture2D" uid="uid://ui7san5wy5iy" path="res://Assets/Images/Lighthouse/Structure/Floor1&2Build1.png" id="3_rf6kk"]
 [ext_resource type="Texture2D" uid="uid://dsnuq07k0kmpv" path="res://Assets/Images/Lighthouse/Props/Wall.png" id="4_b2lj4"]
-[ext_resource type="Script" uid="uid://cuipkjxvfn1xp" path="res://Scripts/teleporterHandler.gd" id="5_0t6ev"]
+[ext_resource type="Script" uid="uid://cuipkjxvfn1xp" path="res://Scripts/Main/teleporterHandler.gd" id="5_0t6ev"]
 [ext_resource type="Texture2D" uid="uid://c2bjfaemqpvp3" path="res://Assets/Images/PLACEHOLDER_DUDE.png" id="5_rf6kk"]
 [ext_resource type="Texture2D" uid="uid://bxt10ujll7gdy" path="res://Assets/Images/Lighthouse/Structure/Turny Thing/frame0000.png" id="6_x8n6x"]
 [ext_resource type="Texture2D" uid="uid://blj3msakscu8k" path="res://Assets/Images/Lighthouse/Structure/Turny Thing/frame0001.png" id="7_kx1qn"]
@@ -25,7 +25,7 @@
 [ext_resource type="Texture2D" uid="uid://dxoqxrv8bmy5q" path="res://Assets/Images/Lighthouse/Structure/Turny Thing/frame0015.png" id="21_m5krq"]
 [ext_resource type="Texture2D" uid="uid://duwb0ja6ld5j2" path="res://Assets/Images/Lighthouse/Structure/Turny Thing/frame0016.png" id="22_5xqbu"]
 [ext_resource type="Texture2D" uid="uid://6m75sw3kdspu" path="res://Assets/Images/Lighthouse/Structure/Turny Thing/frame0017.png" id="23_2tttr"]
-[ext_resource type="Script" uid="uid://qxikudipxih8" path="res://Scripts/mainGearAnimation.gd" id="24_kx1qn"]
+[ext_resource type="Script" uid="uid://qxikudipxih8" path="res://Scripts/Main/mainGearAnimation.gd" id="24_kx1qn"]
 [ext_resource type="Texture2D" uid="uid://ca6i11k6uooa2" path="res://Assets/Images/icon2.svg" id="25_e3oeg"]
 [ext_resource type="Script" uid="uid://fo1o3pb5mktu" path="res://Scripts/GearPuzzle/gearBoxDetectionForMainScene.gd" id="26_cln54"]
 
