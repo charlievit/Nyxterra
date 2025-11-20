@@ -96,9 +96,9 @@ func ClearNotification():
 	alertIcon.rotation = 0
 
 # NEW TASKS
-func AddTask(task_ID: String, taskText: String):
+func AddTask(taskID: String, taskText: String):
 	# Prevent duplicate IDs
-	if task_ID in activeTasks: return
+	if taskID in activeTasks: return
 
 	# 1. Create a container for the row
 	var row = HBoxContainer.new()
@@ -127,22 +127,22 @@ func AddTask(task_ID: String, taskText: String):
 	taskList.add_child(row)
 
 	# 4. Store references so we can find them later
-	activeTasks[task_ID] = {
+	activeTasks[taskID] = {
 		"box": checkbox,
 		"label": label,
 		"text": taskText,
-		"row_node": row # Store this if you ever need to delete it
+		"row_node": row
 	}
 
 	TriggerNotification()
 
-func CompleteTask(task_ID: String):
+func CompleteTask(taskID: String):
 	print("Completing task...")
-	if not task_ID in activeTasks:
-		print("Error: Task ID not found -> ", task_ID)
+	if not taskID in activeTasks:
+		print("Error: Task ID not found -> ", taskID)
 		return
 	
-	var taskData = activeTasks[task_ID]
+	var taskData = activeTasks[taskID]
 	
 	# 1. Check the box programmatically
 	taskData["box"].button_pressed = true

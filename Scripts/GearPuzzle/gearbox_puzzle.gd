@@ -42,6 +42,7 @@ var heldGearData = {}
 var allGears = []
 var puzzleSolved = false
 var lastPoweredCount = 0
+var taskID
 #endregion
 
 func _ready():
@@ -67,6 +68,13 @@ func _ready():
 		loopPlayer.volume_db = -25.0
 	
 	TaskManager.shouldBeHidden = true
+	for key in TaskManager.activeTasks.keys():
+		print(TaskManager.activeTasks)
+		print("\n" + "\n" + "\n" + "\n")
+		if String(key).find("GearBox") != -1:
+			taskID = key
+			print(key)
+	print(taskID)
 
 # Called by the Gear Button signal to assign data to the instantiated held gear
 func onGearButtonPressed(buttonData: Dictionary):
@@ -105,7 +113,7 @@ func isPlacementJammed(pegPosition: Vector2, gearRadius: float) -> bool:
 		var actualDistance = pegPosition.distance_to(existingGear.global_position)
 		
 		if actualDistance < (requiredDistance - MAX_ALLOWED_OVERLAP):
-			print("Placement failed: Jammed against ", existingGear.name)
+			#print("Placement failed: Jammed against ", existingGear.name)
 			return true
 	
 	return false
@@ -125,7 +133,7 @@ func handleGearDrop(_mousePosition: Vector2):
 			continue
 		
 		var distance = heldGearPosition.distance_to(peg.global_position)
-		print(distance)
+		#print(distance)
 		if distance < minimumDistance:
 			minimumDistance = distance
 			closestPeg = peg
@@ -264,8 +272,8 @@ func PlaySFX(stream: AudioStream):
 
 func TriggerWinState():
 	puzzleSolved = true
-	print("Puzzle Solved!")
-	TaskManager.CompleteTask("oneTime_gearBox")
+	#print("Puzzle Solved!")
+	TaskManager.CompleteTask(taskID)
 	loopPlayer.volume_db += 5.0
 	
 	GameManager.SetPlayerSpawn(returnFloorIndex, returnPosition)

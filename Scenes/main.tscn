@@ -1,6 +1,6 @@
-[gd_scene load_steps=20 format=3 uid="uid://bv00gype30lrh"]
+[gd_scene load_steps=25 format=3 uid="uid://bv00gype30lrh"]
 
-[ext_resource type="Script" uid="uid://dmv4o0wqsh26h" path="res://Scripts/main.gd" id="1_8gbba"]
+[ext_resource type="Script" uid="uid://dmv4o0wqsh26h" path="res://Scripts/Main/main.gd" id="1_8gbba"]
 [ext_resource type="PackedScene" uid="uid://bty042lmdfi02" path="res://Scenes/Environments/lighthouse_button_area.tscn" id="1_bo1nx"]
 [ext_resource type="PackedScene" uid="uid://ctuyv2i3q62q" path="res://Scenes/player.tscn" id="2_8gbba"]
 [ext_resource type="Texture2D" uid="uid://beh61gyk2osti" path="res://Assets/Images/Lighthouse/Structure/External/skyDayBackground.png" id="3_6bp64"]
@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://cu2sj1oh20tes" path="res://Assets/Images/Lighthouse/Structure/External/groundSnow.png" id="9_hptm8"]
 [ext_resource type="Script" uid="uid://cnb0vt0q0rkq1" path="res://Scripts/Main/ocean_waves.gd" id="10_fdnlq"]
 [ext_resource type="PackedScene" uid="uid://cpmufmthgj1px" path="res://Scenes/Environments/animated_snow_map.tscn" id="12_jkdf5"]
+[ext_resource type="Texture2D" uid="uid://bkkiwi8y2vk04" path="res://Assets/Images/UI/mapToggleIcon.png" id="15_wsu2k"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jkdf5"]
 atlas = ExtResource("9_fdnlq")
@@ -51,6 +52,15 @@ animations = [{
 "speed": 7.0
 }]
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_k12tt"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wsu2k"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k12tt"]
+bg_color = Color(1, 1, 1, 0.09411765)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_h1bgf"]
+
 [node name="Main" type="Node2D"]
 scale = Vector2(1.3964909, 1.3964909)
 script = ExtResource("1_8gbba")
@@ -65,37 +75,6 @@ moveSpeed = 60.0
 
 [node name="MainStaticCamera" type="Camera2D" parent="."]
 position = Vector2(412.4624, 232.0101)
-
-[node name="Control_GAME SCREEN UI" type="CanvasLayer" parent="."]
-metadata/_edit_use_anchors_ = true
-
-[node name="SubViewportContainer" type="SubViewportContainer" parent="Control_GAME SCREEN UI"]
-anchors_preset = 6
-anchor_left = 1.0
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = -817.0
-offset_top = -324.0
-offset_right = 27.733276
-offset_bottom = 348.9997
-grow_horizontal = 0
-grow_vertical = 2
-scale = Vector2(0.9671691, 0.96285325)
-stretch = true
-
-[node name="SubViewport" type="SubViewport" parent="Control_GAME SCREEN UI/SubViewportContainer"]
-handle_input_locally = false
-size = Vector2i(844, 672)
-size_2d_override_stretch = true
-render_target_update_mode = 4
-
-[node name="ZoomCamera" type="Camera2D" parent="Control_GAME SCREEN UI/SubViewportContainer/SubViewport"]
-position = Vector2(-159.22757, 582.6433)
-ignore_rotation = false
-enabled = false
-zoom = Vector2(6.19, 6.19)
-limit_enabled = false
 
 [node name="SkyDayBackground" type="Sprite2D" parent="."]
 texture_filter = 1
@@ -151,8 +130,47 @@ position = Vector2(119.58544, 464.73627)
 scale = Vector2(0.7132711, 0.7125864)
 texture = ExtResource("9_hptm8")
 
+[node name="Control_GAME SCREEN UI" type="CanvasLayer" parent="."]
+metadata/_edit_use_anchors_ = true
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="Control_GAME SCREEN UI"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 335.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SubViewport" type="SubViewport" parent="Control_GAME SCREEN UI/SubViewportContainer"]
+handle_input_locally = false
+size = Vector2i(817, 648)
+size_2d_override_stretch = true
+render_target_update_mode = 4
+
+[node name="ZoomCamera" type="Camera2D" parent="Control_GAME SCREEN UI/SubViewportContainer/SubViewport"]
+position = Vector2(-159.22757, 582.6433)
+ignore_rotation = false
+enabled = false
+zoom = Vector2(6.19, 6.19)
+limit_enabled = false
+
+[node name="ToggleMap" type="Button" parent="Control_GAME SCREEN UI"]
+texture_filter = 1
+offset_left = 19.550873
+offset_top = 12.5684185
+offset_right = 51.774506
+offset_bottom = 49.08853
+scale = Vector2(2.2723565, 2.2723565)
+theme_override_styles/normal = SubResource("StyleBoxEmpty_k12tt")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_wsu2k")
+theme_override_styles/hover = SubResource("StyleBoxFlat_k12tt")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_h1bgf")
+icon = ExtResource("15_wsu2k")
+
 [node name="Control_LIGHTHOUSE BUTTON AREA" parent="." instance=ExtResource("1_bo1nx")]
 texture_filter = 1
 offset_right = 29.15
 offset_bottom = 648.0
 scale = Vector2(0.718, 0.718)
+
+[connection signal="pressed" from="Control_GAME SCREEN UI/ToggleMap" to="." method="_on_toggle_map_pressed"]
