@@ -48,12 +48,19 @@ var cycleProgress: float = 0.0
 @onready var moonPhase: Sprite2D = $Moon/MoonPhaseCutOut
 @onready var snowFall: TileMap = $AnimatedSnowMap
 
+@onready var hapticClickSound = preload("res://Assets/Audio/UI/HapticClick.mp3")
+
 #save & load
 @onready var pause_menu : Control = $"Control_GAME SCREEN UI/PauseMenu"
 #endregion
 
 func _ready() -> void:
-	# Initialize camera settings for the "reverse minimap" effect.
+	# CONNECT TO GAMEMANAGER
+	# This allows the story to control the sun/moon
+	GameManager.requestDayCycle.connect(StartDayCycle)
+	GameManager.requestNightCycle.connect(StartNightCycle)
+	
+	# Initialize camera settings
 	mainCamera.enabled = false
 	zoomCamera.enabled = true
 	zoomCamera.make_current()
@@ -68,13 +75,12 @@ func _ready() -> void:
 	
 	TaskManager.shouldBeHidden = false
 	
-	#save & load
 	if SaveManager.has_save():
 		SaveManager.reload_from_disk()
 		player.global_position = SaveManager.current_save.player_position
 	
 func _process(delta):
-	# Force the zoomed-in camera to follow the player every frame without showing off-screen details
+	# Force the zoomed-in camera to follow the player
 	var visibleSize = Vector2(subVPort.size) / zoomCamera.zoom
 	var halfWidth = visibleSize.x / 2.0
 	
@@ -88,16 +94,10 @@ func _process(delta):
 	
 	zoomCamera.global_position = targetPosition
 	
-	#print(player.global_position)
-	#print(zoomCamera.global_position)
-	#print("State: ", DayState.keys()[currentState]) # Debugging done, safe to remove
-	
 	match currentState:
 		DayState.SUN_RISING:
-			#print("Sun rising.")
 			cycleProgress += delta / riseDuration
 			
-			# Move Sun Up and fade night sky out
 			sun.position.y = lerp(sunStartPosition.y, endY_Pos, cycleProgress)
 			nightBackground.modulate.a = lerp(1.0, 0.0, cycleProgress * 2.5)
 			snowFall.modulate.a = lerp(1.0, 0.0, cycleProgress * 2.5)
@@ -113,12 +113,9 @@ func _process(delta):
 				cycleProgress = 0.0
 				currentState = DayState.DAY_IDLE
 				
-				# Force final values to prevent visual floating point errors
 				sun.position.y = endY_Pos
 				nightBackground.modulate.a = 0.0
 				snowFall.modulate.a = 0.0
-				
-				#print("Sun risen. Wait to start night...")
 				emit_signal("dayArrived")
 		
 		DayState.DAY_IDLE:
@@ -126,38 +123,26 @@ func _process(delta):
 			sunRiseGradient.position = gradientStartPosition
 			nightBackground.modulate.a = 0.0
 			snowFall.modulate.a = 0.0
-			#print("Day idling.")
-			StartNightCycle()
 		
 		DayState.NIGHT_FADING:
-			#print("Night fading.")
 			cycleProgress += delta / riseDuration
-			
-			# Sun is still off screen, fade the night sky back in
 			nightBackground.modulate.a = lerp(0.0, 1.0, cycleProgress)
 			snowFall.modulate.a = lerp(0.0, 1.0, cycleProgress)
 			
 			if cycleProgress >= 1.0:
 				cycleProgress = 0.0
 				currentState = DayState.MOON_RISING
-				
-				# Reset Moon position
 				moon.position = moonStartPosition
 				nightBackground.modulate.a = 1.0
 				snowFall.modulate.a = 1.0
 		
 		DayState.MOON_RISING:
-			#print("Moon rising.")
 			cycleProgress += delta / riseDuration
-			
-			# Move Moon Up
 			moon.position.y = lerp(moonStartPosition.y, endY_Pos, cycleProgress)
-			# Night background stays dark
 			
 			if cycleProgress >= 1.0:
 				cycleProgress = 0.0
-				currentState = DayState.NIGHT_IDLE # Go to new pause state
-				
+				currentState = DayState.NIGHT_IDLE 
 				moon.position.y = endY_Pos
 				emit_signal("nightArrived")
 
@@ -166,39 +151,28 @@ func _process(delta):
 			nightBackground.modulate.a = 1.0
 			snowFall.modulate.a = 1.0
 			sunRiseGradient.position = gradientStartPosition
-			#print("Night idling.")
-			StartDayCycle()
 
 func StartNightCycle():
-	if currentState == DayState.NIGHT_IDLE:
-		#print("Starting night cycle.")
+	if currentState == DayState.DAY_IDLE or currentState == DayState.SUN_RISING: # Allow breaking sunrise if valid
+		print("MAIN: Starting night cycle.")
 		currentState = DayState.NIGHT_FADING
 		cycleProgress = 0.0
-	else:
-		currentState = DayState.NIGHT_IDLE
-		StartNightCycle()
 
 func StartDayCycle():
-	if currentState == DayState.NIGHT_IDLE:
-		#print("Starting day cycle.")
+	if currentState == DayState.NIGHT_IDLE or currentState == DayState.MOON_RISING:
+		print("MAIN: Starting day cycle.")
 		currentState = DayState.SUN_RISING
 		cycleProgress = 0.0
 		
 		sun.position = sunStartPosition
 		sunRiseGradient.position = gradientStartPosition
-	else:
-		currentState = DayState.NIGHT_IDLE
-		StartDayCycle()
 
 func _input(input: InputEvent):
 	if input.is_action_pressed("toggleMap"):
 		ToggleMap()
 
 func ToggleMap():
-	print("Toggling the map...")
-	
 	isMapHidden = !isMapHidden
-	
 	var targetPosition = viewportMapShowPosition if not isMapHidden else viewportMapHiddenPosition
 	var targetSize = viewportMapShownSize if not isMapHidden else viewportMapHiddenSize
 	
@@ -207,6 +181,14 @@ func ToggleMap():
 	
 	tweenPosition.tween_property(subVPortContainer, "position", targetPosition, 1.0)
 	tweenSize.tween_property(subVPort, "size", targetSize, 1.0)
+	
+	var clickPlayer: AudioStreamPlayer2D
+	clickPlayer = AudioStreamPlayer2D.new()
+	add_child(clickPlayer)
+	clickPlayer.stream = hapticClickSound
+	clickPlayer.play()
+	await get_tree().create_timer(0.5).timeout
+	clickPlayer.queue_free()
 	
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_cancel"):

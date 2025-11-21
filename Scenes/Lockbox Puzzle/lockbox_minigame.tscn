@@ -1,0 +1,86 @@
+[gd_scene load_steps=13 format=3 uid="uid://bjqpbi5da3fxa"]
+
+[ext_resource type="Script" uid="uid://cad1jyqfuvow6" path="res://Scripts/LockboxPuzzle/lockbox_minigame.gd" id="1_mxwii"]
+[ext_resource type="Texture2D" uid="uid://c8es8g6y3wo61" path="res://Assets/Images/Lockbox Puzzle/Box/Lockbox2.png" id="1_tmf43"]
+[ext_resource type="Texture2D" uid="uid://r85o7k4toril" path="res://Assets/Images/KitchenPuzzle/ChoppingBoard.png" id="2_ivhkk"]
+[ext_resource type="Texture2D" uid="uid://dr5gtavy8nhq0" path="res://Assets/Images/Lockbox Puzzle/Box/LockBoxOpen.png" id="4_y5g4c"]
+[ext_resource type="Texture2D" uid="uid://ck3ougtemtsye" path="res://Assets/Images/Lockbox Puzzle/Letter.png" id="5_48x3o"]
+[ext_resource type="Texture2D" uid="uid://dt7sot8xv2gpu" path="res://Assets/Images/Lockbox Puzzle/UnfoldedLetter.png" id="6_qycvt"]
+[ext_resource type="PackedScene" uid="uid://63skfimij3nu" path="res://Scenes/Lockbox Puzzle/lockButton.tscn" id="14_e01p4"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qycvt"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ivhkk"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bu8tn"]
+bg_color = Color(1, 1, 1, 0.0627451)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_a2igt"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dh7wh"]
+
+[node name="Lockbox Minigame" type="Node2D"]
+script = ExtResource("1_mxwii")
+unlockCodeOne = 0
+unlockCodeTwo = 1
+unlockCodeThree = 2
+unlockCodeFour = 7
+
+[node name="TextureRect" type="TextureRect" parent="."]
+texture_filter = 1
+offset_left = 445.99994
+offset_top = -6440.999
+offset_right = 1857.7952
+offset_bottom = -5792.999
+rotation = 0.12766536
+scale = Vector2(1.6515749, 23.797726)
+texture = ExtResource("2_ivhkk")
+
+[node name="boxClosed" type="Sprite2D" parent="."]
+position = Vector2(575.99994, 324)
+scale = Vector2(2.4, 2.3999999)
+texture = ExtResource("1_tmf43")
+
+[node name="LockSection" parent="boxClosed" instance=ExtResource("14_e01p4")]
+position = Vector2(-26.249973, 112.49999)
+
+[node name="LockSection2" parent="boxClosed" instance=ExtResource("14_e01p4")]
+position = Vector2(-9.166641, 112.49999)
+
+[node name="LockSection3" parent="boxClosed" instance=ExtResource("14_e01p4")]
+position = Vector2(7.9166903, 112.49999)
+
+[node name="LockSection4" parent="boxClosed" instance=ExtResource("14_e01p4")]
+position = Vector2(25.000023, 112.49999)
+
+[node name="boxOpened" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(575.99994, 324)
+scale = Vector2(2.4, 2.3999999)
+texture = ExtResource("4_y5g4c")
+
+[node name="letterFolded" type="Sprite2D" parent="boxOpened"]
+position = Vector2(110.83336, 12.500002)
+texture = ExtResource("5_48x3o")
+
+[node name="readLetterButton" type="Button" parent="boxOpened"]
+offset_left = 77.08334
+offset_top = -26.66668
+offset_right = 147.91669
+offset_bottom = 49.583336
+theme_override_styles/normal = SubResource("StyleBoxEmpty_qycvt")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_ivhkk")
+theme_override_styles/hover = SubResource("StyleBoxFlat_bu8tn")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_a2igt")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_dh7wh")
+
+[node name="letterUnfolded" type="Sprite2D" parent="boxOpened"]
+visible = false
+position = Vector2(162.91669, 0.83332825)
+scale = Vector2(0.98541677, 0.9854169)
+texture = ExtResource("6_qycvt")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+volume_db = 15.0
+
+[connection signal="pressed" from="boxOpened/readLetterButton" to="." method="_on_read_letter_button_pressed"]

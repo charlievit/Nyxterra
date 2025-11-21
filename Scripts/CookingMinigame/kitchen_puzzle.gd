@@ -25,6 +25,8 @@ var plopSound: AudioStreamMP3
 var boilingSound: AudioStreamMP3
 var stoveOffSound: AudioStreamMP3
 var stoveOnSound: AudioStreamMP3
+var pourSound: AudioStreamMP3
+var shakerSounds: Array = []
 #endregion SOUNDS
 
 #region PROGRESS BAR
@@ -362,12 +364,14 @@ func RegisterNodes(heatDialNode: Button, potAreaNode: Area2D, progressBarNode: P
 	
 	set_process(true)
 
-func PrepareSounds(chopSoundFile, plopSoundFile, boilingSoundFile, stoveOffSoundFile, stoveOnSoundFile):
+func PrepareSounds(chopSoundFile, plopSoundFile, boilingSoundFile, stoveOffSoundFile, stoveOnSoundFile, pourSoundFile, shakerSoundFiles):
 	chopSound = chopSoundFile
 	plopSound = plopSoundFile
 	boilingSound = boilingSoundFile
 	stoveOffSound = stoveOffSoundFile
 	stoveOnSound = stoveOnSoundFile
+	pourSound = pourSoundFile
+	shakerSounds = shakerSoundFiles
 
 # Reset the recipe if beyond a failure threshold or on button press at player-will
 func ResetRecipe():
@@ -570,7 +574,6 @@ func SetFireAndSteamAnimations(heatLevel: float):
 		if currentUpdate == steamUpdate:
 			constantAudioPlayer.stop()
 	
-
 func OnPotIngredientAdded(ingredientName: String): # This is for the WHOLE or CHOPPED ingredients
 	print("Solid ingredient added to pot: %s" % ingredientName)
 	

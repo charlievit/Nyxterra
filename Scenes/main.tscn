@@ -14,7 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://cu2sj1oh20tes" path="res://Assets/Images/Lighthouse/Structure/External/groundSnow.png" id="9_hptm8"]
 [ext_resource type="Script" uid="uid://cnb0vt0q0rkq1" path="res://Scripts/Main/ocean_waves.gd" id="10_fdnlq"]
 [ext_resource type="PackedScene" uid="uid://cpmufmthgj1px" path="res://Scenes/Environments/animated_snow_map.tscn" id="12_jkdf5"]
-[ext_resource type="PackedScene" path="res://Scenes/UI/PauseMenu.tscn" id="15_k12tt"]
+[ext_resource type="PackedScene" uid="uid://6825wwab2n3q" path="res://Scenes/UI/PauseMenu.tscn" id="15_k12tt"]
 [ext_resource type="Texture2D" uid="uid://bkkiwi8y2vk04" path="res://Assets/Images/UI/mapToggleIcon.png" id="15_wsu2k"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jkdf5"]
@@ -67,7 +67,7 @@ scale = Vector2(1.3964909, 1.3964909)
 script = ExtResource("1_8gbba")
 cameraLimitLeft = 9
 cameraLimitRight = 325
-riseDuration = 5.0
+riseDuration = 50.0
 
 [node name="Player" parent="." instance=ExtResource("2_8gbba")]
 position = Vector2(88, 278)
@@ -141,6 +141,7 @@ anchor_bottom = 1.0
 offset_left = 335.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_target = true
 
 [node name="SubViewport" type="SubViewport" parent="Control_GAME SCREEN UI/SubViewportContainer"]
 handle_input_locally = false
@@ -170,7 +171,7 @@ icon = ExtResource("15_wsu2k")
 
 [node name="PauseMenu" parent="Control_GAME SCREEN UI" instance=ExtResource("15_k12tt")]
 
-[node name="Control_LIGHTHOUSE BUTTON AREA" parent="." instance=ExtResource("1_bo1nx")]
+[node name="Lighthouse" parent="." instance=ExtResource("1_bo1nx")]
 texture_filter = 1
 offset_right = 29.15
 offset_bottom = 648.0

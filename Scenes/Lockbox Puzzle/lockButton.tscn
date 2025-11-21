@@ -1,0 +1,197 @@
+[gd_scene load_steps=19 format=3 uid="uid://63skfimij3nu"]
+
+[ext_resource type="Script" uid="uid://cwf04n54vdd8y" path="res://Scripts/LockboxPuzzle/lock_button.gd" id="1_2vocf"]
+[ext_resource type="Texture2D" uid="uid://cmmkntikunv43" path="res://Assets/Images/Lockbox Puzzle/Dial Numbers/0.png" id="1_t3l0b"]
+[ext_resource type="Texture2D" uid="uid://cbgaf7lxjc8xy" path="res://Assets/Images/Lockbox Puzzle/Dial Numbers/Spin.png" id="2_212u2"]
+[ext_resource type="Texture2D" uid="uid://bbhfjyoe8ilgt" path="res://Assets/Images/Lockbox Puzzle/Dial Numbers/1.png" id="3_2vocf"]
+[ext_resource type="Texture2D" uid="uid://bwwopm8orro7o" path="res://Assets/Images/Lockbox Puzzle/Dial Numbers/2.png" id="4_ejaat"]
+[ext_resource type="Texture2D" uid="uid://7l66biv3nhcx" path="res://Assets/Images/Lockbox Puzzle/Dial Numbers/3.png" id="5_6yqjk"]
+[ext_resource type="Texture2D" uid="uid://bfr121ik78wu2" path="res://Assets/Images/Lockbox Puzzle/Dial Numbers/4.png" id="6_cv38b"]
+[ext_resource type="Texture2D" uid="uid://cwjolk12l40si" path="res://Assets/Images/Lockbox Puzzle/Dial Numbers/5.png" id="7_tfw7l"]
+[ext_resource type="Texture2D" uid="uid://bec4rmitsss2w" path="res://Assets/Images/Lockbox Puzzle/Dial Numbers/6.png" id="8_2a655"]
+[ext_resource type="Texture2D" uid="uid://diekc6kdjfgfc" path="res://Assets/Images/Lockbox Puzzle/Dial Numbers/7.png" id="9_ymdkr"]
+[ext_resource type="Texture2D" uid="uid://bwuobg3271ae3" path="res://Assets/Images/Lockbox Puzzle/Dial Numbers/8.png" id="10_efa0v"]
+[ext_resource type="Texture2D" uid="uid://c6b74sr41d46a" path="res://Assets/Images/Lockbox Puzzle/Dial Numbers/9.png" id="11_hul0v"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2vocf"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ejaat"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6yqjk"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cv38b"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tfw7l"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6utps"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_t3l0b")
+}],
+"loop": false,
+"name": &"0",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_t3l0b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_212u2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_2vocf")
+}],
+"loop": false,
+"name": &"0to1",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_2vocf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_212u2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_ejaat")
+}],
+"loop": false,
+"name": &"1to2",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_ejaat")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_212u2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_6yqjk")
+}],
+"loop": false,
+"name": &"2to3",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_6yqjk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_212u2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_cv38b")
+}],
+"loop": false,
+"name": &"3to4",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_cv38b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_212u2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_tfw7l")
+}],
+"loop": false,
+"name": &"4to5",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_tfw7l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_212u2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_2a655")
+}],
+"loop": false,
+"name": &"5to6",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_2a655")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_212u2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_ymdkr")
+}],
+"loop": false,
+"name": &"6to7",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_ymdkr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_212u2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_efa0v")
+}],
+"loop": false,
+"name": &"7to8",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_efa0v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_212u2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_hul0v")
+}],
+"loop": false,
+"name": &"8to9",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_hul0v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_212u2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_t3l0b")
+}],
+"loop": false,
+"name": &"9to0",
+"speed": 8.0
+}]
+
+[node name="LockSection" type="Node2D"]
+script = ExtResource("1_2vocf")
+
+[node name="Button" type="Button" parent="."]
+offset_left = -9.0
+offset_top = -15.0
+offset_right = 8.0
+offset_bottom = 14.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_2vocf")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_ejaat")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_6yqjk")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_cv38b")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_tfw7l")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_6utps")
+animation = &"0"
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

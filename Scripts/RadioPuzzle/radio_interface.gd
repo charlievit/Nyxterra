@@ -38,20 +38,41 @@ var currentStationIsTuned: bool = false
 var isPoweredOn: bool = false
 @export var amplitudeTolerance: float = 2.0 #pixels
 @export var frequencyTolerance: float = 0.1 #cycles
-# TESTING
-#@onready var sensitivityTESTINGLabel = $RadioFace/sensitivityUINum
-# -------
+
+@onready var tuningSounds = preload("res://Assets/Audio/SineWave Puzzle/RadioStatic.mp3")
+@onready var buttonSound = preload("res://Assets/Audio/SineWave Puzzle/RadioOnButton.mp3")
+#@onready var messageSound = preload("res://Assets/Audio/SineWave Puzzle/AUDIO_NEEDED_HERE")
+
+var oneShotPlayer: AudioStreamPlayer2D
+var tuningSoundPlayer: AudioStreamPlayer2D
+var messagePlayer: AudioStreamPlayer2D
 #endregion
 
 func _ready():
-	# Set the initial wave colors
+	TaskManager.shouldBeHidden = true
+	
+	# Set the initial wave colors and line widths
 	playerWave.default_color = playerWaveColor
 	targetWave.default_color = targetWaveColor
-	
+	playerWave.width = lineWidth
+	targetWave.width = lineWidth
+	# connect the dial's signals
 	amplitudeDial.ValueChanged.connect(SetPlayerAmplitude)
 	frequencyDial.ValueChanged.connect(SetPlayerFrequency)
-	
+	# default animation speed
 	machineOn.speed_scale = 1
+	# set up the audio players for game
+	oneShotPlayer = AudioStreamPlayer2D.new()
+	add_child(oneShotPlayer)
+	oneShotPlayer.stream = buttonSound
+	
+	tuningSoundPlayer = AudioStreamPlayer2D.new()
+	add_child(tuningSoundPlayer)
+	tuningSoundPlayer.stream = tuningSounds
+	
+	messagePlayer = AudioStreamPlayer2D.new()
+	add_child(messagePlayer)
+	#messagePlayer.stream = todaysMessage
 	
 	# TESTING
 	SetTargetStation(randf_range(10.0, 100.0), randf_range(1.0, 10.0))
@@ -60,11 +81,6 @@ func _ready():
 func _process(delta):
 	if not isPoweredOn:
 		return
-	
-	# TESTING
-	playerWave.width = lineWidth
-	targetWave.width = lineWidth
-	# -------
 	
 	var averageFrequency = (playerFrequency + targetFrequency) / 2.0
 	
@@ -89,6 +105,7 @@ func _process(delta):
 
 func _on_power_button_pressed():
 	isPoweredOn = not isPoweredOn
+	oneShotPlayer.play()
 	
 	machineOff.visible = not isPoweredOn
 	machineOn.visible = isPoweredOn
@@ -98,8 +115,16 @@ func _on_power_button_pressed():
 	
 	if isPoweredOn:
 		machineOn.play()
+		UpdateAudio()
+		if not currentStationIsTuned:
+			tuningSoundPlayer.play()
+			UpdateAudio()
+		else:
+			tuningSoundPlayer.play()
+			tuningSoundPlayer.volume_db = -15.0
 	else:
 		machineOn.stop()
+		tuningSoundPlayer.stop()
 
 func ToggleButtons(toggleState: bool):
 	amplitudeDial.disabled = toggleState
@@ -136,8 +161,17 @@ func CheckForMatch():
 			currentStationIsTuned = true
 			ToggleButtons(currentStationIsTuned)
 			playerWave.default_color = tunedInColor
+			tuningSoundPlayer.volume_db = -15.0
 			emit_signal("stationTuned")
 			# TODO: audioStationNoiseLoopHere.play()
+
+func UpdateAudio():
+	if tuningSoundPlayer:
+		var newVal = remap(playerAmplitude, 5.0, 100.0, -15.0, 2.5)
+		tuningSoundPlayer.volume_db = newVal
+		
+		var newPitch = remap(playerFrequency, 0.5, 10.0, 0.25, 3.0)
+		tuningSoundPlayer.pitch_scale = newPitch
 
 # PUBLIC FUNCTION
 # TODO: call this in the main game sript to set the target radio station for the day
@@ -155,20 +189,9 @@ func SetTargetStation(newAmp: float, newFreq: float):
 func SetPlayerAmplitude(newAmp: float):
 	playerAmplitude = newAmp
 	playerAmplitude = clamp(playerAmplitude, 5.0, 100)
-	print(playerAmplitude)
+	UpdateAudio()
 
 func SetPlayerFrequency(newFreq: float):
 	playerFrequency = newFreq / 10
 	playerFrequency = clamp(playerFrequency, 0.5, 10.0)
-	print(playerFrequency)
-
-
-#region TESTING
-#func _on_sensitivity_down_button_pressed() -> void:
-#	amplitudeDial.sensitivity -= 0.1
-#	frequencyDial.sensitivity -= 0.1
-
-#func _on_sensitivity_up_button_pressed() -> void:
-#	amplitudeDial.sensitivity += 0.1
-#	frequencyDial.sensitivity += 0.1
-#endregion TESTING
+	UpdateAudio()

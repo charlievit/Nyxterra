@@ -2,6 +2,8 @@
 extends CharacterBody2D
 
 #region VARIABLES
+var controlsDisabled: bool = false
+
 @export var moveSpeed: float = 90.0
 
 @export_group("Floor Effects")
@@ -25,6 +27,12 @@ var currentFloorBottomY: float = 425.0
 var currentFloorTopY: float = 408.0
 
 var overlappingTeleporters: Array[Area2D] = []
+
+@onready var subVPort: SubViewportContainer = $"../Control_GAME SCREEN UI/SubViewportContainer"
+
+var footStepsPlayer: AudioStreamPlayer2D
+@onready var footStepsSound = preload("res://Assets/Audio/Player/SFX/Footstep.mp3")
+var stepRightFoot: bool = false
 #endregion VARIABLES
 
 
@@ -36,12 +44,20 @@ func _ready():
 	self.position = GameManager.playerSpawnPosition
 	currentFloor = GameManager.playerSpawnFloor
 	
+	subVPort.mouse_filter = Control.MOUSE_FILTER_PASS
+	
+	footStepsPlayer = AudioStreamPlayer2D.new()
+	add_child(footStepsPlayer)
+	footStepsPlayer.stream = footStepsSound
+	footStepsPlayer.volume_db -= 15.0
+	
 	# Store the sprite's default state
 	if sprite:
 		baseScale = sprite.scale
 		baseModulation = sprite.modulate
 	if animSprite:
 		animBaseScale = animSprite.scale
+		animSprite.frame_changed.connect(OnFrameChanged)
 	
 	# Set initial floor boundaries
 	SetFloor(currentFloor)
@@ -53,7 +69,8 @@ func _physics_process(_delta):
 	velocity = inputVector * moveSpeed
 	
 	# Move the character and update the sprite
-	move_and_slide()
+	if not controlsDisabled:
+		move_and_slide()
 	UpdateSpriteEffects()
 	
 	# Update Animation NOTE: PLACEHOLDER
@@ -151,16 +168,41 @@ func UpdateAnimation(_inputVector: Vector2):
 		
 		
 		# Simple flip for placeholder sprite
-		if velocity.x < 0:
+		if velocity.x < 0 and not controlsDisabled:
 			sprite.flip_h = true
 			animSprite.flip_h = true
-		elif velocity.x > 0:
+		elif velocity.x > 0 and not controlsDisabled:
 			sprite.flip_h = false
 			animSprite.flip_h = false
 	else:
 		animSprite.visible = false
 		sprite.visible = true
-		pass
+		animSprite.stop()
+		animSprite.frame = 0
+
+func OnFrameChanged():
+	if animSprite.animation != "walk":
+		return
+	
+	if animSprite.frame == 3 or animSprite.frame == 7:
+		PlayFootStep()
+
+func PlayFootStep():
+	stepRightFoot = !stepRightFoot
+	
+	var basePitch = 1.0
+	
+	if moveSpeed > 90:
+		basePitch = 1.25
+	
+	if stepRightFoot:
+		footStepsPlayer.pitch_scale = basePitch + 0.1
+	else:
+		footStepsPlayer.pitch_scale = basePitch - 0.05
+	
+	footStepsPlayer.pitch_scale += randf_range(-0.05, 0.05)
+	
+	footStepsPlayer.play()
 
 func write_save_data() -> void:
 	# Copy the player’s state into the SaveData resource

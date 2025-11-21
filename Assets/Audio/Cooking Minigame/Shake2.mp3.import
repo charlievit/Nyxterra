@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://i16ocbrecaeg"
+path="res://.godot/imported/Shake2.mp3-d68b621a7ce3d6ef79901e216353ffbe.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/Cooking Minigame/Shake2.mp3"
+dest_files=["res://.godot/imported/Shake2.mp3-d68b621a7ce3d6ef79901e216353ffbe.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

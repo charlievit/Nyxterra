@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cvc4s8np4y62"
+path="res://.godot/imported/RadioOnButton.mp3-9b25797c3a04ecbdd7f4e96f1b75458e.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/SineWave Puzzle/RadioOnButton.mp3"
+dest_files=["res://.godot/imported/RadioOnButton.mp3-9b25797c3a04ecbdd7f4e96f1b75458e.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

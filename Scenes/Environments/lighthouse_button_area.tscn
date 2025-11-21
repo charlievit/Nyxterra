@@ -1,12 +1,16 @@
-[gd_scene load_steps=32 format=3 uid="uid://bty042lmdfi02"]
+[gd_scene load_steps=38 format=3 uid="uid://bty042lmdfi02"]
 
 [ext_resource type="Texture2D" uid="uid://dumrws8pl1suf" path="res://Assets/Images/Lighthouse/Structure/LightRoomBuild1.png" id="1_680ea"]
 [ext_resource type="Texture2D" uid="uid://bnc5fep5l67u1" path="res://Assets/Images/Lighthouse/Structure/Floor3&4SampleScene.png" id="2_qkcrh"]
+[ext_resource type="Texture2D" uid="uid://clfxft8e4odug" path="res://Assets/Images/Lighthouse/Structure/Light Lever/lever_Light_START_POSITION.png" id="3_b1qtg"]
 [ext_resource type="PackedScene" uid="uid://cuku1ylw6a6a6" path="res://Scenes/RadioPuzzle/radioAnimated.tscn" id="3_qkcrh"]
 [ext_resource type="Texture2D" uid="uid://ui7san5wy5iy" path="res://Assets/Images/Lighthouse/Structure/Floor1&2Build1.png" id="3_rf6kk"]
 [ext_resource type="Texture2D" uid="uid://dsnuq07k0kmpv" path="res://Assets/Images/Lighthouse/Props/Wall.png" id="4_b2lj4"]
+[ext_resource type="Texture2D" uid="uid://cmsujdu4mthv3" path="res://Assets/Images/Lighthouse/Structure/Light Lever/lever_LightOFF.png" id="4_enxg4"]
 [ext_resource type="Script" uid="uid://cuipkjxvfn1xp" path="res://Scripts/Main/teleporterHandler.gd" id="5_0t6ev"]
+[ext_resource type="Texture2D" uid="uid://d2njw58ienkhk" path="res://Assets/Images/Lighthouse/Structure/Light Lever/lever_LightON.png" id="5_71vhx"]
 [ext_resource type="Texture2D" uid="uid://c2bjfaemqpvp3" path="res://Assets/Images/PLACEHOLDER_DUDE.png" id="5_rf6kk"]
+[ext_resource type="Script" uid="uid://bf3rbf6inlo3j" path="res://Scripts/Main/switch_decision_detector.gd" id="6_enxg4"]
 [ext_resource type="Texture2D" uid="uid://bxt10ujll7gdy" path="res://Assets/Images/Lighthouse/Structure/Turny Thing/frame0000.png" id="6_x8n6x"]
 [ext_resource type="Texture2D" uid="uid://blj3msakscu8k" path="res://Assets/Images/Lighthouse/Structure/Turny Thing/frame0001.png" id="7_kx1qn"]
 [ext_resource type="Texture2D" uid="uid://deiaeyfkba3ii" path="res://Assets/Images/Lighthouse/Structure/Turny Thing/frame0002.png" id="8_e3oeg"]
@@ -31,6 +35,34 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b2lj4"]
 size = Vector2(22.97748, 42.957886)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_w401g"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_enxg4")
+}],
+"loop": false,
+"name": &"awaitingPlayerChoice",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_enxg4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_b1qtg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_71vhx")
+}],
+"loop": false,
+"name": &"turnOn",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b1qtg"]
+size = Vector2(95.09511, 31.698425)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_nobdy"]
 animations = [{
@@ -136,6 +168,29 @@ offset_top = -23.976496
 offset_right = 18.021545
 offset_bottom = 16.023504
 text = "E"
+
+[node name="Main Light Switch" type="AnimatedSprite2D" parent="TOP"]
+position = Vector2(184, 204.99998)
+scale = Vector2(0.37856817, 0.37856817)
+sprite_frames = SubResource("SpriteFrames_w401g")
+animation = &"awaitingPlayerChoice"
+
+[node name="switchDecisionDetector" type="Area2D" parent="TOP/Main Light Switch"]
+script = ExtResource("6_enxg4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TOP/Main Light Switch/switchDecisionDetector"]
+position = Vector2(0, 6.1035156e-05)
+scale = Vector2(1.0000008, 1.0000008)
+shape = SubResource("RectangleShape2D_b1qtg")
+
+[node name="ButtonPrompt" type="RichTextLabel" parent="TOP/Main Light Switch/switchDecisionDetector"]
+texture_filter = 1
+offset_left = -97.736694
+offset_top = -73.96286
+offset_right = 6.9745026
+offset_bottom = -49.183075
+scale = Vector2(1.2633679, 1.2712976)
+text = "Main Light 'E'"
 
 [node name="MIDDLE" type="Control" parent="."]
 layout_mode = 1
@@ -248,6 +303,7 @@ frame_progress = 0.5776877
 script = ExtResource("24_kx1qn")
 
 [node name="PLACEHOLDER_GearBox" type="Sprite2D" parent="MIDDLE"]
+visible = false
 z_index = 2
 position = Vector2(134, 69)
 scale = Vector2(0.23770347, 0.3177035)
