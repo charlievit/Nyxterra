@@ -13,6 +13,8 @@ var shouldBeHidden: bool = false
 @onready var alertIcon = $SlideController/TabButton/AlertIcon
 @onready var tabButton = $SlideController/TabButton
 
+@onready var hapticClickSound = preload("res://Assets/Audio/UI/HapticClick.mp3")
+
 # STATES
 var isOpen: bool = false
 var isAnimating: bool = false
@@ -40,7 +42,7 @@ func _input(event):
 
 # CORE LOGIC
 func ToggleWindow():
-	if isAnimating: return
+	#if isAnimating: return
 	
 	if not isOpen:
 		ClearNotification()
@@ -57,6 +59,14 @@ func ToggleWindow():
 	var targetRotation = 180 if not isOpen else 0
 	var arrowTween = create_tween()
 	arrowTween.tween_property(arrowIcon, "rotation_degrees", targetRotation, slideSpeed / 3.0)
+	
+	var clickPlayer: AudioStreamPlayer2D
+	clickPlayer = AudioStreamPlayer2D.new()
+	add_child(clickPlayer)
+	clickPlayer.stream = hapticClickSound
+	clickPlayer.play()
+	await get_tree().create_timer(0.5).timeout
+	clickPlayer.queue_free()
 	
 	isOpen = not isOpen
 
@@ -151,3 +161,9 @@ func CompleteTask(taskID: String):
 	# [s] = strikethrough, [color] = gray
 	var finalText = "[color=#888888][s]" + taskData["text"] + "[/s][/color]"
 	taskData["label"].text = finalText
+
+func CompleteDay():
+	for child in taskList.get_children():
+		child.queue_free()
+	
+	activeTasks.clear()

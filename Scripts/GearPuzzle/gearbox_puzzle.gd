@@ -273,7 +273,7 @@ func PlaySFX(stream: AudioStream):
 func TriggerWinState():
 	puzzleSolved = true
 	#print("Puzzle Solved!")
-	TaskManager.CompleteTask(taskID)
+	GameManager.CompleteTask(taskID)
 	loopPlayer.volume_db += 5.0
 	
 	GameManager.SetPlayerSpawn(returnFloorIndex, returnPosition)

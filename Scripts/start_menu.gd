@@ -19,6 +19,8 @@ var _cached_volume_db: float = 0.0   # for Return (revert)
 var _master_bus: int = 0
 
 func _ready() -> void:
+	TaskManager.shouldBeHidden = true
+	
 	_master_bus = AudioServer.get_bus_index("Master")
 
 	# Load saved volume (default 0.8 if no file yet)

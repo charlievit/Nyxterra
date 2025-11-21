@@ -32,6 +32,8 @@ var chopCount: int = 0
 var isOverPot: bool = false
 var spawnPosition: Vector2
 var currentAmount: float = 0.0
+var isPouring = false
+var pourPlayer: AudioStreamPlayer2D
 
 # PHYSICS TIMER
 var resetTimer: Timer
@@ -45,7 +47,7 @@ var isHeld: bool = false
 # Variables to track the mouse's velocity for a "throw" effect on drop
 var mouseVelocity: Vector2 = Vector2.ZERO
 var lastMousePosition: Vector2 = Vector2.ZERO
-var lastMouseVelocity: Vector2 = Vector2.ZERO # shake detections TODO: refine to feel better and more consistent
+var lastMouseVelocity: Vector2 = Vector2.ZERO # shake detections
 #endregion CONTROLS
 #endregion VARIABLES
 
@@ -65,7 +67,6 @@ func _ready() -> void:
 		potDetectorArea.area_entered.connect(OnPotAreaEntered)
 		potDetectorArea.area_exited.connect(OnPotAreaExited)
 	
-	# shaker and pourables indicator TODO: counter-rotate  the text when over pot and remove the ".0"
 	if not amountLabel:
 		push_error("ERROR: AMOUNT LABEL MISSING")
 	else:
@@ -79,10 +80,20 @@ func _ready() -> void:
 	resetTimer.wait_time = 0.1
 	resetTimer.connect("timeout", OnResetTimerTimeout)
 	add_child(resetTimer)
+	
+	if self.IngredientType.POURABLE:
+		print(self.name)
+		pourPlayer = AudioStreamPlayer2D.new()
+		add_child(pourPlayer)
 
 func OnPotAreaEntered(area: Area2D):
 	if area.is_in_group("pot"):
 		isOverPot = true
+		if pourPlayer.stream == null:
+			if KitchenController.pourSound:
+				pourPlayer.stream = KitchenController.pourSound
+			else:
+				push_error("Kitchen Controller missing pour sound.")
 	if (sprite and sprite is AnimatedSprite2D):
 		sprite.play("default")
 
@@ -90,6 +101,7 @@ func OnPotAreaExited(area: Area2D):
 	if area.is_in_group("pot"):
 		isOverPot = false
 		rotation_degrees = 0.0
+		StopPouring()
 	if (sprite and sprite is AnimatedSprite2D):
 		sprite.play_backwards("default")
 
@@ -121,7 +133,7 @@ func ResetPosition(): # just for shaker and pourables so their "containers" can'
 	freeze = true
 	linear_velocity = Vector2.ZERO
 	angular_velocity = 0.0
-	
+	StopPouring()
 		# Return to start position
 	global_position = spawnPosition
 	rotation_degrees = 0.0
@@ -158,7 +170,6 @@ func _input_event(_viewport: Node, event: InputEvent, _shape_idx: int): #initial
 		if event.button_index == MOUSE_BUTTON_LEFT and event.is_pressed():
 			PickupAndHold()
 
-
 func _input(event: InputEvent): # release click on ingredient
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT and not event.is_pressed():
@@ -169,6 +180,7 @@ func _input(event: InputEvent): # release click on ingredient
 				gravity_scale = defaultGravityScale
 				linear_velocity = mouseVelocity
 				set_sleeping(false)
+				StopPouring()
 				
 				if ingredientType == IngredientType.POURABLE or ingredientType == IngredientType.SHAKER:
 					var amountToSend = floor(currentAmount)
@@ -176,6 +188,10 @@ func _input(event: InputEvent): # release click on ingredient
 						KitchenController.AddPartialIngredient(ingredientName, amountToSend)
 					ResetPosition()
 
+func StopPouring():
+	if isPouring:
+		isPouring = false
+		pourPlayer.stop()
 
 func _physics_process(delta: float):
 	# FIRST: Track the mouse velocity
@@ -197,16 +213,20 @@ func _physics_process(delta: float):
 		# THIRD: handle held item logic
 		if isOverPot and amountLabel:
 			if ingredientType == IngredientType.POURABLE:
+				if not isPouring:
+					isPouring = true
+					pourPlayer.play()
 				# Pout over time and tilt
 				currentAmount += pourRate * delta
 				amountLabel.text = str(floor(currentAmount))
-				# TODO: Counter rotate label
 				rotation_degrees = lerp(rotation_degrees, -45.0, delta * 5.0)
 			elif ingredientType == IngredientType.SHAKER:
 				# Check for a mouse "shake"
 				var mouseVel = mouseVelocity
 				if abs(mouseVel.x) > shakeThreshold and sign(mouseVel.x) != sign(lastMouseVelocity.x):
 					currentAmount += shakeAmount
+					KitchenController.oneShotAudioPlayer.stream = KitchenController.shakerSounds.pick_random()
+					KitchenController.oneShotAudioPlayer.play()
 					amountLabel.text = str(floor(currentAmount))
 				
 				lastMouseVelocity.x = mouseVel.x
@@ -217,3 +237,4 @@ func _physics_process(delta: float):
 			rotation_degrees = lerp(rotation_degrees, 0.0, delta * 5.0)
 			if ingredientType == IngredientType.SHAKER:
 				lastMouseVelocity = Vector2.ZERO
+			StopPouring()

@@ -28,12 +28,19 @@ extends Control
 @export var recipeDisplayLocation2: RichTextLabel
 var recipeText: Dictionary
 
+var todaysRecipe
+
 # PRELOAD
 var chopSound = preload("res://Assets/Audio/Cooking Minigame/Chop.mp3")
 var plopSound = preload("res://Assets/Audio/Cooking Minigame/Plop.mp3")
 var boilingSound = preload("res://Assets/Audio/Cooking Minigame/Boiling.mp3")
 var stoveOffSound = preload("res://Assets/Audio/Cooking Minigame/StoveOff.mp3")
 var stoveOnSound = preload("res://Assets/Audio/Cooking Minigame/StoveOn.mp3")
+var pourSound = preload("res://Assets/Audio/Cooking Minigame/Pour.mp3")
+
+var shakeSoundOne = preload("res://Assets/Audio/Cooking Minigame/Shake1.mp3")
+var shakeSoundTwo = preload("res://Assets/Audio/Cooking Minigame/Shake2.mp3")
+var shakeSoundThree = preload("res://Assets/Audio/Cooking Minigame/Shake.mp3")
 
 func _ready():
 	# DEBUG SAFETY CHECKS, should be safe to remove (I will not be doing that)
@@ -66,22 +73,24 @@ func _ready():
 		return
 	if not constantAudioPlayer:
 		push_error("No constant audio player found")
-
+	
 	KitchenController.RegisterNodes(heatDial, potArea, progressBar, recipeParser, fireAnimLow, fireAnimMedium, fireAnimHigh, steamAnim, oneShotAudioPlayer, constantAudioPlayer)
 	
-	KitchenController.PrepareSounds(chopSound, plopSound, boilingSound, stoveOffSound, stoveOnSound)
+	KitchenController.PrepareSounds(chopSound, plopSound, boilingSound, stoveOffSound, stoveOnSound, pourSound, [shakeSoundOne, shakeSoundTwo, shakeSoundThree])
 	
-	KitchenController.StartRecipe("RabbitStew")
+	todaysRecipe = GameManager.todaysRecipe
+	
+	KitchenController.StartRecipe(todaysRecipe)
 	
 	TaskManager.shouldBeHidden = true
 	
-	recipeText = recipeParser.ParseRecipeToInstructions("RabbitStew")
+	recipeText = recipeParser.ParseRecipeToInstructions(todaysRecipe)
 	recipeDisplayLocation.bbcode_enabled = true
 	if recipeDisplayLocation2:
 		recipeDisplayLocation2.bbcode_enabled = true
 	
 	# Call the new parser function
-	recipeText = recipeParser.ParseRecipeToInstructions("RabbitStew")
+	recipeText = recipeParser.ParseRecipeToInstructions(todaysRecipe)
 	
 	# Assign text to respective labels
 	recipeDisplayLocation.text = recipeText["left"]
@@ -96,7 +105,6 @@ func _ready():
 
 func _on_close_pressed() -> void:
 	recipeBookScreen.visible = false
-
 
 func _on_recipe_book_button_pressed() -> void:
 	recipeBookScreen.visible = true
