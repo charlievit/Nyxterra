@@ -31,6 +31,9 @@ var isBadEnding: bool
 
 #COOKING
 var todaysRecipe: String
+
+#save/load
+var player: Node = null
 #endregion
 
 func _ready():
@@ -38,7 +41,8 @@ func _ready():
 	await get_tree().process_frame
 	# NOTE: Load from save data here
 	
-	StartDay(-1)
+	StartDay(-1) #Since you forced to start on day -1, save&load unable to overwrite this. 
+				 #Make sure it change to currentDay to able loading function 
 
 func StartDay(day: int):
 	currentDay = day
@@ -271,3 +275,33 @@ func ConsumeSpawnData(playerNode):
 		if playerNode.has_method("SetFloor"):
 			playerNode.SetFloor(playerSpawnFloor)
 		shouldUseStoredSpawn = false
+		
+#save & load
+func write_save_data() -> void:
+	# Copy GameManager runtime state into SaveData
+	var data := SaveManager.current_save
+	
+	data.hasCompletedTutorial = hasCompletedTutorial
+	data.current_day = currentDay
+	data.currentTaskStep = currentTaskStep
+	data.need_gear_box = needGearBox
+	data.need_radio = needRadio
+	data.need_morse = needMorse
+	data.need_daughter = needDaughter
+	data.need_kitchen = needKitchen
+	data.need_light = needLight
+
+
+func apply_save_data() -> void:
+	# Read from SaveData back into GameManager
+	var data := SaveManager.current_save
+	
+	hasCompletedTutorial = data.hasCompletedTutorial
+	currentDay = data.current_day
+	currentTaskStep = data.currentTaskStep
+	needGearBox = data.need_gear_box
+	needRadio = data.need_radio
+	needMorse = data.need_morse
+	needDaughter = data.need_daughter
+	needKitchen = data.need_kitchen
+	needLight = data.need_light

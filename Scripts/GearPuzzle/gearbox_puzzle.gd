@@ -283,6 +283,6 @@ func TriggerWinState():
 	GameManager.needGearBox = false
 	
 	if ResourceLoader.exists(mainGameScenePath):
-		get_tree().change_scene_to_file(mainGameScenePath)
+		SceneLoader.change_scene_with_loading(mainGameScenePath)
 	else:
 		push_error("ERROR: Main game scene path not found.")

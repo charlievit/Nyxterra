@@ -20,8 +20,8 @@ config/icon="res://Assets/Images/icon.svg"
 TaskManager="*res://Scenes/UI/task_menu.tscn"
 KitchenController="*res://Scripts/CookingMinigame/kitchen_puzzle.gd"
 GameManager="*res://Scripts/Main/GameManager.gd"
-GameState="*res://Scripts/save_load/game_state.gd"
 SaveManager="*res://Scripts/save_load/save_manager.gd"
+SceneLoader="*res://Scripts/scene_loader.gd"
 
 [display]
 

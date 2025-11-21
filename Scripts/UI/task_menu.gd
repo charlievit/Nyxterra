@@ -167,3 +167,33 @@ func CompleteDay():
 		child.queue_free()
 	
 	activeTasks.clear()
+
+func SyncTasksFromGameManagerOnLoad() -> void:
+	# This runs AFTER GameManager.apply_save_data(),
+	# so all needX flags already match the save.
+
+	# Example task IDs: adjust to match your real IDs / texts.
+	# Gearbox
+	if not GameManager.needGearBox:
+		# Task already done in save → mark complete silently
+		CompleteTask("Gearbox")
+
+	# Radio
+	if not GameManager.needRadio:
+		CompleteTask("Radio")
+
+	# Morse
+	if not GameManager.needMorse:
+		CompleteTask("Morse")
+
+	# Daughter
+	if not GameManager.needDaughter:
+		CompleteTask("Daughter")
+
+	# Kitchen
+	if not GameManager.needKitchen:
+		CompleteTask("Kitchen")
+
+	# Light
+	if not GameManager.needLight:
+		CompleteTask("Lighthouse")
