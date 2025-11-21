@@ -26,11 +26,6 @@ func clear_save() -> void:
 
 
 func save_game() -> void:
-	var player = GameState.player
-	if player:
-		current_save.player_position = player.global_position
-		current_save.player_floor = player.currentFloor
-
 	var current_scene := get_tree().current_scene
 	if current_scene:
 		current_save.current_scene_path = current_scene.scene_file_path

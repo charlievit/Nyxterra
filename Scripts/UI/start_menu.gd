@@ -42,7 +42,7 @@ func _ready() -> void:
 
 func _on_start_pressed() -> void:
 	SaveManager.clear_save()
-	get_tree().change_scene_to_file(GAME_SCENE)
+	SceneLoader.change_scene_with_loading(GAME_SCENE)
 
 func _on_options_pressed() -> void:
 	_cached_volume_db = AudioServer.get_bus_volume_db(_master_bus)
@@ -69,15 +69,12 @@ func _on_quit_pressed() -> void:
 
 func _on_continue_pressed() -> void:
 	if SaveManager.has_save():
-		# Reload save resource from disk to be safe
 		SaveManager.reload_from_disk()
+		GameManager.apply_save_data()
+		var path := SaveManager.current_save.current_scene_path
+		if path != "":
+			SceneLoader.change_scene_with_loading(path)
 
-		# Use the scene path stored in the save
-		if SaveManager.current_save.current_scene_path != "":
-			get_tree().change_scene_to_file(SaveManager.current_save.current_scene_path)
-		else:
-			# Fallback: if no path saved, just start main scene
-			get_tree().change_scene_to_file(GAME_SCENE)
 	else:
 		print("No save file found.")
 		

@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bf5g134nk8ebe"]
 
-[ext_resource type="Script" uid="uid://ch3y31u7yadh8" path="res://Scripts/start_menu.gd" id="1_juhg0"]
+[ext_resource type="Script" uid="uid://ch3y31u7yadh8" path="res://Scripts/UI/start_menu.gd" id="1_juhg0"]
 [ext_resource type="Texture2D" uid="uid://d14tbtri0npsx" path="res://Assets/Images/LighthouseAnim2.png" id="2_jgtwh"]
 
 [node name="StartMenu" type="Control"]
@@ -36,7 +36,7 @@ theme_override_constants/separation = 4
 [node name="StartButton" type="Button" parent="CenterContainer/Buttons"]
 layout_mode = 2
 action_mode = 0
-text = "Start
+text = "New Game
 "
 
 [node name="ContinueButton" type="Button" parent="CenterContainer/Buttons"]

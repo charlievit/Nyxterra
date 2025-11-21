@@ -74,11 +74,15 @@ func _ready() -> void:
 	currentState = DayState.NIGHT_IDLE
 	
 	TaskManager.shouldBeHidden = false
-	
-	if SaveManager.has_save():
+	if GameManager.shouldUseStoredSpawn:
+		GameManager.ConsumeSpawnData(player)
+	elif SaveManager.has_save():
 		SaveManager.reload_from_disk()
-		player.global_position = SaveManager.current_save.player_position
-	
+		GameManager.apply_save_data()
+		player.apply_save_data()
+		
+	TaskManager.SyncTasksFromGameManagerOnLoad()
+		
 func _process(delta):
 	# Force the zoomed-in camera to follow the player
 	var visibleSize = Vector2(subVPort.size) / zoomCamera.zoom

@@ -28,7 +28,7 @@ func _process(_delta):
 	if playerBody:
 		if Input.is_action_pressed("ui_accept") and GameManager.needGearBox:
 			if ResourceLoader.exists(gearboxScenePath):
-				get_tree().change_scene_to_file(gearboxScenePath)
+				SceneLoader.change_scene_with_loading(gearboxScenePath)
 			else:
 				push_error("ERROR: Main game scene path not found.")
 

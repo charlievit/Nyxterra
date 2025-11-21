@@ -1,0 +1,37 @@
+[gd_scene load_steps=2 format=3 uid="uid://cmm7tsafh30uc"]
+
+[ext_resource type="Script" uid="uid://bbnbdu7cheyj7" path="res://Scripts/UI/loading_screen.gd" id="1_qj53y"]
+
+[node name="LoadingScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_qj53y")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.2, 0.2, 0.2, 1)
+
+[node name="LoadingLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 945.0
+offset_top = 597.0
+offset_right = 1020.0
+offset_bottom = 620.0
+text = "Loading..."
+
+[node name="PercentLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 1047.0
+offset_top = 598.0
+offset_right = 1087.0
+offset_bottom = 621.0
+text = "0%"

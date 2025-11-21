@@ -38,7 +38,7 @@ var stepRightFoot: bool = false
 
 func _ready():
 	#save & load
-	GameState.player = self
+	GameManager.player = self
 	GameManager.ConsumeSpawnData(self)
 	
 	self.position = GameManager.playerSpawnPosition
