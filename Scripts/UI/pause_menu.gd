@@ -58,24 +58,30 @@ func _on_resume_pressed() -> void:
 
 
 func _on_save_pressed() -> void:
-	if GameManager.has_method("write_save_data"):
-		GameManager.write_save_data()
-		
-	SaveManager.save_game()
+	# 2) Let GameManager write its data (day, objectives, etc.)
+	GameManager.write_save_data()
 	
+	# 1) Let the player write its data (position, floor, etc.)
+	var player := GameManager.player
+	player.write_save_data()
+	
+	# 3) Actually save to disk
+	SaveManager.save_game()
 	_update_load_button_state()
 
 
 func _on_load_pressed() -> void:
 	get_tree().paused = false
+	
 	hide()
 
 	if SaveManager.has_save():
 		SaveManager.reload_from_disk()
+		GameManager.apply_save_data()
+		var player := GameManager.player
+		player.apply_save_data()
+		TaskManager.SyncTasksFromGameManagerOnLoad()
 		
-		if GameManager.has_method("apply_save_data"):
-			GameManager.apply_save_data()
-			
 		# Switch to the saved scene
 		var path := SaveManager.current_save.current_scene_path
 		if path != "":

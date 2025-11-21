@@ -27,6 +27,8 @@ func _ready():
 	
 	alertIcon.visible = false
 	alertIcon.rotation = 0
+	
+	#if SaveManager.has_save()
 
 func _process(_delta):
 	if shouldBeHidden:
@@ -136,6 +138,21 @@ func AddTask(taskID: String, taskText: String):
 
 	TriggerNotification()
 
+func ClearAllTasks() -> void:
+	# Remove all task rows from the UI
+	for child in taskList.get_children():
+		child.queue_free()
+
+	# Clear the internal dictionary
+	activeTasks.clear()
+
+	# Also reset notification state
+	alertIcon.visible = false
+	alertIcon.rotation = 0
+	if shakeTween:
+		shakeTween.kill()
+		shakeTween = null
+		
 func CompleteTask(taskID: String):
 	print("Completing task...")
 	if not taskID in activeTasks:
@@ -151,3 +168,33 @@ func CompleteTask(taskID: String):
 	# [s] = strikethrough, [color] = gray
 	var finalText = "[color=#888888][s]" + taskData["text"] + "[/s][/color]"
 	taskData["label"].text = finalText
+	
+func SyncTasksFromGameManagerOnLoad() -> void:
+	# This runs AFTER GameManager.apply_save_data(),
+	# so all needX flags already match the save.
+
+	# Example task IDs: adjust to match your real IDs / texts.
+	# Gearbox
+	if not GameManager.needGearBox:
+		# Task already done in save → mark complete silently
+		CompleteTask("Gearbox")
+
+	# Radio
+	if not GameManager.needRadio:
+		CompleteTask("Radio")
+
+	# Morse
+	if not GameManager.needMorse:
+		CompleteTask("Morse")
+
+	# Daughter
+	if not GameManager.needDaughter:
+		CompleteTask("Daughter")
+
+	# Kitchen
+	if not GameManager.needKitchen:
+		CompleteTask("Kitchen")
+
+	# Light
+	if not GameManager.needLight:
+		CompleteTask("Lighthouse")

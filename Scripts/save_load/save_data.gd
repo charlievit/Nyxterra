@@ -18,5 +18,3 @@ class_name SaveData
 @export var need_daughter: bool = false
 @export var need_kitchen: bool = false
 @export var need_light: bool = false
-
-

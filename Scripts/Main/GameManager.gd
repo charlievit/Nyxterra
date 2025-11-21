@@ -19,6 +19,7 @@ var needKitchen: bool = false # day 1-4
 var needLight: bool = false # day 1-4
 #endregion
 
+
 func _ready():
 	await get_tree().process_frame
 	
@@ -178,4 +179,4 @@ func apply_save_data() -> void:
 	needDaughter = data.need_daughter
 	needKitchen = data.need_kitchen
 	needLight = data.need_light
-	
+		

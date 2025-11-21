@@ -13,6 +13,7 @@ const SETTINGS_KEY_VOLUME := "master_volume"   # linear 0..1
 @onready var volume_slider: HSlider = $OptionsPanel/VolumeSlider
 @onready var apply_button: Button   = $OptionsPanel/ApplyButton
 @onready var back_button: Button    = $OptionsPanel/BackButton
+@onready var continue_button: Button = $CenterContainer/Buttons/ContinueButton
 
 var _cached_volume_db: float = 0.0   # for Return (revert)
 var _master_bus: int = 0
@@ -29,7 +30,8 @@ func _ready() -> void:
 	start_button.pressed.connect(_on_start_pressed)
 	options_button.pressed.connect(_on_options_pressed)
 	quit_button.pressed.connect(_on_quit_pressed)
-
+	continue_button.pressed.connect(_on_continue_pressed)
+	continue_button.disabled = !SaveManager.has_save()
 	apply_button.pressed.connect(_on_apply_pressed)
 	back_button.pressed.connect(_on_back_pressed)
 	volume_slider.value_changed.connect(_on_volume_changed)
@@ -37,12 +39,8 @@ func _ready() -> void:
 	options_panel.visible = false
 
 func _on_start_pressed() -> void:
-<<<<<<< Updated upstream:Scripts/start_menu.gd
-	get_tree().change_scene_to_file(GAME_SCENE)
-=======
 	SaveManager.clear_save()
 	SceneLoader.change_scene_with_loading("res://Scenes/main.tscn")
->>>>>>> Stashed changes:Scripts/UI/start_menu.gd
 
 func _on_options_pressed() -> void:
 	_cached_volume_db = AudioServer.get_bus_volume_db(_master_bus)
@@ -67,16 +65,15 @@ func _on_quit_pressed() -> void:
 	else:
 		get_tree().quit()
 
-<<<<<<< Updated upstream:Scripts/start_menu.gd
-=======
 func _on_continue_pressed() -> void:
 	if SaveManager.has_save():
 		SaveManager.reload_from_disk()
+		GameManager.apply_save_data()
+		#can't load player since player is still at null
 		var path := SaveManager.current_save.current_scene_path
 		if path != "":
 			SceneLoader.change_scene_with_loading(path)
 		
->>>>>>> Stashed changes:Scripts/UI/start_menu.gd
 # --- Volume helpers ---
 func _on_volume_changed(value: float) -> void:
 	_set_master_linear(value)  # live preview

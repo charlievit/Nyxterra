@@ -49,6 +49,9 @@ var cycleProgress: float = 0.0
 @onready var snowFall: TileMap = $AnimatedSnowMap
 #endregion
 
+#save & load
+@onready var pause_menu : Control = $"Control_GAME SCREEN UI/PauseMenu"
+
 func _ready() -> void:
 	# Initialize camera settings for the "reverse minimap" effect.
 	mainCamera.enabled = false
@@ -66,15 +69,13 @@ func _ready() -> void:
 	TaskManager.shouldBeHidden = false
 	
 	#save & load
-	if SaveManager.has_save():
+	if GameManager.shouldUseStoredSpawn:
+		GameManager.ConsumeSpawnData(player)
+	elif SaveManager.has_save():
 		SaveManager.reload_from_disk()
-
-	# GameManager first
 		GameManager.apply_save_data()
-
-	# Player second
-		if player.has_method("apply_save_data"):
-			player.apply_save_data()
+		player.apply_save_data()
+		TaskManager.SyncTasksFromGameManagerOnLoad()
 	
 func _process(delta):
 	# Force the zoomed-in camera to follow the player every frame without showing off-screen details
@@ -212,6 +213,9 @@ func ToggleMap():
 	tweenSize.tween_property(subVPort, "size", targetSize, 1.0)
 	
 
-
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("ui_cancel"):
+		pause_menu.toggle()
+		
 func _on_toggle_map_pressed() -> void:
 	ToggleMap()

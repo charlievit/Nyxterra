@@ -36,8 +36,13 @@ theme_override_constants/separation = 4
 [node name="StartButton" type="Button" parent="CenterContainer/Buttons"]
 layout_mode = 2
 action_mode = 0
-text = "Start
+text = "New Game
 "
+
+[node name="ContinueButton" type="Button" parent="CenterContainer/Buttons"]
+layout_mode = 2
+action_mode = 0
+text = "Continue"
 
 [node name="OptionsButton" type="Button" parent="CenterContainer/Buttons"]
 layout_mode = 2

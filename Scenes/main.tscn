@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://bv00gype30lrh"]
+[gd_scene load_steps=26 format=3 uid="uid://bv00gype30lrh"]
 
 [ext_resource type="Script" uid="uid://dmv4o0wqsh26h" path="res://Scripts/Main/main.gd" id="1_8gbba"]
 [ext_resource type="PackedScene" uid="uid://bty042lmdfi02" path="res://Scenes/Environments/lighthouse_button_area.tscn" id="1_bo1nx"]
@@ -167,6 +167,8 @@ theme_override_styles/pressed = SubResource("StyleBoxEmpty_wsu2k")
 theme_override_styles/hover = SubResource("StyleBoxFlat_k12tt")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_h1bgf")
 icon = ExtResource("15_wsu2k")
+
+[node name="PauseMenu" parent="Control_GAME SCREEN UI" instance=ExtResource("15_k12tt")]
 
 [node name="Control_LIGHTHOUSE BUTTON AREA" parent="." instance=ExtResource("1_bo1nx")]
 texture_filter = 1
