@@ -1,6 +1,6 @@
 extends Control
 
-const GAME_SCENE := "res://scenes/main.tscn"
+const GAME_SCENE := "res://Scenes/main.tscn"
 const SETTINGS_PATH := "user://settings.cfg"
 const SETTINGS_SECTION := "audio"
 const SETTINGS_KEY_VOLUME := "master_volume"   # linear 0..1
@@ -37,7 +37,12 @@ func _ready() -> void:
 	options_panel.visible = false
 
 func _on_start_pressed() -> void:
+<<<<<<< Updated upstream:Scripts/start_menu.gd
 	get_tree().change_scene_to_file(GAME_SCENE)
+=======
+	SaveManager.clear_save()
+	SceneLoader.change_scene_with_loading("res://Scenes/main.tscn")
+>>>>>>> Stashed changes:Scripts/UI/start_menu.gd
 
 func _on_options_pressed() -> void:
 	_cached_volume_db = AudioServer.get_bus_volume_db(_master_bus)
@@ -62,6 +67,16 @@ func _on_quit_pressed() -> void:
 	else:
 		get_tree().quit()
 
+<<<<<<< Updated upstream:Scripts/start_menu.gd
+=======
+func _on_continue_pressed() -> void:
+	if SaveManager.has_save():
+		SaveManager.reload_from_disk()
+		var path := SaveManager.current_save.current_scene_path
+		if path != "":
+			SceneLoader.change_scene_with_loading(path)
+		
+>>>>>>> Stashed changes:Scripts/UI/start_menu.gd
 # --- Volume helpers ---
 func _on_volume_changed(value: float) -> void:
 	_set_master_linear(value)  # live preview

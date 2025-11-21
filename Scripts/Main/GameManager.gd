@@ -1,6 +1,9 @@
 # GameManager.gd
 extends Node
 
+# Global reference to the player node
+var player: Node = null
+
 #region VARIABLES
 var playerSpawnFloor: int = 3 # defaul is floor 3...
 var playerSpawnPosition: Vector2 = Vector2(88, 278) # near the bed (not global_position)
@@ -145,3 +148,34 @@ func ConsumeSpawnData(playerNode):
 		
 		# Reset
 		shouldUseStoredSpawn = false
+		
+#save & load
+func write_save_data() -> void:
+	# Copy GameManager runtime state into SaveData
+	var data := SaveManager.current_save
+
+	data.current_day = currentDay
+	data.current_night = currentNight
+
+	data.need_gear_box = needGearBox
+	data.need_radio = needRadio
+	data.need_morse = needMorse
+	data.need_daughter = needDaughter
+	data.need_kitchen = needKitchen
+	data.need_light = needLight
+
+
+func apply_save_data() -> void:
+	# Read from SaveData back into GameManager
+	var data := SaveManager.current_save
+
+	currentDay = data.current_day
+	currentNight = data.current_night
+
+	needGearBox = data.need_gear_box
+	needRadio = data.need_radio
+	needMorse = data.need_morse
+	needDaughter = data.need_daughter
+	needKitchen = data.need_kitchen
+	needLight = data.need_light
+	

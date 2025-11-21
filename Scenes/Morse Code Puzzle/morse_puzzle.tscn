@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=3 uid="uid://q4bvqbk8pn"]
 
-[ext_resource type="Script" uid="uid://by7yfvqxg6534" path="res://Scripts/morse_puzzle.gd" id="1_sk6lw"]
+[ext_resource type="Script" uid="uid://by7yfvqxg6534" path="res://Scripts/morsePuzzle/morse_puzzle.gd" id="1_sk6lw"]
 [ext_resource type="Texture2D" uid="uid://sxi357hheqg7" path="res://Assets/Images/MorseCode/1MorseCodeMachineClipboard.png" id="2_jhqy5"]
 [ext_resource type="Texture2D" uid="uid://6ijfhfb0b543" path="res://Assets/Images/MorseCode/Notepad.png" id="3_cbnwp"]
 [ext_resource type="Texture2D" uid="uid://8nt10bv5lyph" path="res://Assets/Images/MorseCode/MorseKey.png" id="3_o1vg4"]

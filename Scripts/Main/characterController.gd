@@ -29,6 +29,9 @@ var overlappingTeleporters: Array[Area2D] = []
 
 
 func _ready():
+
+	#save & load
+	GameManager.player = self
 	GameManager.ConsumeSpawnData(self)
 	
 	self.position = GameManager.playerSpawnPosition

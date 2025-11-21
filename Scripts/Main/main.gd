@@ -65,6 +65,17 @@ func _ready() -> void:
 	
 	TaskManager.shouldBeHidden = false
 	
+	#save & load
+	if SaveManager.has_save():
+		SaveManager.reload_from_disk()
+
+	# GameManager first
+		GameManager.apply_save_data()
+
+	# Player second
+		if player.has_method("apply_save_data"):
+			player.apply_save_data()
+	
 func _process(delta):
 	# Force the zoomed-in camera to follow the player every frame without showing off-screen details
 	var visibleSize = Vector2(subVPort.size) / zoomCamera.zoom

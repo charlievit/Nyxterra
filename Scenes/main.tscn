@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://cu2sj1oh20tes" path="res://Assets/Images/Lighthouse/Structure/External/groundSnow.png" id="9_hptm8"]
 [ext_resource type="Script" uid="uid://cnb0vt0q0rkq1" path="res://Scripts/Main/ocean_waves.gd" id="10_fdnlq"]
 [ext_resource type="PackedScene" uid="uid://cpmufmthgj1px" path="res://Scenes/Environments/animated_snow_map.tscn" id="12_jkdf5"]
+[ext_resource type="PackedScene" uid="uid://6825wwab2n3q" path="res://Scenes/UI/PauseMenu.tscn" id="15_k12tt"]
 [ext_resource type="Texture2D" uid="uid://bkkiwi8y2vk04" path="res://Assets/Images/UI/mapToggleIcon.png" id="15_wsu2k"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jkdf5"]
