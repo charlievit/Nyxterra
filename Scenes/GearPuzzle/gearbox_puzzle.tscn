@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://cgjogtocg0588"]
+[gd_scene load_steps=26 format=3 uid="uid://cgjogtocg0588"]
 
 [ext_resource type="Script" uid="uid://nay3bnx1m8u1" path="res://Scripts/GearPuzzle/gearbox_puzzle.gd" id="1_kkiwi"]
 [ext_resource type="PackedScene" uid="uid://bci03rqmrut0v" path="res://Scenes/GearPuzzle/Peg.tscn" id="2_er1fm"]
@@ -16,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://bso61ejk5ooaj" path="res://Assets/Images/GearPuzzle/Gears/Colored/gear30tColoured.png" id="11_nrv7i"]
 [ext_resource type="Texture2D" uid="uid://dj6psk0y5b1n1" path="res://Assets/Images/GearPuzzle/Structure/Plaque.png" id="13_y2vhw"]
 [ext_resource type="AudioStream" uid="uid://c8sm3bxq23v6j" path="res://Assets/Audio/Gearbox Minigame/GearMoving.mp3" id="14_iw1ll"]
+[ext_resource type="FontFile" uid="uid://bugymcbk132rp" path="res://Assets/Fonts/Fry's Baskerville Regular.otf" id="16_auwkq"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_t55ma"]
 radius = 96.0
@@ -329,12 +330,15 @@ scale = Vector2(3.024078, 3.024078)
 texture = ExtResource("13_y2vhw")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="gearStorageArea/Plaque"]
-offset_left = -38.028126
-offset_top = -7.936303
-offset_right = 39.020153
-offset_bottom = 6.9442644
+texture_filter = 1
+offset_left = -33.72929
+offset_top = -8.266984
+offset_right = 527.1028
+offset_bottom = 127.6422
+scale = Vector2(0.122270666, 0.102996334)
 theme_override_colors/default_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/normal_font_size = 10
+theme_override_fonts/normal_font = ExtResource("16_auwkq")
+theme_override_font_sizes/normal_font_size = 100
 bbcode_enabled = true
 text = "Gear Storage"
 horizontal_alignment = 1

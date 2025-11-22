@@ -1,7 +1,10 @@
-[gd_scene load_steps=30 format=3 uid="uid://bf5g134nk8ebe"]
+[gd_scene load_steps=33 format=3 uid="uid://bf5g134nk8ebe"]
 
 [ext_resource type="Script" uid="uid://ch3y31u7yadh8" path="res://Scripts/UI/start_menu.gd" id="1_juhg0"]
 [ext_resource type="Texture2D" uid="uid://jx3yb0oa748d" path="res://Assets/Images/Lighthouse/AnimatedLightHouseScreen/LighthouseAnim2.png" id="2_qpngb"]
+[ext_resource type="FontFile" uid="uid://bugymcbk132rp" path="res://Assets/Fonts/Fry's Baskerville Regular.otf" id="3_2ybwg"]
+[ext_resource type="Theme" uid="uid://b4lurv8njswua" path="res://Scenes/UI/theme.tres" id="3_3kyvb"]
+[ext_resource type="FontFile" uid="uid://n0n6mmkjc76j" path="res://Assets/Fonts/Eyesome Script.otf" id="3_8wf1d"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8wf1d"]
 atlas = ExtResource("2_qpngb")
@@ -209,40 +212,68 @@ position = Vector2(575, 324)
 scale = Vector2(2.3999999, 2.4000003)
 sprite_frames = SubResource("SpriteFrames_yxcpp")
 
+[node name="Title" type="RichTextLabel" parent="."]
+texture_filter = 1
+layout_mode = 0
+offset_left = 509.0
+offset_top = -83.0
+offset_right = 1921.0
+offset_bottom = 894.0
+scale = Vector2(0.4954999, 0.5062728)
+theme_override_colors/default_color = Color(0.8745098, 0.8980392, 0.7294118, 1)
+theme_override_fonts/normal_font = ExtResource("3_8wf1d")
+theme_override_font_sizes/normal_font_size = 512
+text = "Solais"
+
 [node name="CenterContainer" type="CenterContainer" parent="."]
 layout_mode = 1
-offset_left = 474.0
-offset_top = 368.0
-offset_right = 567.0
-offset_bottom = 504.0
-scale = Vector2(2, 2)
+offset_left = 463.99997
+offset_top = 386.0
+offset_right = 691.0
+offset_bottom = 634.0
+scale = Vector2(0.9419765, 0.9796394)
 
 [node name="Buttons" type="VBoxContainer" parent="CenterContainer"]
+texture_filter = 1
 layout_mode = 2
 theme_override_constants/separation = 4
 
 [node name="StartButton" type="Button" parent="CenterContainer/Buttons"]
+texture_filter = 1
 layout_mode = 2
+theme = ExtResource("3_3kyvb")
+theme_override_fonts/font = ExtResource("3_2ybwg")
+theme_override_font_sizes/font_size = 49
 action_mode = 0
-text = "New Game
-"
+text = " New Game "
 
 [node name="ContinueButton" type="Button" parent="CenterContainer/Buttons"]
+texture_filter = 1
 layout_mode = 2
+theme = ExtResource("3_3kyvb")
+theme_override_fonts/font = ExtResource("3_2ybwg")
+theme_override_font_sizes/font_size = 49
 text = "Continue
 "
 
 [node name="OptionsButton" type="Button" parent="CenterContainer/Buttons"]
+texture_filter = 1
 layout_mode = 2
-text = "Option"
+theme = ExtResource("3_3kyvb")
+theme_override_fonts/font = ExtResource("3_2ybwg")
+theme_override_font_sizes/font_size = 49
+text = "Options"
 
 [node name="QuitButton" type="Button" parent="CenterContainer/Buttons"]
+texture_filter = 1
 layout_mode = 2
+theme = ExtResource("3_3kyvb")
+theme_override_fonts/font = ExtResource("3_2ybwg")
+theme_override_font_sizes/font_size = 49
 text = "Quit
 "
 
 [node name="OptionsPanel" type="Panel" parent="."]
-visible = false
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
@@ -250,34 +281,50 @@ scale = Vector2(28.731138, 16.37037)
 
 [node name="Label" type="Label" parent="OptionsPanel"]
 layout_mode = 0
-offset_left = 9.049416
-offset_top = 15.088236
-offset_right = 64.049416
-offset_bottom = 38.08824
-scale = Vector2(0.087546736, 0.16159028)
+offset_left = 8.422917
+offset_top = 14.294118
+offset_right = 77.42292
+offset_bottom = 44.294117
+scale = Vector2(0.019287927, 0.03560089)
+theme = ExtResource("3_3kyvb")
+theme_override_font_sizes/font_size = 116
 text = "Master"
 
 [node name="VolumeSlider" type="HSlider" parent="OptionsPanel"]
+texture_filter = 1
+custom_minimum_size = Vector2(100, 0)
 layout_mode = 0
-offset_left = 15.244784
-offset_top = 14.660633
-offset_right = 55.244785
-offset_bottom = 30.660633
+offset_left = 15.6276455
+offset_top = 13.988688
+offset_right = 115.62765
+offset_bottom = 43.988693
 rotation = 0.009336297
-scale = Vector2(0.166032, 0.2703829)
+scale = Vector2(0.117608085, 0.1915246)
+theme = ExtResource("3_3kyvb")
+max_value = 2.0
+step = 0.01
+tick_count = 51
+ticks_on_borders = true
+ticks_position = 3
 
 [node name="ApplyButton" type="Button" parent="OptionsPanel"]
 layout_mode = 0
-offset_left = 34.213753
-offset_top = 34.635746
-offset_right = 86.21375
-offset_bottom = 65.63574
-scale = Vector2(0.1065331, 0.13782991)
-text = "Apply"
+offset_left = 32.369064
+offset_top = 34.26923
+offset_right = 220.36906
+offset_bottom = 110.269226
+scale = Vector2(0.036673035, 0.047446672)
+theme = ExtResource("3_3kyvb")
+theme_override_font_sizes/font_size = 63
+text = " Apply "
 
 [node name="BackButton" type="Button" parent="OptionsPanel"]
 layout_mode = 0
-offset_right = 61.0
-offset_bottom = 31.0
-scale = Vector2(0.120868765, 0.15913129)
-text = "Return"
+offset_left = 0.9397471
+offset_top = 0.97737557
+offset_right = 263.93976
+offset_bottom = 106.97738
+scale = Vector2(0.0267252, 0.035185397)
+theme = ExtResource("3_3kyvb")
+theme_override_font_sizes/font_size = 88
+text = " Return "

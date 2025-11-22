@@ -83,6 +83,7 @@ func StartDay(day: int):
 	#ConsumeSpawnData(get_tree().get_first_node_in_group("player"))
 	
 	# Start the day visually
+	emit_signal("requestDayCycle")
 	daySTATE = DayState.NIGHT_FADING
 	
 	# Run the first task of the day

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://yxpjxolk6mqd"
+path="res://.godot/imported/Music 1 lighthouse.wav-48d314deb4ec0bf4d1be8875ee01145e.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/Music/Music 1 lighthouse.wav"
+dest_files=["res://.godot/imported/Music 1 lighthouse.wav-48d314deb4ec0bf4d1be8875ee01145e.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

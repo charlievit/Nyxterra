@@ -1,4 +1,4 @@
-[gd_scene load_steps=91 format=3 uid="uid://b268fafjkgqee"]
+[gd_scene load_steps=93 format=3 uid="uid://b268fafjkgqee"]
 
 [ext_resource type="Script" uid="uid://dgrielhvrnwwo" path="res://Scripts/CookingMinigame/kitchenMinigameLoader.gd" id="1_aecf8"]
 [ext_resource type="PackedScene" uid="uid://cpmufmthgj1px" path="res://Scenes/Environments/animated_snow_map.tscn" id="2_5165p"]
@@ -65,6 +65,8 @@
 [ext_resource type="Texture2D" uid="uid://bf0elhfhyy7vi" path="res://Assets/Images/KitchenPuzzle/Steam Animation/frame0012.png" id="58_k2y4e"]
 [ext_resource type="Texture2D" uid="uid://d3w71wsyc0vn5" path="res://Assets/Images/KitchenPuzzle/CookbookRibbon.png" id="63_ojgxo"]
 [ext_resource type="AudioStream" uid="uid://crhsv0uepb1pk" path="res://Assets/Audio/Cooking Minigame/Boiling.mp3" id="64_17xo3"]
+[ext_resource type="FontFile" uid="uid://bugymcbk132rp" path="res://Assets/Fonts/Fry's Baskerville Regular.otf" id="64_dc1ry"]
+[ext_resource type="FontFile" uid="uid://n0n6mmkjc76j" path="res://Assets/Fonts/Eyesome Script.otf" id="64_utraj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_meprl"]
 size = Vector2(87.01253, 13.205734)
@@ -612,6 +614,7 @@ offset_bottom = -46.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/default_color = Color(0.13725491, 0.12156863, 0.1254902, 1)
+theme_override_fonts/normal_font = ExtResource("64_dc1ry")
 bbcode_enabled = true
 
 [node name="Recipe Instructions Page 2" type="RichTextLabel" parent="RecipeBookScreen"]
@@ -626,7 +629,29 @@ offset_bottom = -44.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/default_color = Color(0.13725491, 0.12156863, 0.1254902, 1)
+theme_override_fonts/normal_font = ExtResource("64_dc1ry")
 bbcode_enabled = true
+
+[node name="Note" type="RichTextLabel" parent="RecipeBookScreen"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 710.0
+offset_top = 529.0
+offset_right = 137.62622
+offset_bottom = 176.57104
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -0.4591454
+scale = Vector2(0.38377923, 0.38377923)
+theme_override_colors/default_color = Color(0.13725491, 0.12156863, 0.1254902, 1)
+theme_override_fonts/normal_font = ExtResource("64_utraj")
+theme_override_font_sizes/normal_font_size = 64
+bbcode_enabled = true
+text = "Always remember
+mise en place!"
 
 [node name="Close" type="Button" parent="RecipeBookScreen"]
 layout_mode = 0
