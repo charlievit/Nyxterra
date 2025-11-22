@@ -1,5 +1,11 @@
 extends Control
 
+# RETURN SETTINGS
+@export_group("Return Settings")
+@export var returnFloorIndex = 3
+@export var returnPosition: Vector2 = Vector2(150, 275)
+@export var mainGameScenePath: String = "res://Scenes/main.tscn"
+
 # --- Timing (seconds) ---
 const UNIT := 0.22
 const DOT_MAX := UNIT * 1.5
@@ -47,7 +53,17 @@ var target_words: PackedStringArray = []
 var word_i: int = 0
 var decoded_current_word: String = ""
 
+# Task Key for Game Manager communication
+var currentTaskID: String = ""
+
 func _ready() -> void:
+	TaskManager.shouldBeHidden = true
+	
+	for key in TaskManager.activeTasks.keys():
+		if String(key).contains("Morse"):
+			currentTaskID = key
+			break
+	
 	for letter: String in MORSE.keys():
 		REVERSE[MORSE[letter]] = letter
 
@@ -131,6 +147,13 @@ func _check_word_progress() -> void:
 func _on_sentence_solved() -> void:
 	label_feedback.text = "Correct! The light will guide you tonight."
 	label_feedback.modulate = Color(0, 1, 0)
+	# Update GM with task progress
+	GameManager.SetPlayerSpawn(returnFloorIndex, returnPosition)
+	GameManager.CompleteTask(currentTaskID)
+	if ResourceLoader.exists(mainGameScenePath):
+		SceneLoader.change_scene_with_loading(mainGameScenePath)
+	else:
+		push_error("ERROR: Main game scene path not found.")
 
 # --- Backspace edits current word only ---
 func _on_backspace_pressed() -> void:

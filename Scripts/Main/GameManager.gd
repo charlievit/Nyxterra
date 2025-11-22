@@ -1,8 +1,17 @@
 # GameManager.gd
 extends Node
 
+#region ENUMS
+enum DayState {
+	SUN_RISING,
+	DAY_IDLE,
+	NIGHT_FADING,
+	MOON_RISING,
+	NIGHT_IDLE
+}
+#endregion
+
 #region SIGNALS
-# TODO: Connect these to main.gd to control day/night cycle
 signal requestDayCycle
 signal requestNightCycle
 
@@ -15,6 +24,7 @@ var playerSpawnPosition: Vector2 = Vector2(88, 278) # near the bed (not global_p
 var shouldUseStoredSpawn: bool = false
 
 var currentDay: int = 0 # Starts at -1, becomes 0 on first NewGame
+var daySTATE: DayState = DayState.NIGHT_IDLE
 var currentTaskStep: int = 0 # Tracks progress WITHIN the day
 var hasCompletedTutorial: bool = false # Tracks if Day 0 tips should show
 
@@ -24,12 +34,17 @@ var needRadio: bool = false
 var needMorse: bool = false 
 var needDaughter: bool = false 
 var needKitchen: bool = false 
-var needLight: bool = false 
+var needLight: bool = false
+var needBed: bool = false
 
-# ENDING FLAG
+# GLOBAL ENDING VARIABLES
+var morality: int = 0 # +25 for each correct choice
+var moralityNeeded: int = 50 # none:0, 1:25, 2:50, 3:75, all:100
+var relationship: int = 0
 var isBadEnding: bool
+var shouldLightBeOnTonight: bool
 
-#COOKING
+# COOKING
 var todaysRecipe: String
 
 #save/load
@@ -39,10 +54,23 @@ var player: Node = null
 func _ready():
 	todaysRecipe = "BarfitStovies" # defaulting here for testing
 	await get_tree().process_frame
-	# NOTE: Load from save data here
+	apply_save_data()
 	
 	StartDay(-1) #Since you forced to start on day -1, save&load unable to overwrite this. 
 				 #Make sure it change to currentDay to able loading function 
+
+func StartNewGame():
+	# Reset internal variables
+	currentDay = -1
+	daySTATE = DayState.NIGHT_FADING # Force the correct start state
+	todaysRecipe = "BarfitStovies"
+	hasCompletedTutorial = false
+	morality = 0
+	relationship = 0
+	isBadEnding = false
+	
+	# Start the logic for Day -1
+	StartDay(-1)
 
 func StartDay(day: int):
 	currentDay = day
@@ -55,7 +83,7 @@ func StartDay(day: int):
 	#ConsumeSpawnData(get_tree().get_first_node_in_group("player"))
 	
 	# Start the day visually
-	emit_signal("requestDayCycle")
+	daySTATE = DayState.NIGHT_FADING
 	
 	# Run the first task of the day
 	UpdateObjective()
@@ -63,7 +91,7 @@ func StartDay(day: int):
 # Tasks need to call this function when interacted with
 # GameManager.CompleteTask("dayZERO_checkDaughter")
 func CompleteTask(task_id: String):
-	print("Task Complete: %s. Advancing Story." % task_id)
+	#print("Task Complete: %s. Advancing Story." % task_id)
 	TaskManager.CompleteTask(task_id)
 	currentTaskStep += 1
 	UpdateObjective()
@@ -77,18 +105,45 @@ func UpdateObjective():
 		-1: # DEV TESTING DAY
 			match currentTaskStep:
 				0:
-					needGearBox = true
-					TaskManager.AddTask("test_checkGearBox", "Complete gearbox puzzle.")
+					needDaughter = true
+					TaskManager.AddTask("test_checkDaughter", "(Test) Check on daughter.")
 					if not hasCompletedTutorial:
 						emit_signal("showTutorialPopUp", "movementTutorial")
 				1:
-					needLight = true
-					TaskManager.AddTask("test_lightSwitch", "Choose light position.")
-				#2:
-					#TaskManager.AddTask("test_goToBed", "Go to bed.")
+					needRadio = true
+					TaskManager.AddTask("test_checRadio", "(Test) Check radio.")
+					if not hasCompletedTutorial:
+						emit_signal("showTutorialPopUp", "radioTutorial")
 				2:
+					needGearBox = true
+					TaskManager.AddTask("test_checkGearBox", "(Test) Check gearbox.")
+					if not hasCompletedTutorial:
+						emit_signal("showTutorialPopUp", "interactionTutorial")
+				3:
+					needMorse = true
+					TaskManager.AddTask("test_checkMorse", "(Test) Check Morse.")
+					if not hasCompletedTutorial:
+						emit_signal("showTutorialPopUp", "morseTutorial")
+				4:
+					emit_signal("requestNightCycle")
+					daySTATE = DayState.MOON_RISING
+					needKitchen = true
+					TaskManager.AddTask("test_cookMeal", "(Test) Kitchen Puzzle.")
+					if not hasCompletedTutorial:
+						emit_signal("showTutorialPopUp", "kitchenTutorial")
+				5:
+					needLight = true
+					TaskManager.AddTask("test_decision", "(Test) Choose light switch position.")
+					if not hasCompletedTutorial:
+						emit_signal("showTutorialPopUp", "lightSwitchTutorial")
+				6:
+					needBed = true
+					TaskManager.AddTask("test_goToBed", "(Test) End Day, Go To Bed.")
+					if not hasCompletedTutorial:
+						emit_signal("showTutorialPopUp", "endDayTutorial")
+				7:
 					TaskManager.CompleteDay()
-					StartDay(0)
+					StartDay(currentDay + 1)
 		0: # DAY 0: TUTORIAL
 			match currentTaskStep:
 				0:
@@ -109,6 +164,7 @@ func UpdateObjective():
 				3:
 					# TRIGGER NIGHT
 					emit_signal("requestNightCycle")
+					daySTATE = DayState.MOON_RISING
 					needMorse = true
 					TaskManager.AddTask("nightZERO_checkMorse", "Check morse code.")
 				4:
@@ -146,6 +202,7 @@ func UpdateObjective():
 				5:
 					# TRIGGER NIGHT
 					emit_signal("requestNightCycle")
+					daySTATE = DayState.MOON_RISING
 					needKitchen = true
 					TaskManager.AddTask("dayONE_cookMeal", "Make your daughter dinner.")
 					if not hasCompletedTutorial:
@@ -178,6 +235,7 @@ func UpdateObjective():
 				3:
 					# TRIGGER NIGHT
 					emit_signal("requestNightCycle")
+					daySTATE = DayState.MOON_RISING
 					needKitchen = true
 					TaskManager.AddTask("dayTWO_cookMeal", "Make dinner (Braised Roots).")
 					todaysRecipe = "BraisedRoots"
@@ -203,6 +261,7 @@ func UpdateObjective():
 				3:
 					# TRIGGER NIGHT
 					emit_signal("requestNightCycle")
+					daySTATE = DayState.MOON_RISING
 					needKitchen = true
 					TaskManager.AddTask("dayTHREE_cookMeal", "Make dinner.")
 					todaysRecipe = "ScotchTattieSoup"
@@ -228,6 +287,7 @@ func UpdateObjective():
 				3:
 					# TRIGGER NIGHT
 					emit_signal("requestNightCycle")
+					daySTATE = DayState.MOON_RISING
 					needKitchen = true
 					TaskManager.AddTask("dayFOUR_cookMeal", "Make dinner (Rabbit Stew).")
 					todaysRecipe = "RabbitStew"
@@ -263,6 +323,7 @@ func ResetNeeds():
 	needGearBox = false
 	needKitchen = false
 	needLight = false
+	needBed = false
 
 func SetPlayerSpawn(targetFloor: int, targetPosition: Vector2):
 	playerSpawnFloor = targetFloor
@@ -281,6 +342,7 @@ func write_save_data() -> void:
 	# Copy GameManager runtime state into SaveData
 	var data := SaveManager.current_save
 	
+	data.day_state = daySTATE
 	data.hasCompletedTutorial = hasCompletedTutorial
 	data.current_day = currentDay
 	data.currentTaskStep = currentTaskStep
@@ -290,12 +352,18 @@ func write_save_data() -> void:
 	data.need_daughter = needDaughter
 	data.need_kitchen = needKitchen
 	data.need_light = needLight
-
+	data.need_bed = needBed
+	data.morality = morality
+	data.morality_needed = moralityNeeded
+	data.relationship = relationship
+	data.should_light_be_on_tonight = shouldLightBeOnTonight
 
 func apply_save_data() -> void:
 	# Read from SaveData back into GameManager
 	var data := SaveManager.current_save
 	
+	@warning_ignore("int_as_enum_without_cast")
+	daySTATE = data.day_state
 	hasCompletedTutorial = data.hasCompletedTutorial
 	currentDay = data.current_day
 	currentTaskStep = data.currentTaskStep
@@ -305,3 +373,8 @@ func apply_save_data() -> void:
 	needDaughter = data.need_daughter
 	needKitchen = data.need_kitchen
 	needLight = data.need_light
+	needBed = data.need_bed
+	morality = data.morality
+	moralityNeeded = data.morality_needed
+	relationship = data.relationship
+	shouldLightBeOnTonight = data.should_light_be_on_tonight

@@ -17,3 +17,9 @@ class_name SaveData
 @export var need_daughter: bool = false
 @export var need_kitchen: bool = false
 @export var need_light: bool = false
+@export var need_bed: bool = false
+@export var morality: int = 0
+@export var morality_needed: int
+@export var relationship: int = 0
+@export var should_light_be_on_tonight: bool
+@export var day_state: int

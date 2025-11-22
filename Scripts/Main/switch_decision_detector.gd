@@ -11,7 +11,14 @@ var playerBody: CharacterBody2D = null
 var hasBeenPrompted = false
 var activePopUp: Control = null
 
+var currentTaskID: String = ""
+
 func _ready():
+	for key in TaskManager.activeTasks.keys():
+		if String(key).contains("decision"):
+			currentTaskID = key
+			break
+	
 	# Connect signals
 	self.body_entered.connect(OnBodyEntered)
 	self.body_exited.connect(OnBodyExited)
@@ -73,12 +80,12 @@ func OnYesPressed():
 	ClosePopUp()
 	if switch:
 		switch.play("turnOn") 
-	GameManager.CompleteTask("test_lightSwitch")
+	GameManager.CompleteTask(currentTaskID)
 
 func OnNoPressed():
 	# Close everything up
 	ClosePopUp()
-	GameManager.CompleteTask("test_lightSwitch")
+	GameManager.CompleteTask(currentTaskID)
 
 func ClosePopUp():
 	if activePopUp:

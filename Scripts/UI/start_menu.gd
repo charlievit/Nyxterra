@@ -1,10 +1,11 @@
 extends Control
 
-const GAME_SCENE := "res://scenes/main.tscn"
+const GAME_SCENE := "res://Scenes/main.tscn"
 const SETTINGS_PATH := "user://settings.cfg"
 const SETTINGS_SECTION := "audio"
 const SETTINGS_KEY_VOLUME := "master_volume"   # linear 0..1
 
+@onready var animScreen: AnimatedSprite2D = $TextureRect
 @onready var start_button: Button   = $CenterContainer/Buttons/StartButton
 @onready var options_button: Button = $CenterContainer/Buttons/OptionsButton
 @onready var quit_button: Button    = $CenterContainer/Buttons/QuitButton
@@ -19,6 +20,7 @@ var _cached_volume_db: float = 0.0   # for Return (revert)
 var _master_bus: int = 0
 
 func _ready() -> void:
+	animScreen.play("default")
 	TaskManager.shouldBeHidden = true
 	
 	_master_bus = AudioServer.get_bus_index("Master")
@@ -42,6 +44,7 @@ func _ready() -> void:
 
 func _on_start_pressed() -> void:
 	SaveManager.clear_save()
+	GameManager.StartNewGame()
 	SceneLoader.change_scene_with_loading(GAME_SCENE)
 
 func _on_options_pressed() -> void:

@@ -4,6 +4,12 @@ extends Node2D
 signal stationTuned
 
 #region Variable Declaration
+#RETURN SETTINGS
+@export_group("Return Settings")
+@export var returnFloorIndex = 3
+@export var returnPosition: Vector2 = Vector2(150, 275)
+@export var mainGameScenePath: String = "res://Scenes/main.tscn"
+
 # INSPECTOR
 @export var lineLength: int = 500
 @export var lineSegments: int = 50
@@ -38,6 +44,7 @@ var currentStationIsTuned: bool = false
 var isPoweredOn: bool = false
 @export var amplitudeTolerance: float = 2.0 #pixels
 @export var frequencyTolerance: float = 0.1 #cycles
+var currentTaskID: String = ""
 
 @onready var tuningSounds = preload("res://Assets/Audio/SineWave Puzzle/RadioStatic.mp3")
 @onready var buttonSound = preload("res://Assets/Audio/SineWave Puzzle/RadioOnButton.mp3")
@@ -50,6 +57,11 @@ var messagePlayer: AudioStreamPlayer2D
 
 func _ready():
 	TaskManager.shouldBeHidden = true
+	
+	for key in TaskManager.activeTasks.keys():
+		if String(key).contains("Radio"):
+			currentTaskID = key
+			break
 	
 	# Set the initial wave colors and line widths
 	playerWave.default_color = playerWaveColor
@@ -164,6 +176,12 @@ func CheckForMatch():
 			tuningSoundPlayer.volume_db = -15.0
 			emit_signal("stationTuned")
 			# TODO: audioStationNoiseLoopHere.play()
+			GameManager.SetPlayerSpawn(returnFloorIndex, returnPosition)
+			GameManager.CompleteTask(currentTaskID)
+			if ResourceLoader.exists(mainGameScenePath):
+				SceneLoader.change_scene_with_loading(mainGameScenePath)
+			else:
+				push_error("ERROR: Main game scene path not found.")
 
 func UpdateAudio():
 	if tuningSoundPlayer:

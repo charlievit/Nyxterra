@@ -28,7 +28,8 @@ extends Control
 @export var recipeDisplayLocation2: RichTextLabel
 var recipeText: Dictionary
 
-var todaysRecipe
+var todaysRecipe: String = ""
+var todaysTaskID: String = ""
 
 # PRELOAD
 var chopSound = preload("res://Assets/Audio/Cooking Minigame/Chop.mp3")
@@ -43,7 +44,7 @@ var shakeSoundTwo = preload("res://Assets/Audio/Cooking Minigame/Shake2.mp3")
 var shakeSoundThree = preload("res://Assets/Audio/Cooking Minigame/Shake.mp3")
 
 func _ready():
-	# DEBUG SAFETY CHECKS, should be safe to remove (I will not be doing that)
+	#region DEBUG SAFETY CHECKS, should be safe to remove (I will not be doing that)
 	if not heatDial:
 		push_error("No heatdial")
 		return
@@ -73,12 +74,19 @@ func _ready():
 		return
 	if not constantAudioPlayer:
 		push_error("No constant audio player found")
+	#endregion
 	
 	KitchenController.RegisterNodes(heatDial, potArea, progressBar, recipeParser, fireAnimLow, fireAnimMedium, fireAnimHigh, steamAnim, oneShotAudioPlayer, constantAudioPlayer)
 	
 	KitchenController.PrepareSounds(chopSound, plopSound, boilingSound, stoveOffSound, stoveOnSound, pourSound, [shakeSoundOne, shakeSoundTwo, shakeSoundThree])
 	
 	todaysRecipe = GameManager.todaysRecipe
+	
+	for key in TaskManager.activeTasks.keys():
+		if String(key).contains("_cookMeal"):
+			todaysTaskID = key
+			KitchenController.currentTaskID = todaysTaskID
+			break
 	
 	KitchenController.StartRecipe(todaysRecipe)
 	
@@ -108,3 +116,6 @@ func _on_close_pressed() -> void:
 
 func _on_recipe_book_button_pressed() -> void:
 	recipeBookScreen.visible = true
+
+func _exit_tree():
+	KitchenController.CleanUpReferences()
