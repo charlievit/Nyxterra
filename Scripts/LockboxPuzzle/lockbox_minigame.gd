@@ -27,10 +27,15 @@ var letterRead = false
 @onready var openLetterSound: AudioStream = preload("res://Assets/Audio/Lockbox Puzzle/LetterUnfold.mp3")
 @onready var openBoxSound: AudioStream = preload("res://Assets/Audio/Lockbox Puzzle/Opened.mp3")
 
+var currentTaskID: String = ""
+
 func _ready():
 	TaskManager.shouldBeHidden = true
-	# TESTING
-	TaskManager.AddTask("finalDay_readLetter", "Read the letter from your wife.")
+	
+	for key in TaskManager.activeTasks.keys():
+		if String(key).contains("LockBox"):
+			currentTaskID = key
+			break
 	
 	dialOneValue = 0
 	dialTwoValue = 0
@@ -72,4 +77,4 @@ func _on_read_letter_button_pressed() -> void:
 	letterUnfolded.visible = true
 	sfxPlayer.stream = openLetterSound
 	sfxPlayer.play()
-	TaskManager.CompleteTask("finalDay_readLetter")
+	GameManager.CompleteTask(currentTaskID)

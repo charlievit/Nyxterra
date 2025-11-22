@@ -1,0 +1,69 @@
+[gd_scene load_steps=8 format=3 uid="uid://rx4a1oion8ow"]
+
+[ext_resource type="Texture2D" uid="uid://dbbpn2fw4io1v" path="res://Assets/Images/Daughter Elise/frame0000.png" id="1_lgdst"]
+[ext_resource type="Script" uid="uid://kds0fwv510th" path="res://Scripts/Main/daughter_talk_detector.gd" id="2_0qx48"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0qx48"]
+atlas = ExtResource("1_lgdst")
+region = Rect2(0, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c8eu5"]
+atlas = ExtResource("1_lgdst")
+region = Rect2(32, 0, 32, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fem48"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0qx48")
+}],
+"loop": false,
+"name": &"idle",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c8eu5")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_smt5g"]
+radius = 2.0
+height = 4.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lgdst"]
+size = Vector2(56, 20)
+
+[node name="Elise (Daughter)" type="CharacterBody2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_fem48")
+animation = &"idle"
+frame_progress = 1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, -11)
+shape = SubResource("CapsuleShape2D_smt5g")
+
+[node name="TalkDetector" type="Area2D" parent="."]
+script = ExtResource("2_0qx48")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TalkDetector"]
+position = Vector2(1, 10)
+shape = SubResource("RectangleShape2D_lgdst")
+
+[node name="ButtonPrompt" type="RichTextLabel" parent="."]
+texture_filter = 1
+offset_left = -34.0
+offset_top = -34.0
+offset_right = 36.0
+offset_bottom = -13.0
+bbcode_enabled = true
+text = "Talk 'E'"
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1

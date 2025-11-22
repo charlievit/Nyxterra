@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://brbbvqioqjn4p"
-path="res://.godot/imported/Walk_sutherland.png-a1c0b3f4d8e9bf72cd4dbd39bf61b499.ctex"
+uid="uid://cc4rr7jm312xu"
+path="res://.godot/imported/frame0011.png-0ddcf29355d3a8b2ef5206cc7676b8f7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Images/Walk_sutherland.png"
-dest_files=["res://.godot/imported/Walk_sutherland.png-a1c0b3f4d8e9bf72cd4dbd39bf61b499.ctex"]
+source_file="res://Assets/Images/Daughter Elise/frame0011.png"
+dest_files=["res://.godot/imported/frame0011.png-0ddcf29355d3a8b2ef5206cc7676b8f7.ctex"]
 
 [params]
 

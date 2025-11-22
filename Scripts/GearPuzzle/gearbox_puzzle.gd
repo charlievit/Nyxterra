@@ -10,18 +10,18 @@ const SNAP_DISTANCE = 20
 
 # PRELOADS
 const heldGearScene = preload("res://Scenes/GearPuzzle/heldGear.tscn")
-const placedGearScene = preload("res://Scenes/GearPuzzle/placedGear.tscn")
+const placedGearScene = preload("res://Scenes/GearPuzzle/PlacedGear.tscn")
 
 # EXPORT AUDIO
 @export_group("Audio Streams")
 @export var pickUpSound: AudioStream
 @export var placeSound: AudioStream
-@export var mainGameScenePath: String = "res://Scenes/main.tscn"
 
 # EXPORT RETURN SETTINGS
 @export_group("Return Settings")
 @export var returnFloorIndex = 4
 @export var returnPosition: Vector2 = Vector2(80, 208)
+@export var mainGameScenePath: String = "res://Scenes/main.tscn"
 
 # SCENE NODES
 @onready var startingGear: Area2D = $clippingMaskForGears/GearContainer/StartingGear
@@ -37,12 +37,12 @@ const placedGearScene = preload("res://Scenes/GearPuzzle/placedGear.tscn")
 var isHoldingGear = false
 var heldGearInstance = null 
 var heldGearData = {}
+var currentTaskID: String = ""
 
 # LOGIC
 var allGears = []
 var puzzleSolved = false
 var lastPoweredCount = 0
-var taskID
 #endregion
 
 func _ready():
@@ -69,12 +69,8 @@ func _ready():
 	
 	TaskManager.shouldBeHidden = true
 	for key in TaskManager.activeTasks.keys():
-		print(TaskManager.activeTasks)
-		print("\n" + "\n" + "\n" + "\n")
 		if String(key).find("GearBox") != -1:
-			taskID = key
-			print(key)
-	print(taskID)
+			currentTaskID = key
 
 # Called by the Gear Button signal to assign data to the instantiated held gear
 func onGearButtonPressed(buttonData: Dictionary):
@@ -273,14 +269,12 @@ func PlaySFX(stream: AudioStream):
 func TriggerWinState():
 	puzzleSolved = true
 	#print("Puzzle Solved!")
-	GameManager.CompleteTask(taskID)
 	loopPlayer.volume_db += 5.0
 	
 	GameManager.SetPlayerSpawn(returnFloorIndex, returnPosition)
 	
 	await get_tree().create_timer(3.0).timeout
-	TaskManager.shouldBeHidden = false
-	GameManager.needGearBox = false
+	GameManager.CompleteTask(currentTaskID)
 	
 	if ResourceLoader.exists(mainGameScenePath):
 		SceneLoader.change_scene_with_loading(mainGameScenePath)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://bty042lmdfi02"]
+[gd_scene load_steps=45 format=3 uid="uid://bty042lmdfi02"]
 
 [ext_resource type="Texture2D" uid="uid://dumrws8pl1suf" path="res://Assets/Images/Lighthouse/Structure/LightRoomBuild1.png" id="1_680ea"]
 [ext_resource type="Texture2D" uid="uid://bnc5fep5l67u1" path="res://Assets/Images/Lighthouse/Structure/Floor3&4SampleScene.png" id="2_qkcrh"]
@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://cmsujdu4mthv3" path="res://Assets/Images/Lighthouse/Structure/Light Lever/lever_LightOFF.png" id="4_enxg4"]
 [ext_resource type="Script" uid="uid://cuipkjxvfn1xp" path="res://Scripts/Main/teleporterHandler.gd" id="5_0t6ev"]
 [ext_resource type="Texture2D" uid="uid://d2njw58ienkhk" path="res://Assets/Images/Lighthouse/Structure/Light Lever/lever_LightON.png" id="5_71vhx"]
-[ext_resource type="Texture2D" uid="uid://c2bjfaemqpvp3" path="res://Assets/Images/PLACEHOLDER_DUDE.png" id="5_rf6kk"]
+[ext_resource type="Texture2D" uid="uid://c2bjfaemqpvp3" path="res://Assets/Images/Player/PLACEHOLDER_DUDE.png" id="5_rf6kk"]
 [ext_resource type="Script" uid="uid://bf3rbf6inlo3j" path="res://Scripts/Main/switch_decision_detector.gd" id="6_enxg4"]
 [ext_resource type="Texture2D" uid="uid://bxt10ujll7gdy" path="res://Assets/Images/Lighthouse/Structure/Turny Thing/frame0000.png" id="6_x8n6x"]
 [ext_resource type="Texture2D" uid="uid://blj3msakscu8k" path="res://Assets/Images/Lighthouse/Structure/Turny Thing/frame0001.png" id="7_kx1qn"]
@@ -32,6 +32,10 @@
 [ext_resource type="Script" uid="uid://qxikudipxih8" path="res://Scripts/Main/mainGearAnimation.gd" id="24_kx1qn"]
 [ext_resource type="Texture2D" uid="uid://ca6i11k6uooa2" path="res://Assets/Images/icon2.svg" id="25_e3oeg"]
 [ext_resource type="Script" uid="uid://fo1o3pb5mktu" path="res://Scripts/GearPuzzle/gearBoxDetectionForMainScene.gd" id="26_cln54"]
+[ext_resource type="Script" uid="uid://bhg0dsk0yreiu" path="res://Scripts/bed_detection_area.gd" id="31_71vhx"]
+[ext_resource type="Script" uid="uid://qnsant6mcp75" path="res://Scripts/Main/morse_radio_detection_area.gd" id="32_w401g"]
+[ext_resource type="Script" uid="uid://b3j4sfwnj3nnw" path="res://Scripts/Main/kitchen_detection_area.gd" id="34_4c1dk"]
+[ext_resource type="Texture2D" uid="uid://dgxdq0boqv10u" path="res://Assets/Images/KitchenPuzzle/Kitchen.png" id="35_va83y"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b2lj4"]
 size = Vector2(22.97748, 42.957886)
@@ -126,8 +130,17 @@ animations = [{
 "speed": 12.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_71vhx"]
+size = Vector2(52.069214, 44.623474)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e3oeg"]
-size = Vector2(35.241516, 28.88556)
+size = Vector2(193.51843, 94.427505)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w401g"]
+size = Vector2(172.4838, 122.75601)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_va83y"]
+size = Vector2(185.10455, 188.85538)
 
 [node name="LIGHTHOUSE MINI MAP" type="Control"]
 custom_minimum_size = Vector2(29.15, 0)
@@ -303,7 +316,6 @@ frame_progress = 0.5776877
 script = ExtResource("24_kx1qn")
 
 [node name="PLACEHOLDER_GearBox" type="Sprite2D" parent="MIDDLE"]
-visible = false
 z_index = 2
 position = Vector2(134, 69)
 scale = Vector2(0.23770347, 0.3177035)
@@ -313,8 +325,8 @@ texture = ExtResource("25_e3oeg")
 script = ExtResource("26_cln54")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MIDDLE/PLACEHOLDER_GearBox/MinigameDetectionArea"]
-position = Vector2(-63.103836, 40.918697)
-shape = SubResource("RectangleShape2D_e3oeg")
+position = Vector2(-79.1384, 28.606995)
+shape = SubResource("RectangleShape2D_71vhx")
 
 [node name="ButtonPrompt" type="RichTextLabel" parent="MIDDLE/PLACEHOLDER_GearBox/MinigameDetectionArea"]
 texture_filter = 1
@@ -324,6 +336,46 @@ offset_right = -84.600266
 offset_bottom = -116.861725
 scale = Vector2(2.3704095, 1.65129)
 text = "Gearbox 'E'"
+
+[node name="Bed Detection Area" type="Area2D" parent="MIDDLE"]
+position = Vector2(123, 143)
+scale = Vector2(0.23770347, 0.3177035)
+script = ExtResource("31_71vhx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MIDDLE/Bed Detection Area"]
+position = Vector2(-16.827698, 9.442871)
+shape = SubResource("RectangleShape2D_e3oeg")
+
+[node name="ButtonPrompt" type="RichTextLabel" parent="MIDDLE/Bed Detection Area"]
+texture_filter = 1
+offset_left = -71.51769
+offset_top = -56.65661
+offset_right = 33.193504
+offset_bottom = -31.876823
+scale = Vector2(2.3704095, 1.65129)
+text = "Sleep 'E'"
+
+[node name="Morse_Radio Detection Area" type="Area2D" parent="MIDDLE"]
+position = Vector2(232, 142)
+scale = Vector2(0.23770347, 0.3177035)
+script = ExtResource("32_w401g")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MIDDLE/Morse_Radio Detection Area"]
+position = Vector2(14.724243, -7.8688965)
+shape = SubResource("RectangleShape2D_w401g")
+
+[node name="ButtonPrompt" type="RichTextLabel" parent="MIDDLE/Morse_Radio Detection Area"]
+texture_filter = 1
+offset_left = -151.4492
+offset_top = -169.9698
+offset_right = 1.1806793
+offset_bottom = -99.44264
+scale = Vector2(2.3704095, 1.65129)
+text = "Morse Machine 'E'
+Radio 'R'"
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="BOTTOM" type="Control" parent="."]
 layout_mode = 1
@@ -395,6 +447,29 @@ offset_top = -21.978455
 offset_right = 55.98433
 offset_bottom = 18.021545
 text = "E"
+
+[node name="Kitchen Detection Area" type="Area2D" parent="BOTTOM"]
+position = Vector2(120, 52)
+scale = Vector2(0.23770347, 0.3177035)
+script = ExtResource("34_4c1dk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BOTTOM/Kitchen Detection Area"]
+position = Vector2(-46.276123, 22.033081)
+shape = SubResource("RectangleShape2D_va83y")
+
+[node name="ButtonPrompt" type="RichTextLabel" parent="BOTTOM/Kitchen Detection Area"]
+texture_filter = 1
+offset_left = -117.79383
+offset_top = -75.542145
+offset_right = -13.082634
+offset_bottom = -50.76236
+scale = Vector2(2.3704095, 1.65129)
+text = "Cook 'E'"
+
+[node name="PLACEHOLDER KITCHEN" type="Sprite2D" parent="BOTTOM"]
+position = Vector2(108.99999, 54)
+scale = Vector2(0.09267024, 0.09267024)
+texture = ExtResource("35_va83y")
 
 [node name="PlaceholderDude" type="Sprite2D" parent="."]
 visible = false

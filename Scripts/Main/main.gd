@@ -1,13 +1,5 @@
 extends Node2D
 
-enum DayState {
-	SUN_RISING,
-	DAY_IDLE,
-	NIGHT_FADING,
-	MOON_RISING,
-	NIGHT_IDLE
-}
-
 signal dayArrived
 signal nightArrived
 
@@ -29,7 +21,8 @@ var isMapHidden: bool = false
 @export var cameraLimitLeft: int = 68
 @export var cameraLimitRight: int = 264
 
-@export var currentState = DayState.NIGHT_IDLE
+# FIX: Use GameManager.DayState
+@export var currentState = GameManager.DayState.NIGHT_IDLE
 var cycleProgress: float = 0.0
 
 @export var riseDuration: float = 500.0
@@ -66,15 +59,20 @@ func _ready() -> void:
 	zoomCamera.make_current()
 	subVPort.world_2d = get_world_2d()
 	
+	# Initial visual setup (will be overwritten by SyncVisualsToState below)
 	sun.position = sunStartPosition
 	moon.position = moonStartPosition
 	nightBackground.modulate.a = 1.0
 	snowFall.modulate.a = 1.0
 	
-	currentState = DayState.NIGHT_IDLE
+	currentState = GameManager.DayState.NIGHT_IDLE
 	
 	TaskManager.shouldBeHidden = false
-	if GameManager.shouldUseStoredSpawn:
+	
+	if GameManager.currentDay == -1:
+		currentState = GameManager.DayState.NIGHT_FADING
+		GameManager.ConsumeSpawnData(player)
+	elif GameManager.shouldUseStoredSpawn:
 		GameManager.ConsumeSpawnData(player)
 	elif SaveManager.has_save():
 		SaveManager.reload_from_disk()
@@ -82,6 +80,9 @@ func _ready() -> void:
 		player.apply_save_data()
 		
 	TaskManager.SyncTasksFromGameManagerOnLoad()
+	
+	currentState = GameManager.daySTATE
+	SyncVisualsToState()
 		
 func _process(delta):
 	# Force the zoomed-in camera to follow the player
@@ -98,8 +99,11 @@ func _process(delta):
 	
 	zoomCamera.global_position = targetPosition
 	
+	# Update GameManager with current int value
+	GameManager.daySTATE = currentState
+	
 	match currentState:
-		DayState.SUN_RISING:
+		GameManager.DayState.SUN_RISING:
 			cycleProgress += delta / riseDuration
 			
 			sun.position.y = lerp(sunStartPosition.y, endY_Pos, cycleProgress)
@@ -115,57 +119,92 @@ func _process(delta):
 			
 			if cycleProgress >= 1.0:
 				cycleProgress = 0.0
-				currentState = DayState.DAY_IDLE
+				currentState = GameManager.DayState.DAY_IDLE
 				
 				sun.position.y = endY_Pos
 				nightBackground.modulate.a = 0.0
 				snowFall.modulate.a = 0.0
 				emit_signal("dayArrived")
 		
-		DayState.DAY_IDLE:
+		GameManager.DayState.DAY_IDLE:
 			sun.position.y = endY_Pos
 			sunRiseGradient.position = gradientStartPosition
 			nightBackground.modulate.a = 0.0
 			snowFall.modulate.a = 0.0
 		
-		DayState.NIGHT_FADING:
+		GameManager.DayState.NIGHT_FADING:
 			cycleProgress += delta / riseDuration
 			nightBackground.modulate.a = lerp(0.0, 1.0, cycleProgress)
 			snowFall.modulate.a = lerp(0.0, 1.0, cycleProgress)
 			
 			if cycleProgress >= 1.0:
 				cycleProgress = 0.0
-				currentState = DayState.MOON_RISING
+				currentState = GameManager.DayState.MOON_RISING
 				moon.position = moonStartPosition
 				nightBackground.modulate.a = 1.0
 				snowFall.modulate.a = 1.0
 		
-		DayState.MOON_RISING:
+		GameManager.DayState.MOON_RISING:
 			cycleProgress += delta / riseDuration
 			moon.position.y = lerp(moonStartPosition.y, endY_Pos, cycleProgress)
 			
 			if cycleProgress >= 1.0:
 				cycleProgress = 0.0
-				currentState = DayState.NIGHT_IDLE 
+				currentState = GameManager.DayState.NIGHT_IDLE 
 				moon.position.y = endY_Pos
 				emit_signal("nightArrived")
 
-		DayState.NIGHT_IDLE:
+		GameManager.DayState.NIGHT_IDLE:
 			moon.position.y = endY_Pos
 			nightBackground.modulate.a = 1.0
 			snowFall.modulate.a = 1.0
 			sunRiseGradient.position = gradientStartPosition
 
+# FIX: New function to snap visuals to the correct state instantly on load
+func SyncVisualsToState():
+	cycleProgress = 0.0 # Reset progress on load to avoid mid-transition weirdness
+	
+	match currentState:
+		GameManager.DayState.SUN_RISING:
+			# If we loaded mid-rise, we reset to start of rise. 
+			# (Ideally you'd save cycleProgress too, but starting rise is safer than broken state)
+			sun.position = sunStartPosition
+			nightBackground.modulate.a = 1.0
+			snowFall.modulate.a = 1.0
+			
+		GameManager.DayState.DAY_IDLE:
+			sun.position.y = endY_Pos
+			sunRiseGradient.position = gradientStartPosition
+			nightBackground.modulate.a = 0.0
+			snowFall.modulate.a = 0.0
+			
+		GameManager.DayState.NIGHT_FADING:
+			# Reset to start of fade
+			sun.position.y = endY_Pos
+			nightBackground.modulate.a = 1.0
+			snowFall.modulate.a = 1.0
+			
+		GameManager.DayState.MOON_RISING:
+			# Reset to start of moon rise
+			moon.position = moonStartPosition
+			nightBackground.modulate.a = 1.0
+			snowFall.modulate.a = 1.0
+			
+		GameManager.DayState.NIGHT_IDLE:
+			moon.position.y = endY_Pos
+			nightBackground.modulate.a = 1.0
+			snowFall.modulate.a = 1.0
+
 func StartNightCycle():
-	if currentState == DayState.DAY_IDLE or currentState == DayState.SUN_RISING: # Allow breaking sunrise if valid
+	if currentState == GameManager.DayState.DAY_IDLE or currentState == GameManager.DayState.SUN_RISING or currentState == GameManager.DayState.NIGHT_IDLE: 
 		print("MAIN: Starting night cycle.")
-		currentState = DayState.NIGHT_FADING
+		currentState = GameManager.DayState.NIGHT_FADING
 		cycleProgress = 0.0
 
 func StartDayCycle():
-	if currentState == DayState.NIGHT_IDLE or currentState == DayState.MOON_RISING:
+	if currentState == GameManager.DayState.NIGHT_IDLE or currentState == GameManager.DayState.MOON_RISING:
 		print("MAIN: Starting day cycle.")
-		currentState = DayState.SUN_RISING
+		currentState = GameManager.DayState.SUN_RISING
 		cycleProgress = 0.0
 		
 		sun.position = sunStartPosition

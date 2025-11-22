@@ -2,6 +2,12 @@
 extends Control
 
 #region VARIABLES
+# EXPORT RETURN SETTINGS
+@export_group("Return Settings")
+@export var returnFloorIndex = 2
+@export var returnPosition: Vector2 = Vector2(80, 340)
+@export var mainGameScenePath: String = "res://Scenes/main.tscn"
+
 #region NODES
 var heatDial: Button
 var potArea: Area2D
@@ -57,32 +63,27 @@ var recipes = {
 	# LEVEL 1: Beginner
 	# Goal: Tutorial pace. Impossible to fail unless AFK.
 	"BarfitStovies": [
-		# Step 1: Heat oil (Low Heat)
-		# Burn Timer: 0.0 (Start)
+		# Step 1: Heat oil (Medium Heat)
 		{"heat": 50.0, "ingredients": [
 			{"name": "Oil", "type": "Pourable", "amount": 5}
 		], "wait": 10.0, "time": 0.0},
 		
 		# Step 2: Caramelize onions (Low Heat)
-		# Burn Timer: 60.0 (Oil takes a long time to smoke at low heat)
 		{"heat": 25.0, "ingredients": [
-			{"name": "Onion (Chopped)", "type": "Whole", "amount": 5},
+			{"name": "Onion (Chopped)", "type": "Whole", "amount": 2},
 			{"name": "Salt", "type": "Shaker", "amount": 5}
-		], "wait": 45.0, "time": 60.0},
+		], "wait": 45.0, "time": 30.0},
 		
 		# Step 3: Steam Potatoes (Medium Heat)
-		# Burn Timer: 45.0 (Onions are caramelized, plenty of time)
 		{"heat": 50.0, "ingredients": [
 			{"name": "Potato (Chopped)", "type": "Whole", "amount": 5},
 			{"name": "Stock", "type": "Pourable", "amount": 10}
 		], "wait": 30.0, "time": 45.0},
 		
 		# Step 4: Simmer (Low Heat)
-		# Burn Timer: 99.0 (Liquid stock prevents burning entirely)
 		{"heat": 25.0, "ingredients": [], "wait": 15.0, "time": 99.0},
 		
 		# Step 5: Season
-		# Burn Timer: 60.0 (Simmering stew is safe)
 		{"heat": 25.0, "ingredients": [
 			{"name": "Parsley", "type": "Whole", "amount": 1},
 			{"name": "Pepper", "type": "Shaker", "amount": 5}
@@ -101,7 +102,6 @@ var recipes = {
 		], "wait": 10.0, "time": 0.0},
 		
 		# Step 2: Combine ingredients
-		# Burn Timer: 40.0 (Oil is hot, but forgiving)
 		{"heat": 50.0, "ingredients": [
 			{"name": "Carrot (Chopped)", "type": "Whole", "amount": 2},
 			{"name": "Potato (Chopped)", "type": "Whole", "amount": 4},
@@ -109,7 +109,6 @@ var recipes = {
 		], "wait": 25.0, "time": 40.0},
 		
 		# Step 3: Braise
-		# Burn Timer: 30.0 (Garlic/Veg sauteing)
 		{"heat": 50.0, "ingredients": [
 			{"name": "Stock", "type": "Pourable", "amount": 5},
 			{"name": "Thyme", "type": "Whole", "amount": 2},
@@ -117,11 +116,9 @@ var recipes = {
 		], "wait": 30.0, "time": 30.0},
 		
 		# Step 4: Glaze (High Heat Reduction)
-		# Burn Timer: 99.0 (Liquid won't burn yet)
 		{"heat": 100.0, "ingredients": [], "wait": 15.0, "time": 99.0},
 
 		# Step 5: Deglaze / Finish (DANGER STEP)
-		# Burn Timer: 8.0 (The glaze has reduced to sugar/fat and is on High Heat. Add water fast!)
 		{"heat": 25.0, "ingredients": [
 			{"name": "Water", "type": "Pourable", "amount": 2}
 		], "wait": 5.0, "time": 8.0},
@@ -131,7 +128,6 @@ var recipes = {
 	],
 
 	# LEVEL 3: Moderate
-	# Goal: Consistent pace required.
 	"ScotchTattieSoup": [
 		# Step 1: Slowly heat oil
 		{"heat": 25.0, "ingredients": [
@@ -139,7 +135,6 @@ var recipes = {
 		], "wait": 10.0, "time": 0.0},
 		
 		# Step 2: Saute onions
-		# Burn Timer: 30.0
 		{"heat": 50.0, "ingredients": [
 			{"name": "Onion (Chopped)", "type": "Whole", "amount": 1},
 			{"name": "Pepper", "type": "Shaker", "amount": 6},
@@ -147,25 +142,21 @@ var recipes = {
 		], "wait": 20.0, "time": 30.0},
 		
 		# Step 3: Saute aromatics
-		# Burn Timer: 20.0 (Onions are cooking)
 		{"heat": 50.0, "ingredients": [
 			{"name": "Carrot (Chopped)", "type": "Whole", "amount": 2},
 			{"name": "Garlic (Chopped)", "type": "Whole", "amount": 1}
 		], "wait": 20.0, "time": 20.0},
 		
 		# Step 4: Add liquids
-		# Burn Timer: 15.0 (Garlic is in the pan! Hurry!)
 		{"heat": 50.0, "ingredients": [
 			{"name": "Stock", "type": "Pourable", "amount": 10},
 			{"name": "Water", "type": "Pourable", "amount": 5},
 		], "wait": 5.0, "time": 15.0},
 		
 		# Step 5: Bring to a boil
-		# Burn Timer: 99.0 (Liquid safe)
 		{"heat": 100.0, "ingredients": [], "wait": 25.0, "time": 99.0},
 		
 		# Step 6: Add potatoes and thyme
-		# Burn Timer: 45.0 (Reduction taking place)
 		{"heat": 100.0, "ingredients": [
 			{"name": "Potato (Chopped)", "type": "Whole", "amount": 4},
 			{"name": "Thyme", "type": "Whole", "amount": 2}
@@ -176,7 +167,6 @@ var recipes = {
 	],
 
 	# LEVEL 4: Hardest
-	# Goal: Mise en place is mandatory. Garlic burns instantly.
 	"RabbitStew": [
 		# Step 1: Heat Oil
 		{"heat": 25.0, "ingredients": [
@@ -185,19 +175,16 @@ var recipes = {
 		], "wait": 5.0, "time": 0.0},
 		
 		# Step 2: Add Onions
-		# Burn Timer: 15.0 (Hot oil)
 		{"heat": 50.0, "ingredients": [
 			{"name": "Onion (Chopped)", "type": "Whole", "amount": 2}
 		], "wait": 15.0, "time": 15.0},
 		
-		# Step 3: Add Garlic
-		# Burn Timer: 15.0 (Onions browning)
+		# Step 3: Add Garlc
 		{"heat": 25.0, "ingredients": [
 			{"name": "Garlic (Chopped)", "type": "Whole", "amount": 1}
 		], "wait": 10.0, "time": 15.0},
 		
 		# Step 4: Add Veg & Water (CRITICAL STEP)
-		# Burn Timer: 5.0 (Garlic burns in 5 seconds! Must have potatoes ready!)
 		{"heat": 100.0, "ingredients": [
 			{"name": "Potato (Chopped)", "type": "Whole", "amount": 3},
 			{"name": "Carrot (Chopped)", "type": "Whole", "amount": 1},
@@ -205,14 +192,12 @@ var recipes = {
 		], "wait": 20.0, "time": 18.0},
 		
 		# Step 5: Add Rabbit & Stock
-		# Burn Timer: 45.0 (Water prevents burning)
 		{"heat": 25.0, "ingredients": [
 			{"name": "Rabbit (Chopped)", "type": "Whole", "amount": 1},
 			{"name": "Stock", "type": "Pourable", "amount": 10},
 		], "wait": 30.0, "time": 45.0},
 		
 		# Step 6: Herbs
-		# Burn Timer: 30.0 (Simmering)
 		{"heat": 25.0, "ingredients": [
 			{"name": "Thyme", "type": "Whole", "amount": 2},
 			{"name": "Parsley", "type": "Whole", "amount": 2},
@@ -220,7 +205,6 @@ var recipes = {
 		], "wait": 10.0, "time": 30.0},
 		
 		# Step 7: Final Seasoning
-		# Burn Timer: 30.0
 		{"heat": 25.0, "ingredients": [
 			{"name": "Salt", "type": "Shaker", "amount": 10},
 			{"name": "Pepper", "type": "Shaker", "amount": 2}
@@ -238,6 +222,7 @@ var currentRecipeName: String = ""
 var currentStepIndex: int = 0
 var currentStepData: Dictionary = {}
 var currentHeat: float = -1.0
+var currentTaskID: String = ""
 
 # Dictionaries for tracking progress through the recipe
 var currentStepIngredientsNeeded: Dictionary = {}
@@ -292,6 +277,10 @@ func OnLoopSound(player):
 	player.play()
 
 func _process(_delta): #this is purely for the progress bar
+	if not is_instance_valid(progressBar) or not is_instance_valid(steamAnim):
+		set_process(false)
+		return
+	
 	if isWaiting:
 		# Blue bar, counts up
 		progressBar.visible = true
@@ -470,6 +459,9 @@ func OnHeatDialValueChanged(newHeatValue: float):
 	CheckStepComplete()
 
 func SetFireAndSteamAnimations(heatLevel: float):
+	if not fireAnimLow or not fireAnimMedium or not fireAnimHigh or not steamAnim:
+		return
+	
 	# FIRST: Reset everything 
 	fireAnimLow.visible = false
 	fireAnimLow.stop()
@@ -535,6 +527,9 @@ func SetFireAndSteamAnimations(heatLevel: float):
 		while speedToSet <= endSpeed:
 			await get_tree().create_timer(STEAM_STEP_DELAY).timeout
 			
+			if not steamAnim:
+				return
+			
 			if currentUpdate != steamUpdate:
 				return
 			
@@ -552,6 +547,9 @@ func SetFireAndSteamAnimations(heatLevel: float):
 		
 		while speedToSet >= endSpeed:
 			await get_tree().create_timer(STEAM_STEP_DELAY).timeout
+			
+			if not steamAnim:
+				return
 			
 			if currentUpdate != steamUpdate:
 				return
@@ -722,9 +720,42 @@ func AdvanceToNextStep():
 	
 	if currentStepIndex >= activeRecipe.size():
 		# Recipe finished
-		print("Recipe complete. Final Quality: %d" % recipeQuality)
 		progressBar.visible = false
+		CleanUpReferences()
+		print("Recipe complete. Final Quality: %d" % recipeQuality)
+		GameManager.CompleteTask(currentTaskID)
+		if ResourceLoader.exists(mainGameScenePath):
+			SceneLoader.change_scene_with_loading(mainGameScenePath)
+		else:
+			push_error("ERROR: Main game scene path not found.")
 	else:
 		# Load next step and start new timer
 		LoadStep(currentStepIndex)
 		StartStepTimer()
+
+func CleanUpReferences():
+	print("KitchenController: Cleaning up node references.")
+	
+	set_process(false)
+	
+	if waitTimer: waitTimer.stop()
+	if stepTimer: stepTimer.stop()
+	if overtimeTimer: overtimeTimer.stop()
+	
+	heatDial = null
+	potArea = null
+	progressBar = null
+	recipeInstructions = null
+	fireAnimLow = null
+	fireAnimMedium = null
+	fireAnimHigh = null
+	steamAnim = null
+	oneShotAudioPlayer = null
+	constantAudioPlayer = null
+	
+	activeRecipe.clear()
+	currentRecipeName = ""
+	currentHeat = -1.0
+	isWaiting = false
+	isStepTiming = false
+	isOvertime = false

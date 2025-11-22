@@ -1,6 +1,7 @@
 extends Control
 
 @onready var percent_label: Label = $PercentLabel
+@onready var loadingAnimation: AnimatedSprite2D = $LoadingScreen
 
 var _target_path: String = ""
 var _elapsed: float = 0.0
@@ -11,6 +12,9 @@ const FADE_TIME := 1.0          # fade in/out duration
 
 
 func _ready() -> void:
+	TaskManager.shouldBeHidden = true
+	loadingAnimation.play("default")
+	
 	# Get the target scene path from SceneLoader
 	_target_path = SceneLoader.target_scene_path
 	print("[DEBUG] Target path: ", _target_path)

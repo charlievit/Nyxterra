@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://bv00gype30lrh"]
+[gd_scene load_steps=27 format=3 uid="uid://bv00gype30lrh"]
 
 [ext_resource type="Script" uid="uid://dmv4o0wqsh26h" path="res://Scripts/Main/main.gd" id="1_8gbba"]
 [ext_resource type="PackedScene" uid="uid://bty042lmdfi02" path="res://Scenes/Environments/lighthouse_button_area.tscn" id="1_bo1nx"]
@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://cpmufmthgj1px" path="res://Scenes/Environments/animated_snow_map.tscn" id="12_jkdf5"]
 [ext_resource type="PackedScene" uid="uid://6825wwab2n3q" path="res://Scenes/UI/PauseMenu.tscn" id="15_k12tt"]
 [ext_resource type="Texture2D" uid="uid://bkkiwi8y2vk04" path="res://Assets/Images/UI/mapToggleIcon.png" id="15_wsu2k"]
+[ext_resource type="PackedScene" uid="uid://rx4a1oion8ow" path="res://Scenes/elise_(daughter).tscn" id="17_h1bgf"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jkdf5"]
 atlas = ExtResource("9_fdnlq")
@@ -67,10 +68,9 @@ scale = Vector2(1.3964909, 1.3964909)
 script = ExtResource("1_8gbba")
 cameraLimitLeft = 9
 cameraLimitRight = 325
-riseDuration = 50.0
 
 [node name="Player" parent="." instance=ExtResource("2_8gbba")]
-position = Vector2(88, 278)
+position = Vector2(80, 340)
 slide_on_ceiling = false
 moveSpeed = 60.0
 
@@ -170,11 +170,16 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_h1bgf")
 icon = ExtResource("15_wsu2k")
 
 [node name="PauseMenu" parent="Control_GAME SCREEN UI" instance=ExtResource("15_k12tt")]
+visible = false
 
 [node name="Lighthouse" parent="." instance=ExtResource("1_bo1nx")]
 texture_filter = 1
 offset_right = 29.15
 offset_bottom = 648.0
 scale = Vector2(0.718, 0.718)
+
+[node name="Elise (Daughter)" parent="." instance=ExtResource("17_h1bgf")]
+position = Vector2(177.58798, 398.1408)
+scale = Vector2(0.46692798, 0.46692798)
 
 [connection signal="pressed" from="Control_GAME SCREEN UI/ToggleMap" to="." method="_on_toggle_map_pressed"]
