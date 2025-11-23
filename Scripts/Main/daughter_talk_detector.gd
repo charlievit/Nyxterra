@@ -25,6 +25,11 @@ func _process(_delta):
 	
 	if playerBody:
 		if Input.is_action_pressed("ui_accept") and GameManager.needDaughter:
+			#Dialogue system
+			var dlg = Dialogic.start("Elises Dialogue")
+			var dlg_parent = get_tree().get_root().get_node("Main")
+			dlg_parent.add_child(dlg)
+			
 			var currentTask: String = ""
 			for key in TaskManager.activeTasks.keys():
 				if String(key).contains("Daughter"):
