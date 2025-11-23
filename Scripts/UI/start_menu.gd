@@ -19,17 +19,25 @@ const SETTINGS_KEY_VOLUME := "master_volume"   # linear 0..1
 var _cached_volume_db: float = 0.0   # for Return (revert)
 var _master_bus: int = 0
 
+var titleScreenMusicPlayer: AudioStreamPlayer
+var titleScreenMusic: AudioStream = preload("res://Assets/Audio/Music/Music 1 lighthouse.wav")
+
 func _ready() -> void:
 	animScreen.play("default")
 	TaskManager.shouldBeHidden = true
 	
+	titleScreenMusicPlayer = AudioStreamPlayer.new()
+	add_child(titleScreenMusicPlayer)
+	titleScreenMusicPlayer.stream = titleScreenMusic
 	_master_bus = AudioServer.get_bus_index("Master")
 
 	# Load saved volume (default 0.8 if no file yet)
 	var saved_vol := _load_volume()
 	_set_master_linear(saved_vol)
 	volume_slider.value = saved_vol
-
+	
+	titleScreenMusicPlayer.play()
+	
 	# Signals
 	start_button.pressed.connect(_on_start_pressed)
 	options_button.pressed.connect(_on_options_pressed)

@@ -1,0 +1,166 @@
+[gd_scene load_steps=7 format=3 uid="uid://c3ermjvnqmpjh"]
+
+[ext_resource type="Script" uid="uid://ckx7rr08m7g4t" path="res://Scripts/UI/sleep_screen.gd" id="1_xui5r"]
+[ext_resource type="Theme" uid="uid://b4lurv8njswua" path="res://Resources/theme.tres" id="2_8j5k1"]
+[ext_resource type="Texture2D" uid="uid://cuexmlltvgojl" path="res://Assets/Images/UI/moralitySleepScreenIcon.png" id="3_4221a"]
+[ext_resource type="Texture2D" uid="uid://bayddweofrnkj" path="res://Assets/Images/UI/realtionshipSleepScreenIcon.png" id="4_w48ry"]
+
+[sub_resource type="Gradient" id="Gradient_5e1pn"]
+colors = PackedColorArray(0.13725491, 0.12156863, 0.1254902, 1, 0.13725491, 0.12156863, 0.1254902, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_xui5r"]
+gradient = SubResource("Gradient_5e1pn")
+width = 1
+
+[node name="Control" type="Control"]
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("1_xui5r")
+
+[node name="BG" type="TextureRect" parent="."]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture1D_xui5r")
+expand_mode = 1
+
+[node name="Sleep Title" type="RichTextLabel" parent="."]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -481.0
+offset_right = 481.0
+offset_bottom = 126.0
+grow_horizontal = 2
+mouse_filter = 1
+theme = ExtResource("2_8j5k1")
+bbcode_enabled = true
+text = "Goodnight Sutherland"
+
+[node name="Choice Text" type="RichTextLabel" parent="."]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -576.0
+offset_top = -191.00002
+offset_right = 1850.4114
+offset_bottom = -65.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.47477528, 0.47477528)
+mouse_filter = 1
+theme = ExtResource("2_8j5k1")
+bbcode_enabled = true
+text = "Tonight, you chose to"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Continue Prompt" type="RichTextLabel" parent="."]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -280.99997
+offset_top = -69.0
+offset_right = 986.0
+offset_bottom = 57.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(0.44775057, 0.44775057)
+mouse_filter = 1
+theme = ExtResource("2_8j5k1")
+bbcode_enabled = true
+text = "Press any key to continue..."
+
+[node name="Morality and Relationship Area" type="HBoxContainer" parent="."]
+texture_filter = 1
+custom_minimum_size = Vector2(287, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -343.0
+offset_top = -74.0
+offset_right = 344.0
+offset_bottom = 190.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 287
+alignment = 1
+
+[node name="Morality Area (L)" type="VBoxContainer" parent="Morality and Relationship Area"]
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+alignment = 1
+
+[node name="Morality Image" type="TextureRect" parent="Morality and Relationship Area/Morality Area (L)"]
+texture_filter = 1
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+texture = ExtResource("3_4221a")
+expand_mode = 2
+
+[node name="Morality Score" type="RichTextLabel" parent="Morality and Relationship Area/Morality Area (L)"]
+texture_filter = 1
+layout_mode = 2
+mouse_filter = 1
+theme = ExtResource("2_8j5k1")
+theme_override_font_sizes/normal_font_size = 50
+bbcode_enabled = true
+text = "0"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Relationship Area (R)" type="VBoxContainer" parent="Morality and Relationship Area"]
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+alignment = 1
+
+[node name="Relationship Image" type="TextureRect" parent="Morality and Relationship Area/Relationship Area (R)"]
+texture_filter = 1
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+texture = ExtResource("4_w48ry")
+expand_mode = 2
+
+[node name="Relationship Score" type="RichTextLabel" parent="Morality and Relationship Area/Relationship Area (R)"]
+texture_filter = 1
+layout_mode = 2
+mouse_filter = 1
+theme = ExtResource("2_8j5k1")
+theme_override_font_sizes/normal_font_size = 50
+bbcode_enabled = true
+text = "0"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1

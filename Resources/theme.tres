@@ -1,0 +1,97 @@
+[gd_resource type="Theme" load_steps=11 format=3 uid="uid://b4lurv8njswua"]
+
+[ext_resource type="FontFile" uid="uid://bugymcbk132rp" path="res://Assets/Fonts/Fry's Baskerville Regular.otf" id="1_6hc6j"]
+[ext_resource type="Texture2D" uid="uid://bxhlfogarrm4o" path="res://Assets/Images/GearPuzzle/Pins/Pin.png" id="2_0abbe"]
+[ext_resource type="StyleBox" uid="uid://bkk1whq47l48m" path="res://Resources/slider.tres" id="3_o2rm2"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3kyvb"]
+bg_color = Color(0.13725491, 0.12156863, 0.1254902, 0.7490196)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2ybwg"]
+bg_color = Color(0.13725491, 0.12156863, 0.1254902, 0.7490196)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.8745098, 0.8980392, 0.7294118, 1)
+border_blend = true
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+expand_margin_left = 12.0
+expand_margin_right = 12.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fa70d"]
+bg_color = Color(0.13725491, 0.12156863, 0.1254902, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+expand_margin_left = 8.0
+expand_margin_right = 8.0
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j6k6k"]
+bg_color = Color(0.09333756, 0.08117933, 0.0842196, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.8745098, 0.8980392, 0.7294118, 1)
+
+[sub_resource type="Gradient" id="Gradient_3myvw"]
+colors = PackedColorArray(0.13725491, 0.12156863, 0.1254902, 1, 0.13725491, 0.12156863, 0.1254902, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_iu2je"]
+gradient = SubResource("Gradient_3myvw")
+width = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0rm7m"]
+content_margin_left = 50.0
+content_margin_top = 0.0
+content_margin_right = 50.0
+content_margin_bottom = 0.0
+bg_color = Color(0.13725491, 0.12156863, 0.1254902, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 3.0
+anti_aliasing = false
+
+[resource]
+Button/colors/font_color = Color(0.8745098, 0.8980392, 0.7294118, 1)
+Button/colors/font_disabled_color = Color(0.7501958, 0.7806459, 0.5327656, 1)
+Button/colors/font_focus_color = Color(0.9182784, 0.9351849, 0.8212793, 1)
+Button/colors/font_hover_color = Color(0.8745098, 0.8980392, 0.7294118, 1)
+Button/colors/font_hover_pressed_color = Color(0.8745098, 0.8980392, 0.7294118, 1)
+Button/font_sizes/font_size = 18
+Button/fonts/font = ExtResource("1_6hc6j")
+Button/styles/disabled = SubResource("StyleBoxFlat_3kyvb")
+Button/styles/hover = SubResource("StyleBoxFlat_2ybwg")
+Button/styles/normal = SubResource("StyleBoxFlat_fa70d")
+Button/styles/pressed = SubResource("StyleBoxFlat_j6k6k")
+HSlider/constants/center_grabber = 1
+HSlider/constants/grabber_offset = 0
+HSlider/constants/tick_offset = 1
+HSlider/icons/grabber = ExtResource("2_0abbe")
+HSlider/icons/grabber_highlight = ExtResource("2_0abbe")
+HSlider/icons/tick = SubResource("GradientTexture1D_iu2je")
+HSlider/styles/grabber_area = ExtResource("3_o2rm2")
+HSlider/styles/grabber_area_highlight = ExtResource("3_o2rm2")
+HSlider/styles/slider = SubResource("StyleBoxFlat_0rm7m")
+Label/colors/font_color = Color(0.8745098, 0.8980392, 0.7294118, 1)
+Label/font_sizes/font_size = 24
+Label/fonts/font = ExtResource("1_6hc6j")
+MenuBar/fonts/font = ExtResource("1_6hc6j")
+MenuButton/fonts/font = ExtResource("1_6hc6j")
+PopupMenu/fonts/font = ExtResource("1_6hc6j")
+PopupMenu/fonts/font_separator = ExtResource("1_6hc6j")
+PopupMenu/fonts/title_font = ExtResource("1_6hc6j")
+RichTextLabel/colors/default_color = Color(0.8745098, 0.8980392, 0.7294118, 1)
+RichTextLabel/font_sizes/normal_font_size = 100
+RichTextLabel/fonts/normal_font = ExtResource("1_6hc6j")

@@ -724,6 +724,7 @@ func AdvanceToNextStep():
 		CleanUpReferences()
 		print("Recipe complete. Final Quality: %d" % recipeQuality)
 		GameManager.CompleteTask(currentTaskID)
+		GameManager.SetPlayerSpawn(returnFloorIndex, returnPosition)
 		if ResourceLoader.exists(mainGameScenePath):
 			SceneLoader.change_scene_with_loading(mainGameScenePath)
 		else:
