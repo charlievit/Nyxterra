@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://ch3y31u7yadh8" path="res://Scripts/UI/start_menu.gd" id="1_juhg0"]
 [ext_resource type="Texture2D" uid="uid://jx3yb0oa748d" path="res://Assets/Images/Lighthouse/AnimatedLightHouseScreen/LighthouseAnim2.png" id="2_qpngb"]
 [ext_resource type="FontFile" uid="uid://bugymcbk132rp" path="res://Assets/Fonts/Fry's Baskerville Regular.otf" id="3_2ybwg"]
-[ext_resource type="Theme" uid="uid://b4lurv8njswua" path="res://Scenes/UI/theme.tres" id="3_3kyvb"]
+[ext_resource type="Theme" uid="uid://b4lurv8njswua" path="res://Resources/theme.tres" id="3_3kyvb"]
 [ext_resource type="FontFile" uid="uid://n0n6mmkjc76j" path="res://Assets/Fonts/Eyesome Script.otf" id="3_8wf1d"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8wf1d"]

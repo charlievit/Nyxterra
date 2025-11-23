@@ -38,11 +38,14 @@ var needLight: bool = false
 var needBed: bool = false
 
 # GLOBAL ENDING VARIABLES
-var morality: int = 0 # +25 for each correct choice
+var yesterdaysMorality: int = 0
+var morality: int = 1000 # +25 for each correct choice
 var moralityNeeded: int = 50 # none:0, 1:25, 2:50, 3:75, all:100
-var relationship: int = 0
+var yesterdaysRelationship: int = 0
+var relationship: int = 1000
 var isBadEnding: bool
 var shouldLightBeOnTonight: bool
+var choseLightToBeOn: bool
 
 # COOKING
 var todaysRecipe: String

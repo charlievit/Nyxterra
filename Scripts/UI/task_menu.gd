@@ -13,6 +13,7 @@ var shouldBeHidden: bool = false
 @onready var alertIcon = $SlideController/TabButton/AlertIcon
 @onready var tabButton = $SlideController/TabButton
 
+var clickPlayer: AudioStreamPlayer2D
 @onready var hapticClickSound = preload("res://Assets/Audio/UI/HapticClick.mp3")
 
 # STATES
@@ -29,6 +30,10 @@ func _ready():
 	
 	alertIcon.visible = false
 	alertIcon.rotation = 0
+	
+	clickPlayer = AudioStreamPlayer2D.new()
+	add_child(clickPlayer)
+	clickPlayer.stream = hapticClickSound
 
 func _process(_delta):
 	if shouldBeHidden:
@@ -60,13 +65,8 @@ func ToggleWindow():
 	var arrowTween = create_tween()
 	arrowTween.tween_property(arrowIcon, "rotation_degrees", targetRotation, slideSpeed / 3.0)
 	
-	var clickPlayer: AudioStreamPlayer2D
-	clickPlayer = AudioStreamPlayer2D.new()
-	add_child(clickPlayer)
-	clickPlayer.stream = hapticClickSound
-	clickPlayer.play()
-	await get_tree().create_timer(0.5).timeout
-	clickPlayer.queue_free()
+	if not shouldBeHidden:
+		clickPlayer.play()
 	
 	isOpen = not isOpen
 
