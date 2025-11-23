@@ -70,7 +70,7 @@ cameraLimitLeft = 9
 cameraLimitRight = 325
 
 [node name="Player" parent="." instance=ExtResource("2_8gbba")]
-position = Vector2(80, 340)
+position = Vector2(85.92968, 277.83923)
 slide_on_ceiling = false
 moveSpeed = 60.0
 

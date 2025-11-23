@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b7mloo2wyt7kx"
-path="res://.godot/imported/Floor3&4Build1.png-a433323f51b8189c4a8efb3c2714b777.ctex"
+uid="uid://brrqynw57auwm"
+path="res://.godot/imported/FullTowerBuild2.png-072c42fb3c0b9bfda3a5df65a4303a02.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Images/Lighthouse/Structure/Floor3&4Build1.png"
-dest_files=["res://.godot/imported/Floor3&4Build1.png-a433323f51b8189c4a8efb3c2714b777.ctex"]
+source_file="res://Assets/Images/Lighthouse/Structure/FullTowerBuild2.png"
+dest_files=["res://.godot/imported/FullTowerBuild2.png-072c42fb3c0b9bfda3a5df65a4303a02.ctex"]
 
 [params]
 

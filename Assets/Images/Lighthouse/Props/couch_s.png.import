@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dumrws8pl1suf"
-path="res://.godot/imported/LightRoomBuild1.png-ceacd72bf9848726221f41d8b2bb2fac.ctex"
+uid="uid://bp7jqmyb3kdwc"
+path="res://.godot/imported/couch_s.png-ee9d18e593de70d955e71486370e8b9a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Images/Lighthouse/Structure/LightRoomBuild1.png"
-dest_files=["res://.godot/imported/LightRoomBuild1.png-ceacd72bf9848726221f41d8b2bb2fac.ctex"]
+source_file="res://Assets/Images/Lighthouse/Props/couch_s.png"
+dest_files=["res://.godot/imported/couch_s.png-ee9d18e593de70d955e71486370e8b9a.ctex"]
 
 [params]
 
