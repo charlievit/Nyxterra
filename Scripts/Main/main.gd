@@ -83,6 +83,21 @@ func _ready() -> void:
 	
 	currentState = GameManager.daySTATE
 	SyncVisualsToState()
+	
+	#Dialogue System
+	var visibleSize = Vector2(subVPort.size) / zoomCamera.zoom
+	var halfWidth = visibleSize.x / 2.0
+	
+	var minX = cameraLimitLeft + halfWidth
+	var maxX = cameraLimitRight - halfWidth
+	
+	var targetPosition = player.global_position
+	
+	if maxX > minX:
+		targetPosition.x = clamp(targetPosition.x, minX, maxX)
+	
+	zoomCamera.global_position = targetPosition
+	add_child(Dialogic.start("Intro"))
 		
 func _process(delta):
 	# Force the zoomed-in camera to follow the player

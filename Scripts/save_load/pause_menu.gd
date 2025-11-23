@@ -62,6 +62,9 @@ func _on_save_pressed() -> void:
 	var player := GameManager.player
 	player.write_save_data()
 	
+	#Dialogue Save
+	Dialogic.Save.save()
+	
 	SaveManager.save_game()
 	_update_load_button_state()
 
@@ -74,7 +77,11 @@ func _on_load_pressed() -> void:
 	GameManager.apply_save_data()
 	var player:=GameManager.player
 	player.apply_save_data()
-		# Switch to the saved scene
+	
+	#Dialogue Load
+	Dialogic.Save.load()
+	
+	# Switch to the saved scene
 	var path := SaveManager.current_save.current_scene_path
 	if path != "":
 		SceneLoader.change_scene_with_loading(path)

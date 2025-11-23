@@ -55,6 +55,9 @@ var player: Node = null
 #endregion
 
 func _ready():
+	#Dialogue Signal
+	Dialogic.timeline_started.connect(_on_dialogue_started)
+	Dialogic.timeline_ended.connect(_on_dialogue_ended)
 	todaysRecipe = "BarfitStovies" # defaulting here for testing
 	await get_tree().process_frame
 	apply_save_data()
@@ -62,6 +65,13 @@ func _ready():
 	StartDay(-1) #Since you forced to start on day -1, save&load unable to overwrite this. 
 				 #Make sure it change to currentDay to able loading function 
 
+func _on_dialogue_started():
+	get_tree().paused = true
+
+
+func _on_dialogue_ended():
+	get_tree().paused = false
+	
 func StartNewGame():
 	# Reset internal variables
 	currentDay = -1
