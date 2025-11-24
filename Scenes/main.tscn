@@ -69,15 +69,15 @@ script = ExtResource("1_8gbba")
 cameraLimitLeft = 9
 cameraLimitRight = 325
 
+[node name="Elise (Daughter)" parent="." instance=ExtResource("17_h1bgf")]
+z_index = 1
+position = Vector2(53.70604, 398.8568)
+scale = Vector2(0.44479263, 0.44479263)
+
 [node name="Player" parent="." instance=ExtResource("2_8gbba")]
 position = Vector2(85.92968, 277.83923)
 slide_on_ceiling = false
 moveSpeed = 60.0
-
-[node name="Elise (Daughter)" parent="." instance=ExtResource("17_h1bgf")]
-z_index = 1
-position = Vector2(53.706043, 398.8568)
-scale = Vector2(0.44479263, 0.44479263)
 
 [node name="MainStaticCamera" type="Camera2D" parent="."]
 position = Vector2(412.4624, 232.0101)
