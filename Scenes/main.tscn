@@ -74,6 +74,11 @@ position = Vector2(85.92968, 277.83923)
 slide_on_ceiling = false
 moveSpeed = 60.0
 
+[node name="Elise (Daughter)" parent="." instance=ExtResource("17_h1bgf")]
+z_index = 1
+position = Vector2(53.706043, 398.8568)
+scale = Vector2(0.44479263, 0.44479263)
+
 [node name="MainStaticCamera" type="Camera2D" parent="."]
 position = Vector2(412.4624, 232.0101)
 
@@ -177,9 +182,5 @@ texture_filter = 1
 offset_right = 29.15
 offset_bottom = 648.0
 scale = Vector2(0.718, 0.718)
-
-[node name="Elise (Daughter)" parent="." instance=ExtResource("17_h1bgf")]
-position = Vector2(177.58798, 398.1408)
-scale = Vector2(0.46692798, 0.46692798)
 
 [connection signal="pressed" from="Control_GAME SCREEN UI/ToggleMap" to="." method="_on_toggle_map_pressed"]

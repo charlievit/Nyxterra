@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://rx4a1oion8ow"]
+[gd_scene load_steps=7 format=3 uid="uid://rx4a1oion8ow"]
 
 [ext_resource type="Texture2D" uid="uid://dbbpn2fw4io1v" path="res://Assets/Images/Daughter Elise/frame0000.png" id="1_lgdst"]
 [ext_resource type="Script" uid="uid://kds0fwv510th" path="res://Scripts/Main/daughter_talk_detector.gd" id="2_0qx48"]
@@ -30,24 +30,14 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_smt5g"]
-radius = 2.0
-height = 4.0
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lgdst"]
 size = Vector2(56, 20)
 
-[node name="Elise (Daughter)" type="CharacterBody2D"]
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D"]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_fem48")
 animation = &"idle"
 frame_progress = 1.0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(1, -11)
-shape = SubResource("CapsuleShape2D_smt5g")
 
 [node name="TalkDetector" type="Area2D" parent="."]
 script = ExtResource("2_0qx48")
@@ -56,7 +46,7 @@ script = ExtResource("2_0qx48")
 position = Vector2(1, 10)
 shape = SubResource("RectangleShape2D_lgdst")
 
-[node name="ButtonPrompt" type="RichTextLabel" parent="."]
+[node name="ButtonPrompt" type="RichTextLabel" parent="TalkDetector"]
 texture_filter = 1
 offset_left = -34.0
 offset_top = -34.0
