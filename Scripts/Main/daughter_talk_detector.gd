@@ -5,6 +5,7 @@ extends Area2D
 var baseLabelPos: Vector2
 var playerBody: CharacterBody2D = null
 
+
 func _ready():
 	# Connect signals
 	self.body_entered.connect(OnBodyEntered)
@@ -26,9 +27,7 @@ func _process(_delta):
 	if playerBody:
 		if Input.is_action_pressed("ui_accept") and GameManager.needDaughter:
 			#Dialogue system
-			var dlg = Dialogic.start("Elises Dialogue")
-			var dlg_parent = get_tree().get_root().get_node("Main")
-			dlg_parent.add_child(dlg)
+			Dialogue_system()
 			
 			var currentTask: String = ""
 			for key in TaskManager.activeTasks.keys():
@@ -48,3 +47,21 @@ func OnBodyExited(body):
 		playerBody = null # Clear the player
 		if label:
 			label.visible = false
+
+func Dialogue_system() -> void:
+	var dlg
+	var dlg_parent = get_tree().get_root().get_node("Main")
+	match GameManager.currentDay:
+		-1:
+			dlg = Dialogic.start("Day_0 Elise Dialogue")
+		0:
+			dlg = Dialogic.start("Day_0 Elise Dialogue")
+		1:
+			dlg = Dialogic.start("Day_1 Elise Dialogue")
+		2:
+			dlg = Dialogic.start("Day_2 Elise Dialogue")
+		3:
+			dlg = Dialogic.start("Day_3 Elise Dialogue")
+		4:
+			dlg = Dialogic.start("Day_4 Elise Dialogue")
+	dlg_parent.add_child(dlg)

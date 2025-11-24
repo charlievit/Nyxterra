@@ -1,0 +1,5 @@
+Narrator: Based on the clues from previous tasks, the user decides whether or not to light the way.
+if {} == "YES":
+	Sutherland: Not losing you to the sea tonight.
+else:
+	Sutherland: I'm sorry. I can't risk her life too.

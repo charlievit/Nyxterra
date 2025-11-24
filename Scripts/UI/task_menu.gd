@@ -23,6 +23,7 @@ var shakeTween: Tween
 
 # TASKS
 var activeTasks: Dictionary = {}
+var completedTasks: Array = []
 
 func _ready():
 	slideController.position = closedPosition
@@ -153,7 +154,7 @@ func CompleteTask(taskID: String):
 		return
 	
 	var taskData = activeTasks[taskID]
-	
+	completedTasks.append(taskID)
 	# 1. Check the box programmatically
 	taskData["box"].button_pressed = true
 	
@@ -197,3 +198,7 @@ func SyncTasksFromGameManagerOnLoad() -> void:
 	# Light
 	if not GameManager.needLight:
 		CompleteTask("Lighthouse")
+
+func is_task_completed(task_id: String) -> bool:
+	return task_id in completedTasks
+	
