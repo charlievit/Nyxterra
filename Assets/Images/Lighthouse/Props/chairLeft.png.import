@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cu50va3xvkkac"
-path="res://.godot/imported/Bed2.png-d61358bc0cf4564d7db661dc4d4f655e.ctex"
+uid="uid://ciu7kd2laeko0"
+path="res://.godot/imported/chairLeft.png-4d0a594ecdaa66d7449dd8296f3f813a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Images/Lighthouse/Props/Bed2.png"
-dest_files=["res://.godot/imported/Bed2.png-d61358bc0cf4564d7db661dc4d4f655e.ctex"]
+source_file="res://Assets/Images/Lighthouse/Props/chairLeft.png"
+dest_files=["res://.godot/imported/chairLeft.png-4d0a594ecdaa66d7449dd8296f3f813a.ctex"]
 
 [params]
 

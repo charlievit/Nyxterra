@@ -1,6 +1,6 @@
 extends Area2D
 
-@onready var label: RichTextLabel = $"../ButtonPrompt"
+@onready var label: RichTextLabel = $ButtonPrompt
 
 var baseLabelPos: Vector2
 var playerBody: CharacterBody2D = null

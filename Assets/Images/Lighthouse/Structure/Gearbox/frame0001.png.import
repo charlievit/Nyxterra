@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ui7san5wy5iy"
-path="res://.godot/imported/Floor1&2Build1.png-8194bcc75bff229adb777a87658a7c68.ctex"
+uid="uid://c1nbryalwq2mf"
+path="res://.godot/imported/frame0001.png-b77ccf0979d153f030bf7c8c91fc8b16.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Images/Lighthouse/Structure/Floor1&2Build1.png"
-dest_files=["res://.godot/imported/Floor1&2Build1.png-8194bcc75bff229adb777a87658a7c68.ctex"]
+source_file="res://Assets/Images/Lighthouse/Structure/Gearbox/frame0001.png"
+dest_files=["res://.godot/imported/frame0001.png-b77ccf0979d153f030bf7c8c91fc8b16.ctex"]
 
 [params]
 

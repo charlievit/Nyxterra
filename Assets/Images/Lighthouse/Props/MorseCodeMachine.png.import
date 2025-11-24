@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cu50va3xvkkac"
-path="res://.godot/imported/Bed2.png-d61358bc0cf4564d7db661dc4d4f655e.ctex"
+uid="uid://b7i3bvsor4h53"
+path="res://.godot/imported/MorseCodeMachine.png-2a7e63b66eaa2819b303e0ce71a8bb8f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Images/Lighthouse/Props/Bed2.png"
-dest_files=["res://.godot/imported/Bed2.png-d61358bc0cf4564d7db661dc4d4f655e.ctex"]
+source_file="res://Assets/Images/Lighthouse/Props/MorseCodeMachine.png"
+dest_files=["res://.godot/imported/MorseCodeMachine.png-2a7e63b66eaa2819b303e0ce71a8bb8f.ctex"]
 
 [params]
 

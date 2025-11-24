@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b7mloo2wyt7kx"
-path="res://.godot/imported/Floor3&4Build1.png-a433323f51b8189c4a8efb3c2714b777.ctex"
+uid="uid://bp7jqmyb3kdwc"
+path="res://.godot/imported/couch_s.png-ee9d18e593de70d955e71486370e8b9a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Images/Lighthouse/Structure/Floor3&4Build1.png"
-dest_files=["res://.godot/imported/Floor3&4Build1.png-a433323f51b8189c4a8efb3c2714b777.ctex"]
+source_file="res://Assets/Images/Lighthouse/Props/couch_s.png"
+dest_files=["res://.godot/imported/couch_s.png-ee9d18e593de70d955e71486370e8b9a.ctex"]
 
 [params]
 

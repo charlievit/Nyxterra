@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cu50va3xvkkac"
-path="res://.godot/imported/Bed2.png-d61358bc0cf4564d7db661dc4d4f655e.ctex"
+uid="uid://slv4qcj0bwt5"
+path="res://.godot/imported/frame0001.png-a997a31b4f0efbd41ab56df4780d5cfa.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Images/Lighthouse/Props/Bed2.png"
-dest_files=["res://.godot/imported/Bed2.png-d61358bc0cf4564d7db661dc4d4f655e.ctex"]
+source_file="res://Assets/Images/Lighthouse/Structure/Lamp/frame0001.png"
+dest_files=["res://.godot/imported/frame0001.png-a997a31b4f0efbd41ab56df4780d5cfa.ctex"]
 
 [params]
 

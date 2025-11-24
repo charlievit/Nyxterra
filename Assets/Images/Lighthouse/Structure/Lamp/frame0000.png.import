@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bnc5fep5l67u1"
-path="res://.godot/imported/Floor3&4SampleScene.png-fc23a1c3447fb67541ad4f850f45567f.ctex"
+uid="uid://hl17if8jel7a"
+path="res://.godot/imported/frame0000.png-17623daea0d7bd5e0793950639f14540.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Images/Lighthouse/Structure/Floor3&4SampleScene.png"
-dest_files=["res://.godot/imported/Floor3&4SampleScene.png-fc23a1c3447fb67541ad4f850f45567f.ctex"]
+source_file="res://Assets/Images/Lighthouse/Structure/Lamp/frame0000.png"
+dest_files=["res://.godot/imported/frame0000.png-17623daea0d7bd5e0793950639f14540.ctex"]
 
 [params]
 
