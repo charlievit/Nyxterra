@@ -1,0 +1,5 @@
+Narrator: Sutherland plays a cooking game to make her dinner.
+if {} == "GOOD":
+	Elise: Not bad actually
+else:
+	Elise: I miss mom.

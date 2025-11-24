@@ -28,15 +28,20 @@ func _process(_delta):
 	
 	if playerBody:
 		if Input.is_action_pressed("ui_accept") and GameManager.needMorse:
+			Morse_Dialogue()
+			await Dialogic.timeline_ended
 			if ResourceLoader.exists(morseScenePath):
 				SceneLoader.change_scene_with_loading(morseScenePath)
 			else:
 				push_error("ERROR: Morse game scene path not found.")
 		if Input.is_action_pressed("radio_accept") and GameManager.needRadio:
+			Radio_Dialogue()
+			await Dialogic.timeline_ended
 			if ResourceLoader.exists(radioScenePath):
 				SceneLoader.change_scene_with_loading(radioScenePath)
 			else:
 				push_error("ERROR: Radio game scene path not found.")
+				
 func OnBodyEntered(body):
 	if body.is_in_group("player"):
 		if GameManager.needRadio or GameManager.needMorse:
@@ -49,3 +54,39 @@ func OnBodyExited(body):
 		playerBody = null # Clear the player
 		if label:
 			label.visible = false
+
+func Morse_Dialogue() -> void:
+	var dlg
+	var dlg_parent = get_tree().get_root().get_node("Main")
+	match GameManager.currentDay:
+		-1:
+			dlg = Dialogic.start("Day_0 Morse Dialogue")
+		0:
+			dlg = Dialogic.start("Day_0 Morse Dialogue")
+		1:
+			dlg = Dialogic.start("Day_1 Morse Dialogue")
+		2:
+			dlg = Dialogic.start("Day_2 Morse Dialogue")
+		3:
+			dlg = Dialogic.start("Day_3 Morse Dialogue")
+		4:
+			dlg = Dialogic.start("Day_4 Morse Dialogue")
+	dlg_parent.add_child(dlg)
+
+func Radio_Dialogue() -> void:
+	var dlg
+	var dlg_parent = get_tree().get_root().get_node("Main")
+	match GameManager.currentDay:
+		-1:
+			dlg = Dialogic.start("Day_0 Radio Dialogue")
+		0:
+			dlg = Dialogic.start("Day_0 Radio Dialogue")
+		1:
+			dlg = Dialogic.start("Day_1 Radio Dialogue")
+		2:
+			dlg = Dialogic.start("Day_2 Radio Dialogue")
+		3:
+			dlg = Dialogic.start("Day_3 Radio Dialogue")
+		4:
+			dlg = Dialogic.start("Day_4 Radio Dialogue")
+	dlg_parent.add_child(dlg)

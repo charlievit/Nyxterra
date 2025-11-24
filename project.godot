@@ -28,16 +28,28 @@ Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
 [dialogic]
 
 directories/dch_directory={
-"Elise": "res://Timeline/Elise.dch",
-"Elises Dialogue": "res://Timeline/Elises Dialogue.dch",
-"Narrator": "res://Timeline/Narrator.dch",
-"Scottish Fisherman": "res://Timeline/Scottish Fisherman.dch",
-"Smith": "res://Timeline/Smith.dch",
-"Suspicious voice": "res://Timeline/Suspicious voice.dch",
-"Sutherland": "res://Timeline/Sutherland.dch"
+"Elise": "res://Timeline/character/Elise.dch",
+"Narrator": "res://Timeline/character/Narrator.dch",
+"Scottish Fisherman": "res://Timeline/character/Scottish Fisherman.dch",
+"Smith": "res://Timeline/character/Smith.dch",
+"Suspicious voice": "res://Timeline/character/Suspicious voice.dch",
+"Sutherland": "res://Timeline/character/Sutherland.dch"
 }
 directories/dtl_directory={
-"Elises Dialogue": "res://Timeline/Elises Dialogue.dtl",
+"Day_0 Elise Dialogue": "res://Timeline/Day_0/Day_0 Elise Dialogue.dtl",
+"Day_0 Light Dialogue": "res://Timeline/Day_0/Day_0 Light Dialogue.dtl",
+"Day_0 Morse Dialogue": "res://Timeline/Day_0/Day_0 Morse Dialogue.dtl",
+"Day_0 Radio Completed": "res://Timeline/Day_0/Day_0 Radio Completed.dtl",
+"Day_0 Radio Dialogue": "res://Timeline/Day_0/Day_0 Radio Dialogue.dtl",
+"Day_1 Bed Dialogue": "res://Timeline/Day_1/Day_1 Bed Dialogue.dtl",
+"Day_1 Elise Dialogue": "res://Timeline/Day_1/Day_1 Elise Dialogue.dtl",
+"Day_1 Gearbox Completed": "res://Timeline/Day_1/Day_1 Gearbox Completed.dtl",
+"Day_1 Intro": "res://Timeline/Day_1/Day_1 Intro.dtl",
+"Day_1 Kitchen Completed": "res://Timeline/Day_1/Day_1 Kitchen Completed.dtl",
+"Day_1 Light Dialogue": "res://Timeline/Day_1/Day_1 Light Dialogue.dtl",
+"Day_1 Morse Completed": "res://Timeline/Day_1/Day_1 Morse Completed.dtl",
+"Day_1 Radio Completed": "res://Timeline/Day_1/Day_1 Radio Completed.dtl",
+"Day_1 Smith Dialogue": "res://Timeline/Day_1/Day_1 Smith Dialogue.dtl",
 "Intro": "res://Timeline/Intro.dtl"
 }
 layout/style_directory={}

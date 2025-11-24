@@ -39,6 +39,8 @@ func _process(_delta):
 	
 	if playerBody:
 		if Input.is_action_just_pressed("ui_accept") and GameManager.needLight:
+			#Dialogue system
+			Dialogue_system()
 			if hasBeenPrompted:
 				return
 			
@@ -94,3 +96,21 @@ func ClosePopUp():
 	
 	if playerBody:
 		playerBody.controlsDisabled = false
+
+func Dialogue_system() -> void:
+	var dlg
+	var dlg_parent = get_tree().get_root().get_node("Main")
+	match GameManager.currentDay:
+		-1:
+			dlg = Dialogic.start("Day_0 Light Dialogue")
+		0:
+			dlg = Dialogic.start("Day_0 Light Dialogue")
+		1:
+			dlg = Dialogic.start("Day_1 Light Dialogue")
+		2:
+			dlg = Dialogic.start("Day_2 Light Dialogue")
+		3:
+			dlg = Dialogic.start("Day_3 Light Dialogue")
+		4:
+			dlg = Dialogic.start("Day_4 Light Dialogue")
+	dlg_parent.add_child(dlg)

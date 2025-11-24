@@ -97,7 +97,9 @@ func _ready() -> void:
 		targetPosition.x = clamp(targetPosition.x, minX, maxX)
 	
 	zoomCamera.global_position = targetPosition
-	add_child(Dialogic.start("Intro"))
+	if GameManager.currentDay == 0 or -1:
+		add_child(Dialogic.start("Intro"))
+	CheckAutoCompletedTasks()
 		
 func _process(delta):
 	# Force the zoomed-in camera to follow the player
@@ -254,3 +256,83 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func _on_toggle_map_pressed() -> void:
 	ToggleMap()
+
+func _on_Radio_Completed() -> void:
+	var dlg
+	var dlg_parent = get_tree().get_root().get_node("Main")
+	match GameManager.currentDay:
+		-1:
+			dlg = Dialogic.start("Day_0 Radio Completed")
+		0:
+			dlg = Dialogic.start("Day_0 Radio Completed")
+		1:
+			dlg = Dialogic.start("Day_1 Radio Completed")
+		2:
+			dlg = Dialogic.start("Day_2 Radio Completed")
+		3:
+			dlg = Dialogic.start("Day_3 Radio Completed")
+		4:
+			dlg = Dialogic.start("Day_4 Radio Completed")
+	dlg_parent.add_child(dlg)
+
+func _on_Gear_Completed() -> void:
+	var dlg
+	var dlg_parent = get_tree().get_root().get_node("Main")
+	match GameManager.currentDay:
+		-1:
+			dlg = Dialogic.start("Day_0 Gear Completed")
+		0:
+			dlg = Dialogic.start("Day_0 Gear Completed")
+		1:
+			dlg = Dialogic.start("Day_1 Gear Completed")
+		2:
+			dlg = Dialogic.start("Day_2 Gear Completed")
+		3:
+			dlg = Dialogic.start("Day_3 Gear Completed")
+		4:
+			dlg = Dialogic.start("Day_4 Gear Completed")
+	dlg_parent.add_child(dlg)
+
+func _on_Morse_Completed() -> void:
+	var dlg
+	var dlg_parent = get_tree().get_root().get_node("Main")
+	match GameManager.currentDay:
+		-1:
+			dlg = Dialogic.start("Day_0 Morse Completed")
+		0:
+			dlg = Dialogic.start("Day_0 Morse Completed")
+		1:
+			dlg = Dialogic.start("Day_1 Morse Completed")
+		2:
+			dlg = Dialogic.start("Day_2 Morse Completed")
+		3:
+			dlg = Dialogic.start("Day_3 Morse Completed")
+		4:
+			dlg = Dialogic.start("Day_4 Morse Completed")
+	dlg_parent.add_child(dlg)
+
+func _on_Kitchen_Completed() -> void:
+	var dlg
+	var dlg_parent = get_tree().get_root().get_node("Main")
+	match GameManager.currentDay:
+		-1:
+			dlg = Dialogic.start("Day_0 Kitchen Completed")
+		0:
+			dlg = Dialogic.start("Day_0 Kitchen Completed")
+		1:
+			dlg = Dialogic.start("Day_1 Kitchen Completed")
+		2:
+			dlg = Dialogic.start("Day_2 Kitchen Completed")
+		3:
+			dlg = Dialogic.start("Day_3 Kitchen Completed")
+		4:
+			dlg = Dialogic.start("Day_4 Kitchen Completed")
+	dlg_parent.add_child(dlg)
+
+func CheckAutoCompletedTasks() -> void:
+	if TaskManager.is_task_completed("test_checRadio"):
+		_on_Radio_Completed()
+	
+	if TaskManager.is_task_completed("test_checkGearBox"):
+		_on_Gear_Completed()
+		
