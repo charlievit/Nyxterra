@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dgu5e8rl5c20x"
+path="res://.godot/imported/Isnt fit for.mp3-a0d28e0af8b5b3bf188cdd5761e69cf9.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/VA/Sutherland/Cooking/Isnt fit for.mp3"
+dest_files=["res://.godot/imported/Isnt fit for.mp3-a0d28e0af8b5b3bf188cdd5761e69cf9.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

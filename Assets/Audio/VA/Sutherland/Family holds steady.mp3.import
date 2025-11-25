@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cp13fx4nnsjj"
+path="res://.godot/imported/Family holds steady.mp3-0e9ef9405e24fcfae64a6aa1f78b28d7.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/VA/Sutherland/Family holds steady.mp3"
+dest_files=["res://.godot/imported/Family holds steady.mp3-0e9ef9405e24fcfae64a6aa1f78b28d7.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

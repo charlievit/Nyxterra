@@ -1,10 +1,14 @@
-[gd_scene load_steps=33 format=3 uid="uid://bf5g134nk8ebe"]
+[gd_scene load_steps=50 format=3 uid="uid://bf5g134nk8ebe"]
 
 [ext_resource type="Script" uid="uid://ch3y31u7yadh8" path="res://Scripts/UI/start_menu.gd" id="1_juhg0"]
 [ext_resource type="Texture2D" uid="uid://jx3yb0oa748d" path="res://Assets/Images/Lighthouse/AnimatedLightHouseScreen/LighthouseAnim2.png" id="2_qpngb"]
 [ext_resource type="FontFile" uid="uid://bugymcbk132rp" path="res://Assets/Fonts/Fry's Baskerville Regular.otf" id="3_2ybwg"]
 [ext_resource type="Theme" uid="uid://b4lurv8njswua" path="res://Resources/theme.tres" id="3_3kyvb"]
 [ext_resource type="FontFile" uid="uid://n0n6mmkjc76j" path="res://Assets/Fonts/Eyesome Script.otf" id="3_8wf1d"]
+[ext_resource type="Texture2D" uid="uid://cl5m1ag2c73rw" path="res://Socials/instagramLogo.png" id="6_6aj3n"]
+[ext_resource type="Texture2D" uid="uid://ofq8rlceejkj" path="res://Socials/itch.ioLogo.png" id="7_flpep"]
+[ext_resource type="Texture2D" uid="uid://nqv7yxtq17yu" path="res://Socials/X_TwitterLogo_Inverted.png" id="8_4j130"]
+[ext_resource type="Texture2D" uid="uid://dyat81sk4l0my" path="res://Socials/TikTokLogo.png" id="9_flpep"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8wf1d"]
 atlas = ExtResource("2_qpngb")
@@ -196,6 +200,34 @@ animations = [{
 "speed": 12.0
 }]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4j130"]
+bg_color = Color(0.13725491, 0.12156863, 0.1254902, 0.9019608)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_flpep"]
+bg_color = Color(0.13725491, 0.12156863, 0.1254902, 0.9019608)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_flpep"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4j130"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vxxty"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8hnkv"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dotjr"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1gelb"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dapwv"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_28ark"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_g8uic"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0v2ic"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ee1bv"]
+
 [node name="StartMenu" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -211,6 +243,8 @@ script = ExtResource("1_juhg0")
 position = Vector2(575, 324)
 scale = Vector2(2.3999999, 2.4000003)
 sprite_frames = SubResource("SpriteFrames_yxcpp")
+frame = 7
+frame_progress = 0.5138644
 
 [node name="Title" type="RichTextLabel" parent="."]
 texture_filter = 1
@@ -227,11 +261,11 @@ text = "Solais"
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 layout_mode = 1
-offset_left = 463.99997
-offset_top = 386.0
-offset_right = 691.0
-offset_bottom = 634.0
-scale = Vector2(0.9419765, 0.9796394)
+offset_left = 464.0
+offset_top = 378.0
+offset_right = 717.0
+offset_bottom = 689.0
+scale = Vector2(0.79494154, 0.8267256)
 
 [node name="Buttons" type="VBoxContainer" parent="CenterContainer"]
 texture_filter = 1
@@ -264,6 +298,14 @@ theme_override_fonts/font = ExtResource("3_2ybwg")
 theme_override_font_sizes/font_size = 49
 text = "Options"
 
+[node name="SocialsButton" type="Button" parent="CenterContainer/Buttons"]
+texture_filter = 1
+layout_mode = 2
+theme = ExtResource("3_3kyvb")
+theme_override_fonts/font = ExtResource("3_2ybwg")
+theme_override_font_sizes/font_size = 49
+text = "Socials"
+
 [node name="QuitButton" type="Button" parent="CenterContainer/Buttons"]
 texture_filter = 1
 layout_mode = 2
@@ -278,6 +320,7 @@ layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 scale = Vector2(28.731138, 16.37037)
+theme_override_styles/panel = SubResource("StyleBoxFlat_4j130")
 
 [node name="Label" type="Label" parent="OptionsPanel"]
 layout_mode = 0
@@ -319,6 +362,124 @@ theme_override_font_sizes/font_size = 63
 text = " Apply "
 
 [node name="BackButton" type="Button" parent="OptionsPanel"]
+layout_mode = 0
+offset_left = 0.9397471
+offset_top = 0.97737557
+offset_right = 263.93976
+offset_bottom = 106.97738
+scale = Vector2(0.0267252, 0.035185397)
+theme = ExtResource("3_3kyvb")
+theme_override_font_sizes/font_size = 88
+text = " Return "
+
+[node name="SocialsPanel" type="Panel" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(28.731138, 16.37037)
+theme_override_styles/panel = SubResource("StyleBoxFlat_flpep")
+
+[node name="CyberSugar" type="Label" parent="SocialsPanel"]
+layout_mode = 0
+offset_left = 1.8446884
+offset_top = 8.552036
+offset_right = 955.84467
+offset_bottom = 148.55203
+scale = Vector2(0.013278421, 0.024508782)
+theme = ExtResource("3_3kyvb")
+theme_override_font_sizes/font_size = 116
+text = "CyberSugar Studios"
+
+[node name="instagramButton" type="Button" parent="SocialsPanel/CyberSugar"]
+layout_mode = 0
+offset_left = 23.590847
+offset_top = 147.05228
+offset_right = 166.84886
+offset_bottom = 303.3028
+scale = Vector2(1.1234008, 1)
+theme_override_icons/icon = ExtResource("6_6aj3n")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_flpep")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_4j130")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_vxxty")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_8hnkv")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_dotjr")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_1gelb")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_dapwv")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_28ark")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_g8uic")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_0v2ic")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ee1bv")
+icon = ExtResource("6_6aj3n")
+icon_alignment = 1
+expand_icon = true
+
+[node name="itchButton" type="Button" parent="SocialsPanel/CyberSugar"]
+layout_mode = 0
+offset_left = 191.34787
+offset_top = 139.57506
+offset_right = 334.6059
+offset_bottom = 295.82562
+scale = Vector2(1.1234008, 1)
+theme_override_styles/normal = SubResource("StyleBoxEmpty_flpep")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_4j130")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_vxxty")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_8hnkv")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_dotjr")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_1gelb")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_dapwv")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_28ark")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_g8uic")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_0v2ic")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ee1bv")
+icon = ExtResource("7_flpep")
+icon_alignment = 1
+expand_icon = true
+
+[node name="xButton" type="Button" parent="SocialsPanel/CyberSugar"]
+layout_mode = 0
+offset_left = 364.34726
+offset_top = 147.05226
+offset_right = 507.60526
+offset_bottom = 303.3028
+scale = Vector2(1.1234008, 1)
+theme_override_styles/normal = SubResource("StyleBoxEmpty_flpep")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_4j130")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_vxxty")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_8hnkv")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_dotjr")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_1gelb")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_dapwv")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_28ark")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_g8uic")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_0v2ic")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ee1bv")
+icon = ExtResource("8_4j130")
+icon_alignment = 1
+expand_icon = true
+
+[node name="tikTokButton" type="Button" parent="SocialsPanel/CyberSugar"]
+layout_mode = 0
+offset_left = 524.2407
+offset_top = 134.59023
+offset_right = 667.4987
+offset_bottom = 290.84076
+scale = Vector2(1.2773181, 1.1057026)
+theme_override_styles/normal = SubResource("StyleBoxEmpty_flpep")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_4j130")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_vxxty")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_8hnkv")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_dotjr")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_1gelb")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_dapwv")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_28ark")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_g8uic")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_0v2ic")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ee1bv")
+icon = ExtResource("9_flpep")
+icon_alignment = 1
+expand_icon = true
+
+[node name="BackButton" type="Button" parent="SocialsPanel"]
 layout_mode = 0
 offset_left = 0.9397471
 offset_top = 0.97737557

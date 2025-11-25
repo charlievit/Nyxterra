@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dciet87yx2oqr"
+path="res://.godot/imported/Start over.mp3-a8fd3149c8355f13a313b521f8232847.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/VA/Sutherland/Start over.mp3"
+dest_files=["res://.godot/imported/Start over.mp3-a8fd3149c8355f13a313b521f8232847.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

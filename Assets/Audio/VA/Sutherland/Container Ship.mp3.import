@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cq40xndvn1au4"
+path="res://.godot/imported/Container Ship.mp3-598c186f74f3ffef4d627ac4b9e1ec09.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/VA/Sutherland/Container Ship.mp3"
+dest_files=["res://.godot/imported/Container Ship.mp3-598c186f74f3ffef4d627ac4b9e1ec09.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

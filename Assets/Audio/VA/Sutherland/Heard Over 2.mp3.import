@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://ds74lusmpvknk"
+path="res://.godot/imported/Heard Over 2.mp3-6e2807c6cb3b53afdbf15b3a9bec378a.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/VA/Sutherland/Heard Over 2.mp3"
+dest_files=["res://.godot/imported/Heard Over 2.mp3-6e2807c6cb3b53afdbf15b3a9bec378a.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

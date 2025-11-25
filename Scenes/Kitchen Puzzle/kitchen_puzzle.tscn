@@ -1,11 +1,12 @@
-[gd_scene load_steps=93 format=3 uid="uid://b268fafjkgqee"]
+[gd_scene load_steps=99 format=3 uid="uid://b268fafjkgqee"]
 
 [ext_resource type="Script" uid="uid://dgrielhvrnwwo" path="res://Scripts/CookingMinigame/kitchenMinigameLoader.gd" id="1_aecf8"]
 [ext_resource type="PackedScene" uid="uid://cpmufmthgj1px" path="res://Scenes/Environments/animated_snow_map.tscn" id="2_5165p"]
-[ext_resource type="Texture2D" uid="uid://beh61gyk2osti" path="res://Assets/Images/Lighthouse/Structure/External/skyDayBackground.png" id="2_pjven"]
 [ext_resource type="Texture2D" uid="uid://dgxdq0boqv10u" path="res://Assets/Images/KitchenPuzzle/Kitchen.png" id="2_xey2f"]
 [ext_resource type="Texture2D" uid="uid://cf4bdb0ln48n8" path="res://Assets/Images/KitchenPuzzle/Pot.png" id="3_5165p"]
+[ext_resource type="Texture2D" uid="uid://b50ouydunlm4h" path="res://Assets/Images/Lighthouse/Structure/External/ocean.png" id="3_dc1ry"]
 [ext_resource type="Texture2D" uid="uid://bovyawkuo6lur" path="res://Assets/Images/Lighthouse/Structure/External/skyNightBackground.png" id="3_l8dvu"]
+[ext_resource type="Texture2D" uid="uid://0i1i1vxxbigj" path="res://Assets/Images/Lighthouse/Structure/External/oceanAnim-sheet.png" id="4_304jc"]
 [ext_resource type="Script" uid="uid://v4ii2b5a0pex" path="res://Scripts/CookingMinigame/potDetectionArea.gd" id="4_bbavm"]
 [ext_resource type="PackedScene" uid="uid://baa6ykqv50wlv" path="res://Scenes/Kitchen Puzzle/heat_dial.tscn" id="5_p4ma4"]
 [ext_resource type="Texture2D" uid="uid://dsiywd30ai8cv" path="res://Assets/Images/KitchenPuzzle/windowTransparent.png" id="6_ev2ve"]
@@ -67,6 +68,42 @@
 [ext_resource type="AudioStream" uid="uid://crhsv0uepb1pk" path="res://Assets/Audio/Cooking Minigame/Boiling.mp3" id="64_17xo3"]
 [ext_resource type="FontFile" uid="uid://bugymcbk132rp" path="res://Assets/Fonts/Fry's Baskerville Regular.otf" id="64_dc1ry"]
 [ext_resource type="FontFile" uid="uid://n0n6mmkjc76j" path="res://Assets/Fonts/Eyesome Script.otf" id="64_utraj"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ayc4h"]
+atlas = ExtResource("4_304jc")
+region = Rect2(0, 0, 337, 521)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0xrck"]
+atlas = ExtResource("4_304jc")
+region = Rect2(337, 0, 337, 521)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kr3yy"]
+atlas = ExtResource("4_304jc")
+region = Rect2(674, 0, 337, 521)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k2y4e"]
+atlas = ExtResource("4_304jc")
+region = Rect2(1011, 0, 337, 521)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gmiv0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ayc4h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0xrck")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kr3yy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k2y4e")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_meprl"]
 size = Vector2(87.01253, 13.205734)
@@ -260,15 +297,20 @@ constantAudioPlayer = NodePath("ConstantSounds")
 recipeDisplayLocation = NodePath("RecipeBookScreen/Recipe Instructions Page 1")
 recipeDisplayLocation2 = NodePath("RecipeBookScreen/Recipe Instructions Page 2")
 
-[node name="SkyDayBackground" type="Sprite2D" parent="."]
-position = Vector2(799.80005, 329.41754)
-scale = Vector2(2.4166172, 1.3803548)
-texture = ExtResource("2_pjven")
-
 [node name="SkyNightBackground" type="Sprite2D" parent="."]
 position = Vector2(799.80005, 329.41754)
 scale = Vector2(2.4166172, 1.3803548)
 texture = ExtResource("3_l8dvu")
+
+[node name="Ocean" type="Sprite2D" parent="."]
+position = Vector2(746, 210)
+texture = ExtResource("3_dc1ry")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Ocean"]
+position = Vector2(-2.0000002, -7.9999995)
+scale = Vector2(0.9357135, 0.76202655)
+sprite_frames = SubResource("SpriteFrames_gmiv0")
+frame_progress = 0.78620195
 
 [node name="AnimatedSnowMap" parent="." instance=ExtResource("2_5165p")]
 visible = true

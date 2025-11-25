@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://mgjtlshuv3of"
+path="res://.godot/imported/Doesnt have to mean bad.mp3-349de0bc88eeba3e7aee605f6fb64b0d.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/VA/Sutherland/Doesnt have to mean bad.mp3"
+dest_files=["res://.godot/imported/Doesnt have to mean bad.mp3-349de0bc88eeba3e7aee605f6fb64b0d.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://c6iedi2s6banp"
+path="res://.godot/imported/Day 0 Crying.mp3-d2a7021343e4d6dabef45df2cde66afb.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/VA/Elise/Day 0 Crying.mp3"
+dest_files=["res://.godot/imported/Day 0 Crying.mp3-d2a7021343e4d6dabef45df2cde66afb.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

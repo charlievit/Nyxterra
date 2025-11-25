@@ -12,8 +12,8 @@ extends Control
 @onready var recipeBookCloseButton: Button = $RecipeBookScreen/Close
 
 @onready var snowWeather: TileMap = $AnimatedSnowMap
-@onready var daySky: Sprite2D = $SkyDayBackground
 @onready var nightSky: Sprite2D = $SkyNightBackground
+@onready var oceanAnim: AnimatedSprite2D = $Ocean/AnimatedSprite2D
 
 @export var fireAnimLow: AnimatedSprite2D
 @export var fireAnimMedium: AnimatedSprite2D
@@ -108,8 +108,8 @@ func _ready():
 	recipeBookScreen.visible = false
 	
 	snowWeather.visible = true
-	daySky.visible = false
 	nightSky.visible = true
+	oceanAnim.play("default")
 
 func _on_close_pressed() -> void:
 	recipeBookScreen.visible = false

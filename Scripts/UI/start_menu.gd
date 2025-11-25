@@ -8,13 +8,28 @@ const SETTINGS_KEY_VOLUME := "master_volume"   # linear 0..1
 @onready var animScreen: AnimatedSprite2D = $TextureRect
 @onready var start_button: Button   = $CenterContainer/Buttons/StartButton
 @onready var options_button: Button = $CenterContainer/Buttons/OptionsButton
+@onready var socials_button: Button = $CenterContainer/Buttons/SocialsButton
 @onready var quit_button: Button    = $CenterContainer/Buttons/QuitButton
 @onready var Contain: VBoxContainer = $CenterContainer/Buttons
 @onready var options_panel: Control = $OptionsPanel
+@onready var socialsPanel: Panel = $SocialsPanel
 @onready var volume_slider: HSlider = $OptionsPanel/VolumeSlider
 @onready var apply_button: Button   = $OptionsPanel/ApplyButton
-@onready var back_button: Button    = $OptionsPanel/BackButton
+@onready var options_back_button: Button = $OptionsPanel/BackButton
+@onready var socialsBackButton: Button = $SocialsPanel/BackButton
 @onready var continue_button: Button = $CenterContainer/Buttons/ContinueButton
+
+#region Socials
+# CyberSugar Studios
+@onready var CS_instaButton: Button = $SocialsPanel/CyberSugar/instagramButton
+var CS_instaLink: String = "https://www.instagram.com/cybersugarstudios"
+@onready var CS_itchButton: Button = $SocialsPanel/CyberSugar/itchButton
+var CS_itchLink: String = "https://cybersugarstudios.itch.io"
+@onready var CS_xButton: Button = $SocialsPanel/CyberSugar/xButton
+var CS_xLink: String = "https://x.com/CyberSugarGames"
+@onready var CS_tikTokButton: Button = $SocialsPanel/CyberSugar/tikTokButton
+var CS_tikTokLink: String = "https://www.tiktok.com/@cybersugarstudios"
+#endregion
 
 var _cached_volume_db: float = 0.0   # for Return (revert)
 var _master_bus: int = 0
@@ -41,14 +56,23 @@ func _ready() -> void:
 	# Signals
 	start_button.pressed.connect(_on_start_pressed)
 	options_button.pressed.connect(_on_options_pressed)
+	socials_button.pressed.connect(OnSocialsPressed)
 	quit_button.pressed.connect(_on_quit_pressed)
 	continue_button.pressed.connect(_on_continue_pressed)
 	continue_button.disabled = !SaveManager.has_save()
 	apply_button.pressed.connect(_on_apply_pressed)
-	back_button.pressed.connect(_on_back_pressed)
+	options_back_button.pressed.connect(_on_back_pressed)
+	socialsBackButton.pressed.connect(OnSocialsBackPressed)
 	volume_slider.value_changed.connect(_on_volume_changed)
+	
+	# Social Signals
+	CS_instaButton.pressed.connect(CS_InstaClicked)
+	CS_itchButton.pressed.connect(CS_ItchClicked)
+	CS_xButton.pressed.connect(CS_X_ButtonClicked)
+	CS_tikTokButton.pressed.connect(CS_TikTokClicked)
 
 	options_panel.visible = false
+	socialsPanel.visible = false
 
 func _on_start_pressed() -> void:
 	SaveManager.clear_save()
@@ -59,6 +83,9 @@ func _on_options_pressed() -> void:
 	_cached_volume_db = AudioServer.get_bus_volume_db(_master_bus)
 	Contain.visible = false
 	options_panel.visible = true
+
+func OnSocialsPressed():
+	socialsPanel.visible = true
 
 func _on_apply_pressed() -> void:
 	_save_volume(volume_slider.value)
@@ -71,7 +98,10 @@ func _on_back_pressed() -> void:
 	volume_slider.value = db_to_linear(_cached_volume_db)
 	options_panel.visible = false
 	Contain.visible = true;
-	
+
+func OnSocialsBackPressed():
+	socialsPanel.visible = false
+
 func _on_quit_pressed() -> void:
 	if OS.has_feature("web"):
 		print("Quit not supported on Web. Please close the tab.")
@@ -113,3 +143,17 @@ func _load_volume() -> float:
 	if err == OK and cfg.has_section_key(SETTINGS_SECTION, SETTINGS_KEY_VOLUME):
 		return float(cfg.get_value(SETTINGS_SECTION, SETTINGS_KEY_VOLUME))
 	return 0.8  
+
+#region Social Buttons
+func CS_InstaClicked():
+	OS.shell_open(CS_instaLink)
+
+func CS_ItchClicked():
+	OS.shell_open(CS_itchLink)
+
+func CS_X_ButtonClicked():
+	OS.shell_open(CS_xLink)
+
+func CS_TikTokClicked():
+	OS.shell_open(CS_tikTokLink)
+#endregion

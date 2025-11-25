@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bmcq51hdnxynm"
+path="res://.godot/imported/I go on to remember her.mp3-96d5ae28d5526dd02a84adb5bd9793c1.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/VA/Sutherland/I go on to remember her.mp3"
+dest_files=["res://.godot/imported/I go on to remember her.mp3-96d5ae28d5526dd02a84adb5bd9793c1.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

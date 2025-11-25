@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://wb2uvcsuw031"
+path="res://.godot/imported/Id protect elise with my life.mp3-112960362c2fd40ce96966fef7463df4.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/VA/Sutherland/Id protect elise with my life.mp3"
+dest_files=["res://.godot/imported/Id protect elise with my life.mp3-112960362c2fd40ce96966fef7463df4.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dv2qyntr35q1e"
+path="res://.godot/imported/Wow This is Delicious.mp3-e50657360a3c2fc8dd7073396e8e43d3.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/VA/Elise/Wow This is Delicious.mp3"
+dest_files=["res://.godot/imported/Wow This is Delicious.mp3-e50657360a3c2fc8dd7073396e8e43d3.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

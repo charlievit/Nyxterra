@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dvqamf3tws2hv"
+path="res://.godot/imported/Actually Smells Good.mp3-de04f20a833004dac2a9526edbae906e.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/VA/Sutherland/Cooking/Actually Smells Good.mp3"
+dest_files=["res://.godot/imported/Actually Smells Good.mp3-de04f20a833004dac2a9526edbae906e.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

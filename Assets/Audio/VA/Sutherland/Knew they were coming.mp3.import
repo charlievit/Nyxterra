@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cwcabtfm5ykeh"
+path="res://.godot/imported/Knew they were coming.mp3-b4ab6afd968a812c26b363d7b6e9a39a.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/VA/Sutherland/Knew they were coming.mp3"
+dest_files=["res://.godot/imported/Knew they were coming.mp3-b4ab6afd968a812c26b363d7b6e9a39a.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

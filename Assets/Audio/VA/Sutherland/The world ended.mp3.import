@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cb5df8hnxscj6"
+path="res://.godot/imported/The world ended.mp3-0e5b7a0722c3f425aa83436bae2dcb7d.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/VA/Sutherland/The world ended.mp3"
+dest_files=["res://.godot/imported/The world ended.mp3-0e5b7a0722c3f425aa83436bae2dcb7d.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

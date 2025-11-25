@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cmih2oxjs8iyt"
+path="res://.godot/imported/Cant take her from me.mp3-788d6fe772c2554aa2fe2c65645dccf7.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/VA/Sutherland/Cant take her from me.mp3"
+dest_files=["res://.godot/imported/Cant take her from me.mp3-788d6fe772c2554aa2fe2c65645dccf7.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://37uy8kfcfwjv"
+path="res://.godot/imported/Making your favorite.mp3-495d1f246b8d7e6c7fcae083580a6dfa.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/VA/Sutherland/Making your favorite.mp3"
+dest_files=["res://.godot/imported/Making your favorite.mp3-495d1f246b8d7e6c7fcae083580a6dfa.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

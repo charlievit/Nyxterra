@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cpytdf36psoi0"
+path="res://.godot/imported/I dont know who I am.mp3-1dc26efcd3a2866df13d17617fd0ec5f.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/VA/Sutherland/I dont know who I am.mp3"
+dest_files=["res://.godot/imported/I dont know who I am.mp3-1dc26efcd3a2866df13d17617fd0ec5f.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

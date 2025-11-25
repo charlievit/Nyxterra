@@ -52,10 +52,13 @@ directories/dtl_directory={
 "Day_1 Smith Dialogue": "res://Timeline/Day_1/Day_1 Smith Dialogue.dtl",
 "Intro": "res://Timeline/Intro.dtl"
 }
-layout/style_directory={}
+layout/style_directory={
+"": "res://dialogicStyle.tres",
+"dialogicStyle": "res://dialogicStyle.tres"
+}
 glossary/default_case_sensitive=true
-layout/style_list=[]
-layout/default_style="Default"
+layout/style_list=["res://dialogicStyle.tres"]
+layout/default_style="res://dialogicStyle.tres"
 variables={}
 extensions_folder="res://addons/dialogic_additions"
 text/letter_speed=0.01
@@ -91,6 +94,7 @@ audio/channel_defaults={
 "volume": 0.0
 }
 }
+timer/process_in_physics=true
 
 [display]
 

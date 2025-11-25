@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cerg70iacecb7"
+path="res://.godot/imported/Elise will love this.mp3-471b4c020d06e7b92a36cca10ecfa932.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/VA/Sutherland/Cooking/Elise will love this.mp3"
+dest_files=["res://.godot/imported/Elise will love this.mp3-471b4c020d06e7b92a36cca10ecfa932.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

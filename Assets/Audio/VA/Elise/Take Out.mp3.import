@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://by0g1ojy2m5k6"
+path="res://.godot/imported/Take Out.mp3-899534e34cbfcdad6c4b6d2ac3906cc4.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/VA/Elise/Take Out.mp3"
+dest_files=["res://.godot/imported/Take Out.mp3-899534e34cbfcdad6c4b6d2ac3906cc4.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

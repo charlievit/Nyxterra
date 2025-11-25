@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cnc3xispkntcg"
+path="res://.godot/imported/I Think I’ll just go to Bed Early.mp3-c246e8293b3d19cc6b3fba48b541caf3.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/VA/Elise/I Think I’ll just go to Bed Early.mp3"
+dest_files=["res://.godot/imported/I Think I’ll just go to Bed Early.mp3-c246e8293b3d19cc6b3fba48b541caf3.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

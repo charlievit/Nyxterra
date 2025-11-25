@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://c1go8yh1qbckt"
+path="res://.godot/imported/Im getting the hang of this.mp3-91d396b417aff8f59cc7a6b9824edef5.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/VA/Sutherland/Cooking/Im getting the hang of this.mp3"
+dest_files=["res://.godot/imported/Im getting the hang of this.mp3-91d396b417aff8f59cc7a6b9824edef5.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
