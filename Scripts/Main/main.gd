@@ -99,8 +99,8 @@ func _ready() -> void:
 	zoomCamera.global_position = targetPosition
 	if GameManager.currentDay == 0 or -1:
 		var introDlg = Dialogic.start("Intro")
-		introDlg.process_mode = Node.PROCESS_MODE_ALWAYS
-	CheckAutoCompletedTasks()
+		add_child(introDlg)
+	#CheckAutoCompletedTasks()
 		
 func _process(delta):
 	# Force the zoomed-in camera to follow the player
