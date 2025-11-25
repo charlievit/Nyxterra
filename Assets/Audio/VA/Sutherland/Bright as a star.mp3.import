@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://3il260fwfs50"
+path="res://.godot/imported/Bright as a star.mp3-783826b639f47bb71c168b22164efad7.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/VA/Sutherland/Bright as a star.mp3"
+dest_files=["res://.godot/imported/Bright as a star.mp3-783826b639f47bb71c168b22164efad7.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

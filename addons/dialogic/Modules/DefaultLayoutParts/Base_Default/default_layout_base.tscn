@@ -3,5 +3,9 @@
 [ext_resource type="Script" uid="uid://yivwmkfwrvfr" path="res://addons/dialogic/Modules/DefaultLayoutParts/Base_Default/default_layout_base.gd" id="1_ifsho"]
 
 [node name="DefaultLayoutBase" type="CanvasLayer"]
-process_mode = 2
+process_mode = 3
+process_priority = 1
+process_thread_group = 1
+process_thread_group_order = 0
+process_thread_messages = 3
 script = ExtResource("1_ifsho")

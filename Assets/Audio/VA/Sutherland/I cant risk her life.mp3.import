@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://b667dcr0ulysj"
+path="res://.godot/imported/I cant risk her life.mp3-a141b7a6a050b596a4df3147f6fdd9e6.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/VA/Sutherland/I cant risk her life.mp3"
+dest_files=["res://.godot/imported/I cant risk her life.mp3-a141b7a6a050b596a4df3147f6fdd9e6.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

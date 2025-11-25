@@ -49,19 +49,18 @@ func OnBodyExited(body):
 			label.visible = false
 
 func Dialogue_system() -> void:
-	var dlg
-	var dlg_parent = get_tree().get_root().get_node("Main")
 	match GameManager.currentDay:
 		-1:
-			dlg = Dialogic.start("Day_0 Elise Dialogue")
+			Dialogic.start("Day_0 Elise Dialogue")
 		0:
-			dlg = Dialogic.start("Day_0 Elise Dialogue")
+			Dialogic.start("Day_0 Elise Dialogue")
 		1:
-			dlg = Dialogic.start("Day_1 Elise Dialogue")
+			Dialogic.start("Day_1 Elise Dialogue")
 		2:
-			dlg = Dialogic.start("Day_2 Elise Dialogue")
+			Dialogic.start("Day_2 Elise Dialogue")
 		3:
-			dlg = Dialogic.start("Day_3 Elise Dialogue")
+			Dialogic.start("Day_3 Elise Dialogue")
 		4:
-			dlg = Dialogic.start("Day_4 Elise Dialogue")
-	dlg_parent.add_child(dlg)
+			Dialogic.start("Day_4 Elise Dialogue")
+		5: #end game good ending
+			Dialogic.start("Day_5 Elise Dialogue")

@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://be2rkxhs6vkki"
+path="res://.godot/imported/Checks out.mp3-96c1c247a5dba60e5dd81c3ea6362361.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/VA/Sutherland/Checks out.mp3"
+dest_files=["res://.godot/imported/Checks out.mp3-96c1c247a5dba60e5dd81c3ea6362361.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

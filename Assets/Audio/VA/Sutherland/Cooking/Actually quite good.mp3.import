@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://0isxhfgviyf7"
+path="res://.godot/imported/Actually quite good.mp3-ca462658504683a6a76408a828b1cc21.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/VA/Sutherland/Cooking/Actually quite good.mp3"
+dest_files=["res://.godot/imported/Actually quite good.mp3-ca462658504683a6a76408a828b1cc21.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

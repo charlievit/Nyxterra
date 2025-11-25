@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cgnkbgg7anc7m"
+path="res://.godot/imported/Im so so sorry.mp3-073ee76832a06adac77ae3d6eb6243f1.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/VA/Sutherland/Im so so sorry.mp3"
+dest_files=["res://.godot/imported/Im so so sorry.mp3-073ee76832a06adac77ae3d6eb6243f1.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

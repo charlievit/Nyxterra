@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bwa3pp03sx67v"
+path="res://.godot/imported/Chop chop chop.mp3-39ff08c765f6ec9cd1b0c82931fdb5f7.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/VA/Sutherland/Cooking/Chop chop chop.mp3"
+dest_files=["res://.godot/imported/Chop chop chop.mp3-39ff08c765f6ec9cd1b0c82931fdb5f7.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://6j1hs3irbeut"
+path="res://.godot/imported/Not as hard as I thought.mp3-600be7f7e1186597193e19d661928273.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/VA/Sutherland/Cooking/Not as hard as I thought.mp3"
+dest_files=["res://.godot/imported/Not as hard as I thought.mp3-600be7f7e1186597193e19d661928273.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

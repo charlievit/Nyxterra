@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://d0d7iidjf2sox"
+path="res://.godot/imported/Swedish Cargo Ship.mp3-dae8c2a00c6921575c17d5d0215382e9.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/VA/Smith/Swedish Cargo Ship.mp3"
+dest_files=["res://.godot/imported/Swedish Cargo Ship.mp3-dae8c2a00c6921575c17d5d0215382e9.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

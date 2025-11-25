@@ -98,7 +98,8 @@ func _ready() -> void:
 	
 	zoomCamera.global_position = targetPosition
 	if GameManager.currentDay == 0 or -1:
-		add_child(Dialogic.start("Intro"))
+		var introDlg = Dialogic.start("Intro")
+		introDlg.process_mode = Node.PROCESS_MODE_ALWAYS
 	CheckAutoCompletedTasks()
 		
 func _process(delta):
@@ -177,17 +178,16 @@ func _process(delta):
 			snowFall.modulate.a = 1.0
 			sunRiseGradient.position = gradientStartPosition
 
-# FIX: New function to snap visuals to the correct state instantly on load
 func SyncVisualsToState():
 	cycleProgress = 0.0 # Reset progress on load to avoid mid-transition weirdness
 	
 	match currentState:
 		GameManager.DayState.SUN_RISING:
-			# If we loaded mid-rise, we reset to start of rise. 
-			# (Ideally you'd save cycleProgress too, but starting rise is safer than broken state)
-			sun.position = sunStartPosition
-			nightBackground.modulate.a = 1.0
-			snowFall.modulate.a = 1.0
+			# If we loaded mid-rise, we skip to DAY_IDLE 
+			sun.position.y = endY_Pos
+			sunRiseGradient.position = gradientStartPosition
+			nightBackground.modulate.a = 0.0
+			snowFall.modulate.a = 0.0
 			
 		GameManager.DayState.DAY_IDLE:
 			sun.position.y = endY_Pos
@@ -196,8 +196,7 @@ func SyncVisualsToState():
 			snowFall.modulate.a = 0.0
 			
 		GameManager.DayState.NIGHT_FADING:
-			# Reset to start of fade
-			sun.position.y = endY_Pos
+			sun.position = sunStartPosition
 			nightBackground.modulate.a = 1.0
 			snowFall.modulate.a = 1.0
 			
@@ -259,7 +258,6 @@ func _on_toggle_map_pressed() -> void:
 
 func _on_Radio_Completed() -> void:
 	var dlg
-	var dlg_parent = get_tree().get_root().get_node("Main")
 	match GameManager.currentDay:
 		-1:
 			dlg = Dialogic.start("Day_0 Radio Completed")
@@ -273,29 +271,27 @@ func _on_Radio_Completed() -> void:
 			dlg = Dialogic.start("Day_3 Radio Completed")
 		4:
 			dlg = Dialogic.start("Day_4 Radio Completed")
-	dlg_parent.add_child(dlg)
+	dlg.process_mode = Node.PROCESS_MODE_ALWAYS
 
 func _on_Gear_Completed() -> void:
 	var dlg
-	var dlg_parent = get_tree().get_root().get_node("Main")
 	match GameManager.currentDay:
 		-1:
-			dlg = Dialogic.start("Day_0 Gear Completed")
-		0:
-			dlg = Dialogic.start("Day_0 Gear Completed")
+			dlg = Dialogic.start("Day_1 Gear Completed")
+		#0:
+			#dlg = Dialogic.start("Day_0 Gear Completed")
 		1:
 			dlg = Dialogic.start("Day_1 Gear Completed")
-		2:
-			dlg = Dialogic.start("Day_2 Gear Completed")
-		3:
-			dlg = Dialogic.start("Day_3 Gear Completed")
-		4:
-			dlg = Dialogic.start("Day_4 Gear Completed")
-	dlg_parent.add_child(dlg)
+		#2:
+			#dlg = Dialogic.start("Day_2 Gear Completed")
+		#3:
+			#dlg = Dialogic.start("Day_3 Gear Completed")
+		#4:
+			#dlg = Dialogic.start("Day_4 Gear Completed")
+	dlg.process_mode = Node.PROCESS_MODE_ALWAYS
 
 func _on_Morse_Completed() -> void:
 	var dlg
-	var dlg_parent = get_tree().get_root().get_node("Main")
 	match GameManager.currentDay:
 		-1:
 			dlg = Dialogic.start("Day_0 Morse Completed")
@@ -309,11 +305,10 @@ func _on_Morse_Completed() -> void:
 			dlg = Dialogic.start("Day_3 Morse Completed")
 		4:
 			dlg = Dialogic.start("Day_4 Morse Completed")
-	dlg_parent.add_child(dlg)
+	dlg.process_mode = Node.PROCESS_MODE_ALWAYS
 
 func _on_Kitchen_Completed() -> void:
 	var dlg
-	var dlg_parent = get_tree().get_root().get_node("Main")
 	match GameManager.currentDay:
 		-1:
 			dlg = Dialogic.start("Day_0 Kitchen Completed")
@@ -327,10 +322,10 @@ func _on_Kitchen_Completed() -> void:
 			dlg = Dialogic.start("Day_3 Kitchen Completed")
 		4:
 			dlg = Dialogic.start("Day_4 Kitchen Completed")
-	dlg_parent.add_child(dlg)
+	dlg.process_mode = Node.PROCESS_MODE_ALWAYS
 
 func CheckAutoCompletedTasks() -> void:
-	if TaskManager.is_task_completed("test_checRadio"):
+	if TaskManager.is_task_completed("test_checkRadio"):
 		_on_Radio_Completed()
 	
 	if TaskManager.is_task_completed("test_checkGearBox"):

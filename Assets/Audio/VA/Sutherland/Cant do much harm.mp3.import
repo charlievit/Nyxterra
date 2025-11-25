@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://drmuiuuv6uvx3"
+path="res://.godot/imported/Cant do much harm.mp3-82f702757562aa3063e91d381eba099d.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/VA/Sutherland/Cant do much harm.mp3"
+dest_files=["res://.godot/imported/Cant do much harm.mp3-82f702757562aa3063e91d381eba099d.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

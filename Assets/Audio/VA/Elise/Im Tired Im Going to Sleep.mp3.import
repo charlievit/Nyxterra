@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bswcsw0vroena"
+path="res://.godot/imported/Im Tired Im Going to Sleep.mp3-4d21250b9ed2350e5a46b8f783e87318.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/VA/Elise/Im Tired Im Going to Sleep.mp3"
+dest_files=["res://.godot/imported/Im Tired Im Going to Sleep.mp3-4d21250b9ed2350e5a46b8f783e87318.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

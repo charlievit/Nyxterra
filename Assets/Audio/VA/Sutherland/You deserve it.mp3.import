@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://ctc1552yaau8l"
+path="res://.godot/imported/You deserve it.mp3-890ca6a50569cfe458fd89028d2cb5b7.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/VA/Sutherland/You deserve it.mp3"
+dest_files=["res://.godot/imported/You deserve it.mp3-890ca6a50569cfe458fd89028d2cb5b7.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

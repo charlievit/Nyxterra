@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://yspcnwrpx5b5"
+path="res://.godot/imported/I cant do this today.mp3-16b2fba43e1c626f344d583a81532508.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/VA/Sutherland/I cant do this today.mp3"
+dest_files=["res://.godot/imported/I cant do this today.mp3-16b2fba43e1c626f344d583a81532508.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

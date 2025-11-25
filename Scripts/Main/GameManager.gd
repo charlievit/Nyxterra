@@ -54,6 +54,117 @@ var todaysRecipe: String
 var player: Node = null
 #endregion
 
+#region VOICE LINES
+# ELISE
+var dayZERO_daughterCheck2 = preload("res://Assets/Audio/VA/Elise/I’m Drawing a Rabbit.mp3") #audio blown out and loud, hopefully reducing volume will suffice
+var dayZERO_cathDeathCry = preload("res://Assets/Audio/VA/Elise/Day 0 Crying.mp3") # will want to layer this on loop with other cathDeath VA line
+
+var dayONE_daughterCheck2 = preload("res://Assets/Audio/VA/Elise/Im Tired Im Going to Sleep.mp3")
+var dayONE_cookingGood = preload("res://Assets/Audio/VA/Elise/Not Bad Actually.mp3")
+var dayONE_cookingBad = preload("res://Assets/Audio/VA/Elise/I Miss Mom.mp3")
+
+var dayTWO_daughterCheck1 = preload("res://Assets/Audio/VA/Elise/Remember how she used to sing.mp3")
+var dayTWO_cookingGood = preload("res://Assets/Audio/VA/Elise/Thanks Dad its actually really nice.mp3")
+var dayTWO_cookingBad = preload("res://Assets/Audio/VA/Elise/I Think I’ll just go to Bed Early.mp3")
+
+var dayTHREE_daughterCheck2 = preload("res://Assets/Audio/VA/Elise/Really.mp3")
+var dayTHREE_daughterCheck4 = preload("res://Assets/Audio/VA/Elise/Thanks Dad.mp3")
+var dayTHREE_cookingGood = preload("res://Assets/Audio/VA/Elise/It tastes just like when she used to make it.mp3")
+var dayTHREE_cookingBad = preload("res://Assets/Audio/VA/Elise/It’s Ok Dad.mp3")
+
+var dayFOUR_daughterCheck2 = preload("res://Assets/Audio/VA/Elise/Aye its a beautiful day.mp3")
+var dayFOUR_daughterCheck4 = preload("res://Assets/Audio/VA/Elise/Thanks Dad.mp3")
+var dayFOUR_cookingGood = preload("res://Assets/Audio/VA/Elise/Wow This is Delicious.mp3")
+var dayFOUR_cookingBad = preload("res://Assets/Audio/VA/Elise/Take Out.mp3")
+
+#var lastDay_goodEnding2 = preload("I made you breakfast") # VA LINE MISSING
+
+# SUTHERLAND
+var dayZERO_intro = preload("res://Assets/Audio/VA/Sutherland/Family holds steady.mp3")
+var dayZERO_daughterCheck1 = preload("res://Assets/Audio/VA/Sutherland/wee lass.mp3") # a little loud, might need to reduce db on this one
+var dayZERO_radioCheckStart = preload("res://Assets/Audio/VA/Sutherland/Never works the first time.mp3")
+var dayZERO_smithTalk1 = preload("res://Assets/Audio/VA/Sutherland/wee hours with your mother.mp3")
+var dayZERO_beforeMorseCheck = preload("res://Assets/Audio/VA/Sutherland/Cath must be making elises favorite.mp3") #will need to add *sniffs the air* to the subtitles in dialogic for this one
+var dayZERO_afterMorseDecode = preload("res://Assets/Audio/VA/Sutherland/No no.mp3")
+var dayZERO_cathDeath = preload("res://Assets/Audio/VA/Sutherland/Cath No.mp3")
+
+var dayONE_daughterCheck1 = preload("res://Assets/Audio/VA/Sutherland/Elise Im Sorry.mp3") # will cut this short on "sorry" as Elise interrupts
+var dayONE_radioCheck_talkToSelf = preload("res://Assets/Audio/VA/Sutherland/I cant do this today.mp3") #to be overlayed with dayONE_radioCheckSolved between lines
+var dayONE_gearboxStart = preload("res://Assets/Audio/VA/Sutherland/neglecting you.mp3") #either play on minigame start or on body entered trigger
+var dayONE_radioSmithBackAfterGearsFixed = preload("res://Assets/Audio/VA/Sutherland/Operational.mp3")
+var dayONE_fishermanResponse = preload("res://Assets/Audio/VA/Sutherland/Light the Way.mp3")
+var dayONE_onMorseFinish = preload("res://Assets/Audio/VA/Sutherland/Salty Lass.mp3")
+var dayONE_turnLightOn = preload("res://Assets/Audio/VA/Sutherland/Not losing you to the sea.mp3")
+var dayONE_leaveLightOff = preload("res://Assets/Audio/VA/Sutherland/I cant risk her life.mp3")
+var dayONE_END_lightOn = preload("res://Assets/Audio/VA/Sutherland/I go on to remember her.mp3")
+var dayONE_END_lightOff = preload("res://Assets/Audio/VA/Sutherland/I dont know who I am.mp3")
+
+var dayTWO_daughterCheck2 = preload("res://Assets/Audio/VA/Sutherland/She should have been.mp3")
+var dayTWO_radioCheck2 = preload("res://Assets/Audio/VA/Sutherland/American my Arse.mp3")
+var dayTWO_radioCheck3 = preload("res://Assets/Audio/VA/Sutherland/heard over.mp3")
+var dayTWO_morseCheck = preload("res://Assets/Audio/VA/Sutherland/Hmm Odd.mp3")
+var dayTWO_turnLightOn = preload("res://Assets/Audio/VA/Sutherland/Cant do much harm.mp3")
+var dayTWO_leaveLightOff = preload("res://Assets/Audio/VA/Sutherland/Nice try ye bastards.mp3")
+var dayTWO_END_lightOn = preload("res://Assets/Audio/VA/Sutherland/Id protect elise with my life.mp3")
+var dayTWO_END_lightOff = preload("res://Assets/Audio/VA/Sutherland/Im sorry Elise.mp3")
+
+var dayTHREE_daughterCheck1 = preload("res://Assets/Audio/VA/Sutherland/Making your favorite.mp3")
+var dayTHREE_daughterCheck3 = preload("res://Assets/Audio/VA/Sutherland/You deserve it.mp3") # little too loud
+var dayTHREE_radioCheck2_talkToSelf = preload("res://Assets/Audio/VA/Sutherland/Container Ship.mp3")
+var dayTHREE_radioCheck3 = preload("res://Assets/Audio/VA/Sutherland/Aye all clear.mp3")
+var dayTHREE_radioCheck4 = preload("res://Assets/Audio/VA/Sutherland/Bright as a star.mp3")
+var dayTHREE_morseCheck_talkToSelf = preload("res://Assets/Audio/VA/Sutherland/Checks out.mp3")
+#var dayTHREE_turnLightOn = preload("Don't want the americans getting lost.") # VA LINE MISSING
+var dayTHREE_leaveLightOff = preload("res://Assets/Audio/VA/Sutherland/Isolation.mp3")
+var dayTHREE_END_lightOn = preload("res://Assets/Audio/VA/Sutherland/Tides are turning.mp3")
+var dayTHREE_END_lightOff = preload("res://Assets/Audio/VA/Sutherland/Unforgiving beast.mp3")
+
+var dayFOUR_daughterCheck1 = preload("res://Assets/Audio/VA/Sutherland/Headed out.mp3")
+#var dayFOUR_daughterCheck3 = preload("Yeah...before you go...I love you...") # VA LINE MISSING
+var dayFOUR_radioCheck2 = preload("res://Assets/Audio/VA/Sutherland/Doesnt sound swedish.mp3")
+var dayFOUR_readioCheck3_talkToSelf = preload("res://Assets/Audio/VA/Sutherland/Heard Over 2.mp3")
+var dayFOUR_turnLightOn = preload("res://Assets/Audio/VA/Sutherland/Knew they were coming.mp3")
+var dayFOUR_turnLightOff1 = preload("res://Assets/Audio/VA/Sutherland/Never again.mp3")
+var dayFOUR_turnLightOff2 = preload("res://Assets/Audio/VA/Sutherland/Ill take care of Elise.mp3")
+var dayFOUR_END_lightOn1 = preload("res://Assets/Audio/VA/Sutherland/Start over.mp3")
+var dayFOUR_END_lightOn2 = preload("res://Assets/Audio/VA/Sutherland/Doesnt have to mean bad.mp3")
+var dayFOUR_END_lightOn3 = preload("res://Assets/Audio/VA/Sutherland/I have to move on.mp3")
+var dayFOUR_END_lightOff = preload("res://Assets/Audio/VA/Sutherland/The world ended.mp3")
+
+var lastDay_goodEnding1 = preload("res://Assets/Audio/VA/Sutherland/that smell.mp3")
+var lastDay_badEnding = preload("res://Assets/Audio/VA/Sutherland/Cant take her from me.mp3")
+#SMITH
+var dayZERO_radioCheckFinish = preload("res://Assets/Audio/VA/Smith/Wake-Up.mp3")
+var dayZERO_smithTalk2 = preload("res://Assets/Audio/VA/Smith/Bastard.mp3")
+var dayZERO_bombWarning = preload("res://Assets/Audio/VA/Smith/Get-Out.mp3")
+
+var dayONE_radioCheckSolved = preload("res://Assets/Audio/VA/Smith/How Are You Doing.mp3") # will need to cut this early in code or try to time the overlay as Suth talks to himself
+var dayONE_afterGearResponse = preload("res://Assets/Audio/VA/Smith/Unsavory-Folks.mp3")
+
+var dayTHREE_radioSolved_wrongChoiceOnDayTWO = preload("res://Assets/Audio/VA/Smith/Bad-Attack.mp3")
+
+# OTHER
+#var dayONE_radioAfterSmith = preload("scottishFisherman") #awaiting lines for this one
+
+var dayTWO_radioCheck1 = preload("res://Assets/Audio/VA/Misc Radio/Radio-German-American.mp3")
+
+var dayTHREE_radioCheck1 = preload("res://Assets/Audio/VA/Misc Radio/Radio American.mp3")
+
+var dayFOUR_radioCheck1 = preload("res://Assets/Audio/VA/Misc Radio/Radio-German-Swedish.mp3")
+
+# COOKING MINIGAME
+var onTriggerGood_early: Array = [preload("res://Assets/Audio/VA/Sutherland/Cooking/Actually Smells Good.mp3"), preload("res://Assets/Audio/VA/Sutherland/Cooking/Not as hard as I thought.mp3"), preload("res://Assets/Audio/VA/Sutherland/Cooking/I think I get it.mp3")]
+var onTriggerGood_later: Array = [preload("res://Assets/Audio/VA/Sutherland/Cooking/Im getting the hang of this.mp3"), preload("res://Assets/Audio/VA/Sutherland/Cooking/Cath would be angry.mp3"), preload("res://Assets/Audio/VA/Sutherland/Cooking/Delicious.mp3")] # *slurp* on the last one here
+var onTriggerBad: Array = [preload("res://Assets/Audio/VA/Sutherland/Cooking/What am I doing.mp3"), preload("res://Assets/Audio/VA/Sutherland/Cooking/gears and switches.mp3"), preload("res://Assets/Audio/VA/Sutherland/Cooking/Leftovers.mp3")]
+var onTriggerBurning: Array = [preload("res://Assets/Audio/VA/Sutherland/Cooking/Burning.mp3"), preload("res://Assets/Audio/VA/Sutherland/Cooking/No no no.mp3")]
+var onTriggerEnd_okay: Array = [preload("res://Assets/Audio/VA/Sutherland/Cooking/Its edible.mp3"), preload("res://Assets/Audio/VA/Sutherland/Cooking/hope elise likes it.mp3")]
+var onTriggerEnd_good: Array = [preload("res://Assets/Audio/VA/Sutherland/Cooking/Actually quite good.mp3"), preload("res://Assets/Audio/VA/Sutherland/Cooking/Elise will love this.mp3")]
+var onTriggerEnd_excellent: Array = [preload("res://Assets/Audio/VA/Sutherland/Cooking/Sorted.mp3"), preload("res://Assets/Audio/VA/Sutherland/Cooking/Cath would be proud.mp3")]
+var onTriggerEnd_bad: Array = [preload("res://Assets/Audio/VA/Sutherland/Cooking/Isnt fit for.mp3"), preload("res://Assets/Audio/VA/Sutherland/Cooking/Smells like my boots.mp3"), preload("res://Assets/Audio/VA/Sutherland/Cooking/Did I kill it.mp3"), preload("res://Assets/Audio/VA/Sutherland/Cooking/Scrubbing for Hours.mp3")]
+var onTriggerChopping_early = preload("res://Assets/Audio/VA/Sutherland/Cooking/Chop chop chop ow.mp3")
+var onTriggerChopping_later = preload("res://Assets/Audio/VA/Sutherland/Cooking/Chop chop chop.mp3")
+#endregion
+
 func _ready():
 	#Dialogue Signal
 	Dialogic.timeline_started.connect(_on_dialogue_started)
@@ -65,9 +176,9 @@ func _ready():
 	StartDay(-1) #Since you forced to start on day -1, save&load unable to overwrite this. 
 				 #Make sure it change to currentDay to able loading function 
 
-func _on_dialogue_started():
-	get_tree().paused = true
-
+func _on_dialogue_started(): #commenting out for now so I can test collision map
+	#get_tree().paused = true
+	pass
 
 func _on_dialogue_ended():
 	get_tree().paused = false

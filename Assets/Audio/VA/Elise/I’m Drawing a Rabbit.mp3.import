@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://b10rpklrqyn3a"
+path="res://.godot/imported/I’m Drawing a Rabbit.mp3-6cbbf5d0646960539c5d06cc4810ad6d.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/VA/Elise/I’m Drawing a Rabbit.mp3"
+dest_files=["res://.godot/imported/I’m Drawing a Rabbit.mp3-6cbbf5d0646960539c5d06cc4810ad6d.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://ow16lk3pr4sr"
+path="res://.godot/imported/She should have been.mp3-ebc88f4f7f88aeefb198420fe38035c4.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/VA/Sutherland/She should have been.mp3"
+dest_files=["res://.godot/imported/She should have been.mp3-ebc88f4f7f88aeefb198420fe38035c4.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

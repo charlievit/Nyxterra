@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://ca65ticgowwps"
+path="res://.godot/imported/It’s Ok Dad.mp3-8835225b063c981f7b455b342ec56631.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/VA/Elise/It’s Ok Dad.mp3"
+dest_files=["res://.godot/imported/It’s Ok Dad.mp3-8835225b063c981f7b455b342ec56631.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

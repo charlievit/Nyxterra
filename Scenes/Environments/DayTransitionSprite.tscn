@@ -1,0 +1,114 @@
+[gd_scene load_steps=27 format=3 uid="uid://bsdyrbahkfba5"]
+
+[ext_resource type="Texture2D" uid="uid://d4fb7d7jm5rhe" path="res://Assets/Images/Lighthouse/AnimatedLightHouseScreen/Day Transition/frame0000.png" id="1_v7l2n"]
+[ext_resource type="Texture2D" uid="uid://dag82cwskw1es" path="res://Assets/Images/Lighthouse/AnimatedLightHouseScreen/Day Transition/frame0001.png" id="2_qs2e8"]
+[ext_resource type="Texture2D" uid="uid://b4hqwlpu6aarf" path="res://Assets/Images/Lighthouse/AnimatedLightHouseScreen/Day Transition/frame0002.png" id="3_2i02b"]
+[ext_resource type="Texture2D" uid="uid://ocvx1rx0i72i" path="res://Assets/Images/Lighthouse/AnimatedLightHouseScreen/Day Transition/frame0003.png" id="4_t0lj8"]
+[ext_resource type="Texture2D" uid="uid://cvbgfm8510qxe" path="res://Assets/Images/Lighthouse/AnimatedLightHouseScreen/Day Transition/frame0004.png" id="5_2ol8c"]
+[ext_resource type="Texture2D" uid="uid://c6wlkfg4usfiq" path="res://Assets/Images/Lighthouse/AnimatedLightHouseScreen/Day Transition/frame0005.png" id="6_00vf2"]
+[ext_resource type="Texture2D" uid="uid://duiyyqntwgvq5" path="res://Assets/Images/Lighthouse/AnimatedLightHouseScreen/Day Transition/frame0006.png" id="7_feoda"]
+[ext_resource type="Texture2D" uid="uid://dttwcgxh00tq8" path="res://Assets/Images/Lighthouse/AnimatedLightHouseScreen/Day Transition/frame0007.png" id="8_54pjl"]
+[ext_resource type="Texture2D" uid="uid://2hif1te5drvr" path="res://Assets/Images/Lighthouse/AnimatedLightHouseScreen/Day Transition/frame0008.png" id="9_r1yc2"]
+[ext_resource type="Texture2D" uid="uid://cokscc1uccp35" path="res://Assets/Images/Lighthouse/AnimatedLightHouseScreen/Day Transition/frame0009.png" id="10_wag2e"]
+[ext_resource type="Texture2D" uid="uid://c5dhwmyurnv5r" path="res://Assets/Images/Lighthouse/AnimatedLightHouseScreen/Day Transition/frame0010.png" id="11_uv4ug"]
+[ext_resource type="Texture2D" uid="uid://dtkvf2t1jabe8" path="res://Assets/Images/Lighthouse/AnimatedLightHouseScreen/Day Transition/frame0011.png" id="12_bvrc7"]
+[ext_resource type="Texture2D" uid="uid://dlry0dxonxd6d" path="res://Assets/Images/Lighthouse/AnimatedLightHouseScreen/Day Transition/frame0012.png" id="13_rwtf8"]
+[ext_resource type="Texture2D" uid="uid://bl8g04n5exj75" path="res://Assets/Images/Lighthouse/AnimatedLightHouseScreen/Day Transition/frame0013.png" id="14_dupx5"]
+[ext_resource type="Texture2D" uid="uid://b5i1qiyy35twl" path="res://Assets/Images/Lighthouse/AnimatedLightHouseScreen/Day Transition/frame0014.png" id="15_jytwh"]
+[ext_resource type="Texture2D" uid="uid://cxpf8ik41q1p2" path="res://Assets/Images/Lighthouse/AnimatedLightHouseScreen/Day Transition/frame0015.png" id="16_wdk7m"]
+[ext_resource type="Texture2D" uid="uid://ctv0j6s0jxwcx" path="res://Assets/Images/Lighthouse/AnimatedLightHouseScreen/Day Transition/frame0016.png" id="17_a6hvb"]
+[ext_resource type="Texture2D" uid="uid://cptw2pgthr8ef" path="res://Assets/Images/Lighthouse/AnimatedLightHouseScreen/Day Transition/frame0017.png" id="18_85ips"]
+[ext_resource type="Texture2D" uid="uid://dhetemuqfcgac" path="res://Assets/Images/Lighthouse/AnimatedLightHouseScreen/Day Transition/frame0018.png" id="19_aw4ue"]
+[ext_resource type="Texture2D" uid="uid://lku8wsywonyu" path="res://Assets/Images/Lighthouse/AnimatedLightHouseScreen/Day Transition/frame0019.png" id="20_entij"]
+[ext_resource type="Texture2D" uid="uid://b8nv3gblify5i" path="res://Assets/Images/Lighthouse/AnimatedLightHouseScreen/Day Transition/frame0020.png" id="21_ete55"]
+[ext_resource type="Texture2D" uid="uid://bybff2tbqgsvf" path="res://Assets/Images/Lighthouse/AnimatedLightHouseScreen/Day Transition/frame0021.png" id="22_rgq3q"]
+[ext_resource type="Texture2D" uid="uid://bpccpxi5nwgji" path="res://Assets/Images/Lighthouse/AnimatedLightHouseScreen/Day Transition/frame0022.png" id="23_p7mvd"]
+[ext_resource type="Texture2D" uid="uid://c0urklcc0rw0o" path="res://Assets/Images/Lighthouse/AnimatedLightHouseScreen/Day Transition/frame0023.png" id="24_6ywjb"]
+[ext_resource type="Texture2D" uid="uid://dpq5ctj3iqv8" path="res://Assets/Images/Lighthouse/AnimatedLightHouseScreen/Day Transition/frame0024.png" id="25_euxpa"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lb5fr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_v7l2n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_qs2e8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_2i02b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_t0lj8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_2ol8c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_00vf2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_feoda")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_54pjl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_r1yc2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_wag2e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_uv4ug")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_bvrc7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_rwtf8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_dupx5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_jytwh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_wdk7m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_a6hvb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_85ips")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_aw4ue")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_entij")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_ete55")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_rgq3q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_p7mvd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_6ywjb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_euxpa")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
+
+[node name="Node2D" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_lb5fr")
+frame_progress = 0.8923176
