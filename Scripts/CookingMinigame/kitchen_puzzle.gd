@@ -725,6 +725,7 @@ func AdvanceToNextStep():
 		print("Recipe complete. Final Quality: %d" % recipeQuality)
 		GameManager.CompleteTask(currentTaskID)
 		GameManager.SetPlayerSpawn(returnFloorIndex, returnPosition)
+		GameManager.pending_post_source = GameManager.ReturnSource.KITCHEN
 		if ResourceLoader.exists(mainGameScenePath):
 			SceneLoader.change_scene_with_loading(mainGameScenePath)
 		else:

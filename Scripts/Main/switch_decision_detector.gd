@@ -102,7 +102,7 @@ func Dialogue_system() -> void:
 	var dlg_parent = get_tree().get_root().get_node("Main")
 	match GameManager.currentDay:
 		-1:
-			dlg = Dialogic.start("Day_0 Light Dialogue")
+			dlg = Dialogic.start("Day_-1 Light Dialogue")
 		0:
 			dlg = Dialogic.start("Day_0 Light Dialogue")
 		1:

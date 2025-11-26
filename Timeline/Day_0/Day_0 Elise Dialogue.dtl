@@ -1,5 +1,5 @@
-audio music "res://Assets/Audio/VA/Sutherland/wee lass.mp3"
+audio "res://Assets/Audio/VA/Sutherland/wee lass.mp3" [loop="false"]
 Sutherland: How's my wee lass doing this mighty fine morning?
-audio music "res://Assets/Audio/VA/Elise/I’m Drawing a Rabbit.mp3"
+audio "res://Assets/Audio/VA/Elise/I’m Drawing a Rabbit.mp3" [fade="0.0" volume="0.0" bus="" loop="false"]
 Elise: (giggles) I'm drawing a rabbit!
 Narrator: She doesn't look up from her drawing, focused.

@@ -56,37 +56,31 @@ func OnBodyExited(body):
 			label.visible = false
 
 func Morse_Dialogue() -> void:
-	var dlg
-	var dlg_parent = get_tree().get_root().get_node("Main")
 	match GameManager.currentDay:
 		-1:
-			dlg = Dialogic.start("Day_0 Morse Dialogue")
+			Dialogic.start("Day_-1 Morse Dialogue")
 		0:
-			dlg = Dialogic.start("Day_0 Morse Dialogue")
+			Dialogic.start("Day_0 Morse Dialogue")
 		1:
-			dlg = Dialogic.start("Day_1 Morse Dialogue")
+			Dialogic.start("Day_1 Morse Dialogue")
 		2:
-			dlg = Dialogic.start("Day_2 Morse Dialogue")
+			Dialogic.start("Day_2 Morse Dialogue")
 		3:
-			dlg = Dialogic.start("Day_3 Morse Dialogue")
+			Dialogic.start("Day_3 Morse Dialogue")
 		4:
-			dlg = Dialogic.start("Day_4 Morse Dialogue")
-	dlg_parent.add_child(dlg)
+			Dialogic.start("Day_4 Morse Dialogue")
 
 func Radio_Dialogue() -> void:
-	var dlg
-	var dlg_parent = get_tree().get_root().get_node("Main")
 	match GameManager.currentDay:
 		-1:
-			dlg = Dialogic.start("Day_0 Radio Dialogue")
+			Dialogic.start("Day_-1 Radio Dialogue")
 		0:
-			dlg = Dialogic.start("Day_0 Radio Dialogue")
+			Dialogic.start("Day_0 Radio Dialogue")
 		1:
-			dlg = Dialogic.start("Day_1 Radio Dialogue")
+			Dialogic.start("Day_1 Radio Dialogue")
 		2:
-			dlg = Dialogic.start("Day_2 Radio Dialogue")
+			Dialogic.start("Day_2 Radio Dialogue")
 		3:
-			dlg = Dialogic.start("Day_3 Radio Dialogue")
+			Dialogic.start("Day_3 Radio Dialogue")
 		4:
-			dlg = Dialogic.start("Day_4 Radio Dialogue")
-	dlg_parent.add_child(dlg)
+			Dialogic.start("Day_4 Radio Dialogue")
