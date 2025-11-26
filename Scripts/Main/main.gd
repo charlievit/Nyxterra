@@ -43,6 +43,8 @@ var cycleProgress: float = 0.0
 
 @onready var hapticClickSound = preload("res://Assets/Audio/UI/HapticClick.mp3")
 
+@onready var introCutScene = $"Control_GAME SCREEN UI/Arrival Cutscene"
+
 #save & load
 @onready var pause_menu : Control = $"Control_GAME SCREEN UI/PauseMenu"
 #endregion
