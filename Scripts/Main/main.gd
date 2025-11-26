@@ -43,6 +43,8 @@ var cycleProgress: float = 0.0
 
 @onready var hapticClickSound = preload("res://Assets/Audio/UI/HapticClick.mp3")
 
+@onready var introCutScene = $"Control_GAME SCREEN UI/Arrival Cutscene"
+
 #save & load
 @onready var pause_menu : Control = $"Control_GAME SCREEN UI/PauseMenu"
 #endregion
@@ -101,7 +103,10 @@ func _ready() -> void:
 		var introDlg = Dialogic.start("Intro")
 		add_child(introDlg)
 	#CheckAutoCompletedTasks()
-		
+	
+	#await get_tree().create_timer(4.0).timeout
+	#introCutScene.Begin()
+	
 func _process(delta):
 	# Force the zoomed-in camera to follow the player
 	var visibleSize = Vector2(subVPort.size) / zoomCamera.zoom
