@@ -99,14 +99,9 @@ func _ready() -> void:
 		targetPosition.x = clamp(targetPosition.x, minX, maxX)
 	
 	zoomCamera.global_position = targetPosition
-	if GameManager.currentDay == 0 or -1:
-		var introDlg = Dialogic.start("Intro")
-		add_child(introDlg)
-	#CheckAutoCompletedTasks()
-	
-	#await get_tree().create_timer(4.0).timeout
-	#introCutScene.Begin()
-	
+				
+	_play_pending_post_dialogue()
+		
 func _process(delta):
 	# Force the zoomed-in camera to follow the player
 	var visibleSize = Vector2(subVPort.size) / zoomCamera.zoom
@@ -262,77 +257,90 @@ func _on_toggle_map_pressed() -> void:
 	ToggleMap()
 
 func _on_Radio_Completed() -> void:
-	var dlg
 	match GameManager.currentDay:
 		-1:
-			dlg = Dialogic.start("Day_0 Radio Completed")
+			Dialogic.start("Day_-1 Radio Completed")
 		0:
-			dlg = Dialogic.start("Day_0 Radio Completed")
+			Dialogic.start("Day_0 Radio Completed")
 		1:
-			dlg = Dialogic.start("Day_1 Radio Completed")
+			Dialogic.start("Day_1 Radio Completed")
 		2:
-			dlg = Dialogic.start("Day_2 Radio Completed")
+			Dialogic.start("Day_2 Radio Completed")
 		3:
-			dlg = Dialogic.start("Day_3 Radio Completed")
+			Dialogic.start("Day_3 Radio Completed")
 		4:
-			dlg = Dialogic.start("Day_4 Radio Completed")
-	dlg.process_mode = Node.PROCESS_MODE_ALWAYS
+			Dialogic.start("Day_4 Radio Completed")
 
 func _on_Gear_Completed() -> void:
-	var dlg
 	match GameManager.currentDay:
 		-1:
-			dlg = Dialogic.start("Day_1 Gear Completed")
-		#0:
-			#dlg = Dialogic.start("Day_0 Gear Completed")
+			Dialogic.start("Day_-1 GearBox Completed")
+		0:
+			Dialogic.start("Day_0 GearBox Completed")
 		1:
-			dlg = Dialogic.start("Day_1 Gear Completed")
-		#2:
-			#dlg = Dialogic.start("Day_2 Gear Completed")
-		#3:
-			#dlg = Dialogic.start("Day_3 Gear Completed")
-		#4:
-			#dlg = Dialogic.start("Day_4 Gear Completed")
-	dlg.process_mode = Node.PROCESS_MODE_ALWAYS
+			Dialogic.start("Day_1 GearBox Completed")
+		2:
+			Dialogic.start("Day_2 GearBox Completed")
+		3:
+			Dialogic.start("Day_3 GearBox Completed")
+		4:
+			Dialogic.start("Day_4 GearBox Completed")
 
 func _on_Morse_Completed() -> void:
-	var dlg
 	match GameManager.currentDay:
 		-1:
-			dlg = Dialogic.start("Day_0 Morse Completed")
+			Dialogic.start("Day_-1 Morse Completed")
 		0:
-			dlg = Dialogic.start("Day_0 Morse Completed")
+			Dialogic.start("Day_0 Morse Completed")
 		1:
-			dlg = Dialogic.start("Day_1 Morse Completed")
+			Dialogic.start("Day_1 Morse Completed")
 		2:
-			dlg = Dialogic.start("Day_2 Morse Completed")
+			Dialogic.start("Day_2 Morse Completed")
 		3:
-			dlg = Dialogic.start("Day_3 Morse Completed")
+			Dialogic.start("Day_3 Morse Completed")
 		4:
-			dlg = Dialogic.start("Day_4 Morse Completed")
-	dlg.process_mode = Node.PROCESS_MODE_ALWAYS
+			Dialogic.start("Day_4 Morse Completed")
 
 func _on_Kitchen_Completed() -> void:
-	var dlg
 	match GameManager.currentDay:
 		-1:
-			dlg = Dialogic.start("Day_0 Kitchen Completed")
+			Dialogic.start("Day_-1 Kitchen Completed")
 		0:
-			dlg = Dialogic.start("Day_0 Kitchen Completed")
+			Dialogic.start("Day_0 Kitchen Completed")
 		1:
-			dlg = Dialogic.start("Day_1 Kitchen Completed")
+			Dialogic.start("Day_1 Kitchen Completed")
 		2:
-			dlg = Dialogic.start("Day_2 Kitchen Completed")
+			Dialogic.start("Day_2 Kitchen Completed")
 		3:
-			dlg = Dialogic.start("Day_3 Kitchen Completed")
+			Dialogic.start("Day_3 Kitchen Completed")
 		4:
-			dlg = Dialogic.start("Day_4 Kitchen Completed")
-	dlg.process_mode = Node.PROCESS_MODE_ALWAYS
+			Dialogic.start("Day_4 Kitchen Completed")
 
-func CheckAutoCompletedTasks() -> void:
-	if TaskManager.is_task_completed("test_checkRadio"):
-		_on_Radio_Completed()
+func _on_Intro() -> void:
+	match GameManager.currentDay:
+		-1:
+			Dialogic.start("Intro")
+		0:
+			Dialogic.start("Intro")
+		1:
+			Dialogic.start("Intro")
+		2:
+			Dialogic.start("Intro")
+		3:
+			Dialogic.start("Intro")
+		4:
+			Dialogic.start("Intro")
 	
-	if TaskManager.is_task_completed("test_checkGearBox"):
-		_on_Gear_Completed()
-		
+func _play_pending_post_dialogue() -> void:
+	match GameManager.pending_post_source:
+		GameManager.ReturnSource.RADIO:
+			_on_Radio_Completed()
+		GameManager.ReturnSource.MORSE:
+			_on_Morse_Completed()
+		GameManager.ReturnSource.KITCHEN:
+			_on_Kitchen_Completed()
+		GameManager.ReturnSource.GEARBOX:
+			_on_Gear_Completed()
+		GameManager.ReturnSource.NONE:
+			_on_Intro()
+	GameManager.pending_post_source = GameManager.ReturnSource.NONE

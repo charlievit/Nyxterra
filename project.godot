@@ -36,6 +36,17 @@ directories/dch_directory={
 "Sutherland": "res://Timeline/character/Sutherland.dch"
 }
 directories/dtl_directory={
+"Day_-1 Elise Dialogue": "res://Timeline/Day_-1/Day_-1 Elise Dialogue.dtl",
+"Day_-1 GearBox Completed": "res://Timeline/Day_-1/Day_-1 GearBox Completed.dtl",
+"Day_-1 GearBox Dialogue": "res://Timeline/Day_-1/Day_-1 GearBox Dialogue.dtl",
+"Day_-1 Kitchen Completed": "res://Timeline/Day_-1/Day_-1 Kitchen Completed.dtl",
+"Day_-1 Kitchen Dialogue": "res://Timeline/Day_-1/Day_-1 Kitchen Dialogue.dtl",
+"Day_-1 Light Completed": "res://Timeline/Day_-1/Day_-1 Light Completed.dtl",
+"Day_-1 Light Dialogue": "res://Timeline/Day_-1/Day_-1 Light Dialogue.dtl",
+"Day_-1 Morse Completed": "res://Timeline/Day_-1/Day_-1 Morse Completed.dtl",
+"Day_-1 Morse Dialogue": "res://Timeline/Day_-1/Day_-1 Morse Dialogue.dtl",
+"Day_-1 Radio Completed": "res://Timeline/Day_-1/Day_-1 Radio Completed.dtl",
+"Day_-1 Radio Dialogue": "res://Timeline/Day_-1/Day_-1 Radio Dialogue.dtl",
 "Day_0 Elise Dialogue": "res://Timeline/Day_0/Day_0 Elise Dialogue.dtl",
 "Day_0 Light Dialogue": "res://Timeline/Day_0/Day_0 Light Dialogue.dtl",
 "Day_0 Morse Dialogue": "res://Timeline/Day_0/Day_0 Morse Dialogue.dtl",
@@ -95,6 +106,7 @@ audio/channel_defaults={
 }
 }
 timer/process_in_physics=true
+portraits/default_portrait=""
 
 [display]
 
