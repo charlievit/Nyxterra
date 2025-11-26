@@ -150,6 +150,7 @@ func _on_sentence_solved() -> void:
 	# Update GM with task progress
 	GameManager.SetPlayerSpawn(returnFloorIndex, returnPosition)
 	GameManager.CompleteTask(currentTaskID)
+	GameManager.pending_post_source = GameManager.ReturnSource.MORSE
 	if ResourceLoader.exists(mainGameScenePath):
 		SceneLoader.change_scene_with_loading(mainGameScenePath)
 	else:

@@ -165,6 +165,12 @@ var onTriggerChopping_early = preload("res://Assets/Audio/VA/Sutherland/Cooking/
 var onTriggerChopping_later = preload("res://Assets/Audio/VA/Sutherland/Cooking/Chop chop chop.mp3")
 #endregion
 
+#Dialogue
+enum ReturnSource { NONE, RADIO, MORSE, KITCHEN, GEARBOX }
+
+var pending_post_source: int = ReturnSource.NONE
+
+
 func _ready():
 	#Dialogue Signal
 	Dialogic.timeline_started.connect(_on_dialogue_started)

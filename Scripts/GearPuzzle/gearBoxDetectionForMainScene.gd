@@ -27,6 +27,8 @@ func _process(_delta):
 	
 	if playerBody:
 		if Input.is_action_pressed("ui_accept") and GameManager.needGearBox:
+			Radio_Dialogue()
+			await Dialogic.timeline_ended
 			if ResourceLoader.exists(gearboxScenePath):
 				SceneLoader.change_scene_with_loading(gearboxScenePath)
 			else:
@@ -43,3 +45,19 @@ func OnBodyExited(body):
 		playerBody = null # Clear the player
 		if label:
 			label.visible = false
+
+func Radio_Dialogue() -> void:
+	match GameManager.currentDay:
+		-1:
+			Dialogic.start("Day_-1 GearBox Dialogue")
+		0:
+			Dialogic.start("Day_0 GearBox Dialogue")
+		1:
+			Dialogic.start("Day_1 GearBox Dialogue")
+		2:
+			Dialogic.start("Day_2 GearBox Dialogue")
+		3:
+			Dialogic.start("Day_3 GearBox Dialogue")
+		4:
+			Dialogic.start("Day_4 GearBox Dialogue")
+	

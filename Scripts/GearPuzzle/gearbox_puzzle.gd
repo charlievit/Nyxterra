@@ -275,7 +275,7 @@ func TriggerWinState():
 	
 	await get_tree().create_timer(3.0).timeout
 	GameManager.CompleteTask(currentTaskID)
-	
+	GameManager.pending_post_source = GameManager.ReturnSource.GEARBOX
 	if ResourceLoader.exists(mainGameScenePath):
 		SceneLoader.change_scene_with_loading(mainGameScenePath)
 	else:

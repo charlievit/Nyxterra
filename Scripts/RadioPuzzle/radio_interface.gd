@@ -178,6 +178,7 @@ func CheckForMatch():
 			# TODO: audioStationNoiseLoopHere.play()
 			GameManager.SetPlayerSpawn(returnFloorIndex, returnPosition)
 			GameManager.CompleteTask(currentTaskID)
+			GameManager.pending_post_source = GameManager.ReturnSource.RADIO
 			if ResourceLoader.exists(mainGameScenePath):
 				SceneLoader.change_scene_with_loading(mainGameScenePath)
 			else:
