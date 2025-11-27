@@ -55,7 +55,7 @@ func Dialogue_system() -> void:
 		0:
 			Dialogic.start("Day_0 Elise Dialogue")
 		1:
-			Dialogic.start("Day_1 Elise Dialogue")WA
+			Dialogic.start("Day_1 Elise Dialogue")
 		2:
 			Dialogic.start("Day_2 Elise Dialogue")
 		3:
