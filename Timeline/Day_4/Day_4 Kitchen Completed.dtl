@@ -1,0 +1,6 @@
+if {Cooking_Response} == "Good":
+	[voice path="res://Assets/Audio/VA/Elise/Wow This is Delicious.mp3" volume="0.0" bus="Character Voice"]
+	Elise: Wow, this is delicious. Thanks dad.
+elif {Cooking_Response} == "Bad":
+	[voice path="res://Assets/Audio/VA/Elise/Take Out.mp3" volume="0.0" bus="Character Voice"]
+	Elise: Want to run to get some take out?

@@ -84,21 +84,21 @@ func _ready() -> void:
 	SyncVisualsToState()
 	
 	#Dialogue System
-	var visibleSize = Vector2(subVPort.size) / zoomCamera.zoom
-	var halfWidth = visibleSize.x / 2.0
+	#var visibleSize = Vector2(subVPort.size) / zoomCamera.zoom
+	#var halfWidth = visibleSize.x / 2.0
 	
-	var minX = cameraLimitLeft + halfWidth
-	var maxX = cameraLimitRight - halfWidth
+	#var minX = cameraLimitLeft + halfWidth
+	#var maxX = cameraLimitRight - halfWidth
 	
-	var targetPosition = player.global_position
+	#var targetPosition = player.global_position
 	
-	if maxX > minX:
-		targetPosition.x = clamp(targetPosition.x, minX, maxX)
+	#if maxX > minX:
+		#targetPosition.x = clamp(targetPosition.x, minX, maxX)
 	
-	zoomCamera.global_position = targetPosition
-	
-	_play_pending_post_dialogue()
+	#zoomCamera.global_position = targetPosition
 
+	_play_pending_post_dialogue()
+	
 func _process(delta):
 	# Force the zoomed-in camera to follow the player
 	var visibleSize = Vector2(subVPort.size) / zoomCamera.zoom
@@ -316,15 +316,15 @@ func _on_Kitchen_Completed() -> void:
 			Dialogic.start("Day_3 Kitchen Completed")
 		4:
 			Dialogic.start("Day_4 Kitchen Completed")
-
+	
 func _on_Intro() -> void:
 	match GameManager.currentDay:
 		-1:
 			Dialogic.start("Intro")
 		0:
-			Dialogic.start("Intro")
+			Dialogic.start("Day_0 Intro")
 		1:
-			Dialogic.start("Intro")
+			Dialogic.start("Day_1 Intro")
 		2:
 			Dialogic.start("Intro")
 		3:

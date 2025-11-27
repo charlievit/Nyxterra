@@ -1,5 +1,9 @@
 Narrator: Based on the clues from previous tasks, the user decides whether or not to light the way.
-if {} == "YES":
-	Sutherland: Not losing you to the sea tonight.
-else:
+- Yes
+	[voice path="res://Assets/Audio/VA/Sutherland/I cant risk her life.mp3" volume="0.0" bus="Character Voice"]
 	Sutherland: I'm sorry. I can't risk her life too.
+	set {Day1_response} = "Yes"
+- No
+	[voice path="res://Assets/Audio/VA/Sutherland/Not losing you to the sea.mp3" volume="0.0" bus="Character Voice"]
+	Sutherland: Not losing you to the sea tonight.
+	set {Day1_response} = "No"

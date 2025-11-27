@@ -1,4 +1,7 @@
+[voice path="res://Assets/Audio/VA/Smith/Wake-Up.mp3" volume="0.0" bus="Character Voice"]
 Smith: Suth? Wake up ol' boyo. Always sleeping so bloody late.
+[voice path="res://Assets/Audio/VA/Sutherland/wee hours with your mother.mp3" volume="0.0" bus="Character Voice"]
 Sutherland: (chuckles) Aye, stayed up 'till the wee hours with your mum.
+[voice path="res://Assets/Audio/VA/Smith/Bastard.mp3" volume="0.0" bus="Character Voice"]
 Smith: (laughs heartily) You bastard. Aye, listen, a ship's expected tonight so keep an eye out. Haste ye back!
 Narrator: The radio goes quiet. It fades to night time.

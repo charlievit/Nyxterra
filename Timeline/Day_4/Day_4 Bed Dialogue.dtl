@@ -1,0 +1,8 @@
+if {Day4_response} == "No":
+	[voice path="res://Assets/Audio/VA/Sutherland/Start over.mp3" volume="0.0" bus="Character Voice"]
+	[voice path="res://Assets/Audio/VA/Sutherland/Doesnt have to mean bad.mp3" volume="0.0" bus="Character Voice"]
+	[voice path="res://Assets/Audio/VA/Sutherland/I have to move on.mp3" volume="0.0" bus="Character Voice"]
+	Sutherland: It's time to start over. New doesn't have to mean bad. I'll always love you Cath, but I need to move on. For Elise. For me.
+elif {Day4_response} == "No":
+	[voice path="res://Assets/Audio/VA/Sutherland/The world ended.mp3" volume="0.0" bus="Character Voice"]
+	Sutherland: The world ended with you my love.

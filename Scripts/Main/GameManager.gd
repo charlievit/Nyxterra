@@ -77,7 +77,8 @@ func _on_dialogue_started():
 	pass
 
 func _on_dialogue_ended():
-	get_tree().paused = false
+	#get_tree().paused = false
+	pass
 	
 func StartNewGame():
 	# Reset internal variables
@@ -121,6 +122,48 @@ func UpdateObjective():
 	
 	# SECOND. State machine to control the tasks for the day
 	match currentDay:
+		-1: # DEV TESTING DAY
+			match currentTaskStep:
+				0:
+					needDaughter = true
+					TaskManager.AddTask("test_checkDaughter", "(Test) Check on daughter.")
+					if not hasCompletedTutorial:
+						emit_signal("showTutorialPopUp", "movementTutorial")
+				1:
+					needRadio = true
+					TaskManager.AddTask("test_checRadio", "(Test) Check radio.")
+					if not hasCompletedTutorial:
+						emit_signal("showTutorialPopUp", "radioTutorial")
+				2:
+					needGearBox = true
+					TaskManager.AddTask("test_checkGearBox", "(Test) Check gearbox.")
+					if not hasCompletedTutorial:
+						emit_signal("showTutorialPopUp", "interactionTutorial")
+				3:
+					needMorse = true
+					TaskManager.AddTask("test_checkMorse", "(Test) Check Morse.")
+					if not hasCompletedTutorial:
+						emit_signal("showTutorialPopUp", "morseTutorial")
+				4:
+					emit_signal("requestNightCycle")
+					daySTATE = DayState.MOON_RISING
+					needLight = true
+					TaskManager.AddTask("test_decision", "(Test) Choose light switch position.")
+					if not hasCompletedTutorial:
+						emit_signal("showTutorialPopUp", "lightSwitchTutorial")
+				5:
+					needKitchen = true
+					TaskManager.AddTask("test_cookMeal", "(Test) Kitchen Puzzle.")
+					if not hasCompletedTutorial:
+						emit_signal("showTutorialPopUp", "kitchenTutorial")
+				6:
+					needBed = true
+					TaskManager.AddTask("test_goToBed", "(Test) End Day, Go To Bed.")
+					if not hasCompletedTutorial:
+						emit_signal("showTutorialPopUp", "endDayTutorial")
+				7:
+					TaskManager.CompleteDay()
+					StartDay(currentDay + 1)
 		0: # DAY 0: TUTORIAL
 			match currentTaskStep:
 				0:
