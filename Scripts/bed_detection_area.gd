@@ -25,6 +25,8 @@ func _process(_delta):
 	
 	if playerBody:
 		if Input.is_action_pressed("ui_accept") and GameManager.needBed:
+			Dialogue_system()
+			await Dialogic.timeline_ended
 			print("going to bed...")
 			var currentTask: String = ""
 			for key in TaskManager.activeTasks.keys():
@@ -43,3 +45,18 @@ func OnBodyExited(body):
 		playerBody = null # Clear the player
 		if label:
 			label.visible = false
+
+func Dialogue_system() -> void:
+	match GameManager.currentDay:
+		0:
+			pass
+		1:
+			Dialogic.start("Day_1 Bed Dialogue")
+		2:
+			Dialogic.start("Day_2 Bed Dialogue")
+		3:
+			Dialogic.start("Day_3 Bed Dialogue")
+		4:
+			Dialogic.start("Day_4 Bed Dialogue")
+		5: #end game good ending
+			Dialogic.start("Day_5 Bed Dialogue")

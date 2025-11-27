@@ -44,7 +44,7 @@ func _process(_delta):
 			if hasBeenPrompted:
 				return
 			
-			SpawnDecisionPopUp()
+			#SpawnDecisionPopUp()
 
 func OnBodyEntered(body):
 	if body.is_in_group("player") and GameManager.needLight and not hasBeenPrompted:
@@ -79,14 +79,14 @@ func SpawnDecisionPopUp():
 		if noButton: noButton.pressed.connect(OnNoPressed)
 
 func OnYesPressed():
-	ClosePopUp()
+	#ClosePopUp()
 	if switch:
 		switch.play("turnOn") 
 	GameManager.CompleteTask(currentTaskID)
 
 func OnNoPressed():
 	# Close everything up
-	ClosePopUp()
+	#ClosePopUp()
 	GameManager.CompleteTask(currentTaskID)
 
 func ClosePopUp():
@@ -98,19 +98,26 @@ func ClosePopUp():
 		playerBody.controlsDisabled = false
 
 func Dialogue_system() -> void:
-	var dlg
-	var dlg_parent = get_tree().get_root().get_node("Main")
+	Dialogic.signal_event.connect(_On_Switch_Pressed)
 	match GameManager.currentDay:
 		-1:
-			dlg = Dialogic.start("Day_-1 Light Dialogue")
+			Dialogic.start("Day_-1 Light Dialogue")
 		0:
-			dlg = Dialogic.start("Day_0 Light Dialogue")
+			Dialogic.start("Day_0 Light Dialogue")
 		1:
-			dlg = Dialogic.start("Day_1 Light Dialogue")
+			Dialogic.start("Day_1 Light Dialogue")
 		2:
-			dlg = Dialogic.start("Day_2 Light Dialogue")
+			Dialogic.start("Day_2 Light Dialogue")
 		3:
-			dlg = Dialogic.start("Day_3 Light Dialogue")
+			Dialogic.start("Day_3 Light Dialogue")
 		4:
-			dlg = Dialogic.start("Day_4 Light Dialogue")
-	dlg_parent.add_child(dlg)
+			Dialogic.start("Day_4 Light Dialogue")
+
+func _On_Switch_Pressed(argument: String) -> void:
+	if argument == "Yes":
+		switch.play("turnOn") 
+		GameManager.CompleteTask(currentTaskID)
+		print("Yes")
+	elif argument == "No":
+		GameManager.CompleteTask(currentTaskID)
+		print("No")

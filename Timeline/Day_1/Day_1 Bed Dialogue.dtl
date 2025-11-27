@@ -1,3 +1,7 @@
 Narrator: Sutherland goes to his bedroom and the screen fades to black.
-Sutherland: (to himself) I go on to remember her... Or if chose not to turn the light on\:
-Sutherland: I don't know who I am without her...
+if {Day_1_response} == "Yes":
+	[voice path="res://Assets/Audio/VA/Sutherland/I go on to remember her.mp3" volume="0.0" bus="Character Voice"]
+	Sutherland: I go on to remember her...
+elif {Day1_response} == "No":
+	[voice path="res://Assets/Audio/VA/Sutherland/I dont know who I am.mp3" volume="0.0" bus="Character Voice"]
+	Sutherland: I don't know who I am without her...

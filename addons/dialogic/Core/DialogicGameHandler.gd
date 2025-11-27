@@ -175,16 +175,6 @@ func _ready() -> void:
 #region TIMELINE & EVENT HANDLING
 ################################################################################
 
-## Customed function
-## If we wanna paused during the conversation		
-func _paused() -> void:
-		process_mode = Node.PROCESS_MODE_WHEN_PAUSED
-
-##Customed function
-## If we wanna continue movement during the conversation		
-func _unpaused() -> void:
-		process_mode = Node.PROCESS_MODE_INHERIT
-
 ## Method to start a timeline AND ensure that a layout scene is present.
 ## For argument info, checkout [method start_timeline].
 ## -> returns the layout node

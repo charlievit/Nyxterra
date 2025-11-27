@@ -173,13 +173,13 @@ var pending_post_source: int = ReturnSource.NONE
 
 func _ready():
 	#Dialogue Signal
-	Dialogic.timeline_started.connect(_on_dialogue_started)
-	Dialogic.timeline_ended.connect(_on_dialogue_ended)
+	#Dialogic.timeline_started.connect(_on_dialogue_started)
+	#Dialogic.timeline_ended.connect(_on_dialogue_ended)
 	todaysRecipe = "BarfitStovies" # defaulting here for testing
 	await get_tree().process_frame
 	apply_save_data()
 	
-	StartDay(-1) #Since you forced to start on day -1, save&load unable to overwrite this. 
+	StartDay(currentDay) #Since you forced to start on day -1, save&load unable to overwrite this. 
 				 #Make sure it change to currentDay to able loading function 
 
 func _on_dialogue_started(): #commenting out for now so I can test collision map
@@ -187,7 +187,8 @@ func _on_dialogue_started(): #commenting out for now so I can test collision map
 	pass
 
 func _on_dialogue_ended():
-	get_tree().paused = false
+	#get_tree().paused = false
+	pass
 	
 func StartNewGame():
 	# Reset internal variables
@@ -258,15 +259,15 @@ func UpdateObjective():
 				4:
 					emit_signal("requestNightCycle")
 					daySTATE = DayState.MOON_RISING
-					needKitchen = true
-					TaskManager.AddTask("test_cookMeal", "(Test) Kitchen Puzzle.")
-					if not hasCompletedTutorial:
-						emit_signal("showTutorialPopUp", "kitchenTutorial")
-				5:
 					needLight = true
 					TaskManager.AddTask("test_decision", "(Test) Choose light switch position.")
 					if not hasCompletedTutorial:
 						emit_signal("showTutorialPopUp", "lightSwitchTutorial")
+				5:
+					needKitchen = true
+					TaskManager.AddTask("test_cookMeal", "(Test) Kitchen Puzzle.")
+					if not hasCompletedTutorial:
+						emit_signal("showTutorialPopUp", "kitchenTutorial")
 				6:
 					needBed = true
 					TaskManager.AddTask("test_goToBed", "(Test) End Day, Go To Bed.")
