@@ -1,0 +1,7 @@
+- Yes
+	Sutherland: Don't want the Americans getting lost.
+	set {Day3_response} = "Yes"
+- No
+	[voice path="res://Assets/Audio/VA/Sutherland/Isolation.mp3" volume="0.0" bus="Character Voice"]
+	Sutherland: Isolation is the only path to safety.
+	set {Day3_response} = "No"

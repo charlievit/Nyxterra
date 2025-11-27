@@ -1,1 +1,9 @@
 Narrator: Day -1 Light Testing
+- Yes
+	Sutherland: Day - 1 Yes
+	set {Day_1_response} = "Yes"
+	[signal arg="Yes"]
+- No
+	Sutherland: Day -1 No
+	set {Day_1_response} = "No"
+	[signal arg="No"]

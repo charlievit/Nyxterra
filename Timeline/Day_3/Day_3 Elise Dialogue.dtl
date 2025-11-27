@@ -1,0 +1,8 @@
+[voice path="res://Assets/Audio/VA/Sutherland/Making your favorite.mp3" volume="0.0" bus="Character Voice"]
+Sutherland: I was thinking of making your favorite tonight.
+[voice path="res://Assets/Audio/VA/Elise/Really.mp3" volume="0.0" bus="Character Voice"]
+Elise: Really?!
+[voice path="res://Assets/Audio/VA/Sutherland/You deserve it.mp3" volume="0.0" bus="Character Voice"]
+Sutherland: Really. You deserve it.
+[voice path="res://Assets/Audio/VA/Elise/Thanks Dad.mp3" volume="0.0" bus="Character Voice"]
+Elise: Thanks dad.

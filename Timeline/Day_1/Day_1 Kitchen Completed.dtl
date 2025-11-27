@@ -1,5 +1,6 @@
-Narrator: Sutherland plays a cooking game to make her dinner.
-if {} == "GOOD":
+if {Cooking_Response} == "Good":
+	[voice path="res://Assets/Audio/VA/Elise/Not Bad Actually.mp3" volume="0.0" bus="Character Voice"]
 	Elise: Not bad actually
-else:
+elif {Cooking_Response} == "No":
+	[voice path="res://Assets/Audio/VA/Elise/I Miss Mom.mp3" volume="0.0" bus="Character Voice"]
 	Elise: I miss mom.
