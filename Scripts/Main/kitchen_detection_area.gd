@@ -29,7 +29,6 @@ func _process(_delta):
 		if Input.is_action_pressed("ui_accept") and GameManager.needKitchen:
 			Dialogue_system()
 			await Dialogic.timeline_ended
-			
 			if ResourceLoader.exists(kitchenScenePath):
 				SceneLoader.change_scene_with_loading(kitchenScenePath)
 			else:

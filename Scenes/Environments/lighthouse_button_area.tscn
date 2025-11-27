@@ -222,7 +222,7 @@ size = Vector2(155.65613, 138.4939)
 size = Vector2(172.4838, 122.75601)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_va83y"]
-size = Vector2(96.75925, 25.18077)
+size = Vector2(105.17302, 100.72279)
 
 [node name="LIGHTHOUSE MINI MAP" type="Control"]
 custom_minimum_size = Vector2(29.15, 0)
@@ -595,15 +595,15 @@ scale = Vector2(0.23770347, 0.3177035)
 script = ExtResource("34_4c1dk")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BOTTOM/Kitchen Detection Area"]
-position = Vector2(54.68998, -25.18069)
+position = Vector2(6.3103027, 37.770996)
 shape = SubResource("RectangleShape2D_va83y")
 
 [node name="ButtonPrompt" type="RichTextLabel" parent="BOTTOM/Kitchen Detection Area"]
 texture_filter = 1
-offset_left = -42.069237
-offset_top = -107.018036
-offset_right = 312.88394
-offset_bottom = 9.256439
+offset_left = -46.276154
+offset_top = -116.4608
+offset_right = 308.67703
+offset_bottom = -0.18632507
 scale = Vector2(0.38704705, 0.26962724)
 theme = ExtResource("3_j2rhv")
 text = "Cook 'E'"
