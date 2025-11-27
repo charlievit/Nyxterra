@@ -25,6 +25,7 @@ func _process(_delta):
 		# Bob up and down
 		label.position.y = baseLabelPos.y + (sin(Time.get_ticks_msec() * 0.005) * 3.0)
 
+	
 	if playerBody:
 		if Input.is_action_pressed("ui_accept") and GameManager.needKitchen:
 			Dialogue_system()
