@@ -4,6 +4,7 @@ const GAME_SCENE := "res://Scenes/main.tscn"
 const SETTINGS_PATH := "user://settings.cfg"
 const SETTINGS_SECTION := "audio"
 const SETTINGS_KEY_VOLUME := "master_volume"   # linear 0..1
+const SETTINGS_KEY_VOICE  := "voice_volume"
 
 @onready var animScreen: AnimatedSprite2D = $TextureRect
 @onready var start_button: Button   = $CenterContainer/Buttons/StartButton
@@ -18,7 +19,7 @@ const SETTINGS_KEY_VOLUME := "master_volume"   # linear 0..1
 @onready var options_back_button: Button = $OptionsPanel/BackButton
 @onready var socialsBackButton: Button = $SocialsPanel/BackButton
 @onready var continue_button: Button = $CenterContainer/Buttons/ContinueButton
-
+@onready var volume_slider2: HSlider = $OptionsPanel/VolumeSlider2
 #region Socials
 # CyberSugar Studios
 @onready var CS_instaButton: Button = $SocialsPanel/CyberSugar/instagramButton
@@ -32,7 +33,9 @@ var CS_tikTokLink: String = "https://www.tiktok.com/@cybersugarstudios"
 #endregion
 
 var _cached_volume_db: float = 0.0   # for Return (revert)
+var _cached_voice_db:  float = 0.0
 var _master_bus: int = 0
+var _voice_bus:  int = 0
 
 var titleScreenMusicPlayer: AudioStreamPlayer
 var titleScreenMusic: AudioStream = preload("res://Assets/Audio/Music/Music 1 lighthouse.wav")
@@ -45,11 +48,16 @@ func _ready() -> void:
 	add_child(titleScreenMusicPlayer)
 	titleScreenMusicPlayer.stream = titleScreenMusic
 	_master_bus = AudioServer.get_bus_index("Master")
-
+	_voice_bus  = AudioServer.get_bus_index("Character Voice")
 	# Load saved volume (default 0.8 if no file yet)
-	var saved_vol := _load_volume()
-	_set_master_linear(saved_vol)
-	volume_slider.value = saved_vol
+	var saved_master := _load_volume(SETTINGS_KEY_VOLUME, 0.8)
+	var saved_voice  := _load_volume(SETTINGS_KEY_VOICE, 0.8)
+
+	_set_master_linear(saved_master)
+	_set_bus_linear(saved_voice)   # Character Voice bus
+
+	volume_slider.value  = saved_master
+	volume_slider2.value = saved_voice
 	
 	titleScreenMusicPlayer.play()
 	
@@ -64,7 +72,7 @@ func _ready() -> void:
 	options_back_button.pressed.connect(_on_back_pressed)
 	socialsBackButton.pressed.connect(OnSocialsBackPressed)
 	volume_slider.value_changed.connect(_on_volume_changed)
-	
+	volume_slider2.value_changed.connect(_on_voice_volume_changed)   
 	# Social Signals
 	CS_instaButton.pressed.connect(CS_InstaClicked)
 	CS_itchButton.pressed.connect(CS_ItchClicked)
@@ -81,6 +89,7 @@ func _on_start_pressed() -> void:
 
 func _on_options_pressed() -> void:
 	_cached_volume_db = AudioServer.get_bus_volume_db(_master_bus)
+	_cached_voice_db  = AudioServer.get_bus_volume_db(_voice_bus)
 	Contain.visible = false
 	options_panel.visible = true
 
@@ -88,14 +97,18 @@ func OnSocialsPressed():
 	socialsPanel.visible = true
 
 func _on_apply_pressed() -> void:
-	_save_volume(volume_slider.value)
+	_save_volume(SETTINGS_KEY_VOLUME, volume_slider.value)
+	_save_volume(SETTINGS_KEY_VOICE,  volume_slider2.value)
 	options_panel.visible = false
 	Contain.visible = true;
 	
 func _on_back_pressed() -> void:
 	# revert previewed changes
 	AudioServer.set_bus_volume_db(_master_bus, _cached_volume_db)
+	AudioServer.set_bus_volume_db(_voice_bus,  _cached_voice_db)
 	volume_slider.value = db_to_linear(_cached_volume_db)
+	volume_slider2.value  = db_to_linear(_cached_voice_db)
+
 	options_panel.visible = false
 	Contain.visible = true;
 
@@ -112,6 +125,7 @@ func _on_continue_pressed() -> void:
 	if SaveManager.has_save():
 		SaveManager.reload_from_disk()
 		GameManager.apply_save_data()
+		GameManager.load_from_save_next_main = true
 		var path := SaveManager.current_save.current_scene_path
 		if path != "":
 			SceneLoader.change_scene_with_loading(path)
@@ -123,26 +137,33 @@ func _on_continue_pressed() -> void:
 func _on_volume_changed(value: float) -> void:
 	_set_master_linear(value)  # live preview
 
+func _on_voice_volume_changed(value: float) -> void:
+	_set_bus_linear(value)   # live preview
+	
 func _set_master_linear(value: float) -> void:
 	var db := -80.0 if value <= 0.001 else linear_to_db(value)
 	AudioServer.set_bus_volume_db(_master_bus, db)
 
+func _set_bus_linear(value: float) -> void:
+	var db := -80.0 if value <= 0.001 else linear_to_db(value)
+	AudioServer.set_bus_volume_db(_voice_bus, db)
+	
 func _get_master_linear() -> float:
 	return db_to_linear(AudioServer.get_bus_volume_db(_master_bus))
 
 # --- Persistence (ConfigFile) ---
-func _save_volume(value: float) -> void:
+func _save_volume(key: String, value: float) -> void:
 	var cfg := ConfigFile.new()
 	cfg.load(SETTINGS_PATH)  # ok if file doesn’t exist yet
-	cfg.set_value(SETTINGS_SECTION, SETTINGS_KEY_VOLUME, clamp(value, 0.0, 1.0))
+	cfg.set_value(SETTINGS_SECTION, key, clamp(value, 0.0, 1.0))
 	cfg.save(SETTINGS_PATH)
 
-func _load_volume() -> float:
+func _load_volume(key: String, default_value: float) -> float:
 	var cfg := ConfigFile.new()
 	var err := cfg.load(SETTINGS_PATH)
-	if err == OK and cfg.has_section_key(SETTINGS_SECTION, SETTINGS_KEY_VOLUME):
-		return float(cfg.get_value(SETTINGS_SECTION, SETTINGS_KEY_VOLUME))
-	return 0.8  
+	if err == OK and cfg.has_section_key(SETTINGS_SECTION, key):
+		return float(cfg.get_value(SETTINGS_SECTION, key))
+	return default_value
 
 #region Social Buttons
 func CS_InstaClicked():

@@ -73,12 +73,13 @@ func _ready() -> void:
 		GameManager.ConsumeSpawnData(player)
 	elif GameManager.shouldUseStoredSpawn:
 		GameManager.ConsumeSpawnData(player)
-	elif SaveManager.has_save():
-		SaveManager.reload_from_disk()
+	elif GameManager.load_from_save_next_main:
+		# We already called reload_from_disk() before changing scenes
 		GameManager.apply_save_data()
 		player.apply_save_data()
+		GameManager.load_from_save_next_main = false
 		
-	TaskManager.SyncTasksFromGameManagerOnLoad()
+		
 	
 	currentState = GameManager.daySTATE
 	SyncVisualsToState()
@@ -96,7 +97,11 @@ func _ready() -> void:
 		#targetPosition.x = clamp(targetPosition.x, minX, maxX)
 	
 	#zoomCamera.global_position = targetPosition
-
+	if GameManager.isIntroPlayed == false:
+		Dialogic.start("Intro")
+		await Dialogic.timeline_ended
+		GameManager.isIntroPlayed = true
+		
 	_play_pending_post_dialogue()
 	
 func _process(delta):
@@ -317,20 +322,6 @@ func _on_Kitchen_Completed() -> void:
 		4:
 			Dialogic.start("Day_4 Kitchen Completed")
 	
-func _on_Intro() -> void:
-	match GameManager.currentDay:
-		-1:
-			Dialogic.start("Intro")
-		0:
-			Dialogic.start("Day_0 Intro")
-		1:
-			Dialogic.start("Day_1 Intro")
-		2:
-			Dialogic.start("Intro")
-		3:
-			Dialogic.start("Intro")
-		4:
-			Dialogic.start("Intro")
 	
 func _play_pending_post_dialogue() -> void:
 	match GameManager.pending_post_source:
@@ -343,5 +334,5 @@ func _play_pending_post_dialogue() -> void:
 		GameManager.ReturnSource.GEARBOX:
 			_on_Gear_Completed()
 		GameManager.ReturnSource.NONE:
-			_on_Intro()
+			pass
 	GameManager.pending_post_source = GameManager.ReturnSource.NONE

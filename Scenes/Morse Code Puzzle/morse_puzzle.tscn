@@ -72,14 +72,16 @@ offset_top = 4.0
 offset_right = 1151.0
 offset_bottom = 124.0
 size_flags_vertical = 3
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+text = "asdasdasssssssssssssssssssssssssssssss"
 
 [node name="MorseLive" type="Label" parent="."]
 layout_mode = 0
 offset_left = 524.0
-offset_top = 264.0
-offset_right = 872.0
+offset_top = 261.0
+offset_right = 779.0
 offset_bottom = 287.0
-scale = Vector2(0.813, 1)
 size_flags_vertical = 6
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Current letter: "
@@ -87,7 +89,7 @@ text = "Current letter: "
 [node name="DecodedOut" type="Label" parent="."]
 layout_mode = 0
 offset_left = 524.0
-offset_top = 317.0
+offset_top = 309.0
 offset_right = 778.0
 offset_bottom = 383.0
 size_flags_vertical = 6
@@ -101,6 +103,8 @@ offset_left = 524.0
 offset_top = 384.0
 offset_right = 774.0
 offset_bottom = 407.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
 
 [node name="ReturnButton" type="Button" parent="."]
 layout_mode = 0
@@ -116,7 +120,7 @@ text = "BackSpace"
 [node name="Sheet" type="TextureRect" parent="."]
 layout_mode = 0
 offset_left = 3.0
-offset_top = 93.0
+offset_top = 61.0
 offset_right = 603.0
 offset_bottom = 644.0
 texture = ExtResource("3_o1vg4")
@@ -128,4 +132,6 @@ offset_top = 17.999998
 offset_right = 200.0
 offset_bottom = 41.213562
 scale = Vector2(1.6078267, 2.1969912)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
 text = "Morse Code Puzzle Game"

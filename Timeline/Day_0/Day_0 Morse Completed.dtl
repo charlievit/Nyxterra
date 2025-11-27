@@ -1,3 +1,3 @@
-Narrator: As player decodes the puzzle. It is warning about a bombing plane headed straight for the shore, so to turn off the light immediately. A new task is assigned to turn off the light.
+Narrator: As player decodes the puzzle. It is warning about a bombing plane headed straight for the shore.
 [voice path="res://Assets/Audio/VA/Sutherland/No no.mp3" volume="0.0" bus="Character Voice"]
 Sutherland: No... No!

@@ -41,6 +41,7 @@ func _process(_delta):
 		if Input.is_action_just_pressed("ui_accept") and GameManager.needLight:
 			#Dialogue system
 			Dialogue_system()
+			await Dialogue_system()
 			if hasBeenPrompted:
 				return
 			
@@ -112,6 +113,7 @@ func Dialogue_system() -> void:
 			Dialogic.start("Day_3 Light Dialogue")
 		4:
 			Dialogic.start("Day_4 Light Dialogue")
+	await Dialogic.timeline_ended
 
 func _On_Switch_Pressed(argument: String) -> void:
 	if argument == "Yes":

@@ -23,7 +23,6 @@ var shakeTween: Tween
 
 # TASKS
 var activeTasks: Dictionary = {}
-var completedTasks: Array = []
 
 func _ready():
 	slideController.position = closedPosition
@@ -154,7 +153,6 @@ func CompleteTask(taskID: String):
 		return
 	
 	var taskData = activeTasks[taskID]
-	completedTasks.append(taskID)
 	# 1. Check the box programmatically
 	taskData["box"].button_pressed = true
 	
@@ -169,36 +167,30 @@ func CompleteDay():
 	
 	activeTasks.clear()
 
-func SyncTasksFromGameManagerOnLoad() -> void:
-	# This runs AFTER GameManager.apply_save_data(),
-	# so all needX flags already match the save.
+# --- SAVE / LOAD -------------------------------------------------
 
-	# Example task IDs: adjust to match your real IDs / texts.
-	# Gearbox
-	if not GameManager.needGearBox:
-		# Task already done in save → mark complete silently
-		CompleteTask("Gearbox")
+func get_save_data() -> Dictionary:
+	var data: Dictionary = {}
+	# For each active task, store just text + completed flag
+	for task_id in activeTasks.keys():
+		var task = activeTasks[task_id]
+		var is_completed: bool = task["box"].button_pressed
+		data[task_id] = {
+			"text": task["text"],
+			"completed": is_completed,
+		}
+	return data
 
-	# Radio
-	if not GameManager.needRadio:
-		CompleteTask("Radio")
 
-	# Morse
-	if not GameManager.needMorse:
-		CompleteTask("Morse")
+func load_from_save(saved: Dictionary) -> void:
+	# Rebuild the UI from scratch
+	CompleteDay()  # clears taskList and activeTasks
 
-	# Daughter
-	if not GameManager.needDaughter:
-		CompleteTask("Daughter")
+	for task_id in saved.keys():
+		var td : Dictionary = saved[task_id]
+		var text: String = td.get("text", "")
+		var completed: bool = td.get("completed", false)
 
-	# Kitchen
-	if not GameManager.needKitchen:
-		CompleteTask("Kitchen")
-
-	# Light
-	if not GameManager.needLight:
-		CompleteTask("Lighthouse")
-
-func is_task_completed(task_id: String) -> bool:
-	return task_id in completedTasks
-	
+		AddTask(task_id, text)
+		if completed:
+			CompleteTask(task_id)

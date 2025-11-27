@@ -28,15 +28,13 @@ func _process(_delta):
 	
 	if playerBody:
 		if Input.is_action_pressed("ui_accept") and GameManager.needMorse:
-			Morse_Dialogue()
-			await Dialogic.timeline_ended
+			await Morse_Dialogue()
 			if ResourceLoader.exists(morseScenePath):
 				SceneLoader.change_scene_with_loading(morseScenePath)
 			else:
 				push_error("ERROR: Morse game scene path not found.")
 		if Input.is_action_pressed("radio_accept") and GameManager.needRadio:
-			Radio_Dialogue()
-			await Dialogic.timeline_ended
+			await Radio_Dialogue()
 			if ResourceLoader.exists(radioScenePath):
 				SceneLoader.change_scene_with_loading(radioScenePath)
 			else:
@@ -59,16 +57,9 @@ func Morse_Dialogue() -> void:
 	match GameManager.currentDay:
 		-1:
 			Dialogic.start("Day_-1 Morse Dialogue")
+			await Dialogic.timeline_ended
 		0:
-			Dialogic.start("Day_0 Morse Dialogue")
-		1:
-			Dialogic.start("Day_1 Morse Dialogue")
-		2:
-			Dialogic.start("Day_2 Morse Dialogue")
-		3:
-			Dialogic.start("Day_3 Morse Dialogue")
-		4:
-			Dialogic.start("Day_4 Morse Dialogue")
+			pass
 
 func Radio_Dialogue() -> void:
 	match GameManager.currentDay:
@@ -76,11 +67,4 @@ func Radio_Dialogue() -> void:
 			Dialogic.start("Day_-1 Radio Dialogue")
 		0:
 			Dialogic.start("Day_0 Radio Dialogue")
-		1:
-			Dialogic.start("Day_1 Radio Dialogue")
-		2:
-			Dialogic.start("Day_2 Radio Dialogue")
-		3:
-			Dialogic.start("Day_3 Radio Dialogue")
-		4:
-			Dialogic.start("Day_4 Radio Dialogue")
+	await Dialogic.timeline_ended
