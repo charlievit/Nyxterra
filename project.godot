@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Solais"
-run/main_scene="uid://bf5g134nk8ebe"
+run/main_scene="uid://7n8koxy8i17p"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 config/icon="res://Assets/Images/icon.svg"
 config/windows_native_icon="res://Assets/Images/Build Resources/SolaisIcon.ico"
@@ -24,6 +24,7 @@ GameManager="*res://Scripts/Main/GameManager.gd"
 SaveManager="*res://Scripts/save_load/save_manager.gd"
 SceneLoader="*res://Scripts/scene_loader.gd"
 Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
+CutsceneManager="*res://Scripts/CutsceneManager.gd"
 
 [dialogic]
 

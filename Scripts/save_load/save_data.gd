@@ -23,3 +23,5 @@ class_name SaveData
 @export var relationship: int = 0
 @export var should_light_be_on_tonight: bool
 @export var day_state: int
+@export var introPlayed: bool = false
+@export var introScenePlayed: bool = false
