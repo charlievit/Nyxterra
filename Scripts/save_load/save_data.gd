@@ -25,3 +25,8 @@ class_name SaveData
 @export var day_state: int
 @export var introPlayed: bool = false
 @export var introScenePlayed: bool = false
+@export var pending_post_source: int = GameManager.ReturnSource.NONE
+@export var isIntroPlayed: bool = false
+
+#store task panel data as a Dictionary
+@export var task_data: Dictionary = {}

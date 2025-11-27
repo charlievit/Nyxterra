@@ -77,10 +77,7 @@ func _on_load_pressed() -> void:
 	GameManager.apply_save_data()
 	var player:=GameManager.player
 	player.apply_save_data()
-	
-	#Dialogue Load
-	Dialogic.Save.load()
-	
+	GameManager.load_from_save_next_main = true	
 	# Switch to the saved scene
 	var path := SaveManager.current_save.current_scene_path
 	if path != "":

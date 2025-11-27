@@ -25,8 +25,7 @@ func _process(_delta):
 	
 	if playerBody:
 		if Input.is_action_pressed("ui_accept") and GameManager.needBed:
-			Dialogue_system()
-			await Dialogic.timeline_ended
+			await Dialogue_system()
 			print("going to bed...")
 			var currentTask: String = ""
 			for key in TaskManager.activeTasks.keys():
@@ -60,3 +59,4 @@ func Dialogue_system() -> void:
 			Dialogic.start("Day_4 Bed Dialogue")
 		5: #end game good ending
 			Dialogic.start("Day_5 Bed Dialogue")
+	await Dialogic.timeline_ended

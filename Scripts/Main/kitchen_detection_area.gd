@@ -28,8 +28,6 @@ func _process(_delta):
 	
 	if playerBody:
 		if Input.is_action_pressed("ui_accept") and GameManager.needKitchen:
-			Dialogue_system()
-			await Dialogic.timeline_ended
 			if ResourceLoader.exists(kitchenScenePath):
 				SceneLoader.change_scene_with_loading(kitchenScenePath)
 			else:
@@ -46,16 +44,3 @@ func OnBodyExited(body):
 		playerBody = null # Clear the player
 		if label:
 			label.visible = false
-
-func Dialogue_system() -> void:
-	match GameManager.currentDay:
-		0:
-			Dialogic.start("Day_0 Kitchen Dialogue")
-		1:
-			Dialogic.start("Day_1 Kitchen Dialogue")
-		2:
-			Dialogic.start("Day_2 Kitchen Dialogue")
-		3:
-			Dialogic.start("Day_3 Kitchen Dialogue")
-		4:
-			Dialogic.start("Day_4 Kitchen Dialogue")

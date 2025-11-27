@@ -333,6 +333,17 @@ theme = ExtResource("3_3kyvb")
 theme_override_font_sizes/font_size = 116
 text = "Master"
 
+[node name="Label2" type="Label" parent="OptionsPanel"]
+layout_mode = 0
+offset_left = 8.24889
+offset_top = 21.441175
+offset_right = 344.2489
+offset_bottom = 161.44118
+scale = Vector2(0.019287927, 0.03560089)
+theme = ExtResource("3_3kyvb")
+theme_override_font_sizes/font_size = 116
+text = "CV"
+
 [node name="VolumeSlider" type="HSlider" parent="OptionsPanel"]
 texture_filter = 1
 custom_minimum_size = Vector2(100, 0)
@@ -341,6 +352,23 @@ offset_left = 15.6276455
 offset_top = 13.988688
 offset_right = 115.62765
 offset_bottom = 43.988693
+rotation = 0.009336297
+scale = Vector2(0.117608085, 0.1915246)
+theme = ExtResource("3_3kyvb")
+max_value = 2.0
+step = 0.01
+tick_count = 51
+ticks_on_borders = true
+ticks_position = 3
+
+[node name="VolumeSlider2" type="HSlider" parent="OptionsPanel"]
+texture_filter = 1
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 0
+offset_left = 15.558033
+offset_top = 20.891403
+offset_right = 115.55803
+offset_bottom = 50.89141
 rotation = 0.009336297
 scale = Vector2(0.117608085, 0.1915246)
 theme = ExtResource("3_3kyvb")
@@ -373,6 +401,7 @@ theme_override_font_sizes/font_size = 88
 text = " Return "
 
 [node name="SocialsPanel" type="Panel" parent="."]
+visible = false
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0

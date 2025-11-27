@@ -27,8 +27,8 @@ func _process(_delta):
 	if playerBody:
 		if Input.is_action_pressed("ui_accept") and GameManager.needDaughter:
 			#Dialogue system
-			Dialogue_system()
-			
+			await Dialogue_system()
+
 			var currentTask: String = ""
 			for key in TaskManager.activeTasks.keys():
 				if String(key).contains("Daughter"):
@@ -64,3 +64,4 @@ func Dialogue_system() -> void:
 			Dialogic.start("Day_4 Elise Dialogue")
 		5: #end game good ending
 			Dialogic.start("Day_5 Elise Dialogue")
+	await Dialogic.timeline_ended

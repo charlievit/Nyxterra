@@ -1,2 +1,3 @@
 Narrator: Sutherland, the light keeper of the Fair Isle Lighthouse, wakes up.
+[voice path="res://Assets/Audio/VA/Sutherland/Family holds steady.mp3" volume="0.0" bus="Character Voice"]
 Sutherland: Another day the sea runs wild and the family holds steady.

@@ -52,6 +52,8 @@ var todaysRecipe: String
 
 #save/load
 var player: Node = null
+var isIntroPlayed: bool = false
+var load_from_save_next_main: bool = false
 
 # CUTSCENES
 var introPlayed: bool = false
@@ -74,6 +76,7 @@ func _ready():
 	CutsceneManager.CheckForPendingDayStart()
 
 func _on_dialogue_started(): 
+	#get_tree().paused = true
 	pass
 
 func _on_dialogue_ended():
@@ -83,6 +86,12 @@ func _on_dialogue_ended():
 func StartNewGame():
 	# Reset internal variables
 	currentDay = 0 # Start at Day 0 now
+	currentTaskStep = 0
+	isIntroPlayed = false
+	load_from_save_next_main = false
+	pending_post_source = ReturnSource.NONE
+	shouldUseStoredSpawn = false
+	TaskManager.CompleteDay() #Reset Task list
 	daySTATE = DayState.NIGHT_FADING 
 	todaysRecipe = "BarfitStovies"
 	hasCompletedTutorial = false
@@ -375,11 +384,16 @@ func write_save_data() -> void:
 	data.morality_needed = moralityNeeded
 	data.relationship = relationship
 	data.should_light_be_on_tonight = shouldLightBeOnTonight
-	
+	data.pending_post_source = pending_post_source
 	# Added Cutscene variables
 	data.introPlayed = introPlayed
 	data.introScenePlayed = introScenePlayed
-
+	
+	#Intro Dialogue
+	data.isIntroPlayed = isIntroPlayed
+	# NEW: task panel data
+	data.task_data = TaskManager.get_save_data()
+	
 func apply_save_data() -> void:
 	# Read from SaveData back into GameManager
 	var data := SaveManager.current_save
@@ -404,3 +418,13 @@ func apply_save_data() -> void:
 	# Added Cutscene variables
 	introPlayed = data.introPlayed
 	introScenePlayed = data.introScenePlayed
+	
+	pending_post_source = data.pending_post_source
+	
+	#Intro dialogue
+	isIntroPlayed = data.isIntroPlayed
+	
+	if data.task_data.size() > 0:
+		TaskManager.load_from_save(data.task_data)
+	else:
+		TaskManager.CompleteDay()
