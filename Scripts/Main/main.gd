@@ -21,7 +21,6 @@ var isMapHidden: bool = false
 @export var cameraLimitLeft: int = 68
 @export var cameraLimitRight: int = 264
 
-# FIX: Use GameManager.DayState
 @export var currentState = GameManager.DayState.NIGHT_IDLE
 var cycleProgress: float = 0.0
 
@@ -175,6 +174,10 @@ func _process(delta):
 			nightBackground.modulate.a = 1.0
 			snowFall.modulate.a = 1.0
 			sunRiseGradient.position = gradientStartPosition
+
+func _on_intro_cutscene_finished():
+	GameManager.introScenePlayed = true
+	SaveManager.write_save()
 
 func SyncVisualsToState():
 	cycleProgress = 0.0 # Reset progress on load to avoid mid-transition weirdness

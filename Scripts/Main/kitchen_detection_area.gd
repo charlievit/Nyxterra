@@ -49,8 +49,6 @@ func OnBodyExited(body):
 
 func Dialogue_system() -> void:
 	match GameManager.currentDay:
-		-1:
-			Dialogic.start("Day_-1 Kitchen Dialogue")
 		0:
 			Dialogic.start("Day_0 Kitchen Dialogue")
 		1:

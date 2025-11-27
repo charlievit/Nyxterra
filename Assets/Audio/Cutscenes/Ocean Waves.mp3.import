@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bacnwclw2lx7y"
+path="res://.godot/imported/Ocean Waves.mp3-593459571b3e477362158ec1945081e4.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/Cutscenes/Ocean Waves.mp3"
+dest_files=["res://.godot/imported/Ocean Waves.mp3-593459571b3e477362158ec1945081e4.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4

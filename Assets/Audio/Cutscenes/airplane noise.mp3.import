@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dsfecc7xibj6m"
+path="res://.godot/imported/airplane noise.mp3-73dcd2ddd24b79754ec08c4541db07c0.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/Cutscenes/airplane noise.mp3"
+dest_files=["res://.godot/imported/airplane noise.mp3-73dcd2ddd24b79754ec08c4541db07c0.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
