@@ -85,13 +85,14 @@ directories/dtl_directory={
 "Intro": "res://Timeline/Intro.dtl"
 }
 layout/style_directory={
-"": "res://testing.tres",
+"": "res://portraitlessStyle.tres",
 "dialogicStyle": "res://dialogicStyle.tres",
+"portraitlessStyle": "res://portraitlessStyle.tres",
 "testing": "res://testing.tres"
 }
 glossary/default_case_sensitive=true
-layout/style_list=["res://dialogicStyle.tres", "res://testing.tres"]
-layout/default_style="res://testing.tres"
+layout/style_list=["res://dialogicStyle.tres", "res://testing.tres", "res://portraitlessStyle.tres"]
+layout/default_style="res://portraitlessStyle.tres"
 variables={
 "Cooking_Response": "",
 "Day1_response": "",

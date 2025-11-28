@@ -258,6 +258,8 @@ theme_override_colors/default_color = Color(0.8745098, 0.8980392, 0.7294118, 1)
 theme_override_fonts/normal_font = ExtResource("3_8wf1d")
 theme_override_font_sizes/normal_font_size = 512
 text = "Solais"
+scroll_active = false
+autowrap_mode = 0
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 layout_mode = 1
@@ -324,10 +326,10 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_4j130")
 
 [node name="Label" type="Label" parent="OptionsPanel"]
 layout_mode = 0
-offset_left = 8.422917
-offset_top = 14.294118
-offset_right = 77.42292
-offset_bottom = 44.294117
+offset_left = 7.9704466
+offset_top = 14.294117
+offset_right = 343.97046
+offset_bottom = 154.29411
 scale = Vector2(0.019287927, 0.03560089)
 theme = ExtResource("3_3kyvb")
 theme_override_font_sizes/font_size = 116
@@ -342,7 +344,7 @@ offset_bottom = 161.44118
 scale = Vector2(0.019287927, 0.03560089)
 theme = ExtResource("3_3kyvb")
 theme_override_font_sizes/font_size = 116
-text = "CV"
+text = "Voices"
 
 [node name="VolumeSlider" type="HSlider" parent="OptionsPanel"]
 texture_filter = 1

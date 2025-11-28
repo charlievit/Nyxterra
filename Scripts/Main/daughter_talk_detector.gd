@@ -19,13 +19,17 @@ func _ready():
 		push_error("ERROR: label missing")
 
 func _process(_delta):
+	if not GameManager.needDaughter:
+		return
+	
 	# Animate the label
 	if playerBody and label:
 		# Bob up and down
 		label.position.y = baseLabelPos.y + (sin(Time.get_ticks_msec() * 0.005) * 3.0)
 	
-	if playerBody:
+	if playerBody and GameManager.needDaughter:
 		if Input.is_action_pressed("ui_accept") and GameManager.needDaughter:
+			OnBodyExited(playerBody)
 			#Dialogue system
 			await Dialogue_system()
 
@@ -34,7 +38,6 @@ func _process(_delta):
 				if String(key).contains("Daughter"):
 					currentTask = key
 			GameManager.CompleteTask(currentTask)
-			OnBodyExited(playerBody)
 
 func OnBodyEntered(body):
 	if body.is_in_group("player") and GameManager.needDaughter:
@@ -43,6 +46,9 @@ func OnBodyEntered(body):
 			label.visible = true
 
 func OnBodyExited(body):
+	if body == null:
+		return
+	
 	if body.is_in_group("player"):
 		playerBody = null # Clear the player
 		if label:
@@ -50,8 +56,6 @@ func OnBodyExited(body):
 
 func Dialogue_system() -> void:
 	match GameManager.currentDay:
-		-1:
-			Dialogic.start("Day_-1 Elise Dialogue")
 		0:
 			Dialogic.start("Day_0 Elise Dialogue")
 		1:

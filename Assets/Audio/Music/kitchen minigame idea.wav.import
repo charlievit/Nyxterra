@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dqm1jyriyivls"
+path="res://.godot/imported/kitchen minigame idea.wav-1f7c6e3812592a20929f760aeba1b821.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/Music/kitchen minigame idea.wav"
+dest_files=["res://.godot/imported/kitchen minigame idea.wav-1f7c6e3812592a20929f760aeba1b821.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

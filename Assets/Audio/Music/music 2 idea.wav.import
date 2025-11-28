@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bjrmdfltetaoy"
+path="res://.godot/imported/music 2 idea.wav-b7977f40619e0a1531d86dc0ff316bda.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/Music/music 2 idea.wav"
+dest_files=["res://.godot/imported/music 2 idea.wav-b7977f40619e0a1531d86dc0ff316bda.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

@@ -277,6 +277,10 @@ func TriggerWinState():
 	GameManager.CompleteTask(currentTaskID)
 	GameManager.pending_post_source = GameManager.ReturnSource.GEARBOX
 	if ResourceLoader.exists(mainGameScenePath):
+		await GearboxDialogue()
 		SceneLoader.change_scene_with_loading(mainGameScenePath)
 	else:
 		push_error("ERROR: Main game scene path not found.")
+
+func GearboxDialogue():
+	Dialogic.start("Day_1 Gearbox Complete")

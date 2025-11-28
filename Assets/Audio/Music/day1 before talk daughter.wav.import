@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://2f0lv7sdp607"
+path="res://.godot/imported/day1 before talk daughter.wav-56ba9ad2eb046fac7fb40c88bb5485a4.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/Music/day1 before talk daughter.wav"
+dest_files=["res://.godot/imported/day1 before talk daughter.wav-56ba9ad2eb046fac7fb40c88bb5485a4.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

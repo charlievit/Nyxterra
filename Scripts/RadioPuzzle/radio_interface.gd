@@ -49,10 +49,12 @@ var currentTaskID: String = ""
 @onready var tuningSounds = preload("res://Assets/Audio/SineWave Puzzle/RadioStatic.mp3")
 @onready var buttonSound = preload("res://Assets/Audio/SineWave Puzzle/RadioOnButton.mp3")
 #@onready var messageSound = preload("res://Assets/Audio/SineWave Puzzle/AUDIO_NEEDED_HERE")
+@onready var radioMusic = preload("res://Assets/Audio/Music/Radio theme.wav")
 
 var oneShotPlayer: AudioStreamPlayer2D
 var tuningSoundPlayer: AudioStreamPlayer2D
 var messagePlayer: AudioStreamPlayer2D
+var backgroundMusicPlayer: AudioStreamPlayer
 #endregion
 
 func _ready():
@@ -84,6 +86,12 @@ func _ready():
 	
 	messagePlayer = AudioStreamPlayer2D.new()
 	add_child(messagePlayer)
+	
+	backgroundMusicPlayer = AudioStreamPlayer.new()
+	add_child(backgroundMusicPlayer)
+	backgroundMusicPlayer.stream = radioMusic
+	backgroundMusicPlayer.volume_db = -30.0
+	backgroundMusicPlayer.play()
 	#messagePlayer.stream = todaysMessage
 	
 	# TESTING
@@ -175,7 +183,7 @@ func CheckForMatch():
 			playerWave.default_color = tunedInColor
 			tuningSoundPlayer.volume_db = -15.0
 			emit_signal("stationTuned")
-			# TODO: audioStationNoiseLoopHere.play()
+			await Radio()
 			GameManager.SetPlayerSpawn(returnFloorIndex, returnPosition)
 			GameManager.CompleteTask(currentTaskID)
 			GameManager.pending_post_source = GameManager.ReturnSource.RADIO
@@ -183,6 +191,20 @@ func CheckForMatch():
 				SceneLoader.change_scene_with_loading(mainGameScenePath)
 			else:
 				push_error("ERROR: Main game scene path not found.")
+
+func Radio():
+	if GameManager.smithTalkedToDay1 == true:
+		Dialogic.start("Day_1 Smith Dialogue")
+	match GameManager.currentDay:
+		1:
+			Dialogic.start("Day_1 Radio Complete")
+			GameManager.smithTalkedToDay1 = true
+		2:
+			Dialogic.start("Day_2 Radio Complete")
+		3:
+			Dialogic.start("Day_3 Radio Complete")
+		4:
+			Dialogic.start("Day_4 Radio Complete")
 
 func UpdateAudio():
 	if tuningSoundPlayer:

@@ -47,8 +47,10 @@ var cycleProgress: float = 0.0
 #endregion
 
 func _ready() -> void:
+	# 1. Check for Pending Day Start first (This sets up the Spawn Data in GameManager)
+	CutsceneManager.CheckForPendingDayStart()
+	
 	# CONNECT TO GAMEMANAGER
-	# This allows the story to control the sun/moon
 	GameManager.requestDayCycle.connect(StartDayCycle)
 	GameManager.requestNightCycle.connect(StartNightCycle)
 	
@@ -58,7 +60,7 @@ func _ready() -> void:
 	zoomCamera.make_current()
 	subVPort.world_2d = get_world_2d()
 	
-	# Initial visual setup (will be overwritten by SyncVisualsToState below)
+	# Initial visual setup
 	sun.position = sunStartPosition
 	moon.position = moonStartPosition
 	nightBackground.modulate.a = 1.0
@@ -74,30 +76,15 @@ func _ready() -> void:
 	elif GameManager.shouldUseStoredSpawn:
 		GameManager.ConsumeSpawnData(player)
 	elif GameManager.load_from_save_next_main:
-		# We already called reload_from_disk() before changing scenes
 		GameManager.apply_save_data()
 		player.apply_save_data()
 		GameManager.load_from_save_next_main = false
-		
-		
 	
 	currentState = GameManager.daySTATE
 	SyncVisualsToState()
 	
 	#Dialogue System
-	#var visibleSize = Vector2(subVPort.size) / zoomCamera.zoom
-	#var halfWidth = visibleSize.x / 2.0
-	
-	#var minX = cameraLimitLeft + halfWidth
-	#var maxX = cameraLimitRight - halfWidth
-	
-	#var targetPosition = player.global_position
-	
-	#if maxX > minX:
-		#targetPosition.x = clamp(targetPosition.x, minX, maxX)
-	
-	#zoomCamera.global_position = targetPosition
-	if GameManager.isIntroPlayed == false:
+	if GameManager.currentDay == 0 and GameManager.isIntroPlayed == false:
 		Dialogic.start("Intro")
 		await Dialogic.timeline_ended
 		GameManager.isIntroPlayed = true
@@ -264,8 +251,6 @@ func _on_toggle_map_pressed() -> void:
 
 func _on_Radio_Completed() -> void:
 	match GameManager.currentDay:
-		-1:
-			Dialogic.start("Day_-1 Radio Completed")
 		0:
 			Dialogic.start("Day_0 Radio Completed")
 		1:
@@ -279,8 +264,6 @@ func _on_Radio_Completed() -> void:
 
 func _on_Gear_Completed() -> void:
 	match GameManager.currentDay:
-		-1:
-			Dialogic.start("Day_-1 GearBox Completed")
 		0:
 			Dialogic.start("Day_0 GearBox Completed")
 		1:
@@ -294,8 +277,6 @@ func _on_Gear_Completed() -> void:
 
 func _on_Morse_Completed() -> void:
 	match GameManager.currentDay:
-		-1:
-			Dialogic.start("Day_-1 Morse Completed")
 		0:
 			Dialogic.start("Day_0 Morse Completed")
 		1:
@@ -309,8 +290,6 @@ func _on_Morse_Completed() -> void:
 
 func _on_Kitchen_Completed() -> void:
 	match GameManager.currentDay:
-		-1:
-			Dialogic.start("Day_-1 Kitchen Completed")
 		0:
 			Dialogic.start("Day_0 Kitchen Completed")
 		1:

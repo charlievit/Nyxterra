@@ -28,7 +28,6 @@ func _process(_delta):
 	
 	if playerBody:
 		if Input.is_action_pressed("ui_accept") and GameManager.needMorse:
-			await Morse_Dialogue()
 			if ResourceLoader.exists(morseScenePath):
 				SceneLoader.change_scene_with_loading(morseScenePath)
 			else:
@@ -53,18 +52,10 @@ func OnBodyExited(body):
 		if label:
 			label.visible = false
 
-func Morse_Dialogue() -> void:
-	match GameManager.currentDay:
-		-1:
-			Dialogic.start("Day_-1 Morse Dialogue")
-			await Dialogic.timeline_ended
-		0:
-			pass
-
 func Radio_Dialogue() -> void:
 	match GameManager.currentDay:
-		-1:
-			Dialogic.start("Day_-1 Radio Dialogue")
 		0:
 			Dialogic.start("Day_0 Radio Dialogue")
+		1:
+			return
 	await Dialogic.timeline_ended
