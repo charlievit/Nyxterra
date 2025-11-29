@@ -1,2 +1,2 @@
-[voice volume="0.0"]
-Sutherland: <Empty Text Event>
+[voice path="res://Assets/Audio/VA/Sutherland/Cooking/What am I doing.mp3" volume="0.0" bus="Character Voice"]
+Sutherland: Ugh! What am I doing?
