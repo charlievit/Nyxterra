@@ -22,9 +22,9 @@ TaskManager="*res://Scenes/UI/task_menu.tscn"
 KitchenController="*res://Scripts/CookingMinigame/kitchen_puzzle.gd"
 GameManager="*res://Scripts/Main/GameManager.gd"
 SaveManager="*res://Scripts/save_load/save_manager.gd"
-SceneLoader="*res://Scripts/scene_loader.gd"
+SceneLoader="*res://Scripts/save_load/scene_loader.gd"
 Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
-CutsceneManager="*res://Scripts/CutsceneManager.gd"
+CutsceneManager="*res://Scripts/UI/CutsceneManager.gd"
 ToggleTutorial="*res://Scenes/UI/toggle_tutorial.tscn"
 
 [dialogic]

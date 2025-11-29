@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://c31ftu4sm8dpi"
+path="res://.godot/imported/Light keeper.mp3-dd5f69b50f325022256c097a8978d0f9.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/Music/Light keeper.mp3"
+dest_files=["res://.godot/imported/Light keeper.mp3-dd5f69b50f325022256c097a8978d0f9.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

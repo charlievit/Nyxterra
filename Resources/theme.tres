@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=11 format=3 uid="uid://b4lurv8njswua"]
+[gd_resource type="Theme" load_steps=12 format=3 uid="uid://b4lurv8njswua"]
 
 [ext_resource type="FontFile" uid="uid://bugymcbk132rp" path="res://Assets/Fonts/Fry's Baskerville Regular.otf" id="1_6hc6j"]
 [ext_resource type="Texture2D" uid="uid://bxhlfogarrm4o" path="res://Assets/Images/GearPuzzle/Pins/Pin.png" id="2_0abbe"]
@@ -40,6 +40,15 @@ border_width_right = 2
 border_width_bottom = 2
 border_color = Color(0.8745098, 0.8980392, 0.7294118, 1)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6hc6j"]
+bg_color = Color(0.13725491, 0.12156863, 0.1254902, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+expand_margin_left = 8.0
+expand_margin_right = 8.0
+
 [sub_resource type="Gradient" id="Gradient_3myvw"]
 colors = PackedColorArray(0.13725491, 0.12156863, 0.1254902, 1, 0.13725491, 0.12156863, 0.1254902, 1)
 
@@ -75,6 +84,7 @@ Button/styles/disabled = SubResource("StyleBoxFlat_3kyvb")
 Button/styles/hover = SubResource("StyleBoxFlat_2ybwg")
 Button/styles/normal = SubResource("StyleBoxFlat_fa70d")
 Button/styles/pressed = SubResource("StyleBoxFlat_j6k6k")
+CheckBox/styles/pressed = SubResource("StyleBoxFlat_6hc6j")
 HSlider/constants/center_grabber = 1
 HSlider/constants/grabber_offset = 0
 HSlider/constants/tick_offset = 1

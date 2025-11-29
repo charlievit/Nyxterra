@@ -1,6 +1,7 @@
 extends Area2D
 
 @onready var label: RichTextLabel = $ButtonPrompt
+@export var sleepScreenPath: String = "res://Scenes/sleepScreen.tscn"
 
 var baseLabelPos: Vector2
 var playerBody: CharacterBody2D = null
@@ -36,6 +37,10 @@ func _process(_delta):
 				if String(key).contains("Bed"):
 					currentTask = key
 			GameManager.CompleteTask(currentTask)
+			if ResourceLoader.exists(sleepScreenPath):
+				SceneLoader.change_scene_with_loading(sleepScreenPath)
+			else:
+				push_error("ERROR: Main game scene path not found.")
 
 func OnBodyEntered(body):
 	if body.is_in_group("player") and GameManager.needBed:

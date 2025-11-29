@@ -1,4 +1,4 @@
-[gd_scene load_steps=78 format=3 uid="uid://bty042lmdfi02"]
+[gd_scene load_steps=79 format=3 uid="uid://bty042lmdfi02"]
 
 [ext_resource type="Texture2D" uid="uid://brrqynw57auwm" path="res://Assets/Images/Lighthouse/Structure/FullTowerBuild2.png" id="1_w401g"]
 [ext_resource type="Script" uid="uid://duquj7bcb54rw" path="res://Scripts/Main/lighthouse_button_area.gd" id="1_we2es"]
@@ -41,7 +41,7 @@
 [ext_resource type="Texture2D" uid="uid://6m75sw3kdspu" path="res://Assets/Images/Lighthouse/Structure/Turny Thing/frame0017.png" id="23_2tttr"]
 [ext_resource type="Script" uid="uid://qxikudipxih8" path="res://Scripts/Main/mainGearAnimation.gd" id="24_kx1qn"]
 [ext_resource type="Script" uid="uid://fo1o3pb5mktu" path="res://Scripts/GearPuzzle/gearBoxDetectionForMainScene.gd" id="26_cln54"]
-[ext_resource type="Script" uid="uid://bhg0dsk0yreiu" path="res://Scripts/bed_detection_area.gd" id="31_71vhx"]
+[ext_resource type="Script" uid="uid://bhg0dsk0yreiu" path="res://Scripts/Main/bed_detection_area.gd" id="31_71vhx"]
 [ext_resource type="Texture2D" uid="uid://bp7jqmyb3kdwc" path="res://Assets/Images/Lighthouse/Props/Living Areas/couch_s.png" id="32_2jvc2"]
 [ext_resource type="Script" uid="uid://qnsant6mcp75" path="res://Scripts/Main/morse_radio_detection_area.gd" id="32_w401g"]
 [ext_resource type="Script" uid="uid://b3j4sfwnj3nnw" path="res://Scripts/Main/kitchen_detection_area.gd" id="34_4c1dk"]
@@ -50,6 +50,7 @@
 [ext_resource type="Texture2D" uid="uid://d4lvnvbu21c8w" path="res://Assets/Images/Lighthouse/Props/Kitchen and Dining Room/table.png" id="38_sai28"]
 [ext_resource type="Texture2D" uid="uid://dfaluoiu7tpc" path="res://Assets/Images/Lighthouse/Structure/Gearbox/frame0000.png" id="38_yasn8"]
 [ext_resource type="Texture2D" uid="uid://c1nbryalwq2mf" path="res://Assets/Images/Lighthouse/Structure/Gearbox/frame0001.png" id="39_j2rhv"]
+[ext_resource type="Script" uid="uid://u3ifwbjlwvqc" path="res://Scripts/GearPuzzle/gearBoxMainSceneAnimationHandler.gd" id="43_l1a87"]
 [ext_resource type="Texture2D" uid="uid://dyiipp3pg8kd6" path="res://Assets/Images/Lighthouse/Props/Bedroom/BedsideTable.png" id="43_sx3pd"]
 [ext_resource type="Texture2D" uid="uid://b7uci666p2t2b" path="res://Assets/Images/Lighthouse/Props/Bedroom/Bed.png" id="44_5gq0l"]
 [ext_resource type="Texture2D" uid="uid://1oj5oejp5076" path="res://Assets/Images/Lighthouse/Props/Kitchen and Dining Room/Window.png" id="48_wm78i"]
@@ -66,7 +67,7 @@
 [ext_resource type="Texture2D" uid="uid://b6hm6oy6xlks1" path="res://Assets/Images/Lighthouse/Props/Kitchen and Dining Room/washing-machine.png" id="61_xhv2u"]
 [ext_resource type="Texture2D" uid="uid://b4n6cg1y8xc61" path="res://Assets/Images/Lighthouse/Props/Kitchen and Dining Room/plate.png" id="63_pm18c"]
 [ext_resource type="Texture2D" uid="uid://c8ytipb6iq06u" path="res://Assets/Images/Lighthouse/Props/Kitchen and Dining Room/miniLockbox.png" id="64_v23lm"]
-[ext_resource type="Script" uid="uid://ptduaxougvs3" path="res://Scenes/Environments/lockbox_detection_area.gd" id="65_v23lm"]
+[ext_resource type="Script" uid="uid://ptduaxougvs3" path="res://Scripts/Main/lockbox_detection_area.gd" id="66_we2es"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b2lj4"]
 size = Vector2(25.488739, 42.957886)
@@ -528,6 +529,7 @@ position = Vector2(136, 69)
 scale = Vector2(0.7844259, 1.0484275)
 sprite_frames = SubResource("SpriteFrames_xtyv8")
 frame_progress = 0.6452866
+script = ExtResource("43_l1a87")
 
 [node name="MinigameDetectionArea" type="Area2D" parent="MIDDLE/GearBox"]
 position = Vector2(49.717884, -32.42952)
@@ -902,7 +904,7 @@ texture = ExtResource("64_v23lm")
 [node name="Lockbox Detection Area" type="Area2D" parent="BOTTOM/MiniLockbox"]
 position = Vector2(-12.3076935, -11.8519)
 scale = Vector2(0.5851159, 0.75307304)
-script = ExtResource("65_v23lm")
+script = ExtResource("66_we2es")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BOTTOM/MiniLockbox/Lockbox Detection Area"]
 position = Vector2(6.3103027, 37.770996)

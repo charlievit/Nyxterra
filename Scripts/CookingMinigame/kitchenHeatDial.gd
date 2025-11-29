@@ -10,7 +10,7 @@ signal ValueChanged(value: float)
 
 @export_group("Click Feedback Line")
 @export var clickLineColor: Color = Color.CYAN
-@export var clickLineWidth: float = 3
+@export var clickLineWidth: float = 20
 
 # NODES
 @onready var dialArt: Sprite2D = $DialArt

@@ -17,13 +17,13 @@ func _ready():
 	
 	if self.icon:
 		originalIconTexture = self.icon
-		print(originalIconTexture)
+		#print(originalIconTexture)
 
 func _on_pressed():
-	print("Pressed")
+	#print("Pressed")
 	self.icon = null
 	set_disabled(true)
-	print(originalIconTexture)
+	#print(originalIconTexture)
 	# Package up data
 	var data = {
 		"button": self,
