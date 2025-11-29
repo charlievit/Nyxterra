@@ -147,10 +147,28 @@ func _check_word_progress() -> void:
 func _on_sentence_solved() -> void:
 	label_feedback.text = "Correct! The light will guide you tonight."
 	label_feedback.modulate = Color(0, 1, 0)
-	# Update GM with task progress
+	
+	# DAY 0 EXCEPTION HANDLING
+	# On Day 0, CompleteTask() triggers the Bombing Cutscene via GameManager logic.
+	# We simply return, ensuring we don't accidentally set a return spawn point or change scene.
+	# The Cutscene Manager will eventually trigger GameManager.StartDay(1), which handles the spawn.
+	if GameManager.currentDay == 0:
+		self.set_process(false)
+		await _Dialogue_System()
+		self.set_process(true)
+		GameManager.CompleteTask(currentTaskID)
+		return
+
+	# STANDARD DAY HANDLING (Day 1+)
+	# 1. Set return spawn so Player is back at the machine in Main scene
 	GameManager.SetPlayerSpawn(returnFloorIndex, returnPosition)
+	
+	# 2. Complete the task
 	GameManager.CompleteTask(currentTaskID)
+	
+	# 3. Set dialogue flag and return to Main
 	GameManager.pending_post_source = GameManager.ReturnSource.MORSE
+	
 	if ResourceLoader.exists(mainGameScenePath):
 		SceneLoader.change_scene_with_loading(mainGameScenePath)
 	else:
@@ -229,3 +247,7 @@ func _update_labels() -> void:
 
 	var display := (prefix + decoded_current_word).strip_edges()
 	label_out.text = "You typed: %s" % display
+
+func _Dialogue_System() -> void:
+	Dialogic.start("Day_0 Morse Completed")
+	await Dialogic.timeline_ended

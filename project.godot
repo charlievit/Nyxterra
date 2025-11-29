@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Solais"
-run/main_scene="uid://7n8koxy8i17p"
+run/main_scene="uid://bf5g134nk8ebe"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 config/icon="res://Assets/Images/icon.svg"
 config/windows_native_icon="res://Assets/Images/Build Resources/SolaisIcon.ico"
@@ -85,20 +85,20 @@ directories/dtl_directory={
 "Intro": "res://Timeline/Intro.dtl"
 }
 layout/style_directory={
-"": "res://testing.tres",
+"": "res://portraitlessStyle.tres",
 "dialogicStyle": "res://dialogicStyle.tres",
+"portraitlessStyle": "res://portraitlessStyle.tres",
 "testing": "res://testing.tres"
 }
 glossary/default_case_sensitive=true
-layout/style_list=["res://dialogicStyle.tres", "res://testing.tres"]
-layout/default_style="res://testing.tres"
+layout/style_list=["res://dialogicStyle.tres", "res://testing.tres", "res://portraitlessStyle.tres"]
+layout/default_style="res://portraitlessStyle.tres"
 variables={
-"Cooking_Response": "",
+"Cooking_Response": "Good",
 "Day1_response": "",
 "Day2_response": "",
 "Day3_response": "",
-"Day4_response": "",
-"Day_1_response": ""
+"Day4_response": ""
 }
 extensions_folder="res://addons/dialogic_additions"
 text/letter_speed=0.01

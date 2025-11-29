@@ -48,15 +48,17 @@ func EndScene():
 
 func LastStep():
 	var tween = create_tween()
-	tween.tween_property(trueStoryText, "modulate:a", 1.0, 5.0)
-	tween.tween_property(choicesText, "modulate:a", 1.0, 5.0)
+	tween.tween_property(trueStoryText, "modulate:a", 1.0, 2.5)
+	tween.tween_property(choicesText, "modulate:a", 1.0, 2.5)
 	tween.tween_interval(2.0)
-	tween.tween_property(trueStoryText, "modulate:a", 0.0, 2.5)
+	tween.tween_property(trueStoryText, "modulate:a", 0.0, 1.5)
 	tween.tween_interval(1.25)
-	tween.tween_property(choicesText, "modulate:a", 0.0, 2.5)
+	tween.tween_property(choicesText, "modulate:a", 0.0, 1.5)
 	tween.tween_interval(2.5)
 	tween.tween_callback(ContinueToGame)
 
 func ContinueToGame():
 	GameManager.introScenePlayed = true
+	# This triggers CutsceneManager to load Main. 
+	# CutsceneManager will see the pending Day 1 (preserved from Bombing) and trigger GameManager.StartDay(1)
 	CutsceneManager.FinishCutscene()

@@ -115,9 +115,11 @@ func End():
 	tween.tween_property(windSoundPlayer, "volume_db", -80.0, 32.0)
 	
 	await get_tree().create_timer(8.0).timeout
+	
 	if GameManager.isBadEnding:
-		print("Play sad bad ending audio.")
+		print("Bad Ending Reached. Ending Game.")
+		CutsceneManager.EndGame()
 	else:
-		print("Play sad opening audio")
+		print("Day 0 Transition: Playing Intro/Arrival Cutscene.")
 		GameManager.introPlayed = true
 		CutsceneManager.PlayCutscene("res://Scenes/Cutscenes/arrival_cutscene.tscn")

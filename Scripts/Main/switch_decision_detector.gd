@@ -20,9 +20,10 @@ func _ready():
 			break
 	
 	# Connect signals
+	
 	self.body_entered.connect(OnBodyEntered)
 	self.body_exited.connect(OnBodyExited)
-	
+	Dialogic.signal_event.connect(_On_Switch_Pressed)
 	if label:
 		# Hide label and store its position for bobbing
 		label.visible = false
@@ -99,12 +100,7 @@ func ClosePopUp():
 		playerBody.controlsDisabled = false
 
 func Dialogue_system() -> void:
-	Dialogic.signal_event.connect(_On_Switch_Pressed)
 	match GameManager.currentDay:
-		-1:
-			Dialogic.start("Day_-1 Light Dialogue")
-		0:
-			Dialogic.start("Day_0 Light Dialogue")
 		1:
 			Dialogic.start("Day_1 Light Dialogue")
 		2:

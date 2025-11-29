@@ -47,170 +47,40 @@ const STEP_MID_COLOR = Color.YELLOW_GREEN
 const STEP_END_COLOR = Color.DARK_RED
 #endregion Progress Bar Styles
 
-# Recipes are created as a Dictionary of Arrays of Dictionaries
-# 	Each one has a Title and steps
-# 	Each step has a heat, list of ingredients with amounts, a wait (cook) time, and timer time
-# 	Heat is a value set by the kitchen dial, it can be set to low (25), medium (50), high (100), or off (0)
-# 	Ingredients have names, types, and amounts.
-#		Types are Whole, Shaker, and Pourable
-#			Whole ingredients can also be Choppable, meaning they can be interacted with to make then " (Chopped)"
-#			Shakers are coded to have to be held and shook over the pot to add their ingredients
-#			Pourables are coded to have to be held over the pot and wait for their amounts to pour
-#	Wait time is the amount of time it takes to cook those ingredients
-#	"time" is the challenge timer, the amount of time you have to complete the step before you risk burning or overcooking the food
-#		a "time" of 0.0 means that there is no time limit to this step (rewarding mise en place)
 var recipes = {
-	# LEVEL 1: Beginner
-	# Goal: Tutorial pace. Impossible to fail unless AFK.
 	"BarfitStovies": [
-		# Step 1: Heat oil (Medium Heat)
-		{"heat": 50.0, "ingredients": [
-			{"name": "Oil", "type": "Pourable", "amount": 5}
-		], "wait": 10.0, "time": 0.0},
-		
-		# Step 2: Caramelize onions (Low Heat)
-		{"heat": 25.0, "ingredients": [
-			{"name": "Onion (Chopped)", "type": "Whole", "amount": 2},
-			{"name": "Salt", "type": "Shaker", "amount": 5}
-		], "wait": 45.0, "time": 30.0},
-		
-		# Step 3: Steam Potatoes (Medium Heat)
-		{"heat": 50.0, "ingredients": [
-			{"name": "Potato (Chopped)", "type": "Whole", "amount": 5},
-			{"name": "Stock", "type": "Pourable", "amount": 10}
-		], "wait": 30.0, "time": 45.0},
-		
-		# Step 4: Simmer (Low Heat)
+		{"heat": 50.0, "ingredients": [{"name": "Oil", "type": "Pourable", "amount": 5}], "wait": 10.0, "time": 0.0},
+		{"heat": 25.0, "ingredients": [{"name": "Onion (Chopped)", "type": "Whole", "amount": 2}, {"name": "Salt", "type": "Shaker", "amount": 5}], "wait": 45.0, "time": 30.0},
+		{"heat": 50.0, "ingredients": [{"name": "Potato (Chopped)", "type": "Whole", "amount": 5}, {"name": "Stock", "type": "Pourable", "amount": 10}], "wait": 30.0, "time": 45.0},
 		{"heat": 25.0, "ingredients": [], "wait": 15.0, "time": 99.0},
-		
-		# Step 5: Season
-		{"heat": 25.0, "ingredients": [
-			{"name": "Parsley", "type": "Whole", "amount": 1},
-			{"name": "Pepper", "type": "Shaker", "amount": 5}
-		], "wait": 5.0, "time": 60.0},
-		
-		# END MARKER
+		{"heat": 25.0, "ingredients": [{"name": "Parsley", "type": "Whole", "amount": 1}, {"name": "Pepper", "type": "Shaker", "amount": 5}], "wait": 5.0, "time": 60.0},
 		{"heat": 0.0, "ingredients": [], "wait": 0.0, "time": 0.0}
 	],
-
-	# LEVEL 2: Easy
-	# Goal: Introduction to timing. The "Glaze" step introduces a risk of burning at the end.
 	"BraisedRoots": [
-		# Step 1: Heat oil
-		{"heat": 50.0, "ingredients": [
-			{"name": "Oil", "type": "Pourable", "amount": 3},
-		], "wait": 10.0, "time": 0.0},
-		
-		# Step 2: Combine ingredients
-		{"heat": 50.0, "ingredients": [
-			{"name": "Carrot (Chopped)", "type": "Whole", "amount": 2},
-			{"name": "Potato (Chopped)", "type": "Whole", "amount": 4},
-			{"name": "Garlic (Chopped)", "type": "Whole", "amount": 1}
-		], "wait": 25.0, "time": 40.0},
-		
-		# Step 3: Braise
-		{"heat": 50.0, "ingredients": [
-			{"name": "Stock", "type": "Pourable", "amount": 5},
-			{"name": "Thyme", "type": "Whole", "amount": 2},
-			{"name": "Salt", "type": "Shaker", "amount": 3}
-		], "wait": 30.0, "time": 30.0},
-		
-		# Step 4: Glaze (High Heat Reduction)
+		{"heat": 50.0, "ingredients": [{"name": "Oil", "type": "Pourable", "amount": 3}], "wait": 10.0, "time": 0.0},
+		{"heat": 50.0, "ingredients": [{"name": "Carrot (Chopped)", "type": "Whole", "amount": 2}, {"name": "Potato (Chopped)", "type": "Whole", "amount": 4}, {"name": "Garlic (Chopped)", "type": "Whole", "amount": 1}], "wait": 25.0, "time": 40.0},
+		{"heat": 50.0, "ingredients": [{"name": "Stock", "type": "Pourable", "amount": 5}, {"name": "Thyme", "type": "Whole", "amount": 2}, {"name": "Salt", "type": "Shaker", "amount": 3}], "wait": 30.0, "time": 30.0},
 		{"heat": 100.0, "ingredients": [], "wait": 15.0, "time": 99.0},
-
-		# Step 5: Deglaze / Finish (DANGER STEP)
-		{"heat": 25.0, "ingredients": [
-			{"name": "Water", "type": "Pourable", "amount": 2}
-		], "wait": 5.0, "time": 8.0},
-		
-		# END MARKER
+		{"heat": 25.0, "ingredients": [{"name": "Water", "type": "Pourable", "amount": 2}], "wait": 5.0, "time": 8.0},
 		{"heat": 0.0, "ingredients": [], "wait": 0.0, "time": 0.0}
 	],
-
-	# LEVEL 3: Moderate
 	"ScotchTattieSoup": [
-		# Step 1: Slowly heat oil
-		{"heat": 25.0, "ingredients": [
-			{"name": "Oil", "type": "Pourable", "amount": 3},
-		], "wait": 10.0, "time": 0.0},
-		
-		# Step 2: Saute onions
-		{"heat": 50.0, "ingredients": [
-			{"name": "Onion (Chopped)", "type": "Whole", "amount": 1},
-			{"name": "Pepper", "type": "Shaker", "amount": 6},
-			{"name": "Salt", "type": "Shaker", "amount": 3},
-		], "wait": 20.0, "time": 30.0},
-		
-		# Step 3: Saute aromatics
-		{"heat": 50.0, "ingredients": [
-			{"name": "Carrot (Chopped)", "type": "Whole", "amount": 2},
-			{"name": "Garlic (Chopped)", "type": "Whole", "amount": 1}
-		], "wait": 20.0, "time": 20.0},
-		
-		# Step 4: Add liquids
-		{"heat": 50.0, "ingredients": [
-			{"name": "Stock", "type": "Pourable", "amount": 10},
-			{"name": "Water", "type": "Pourable", "amount": 5},
-		], "wait": 5.0, "time": 15.0},
-		
-		# Step 5: Bring to a boil
+		{"heat": 25.0, "ingredients": [{"name": "Oil", "type": "Pourable", "amount": 3}], "wait": 10.0, "time": 0.0},
+		{"heat": 50.0, "ingredients": [{"name": "Onion (Chopped)", "type": "Whole", "amount": 1}, {"name": "Pepper", "type": "Shaker", "amount": 6}, {"name": "Salt", "type": "Shaker", "amount": 3}], "wait": 20.0, "time": 30.0},
+		{"heat": 50.0, "ingredients": [{"name": "Carrot (Chopped)", "type": "Whole", "amount": 2}, {"name": "Garlic (Chopped)", "type": "Whole", "amount": 1}], "wait": 20.0, "time": 20.0},
+		{"heat": 50.0, "ingredients": [{"name": "Stock", "type": "Pourable", "amount": 10}, {"name": "Water", "type": "Pourable", "amount": 5}], "wait": 5.0, "time": 15.0},
 		{"heat": 100.0, "ingredients": [], "wait": 25.0, "time": 99.0},
-		
-		# Step 6: Add potatoes and thyme
-		{"heat": 100.0, "ingredients": [
-			{"name": "Potato (Chopped)", "type": "Whole", "amount": 4},
-			{"name": "Thyme", "type": "Whole", "amount": 2}
-		], "wait": 40.0, "time": 45.0},
-		
-		# END MARKER
+		{"heat": 100.0, "ingredients": [{"name": "Potato (Chopped)", "type": "Whole", "amount": 4}, {"name": "Thyme", "type": "Whole", "amount": 2}], "wait": 40.0, "time": 45.0},
 		{"heat": 0.0, "ingredients": [], "wait": 0.0, "time": 0.0}
 	],
-
-	# LEVEL 4: Hardest
 	"RabbitStew": [
-		# Step 1: Heat Oil
-		{"heat": 25.0, "ingredients": [
-			{"name": "Oil", "type": "Pourable", "amount": 2},
-			{"name": "Pepper", "type": "Shaker", "amount": 2}
-		], "wait": 5.0, "time": 0.0},
-		
-		# Step 2: Add Onions
-		{"heat": 50.0, "ingredients": [
-			{"name": "Onion (Chopped)", "type": "Whole", "amount": 2}
-		], "wait": 15.0, "time": 15.0},
-		
-		# Step 3: Add Garlc
-		{"heat": 25.0, "ingredients": [
-			{"name": "Garlic (Chopped)", "type": "Whole", "amount": 1}
-		], "wait": 10.0, "time": 15.0},
-		
-		# Step 4: Add Veg & Water (CRITICAL STEP)
-		{"heat": 100.0, "ingredients": [
-			{"name": "Potato (Chopped)", "type": "Whole", "amount": 3},
-			{"name": "Carrot (Chopped)", "type": "Whole", "amount": 1},
-			{"name": "Water", "type": "Pourable", "amount": 20}
-		], "wait": 20.0, "time": 18.0},
-		
-		# Step 5: Add Rabbit & Stock
-		{"heat": 25.0, "ingredients": [
-			{"name": "Rabbit (Chopped)", "type": "Whole", "amount": 1},
-			{"name": "Stock", "type": "Pourable", "amount": 10},
-		], "wait": 30.0, "time": 45.0},
-		
-		# Step 6: Herbs
-		{"heat": 25.0, "ingredients": [
-			{"name": "Thyme", "type": "Whole", "amount": 2},
-			{"name": "Parsley", "type": "Whole", "amount": 2},
-			{"name": "Rosemary", "type": "Whole", "amount": 1}
-		], "wait": 10.0, "time": 30.0},
-		
-		# Step 7: Final Seasoning
-		{"heat": 25.0, "ingredients": [
-			{"name": "Salt", "type": "Shaker", "amount": 10},
-			{"name": "Pepper", "type": "Shaker", "amount": 2}
-		], "wait": 5.0, "time": 30.0},
-		
-		# END MARKER
+		{"heat": 25.0, "ingredients": [{"name": "Oil", "type": "Pourable", "amount": 2}, {"name": "Pepper", "type": "Shaker", "amount": 2}], "wait": 5.0, "time": 0.0},
+		{"heat": 50.0, "ingredients": [{"name": "Onion (Chopped)", "type": "Whole", "amount": 2}], "wait": 15.0, "time": 15.0},
+		{"heat": 25.0, "ingredients": [{"name": "Garlic (Chopped)", "type": "Whole", "amount": 1}], "wait": 10.0, "time": 15.0},
+		{"heat": 100.0, "ingredients": [{"name": "Potato (Chopped)", "type": "Whole", "amount": 3}, {"name": "Carrot (Chopped)", "type": "Whole", "amount": 1}, {"name": "Water", "type": "Pourable", "amount": 20}], "wait": 20.0, "time": 18.0},
+		{"heat": 25.0, "ingredients": [{"name": "Rabbit (Chopped)", "type": "Whole", "amount": 1}, {"name": "Stock", "type": "Pourable", "amount": 10}], "wait": 30.0, "time": 45.0},
+		{"heat": 25.0, "ingredients": [{"name": "Thyme", "type": "Whole", "amount": 2}, {"name": "Parsley", "type": "Whole", "amount": 2}, {"name": "Rosemary", "type": "Whole", "amount": 1}], "wait": 10.0, "time": 30.0},
+		{"heat": 25.0, "ingredients": [{"name": "Salt", "type": "Shaker", "amount": 10}, {"name": "Pepper", "type": "Shaker", "amount": 2}], "wait": 5.0, "time": 30.0},
 		{"heat": 0.0, "ingredients": [], "wait": 0.0, "time": 0.0}
 	]
 }
@@ -722,11 +592,18 @@ func AdvanceToNextStep():
 		# Recipe finished
 		progressBar.visible = false
 		CleanUpReferences()
+		
+		# Set dialogue flags
 		if recipeQuality >= 50 and recipeQuality <= 100:
 			Dialogic.VAR.Cooking_Response = "Good"
 		else:
 			Dialogic.VAR.Cooking_Response = "Bad"
+			
 		print("Recipe complete. Final Quality: %d" % recipeQuality)
+			
+		# NEW: Update Relationship based on performance
+		GameManager.AddCookingScore(recipeQuality)
+		
 		GameManager.CompleteTask(currentTaskID)
 		GameManager.SetPlayerSpawn(returnFloorIndex, returnPosition)
 		GameManager.pending_post_source = GameManager.ReturnSource.KITCHEN

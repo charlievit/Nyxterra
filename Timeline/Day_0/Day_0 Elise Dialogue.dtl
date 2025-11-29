@@ -1,5 +1,5 @@
 [voice path="res://Assets/Audio/VA/Sutherland/wee lass.mp3" volume="0.0" bus="Character Voice"]
 Sutherland: How's my wee lass doing this mighty fine morning?
-[voice path="res://Assets/Audio/VA/Elise/I’m Drawing a Rabbit.mp3" volume="0.0" bus="Character Voice"]
+[voice path="res://Assets/Audio/VA/Elise/I’m Drawing a Rabbit.mp3" volume="-5.0" bus="Character Voice"]
 Elise: (giggles) I'm drawing a rabbit!
 Narrator: She doesn't look up from her drawing, focused.

@@ -75,7 +75,7 @@ position = Vector2(53.70604, 398.8568)
 scale = Vector2(0.44479263, 0.44479263)
 
 [node name="Player" parent="." instance=ExtResource("2_8gbba")]
-position = Vector2(85.92968, 277.83923)
+position = Vector2(88, 278)
 slide_on_ceiling = false
 moveSpeed = 60.0
 

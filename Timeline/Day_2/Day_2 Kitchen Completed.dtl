@@ -1,4 +1,4 @@
-if {Cooking_Response} == "Good":
+if {KitchenController.recipeQuality} >= 50 and {KitchenController.recipeQuality} <= 100:
 	[voice path="res://Assets/Audio/VA/Elise/Thanks Dad.mp3" volume="0.0" bus="Character Voice"]
 	Elise: Thanks dad. It's actually really nice.
 else:

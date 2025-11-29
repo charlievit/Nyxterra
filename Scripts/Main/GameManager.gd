@@ -1,4 +1,3 @@
-# GameManager.gd
 extends Node
 
 #region ENUMS
@@ -9,18 +8,19 @@ enum DayState {
 	MOON_RISING,
 	NIGHT_IDLE
 }
+
+enum ReturnSource { NONE, RADIO, MORSE, KITCHEN, GEARBOX }
 #endregion
 
 #region SIGNALS
 signal requestDayCycle
 signal requestNightCycle
-
 signal showTutorialPopUp(tutorial_id: String)
 #endregion
 
 #region VARIABLES
-var playerSpawnFloor: int = 3 # default floor is 3 (bedroom and office)
-var playerSpawnPosition: Vector2 = Vector2(88, 278) # near the bed (not global_position)
+var playerSpawnFloor: int = 3
+var playerSpawnPosition: Vector2 = Vector2(88, 278)
 var shouldUseStoredSpawn: bool = false
 
 var currentDay: int = 0 
@@ -43,81 +43,69 @@ var morality: int = 1000
 var moralityNeeded: int = 50 
 var yesterdaysRelationship: int = 0
 var relationship: int = 1000
-var isBadEnding: bool
-var shouldLightBeOnTonight: bool
-var choseLightToBeOn: bool
+var isBadEnding: bool = false
+var shouldLightBeOnTonight: bool = false
+var choseLightToBeOn: bool = false
 
 # COOKING
 var todaysRecipe: String
 
-#save/load
-var player: Node = null
-var isIntroPlayed: bool = false
-var load_from_save_next_main: bool = false
-
-# CUTSCENES
+# CUTSCENES / DIALOGUE
 var introPlayed: bool = false
 var introScenePlayed: bool = false
+var isIntroPlayed: bool = false # Dialogue flag
+var pending_post_source: int = ReturnSource.NONE
+var load_from_save_next_main: bool = false
+var smithTalkedToDay1: bool = false
+
+var player: Node = null
 #endregion
 
-#Dialogue
-enum ReturnSource { NONE, RADIO, MORSE, KITCHEN, GEARBOX }
-
-var pending_post_source: int = ReturnSource.NONE
-
 func _ready():
-	#Dialogue Signal
-	Dialogic.timeline_started.connect(_on_dialogue_started)
-	Dialogic.timeline_ended.connect(_on_dialogue_ended)
 	todaysRecipe = "BarfitStovies" 
 	await get_tree().process_frame
-	apply_save_data()
-	
-	CutsceneManager.CheckForPendingDayStart()
-
-func _on_dialogue_started(): 
-	#get_tree().paused = true
-	pass
-
-func _on_dialogue_ended():
-	#get_tree().paused = false
-	pass
+	# Auto-load if needed, otherwise wait for StartNewGame
 	
 func StartNewGame():
-	# Reset internal variables
-	currentDay = 0 # Start at Day 0 now
+	# Reset all internal state
+	currentDay = 0
 	currentTaskStep = 0
+	
 	isIntroPlayed = false
+	introPlayed = false
+	introScenePlayed = false
+	
 	load_from_save_next_main = false
 	pending_post_source = ReturnSource.NONE
 	shouldUseStoredSpawn = false
-	TaskManager.CompleteDay() #Reset Task list
+	
+	TaskManager.CompleteDay()
+	
 	daySTATE = DayState.NIGHT_FADING 
 	todaysRecipe = "BarfitStovies"
 	hasCompletedTutorial = false
+	
 	morality = 0
 	relationship = 0
 	isBadEnding = false
 	
-	introPlayed = false
-	introScenePlayed = false
-	
+	# Start Day 0 Gameplay directly
 	StartDay(0)
 
 func StartDay(day: int):
+	print("GAMEMANAGER: Starting Day ", day)
 	currentDay = day
 	currentTaskStep = 0
 	
+	# Reset spawn to bedroom for a new day
 	playerSpawnFloor = 3 
 	playerSpawnPosition = Vector2(88, 278)
-	
 	shouldUseStoredSpawn = true
 	
 	# Start the day visually
-	emit_signal("requestDayCycle")
 	daySTATE = DayState.NIGHT_FADING
+	emit_signal("requestDayCycle")
 	
-	# Run the first task of the day
 	UpdateObjective()
 
 func CompleteTask(task_id: String):
@@ -125,121 +113,75 @@ func CompleteTask(task_id: String):
 	currentTaskStep += 1
 	UpdateObjective()
 
+func AddCookingScore(quality: int):
+	# "Relationship increases by an amount equal to the recipe quality /10 rounded up"
+	var increase = ceil(quality / 10.0)
+	yesterdaysRelationship = relationship
+	relationship += int(increase)
+	print("Cooking Quality: %d. Relationship increased by %d. Total: %d" % [quality, increase, relationship])
+
 func UpdateObjective():
-	# FIRST. Reset all needs
+	# 1. Reset needs for the new step
 	ResetNeeds()
 	
-	# SECOND. State machine to control the tasks for the day
+	# 2. Check Day/Step
 	match currentDay:
-		-1: # DEV TESTING DAY
-			match currentTaskStep:
-				0:
-					needDaughter = true
-					TaskManager.AddTask("test_checkDaughter", "(Test) Check on daughter.")
-					if not hasCompletedTutorial:
-						emit_signal("showTutorialPopUp", "movementTutorial")
-				1:
-					needRadio = true
-					TaskManager.AddTask("test_checRadio", "(Test) Check radio.")
-					if not hasCompletedTutorial:
-						emit_signal("showTutorialPopUp", "radioTutorial")
-				2:
-					needGearBox = true
-					TaskManager.AddTask("test_checkGearBox", "(Test) Check gearbox.")
-					if not hasCompletedTutorial:
-						emit_signal("showTutorialPopUp", "interactionTutorial")
-				3:
-					needMorse = true
-					TaskManager.AddTask("test_checkMorse", "(Test) Check Morse.")
-					if not hasCompletedTutorial:
-						emit_signal("showTutorialPopUp", "morseTutorial")
-				4:
-					emit_signal("requestNightCycle")
-					daySTATE = DayState.MOON_RISING
-					needLight = true
-					TaskManager.AddTask("test_decision", "(Test) Choose light switch position.")
-					if not hasCompletedTutorial:
-						emit_signal("showTutorialPopUp", "lightSwitchTutorial")
-				5:
-					needKitchen = true
-					TaskManager.AddTask("test_cookMeal", "(Test) Kitchen Puzzle.")
-					if not hasCompletedTutorial:
-						emit_signal("showTutorialPopUp", "kitchenTutorial")
-				6:
-					needBed = true
-					TaskManager.AddTask("test_goToBed", "(Test) End Day, Go To Bed.")
-					if not hasCompletedTutorial:
-						emit_signal("showTutorialPopUp", "endDayTutorial")
-				7:
-					TaskManager.CompleteDay()
-					StartDay(currentDay + 1)
 		0: # DAY 0: TUTORIAL
 			match currentTaskStep:
 				0:
 					needDaughter = true
-					TaskManager.AddTask("dayZERO_checkDaughter", "Check on Elise. She's usually downstairs early in the morning.")
-					if not hasCompletedTutorial:
-						emit_signal("showTutorialPopUp", "movementTutorial")
+					TaskManager.AddTask("dayZERO_checkDaughter", "Check on Elise.")
+					if not hasCompletedTutorial: emit_signal("showTutorialPopUp", "movementTutorial")
 				1:
 					needRadio = true
-					TaskManager.AddTask("dayZERO_checkRadio", "Check the radio on the 3rd floor.")
-					if not hasCompletedTutorial:
-						emit_signal("showTutorialPopUp", "interactionTutorial")
+					TaskManager.AddTask("dayZERO_checkRadio", "Check the radio.")
+					if not hasCompletedTutorial: emit_signal("showTutorialPopUp", "interactionTutorial")
 				2:
 					# TRIGGER NIGHT
 					emit_signal("requestNightCycle")
 					daySTATE = DayState.MOON_RISING
 					needMorse = true
-					TaskManager.AddTask("nightZERO_checkMorse", "Time to see if any morsecode messages have come in today.")
+					TaskManager.AddTask("nightZERO_checkMorse", "Check for morse code messages.")
 				3:
-					# CutsceneManager.PlayCutscene("res://Scenes/Cutscenes/bombing_cutscene.tscn", null)
+					# END OF DAY 0 -> BOMBING CUTSCENE -> ARRIVAL -> DAY 1
 					TaskManager.CompleteDay()
 					introPlayed = true
-					introScenePlayed = true
-					CutsceneManager.PlayCutscene("res://Scenes/Cutscenes/arrival_cutscene.tscn", 1) 
+					# We request Day 1 here. CutsceneManager will hold this index through the bombing AND arrival cutscenes.
+					CutsceneManager.PlayCutscene("res://Scenes/Cutscenes/bombing_cutscene.tscn", 1)
 					
-		1: # DAY 1: FIRST REAL DAY
+		1: # DAY 1
 			match currentTaskStep:
 				0:
-					# Start in bedroom
 					needDaughter = true
 					TaskManager.AddTask("dayONE_checkDaughter", "Check on Elise.")
 				1:
-					# Exposition
 					needRadio = true
 					TaskManager.AddTask("dayONE_checkRadio_beforeSmith", "Check the radio.")
 				2:
-					# Gearbox assignment
 					needGearBox = true
-					TaskManager.AddTask("dayONE_oneTimeGearBoxPuzzle", "Check gearbox on 4th floor.")
-					if not hasCompletedTutorial:
-						emit_signal("showTutorialPopUp", "gearBoxTutorial")
+					TaskManager.AddTask("dayONE_oneTimeGearBoxPuzzle", "Fix the gearbox (4th floor).")
+					if not hasCompletedTutorial: emit_signal("showTutorialPopUp", "gearBoxTutorial")
 				3:
-					# Report back
 					needRadio = true
-					TaskManager.AddTask("dayONE_checkRadio_afterGearbox", "Check back with Smith on the radio.")
+					TaskManager.AddTask("dayONE_checkRadio_afterGearbox", "Report back to Smith.")
 				4:
-					# Morse routine
 					needMorse = true
 					TaskManager.AddTask("dayONE_checkMorse", "Send morse code.")
 				5:
-					# TRIGGER NIGHT
+					# NIGHT
 					emit_signal("requestNightCycle")
 					daySTATE = DayState.MOON_RISING
 					needKitchen = true
-					TaskManager.AddTask("dayONE_cookMeal", "Make your daughter dinner. Barfit Stovies is all you can muster tonight.")
-					if not hasCompletedTutorial:
-						emit_signal("showTutorialPopUp", "cookingTutorial")
+					TaskManager.AddTask("dayONE_cookMeal", "Make dinner (Barfit Stovies).")
+					if not hasCompletedTutorial: emit_signal("showTutorialPopUp", "cookingTutorial")
 					todaysRecipe = "BarfitStovies"
 				6:
-					# Light decision
 					needLight = true
-					TaskManager.AddTask("dayONE_decision", "Decide if the light should be on or stay off.")
-					if not hasCompletedTutorial:
-						emit_signal("showTutorialPopUp", "lightSwitchTutorial")
+					TaskManager.AddTask("dayONE_decision", "Turn the light On or Off?")
+					if not hasCompletedTutorial: emit_signal("showTutorialPopUp", "lightSwitchTutorial")
 					hasCompletedTutorial = true 
 				7:
-					# Bed
+					needBed = true
 					TaskManager.AddTask("dayONE_goToBed", "Go to bed.")
 				8:
 					TaskManager.CompleteDay()
@@ -249,15 +191,14 @@ func UpdateObjective():
 			match currentTaskStep:
 				0:
 					needDaughter = true
-					TaskManager.AddTask("dayTWO_checkDaughter", "Check on [DaughterName]")
+					TaskManager.AddTask("dayTWO_checkDaughter", "Check on Elise.")
 				1:
 					needRadio = true
 					TaskManager.AddTask("dayTWO_checkRadio", "Check radio.")
 				2:
 					needMorse = true
-					TaskManager.AddTask("dayTWO_checkMorse", "Check the morse code signal.")
+					TaskManager.AddTask("dayTWO_checkMorse", "Check Morse signal.")
 				3:
-					# TRIGGER NIGHT
 					emit_signal("requestNightCycle")
 					daySTATE = DayState.MOON_RISING
 					needKitchen = true
@@ -265,8 +206,9 @@ func UpdateObjective():
 					todaysRecipe = "BraisedRoots"
 				4:
 					needLight = true
-					TaskManager.AddTask("dayTWO_decision", "Decide on the light.")
+					TaskManager.AddTask("dayTWO_decision", "Light On or Off?")
 				5:
+					needBed = true
 					TaskManager.AddTask("dayTWO_goToBed", "Go to bed.")
 				6:
 					TaskManager.CompleteDay()
@@ -276,24 +218,24 @@ func UpdateObjective():
 			match currentTaskStep:
 				0:
 					needDaughter = true
-					TaskManager.AddTask("dayTHREE_checkDaughter", "Check on [DaughterName]")
+					TaskManager.AddTask("dayTHREE_checkDaughter", "Check on Elise.")
 				1:
 					needRadio = true
 					TaskManager.AddTask("dayTHREE_checkRadio", "Check radio.")
 				2:
 					needMorse = true
-					TaskManager.AddTask("dayTHREE_checkMorse", "Check the morse code signal.")
+					TaskManager.AddTask("dayTHREE_checkMorse", "Check signal.")
 				3:
-					# TRIGGER NIGHT
 					emit_signal("requestNightCycle")
 					daySTATE = DayState.MOON_RISING
 					needKitchen = true
-					TaskManager.AddTask("dayTHREE_cookMeal", "Make dinner.")
+					TaskManager.AddTask("dayTHREE_cookMeal", "Make dinner (Scotch Tattie Soup).")
 					todaysRecipe = "ScotchTattieSoup"
 				4:
 					needLight = true
-					TaskManager.AddTask("dayTHREE_decision", "Decide on the light.")
+					TaskManager.AddTask("dayTHREE_decision", "Light On or Off?")
 				5:
+					needBed = true
 					TaskManager.AddTask("dayTHREE_goToBed", "Go to bed.")
 				6:
 					TaskManager.CompleteDay()
@@ -303,15 +245,14 @@ func UpdateObjective():
 			match currentTaskStep:
 				0:
 					needDaughter = true
-					TaskManager.AddTask("dayFOUR_checkDaughter", "Check on [DaughterName]")
+					TaskManager.AddTask("dayFOUR_checkDaughter", "Check on Elise.")
 				1:
 					needRadio = true
 					TaskManager.AddTask("dayFOUR_checkRadio", "Check radio.")
 				2:
 					needMorse = true
-					TaskManager.AddTask("dayFOUR_checkMorse", "Check the morse code signal.")
+					TaskManager.AddTask("dayFOUR_checkMorse", "Check signal.")
 				3:
-					# TRIGGER NIGHT
 					emit_signal("requestNightCycle")
 					daySTATE = DayState.MOON_RISING
 					needKitchen = true
@@ -319,18 +260,21 @@ func UpdateObjective():
 					todaysRecipe = "RabbitStew"
 				4:
 					needLight = true
-					TaskManager.AddTask("dayFOUR_decision", "Decide on the light.")
+					TaskManager.AddTask("dayFOUR_decision", "Light On or Off?")
 				5:
+					needBed = true
 					TaskManager.AddTask("dayFOUR_goToBed", "Go to bed.")
 				6:
 					TaskManager.CompleteDay()
 					StartDay(5)
 
-		5: # DAY 5
+		5: # DAY 5 (Endings)
 			if isBadEnding:
-				# Bad ending stuff here
-				pass
+				# Trigger Bad Ending Sequence
+				# We loop back to bombing cutscene, but isBadEnding flag will trigger Game Over in the cutscene script
+				CutsceneManager.PlayCutscene("res://Scenes/Cutscenes/bombing_cutscene.tscn", -1)
 			else:
+				# GOOD ENDING FLOW
 				match currentTaskStep:
 					0:
 						needDaughter = true
@@ -340,7 +284,7 @@ func UpdateObjective():
 					2:
 						TaskManager.AddTask("lastDay_readLetter", "Read the letter.")
 					3:
-						# END GAME SCENES AND THEN CREDITS
+						# Trigger Credits / Victory Scene
 						pass
 
 func ResetNeeds():
@@ -359,16 +303,14 @@ func SetPlayerSpawn(targetFloor: int, targetPosition: Vector2):
 
 func ConsumeSpawnData(playerNode):
 	if shouldUseStoredSpawn:
-		playerNode.global_position = playerSpawnPosition
+		playerNode.position = playerSpawnPosition
 		if playerNode.has_method("SetFloor"):
 			playerNode.SetFloor(playerSpawnFloor)
 		shouldUseStoredSpawn = false
 		
 #save & load
 func write_save_data() -> void:
-	# Copy GameManager runtime state into SaveData
 	var data := SaveManager.current_save
-	
 	data.day_state = daySTATE
 	data.hasCompletedTutorial = hasCompletedTutorial
 	data.current_day = currentDay
@@ -385,19 +327,13 @@ func write_save_data() -> void:
 	data.relationship = relationship
 	data.should_light_be_on_tonight = shouldLightBeOnTonight
 	data.pending_post_source = pending_post_source
-	# Added Cutscene variables
 	data.introPlayed = introPlayed
 	data.introScenePlayed = introScenePlayed
-	
-	#Intro Dialogue
 	data.isIntroPlayed = isIntroPlayed
-	# NEW: task panel data
 	data.task_data = TaskManager.get_save_data()
 	
 func apply_save_data() -> void:
-	# Read from SaveData back into GameManager
 	var data := SaveManager.current_save
-	
 	@warning_ignore("int_as_enum_without_cast")
 	daySTATE = data.day_state
 	hasCompletedTutorial = data.hasCompletedTutorial
@@ -414,14 +350,9 @@ func apply_save_data() -> void:
 	moralityNeeded = data.morality_needed
 	relationship = data.relationship
 	shouldLightBeOnTonight = data.should_light_be_on_tonight
-	
-	# Added Cutscene variables
 	introPlayed = data.introPlayed
 	introScenePlayed = data.introScenePlayed
-	
 	pending_post_source = data.pending_post_source
-	
-	#Intro dialogue
 	isIntroPlayed = data.isIntroPlayed
 	
 	if data.task_data.size() > 0:
