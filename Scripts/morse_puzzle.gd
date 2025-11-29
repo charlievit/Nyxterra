@@ -153,6 +153,9 @@ func _on_sentence_solved() -> void:
 	# We simply return, ensuring we don't accidentally set a return spawn point or change scene.
 	# The Cutscene Manager will eventually trigger GameManager.StartDay(1), which handles the spawn.
 	if GameManager.currentDay == 0:
+		self.set_process(false)
+		await _Dialogue_System()
+		self.set_process(true)
 		GameManager.CompleteTask(currentTaskID)
 		return
 
@@ -244,3 +247,7 @@ func _update_labels() -> void:
 
 	var display := (prefix + decoded_current_word).strip_edges()
 	label_out.text = "You typed: %s" % display
+
+func _Dialogue_System() -> void:
+	Dialogic.start("Day_0 Morse Completed")
+	await Dialogic.timeline_ended

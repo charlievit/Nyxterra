@@ -197,7 +197,7 @@ func UpdateObjective():
 					TaskManager.AddTask("dayTWO_checkRadio", "Check radio.")
 				2:
 					needMorse = true
-					TaskManager.AddTask("dayTWO_checkMorse", "Check signal.")
+					TaskManager.AddTask("dayTWO_checkMorse", "Check Morse signal.")
 				3:
 					emit_signal("requestNightCycle")
 					daySTATE = DayState.MOON_RISING

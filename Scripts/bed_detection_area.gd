@@ -25,6 +25,7 @@ func _process(_delta):
 	
 	if playerBody:
 		if Input.is_action_pressed("ui_accept") and GameManager.needBed:
+			OnBodyExited(playerBody)
 			await Dialogue_system()
 			print("going to bed...")
 			var currentTask: String = ""
@@ -47,8 +48,6 @@ func OnBodyExited(body):
 
 func Dialogue_system() -> void:
 	match GameManager.currentDay:
-		0:
-			pass
 		1:
 			Dialogic.start("Day_1 Bed Dialogue")
 		2:

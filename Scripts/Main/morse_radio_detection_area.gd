@@ -33,6 +33,7 @@ func _process(_delta):
 			else:
 				push_error("ERROR: Morse game scene path not found.")
 		if Input.is_action_pressed("radio_accept") and GameManager.needRadio:
+			OnBodyExited(playerBody)
 			await Radio_Dialogue()
 			if ResourceLoader.exists(radioScenePath):
 				SceneLoader.change_scene_with_loading(radioScenePath)
@@ -56,6 +57,7 @@ func Radio_Dialogue() -> void:
 	match GameManager.currentDay:
 		0:
 			Dialogic.start("Day_0 Radio Dialogue")
-		1:
+			await Dialogic.timeline_ended
+		1 or 2 or 3 or 4:
 			return
-	await Dialogic.timeline_ended
+	

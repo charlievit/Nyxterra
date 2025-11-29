@@ -600,7 +600,7 @@ func AdvanceToNextStep():
 			Dialogic.VAR.Cooking_Response = "Bad"
 			
 		print("Recipe complete. Final Quality: %d" % recipeQuality)
-		
+			
 		# NEW: Update Relationship based on performance
 		GameManager.AddCookingScore(recipeQuality)
 		

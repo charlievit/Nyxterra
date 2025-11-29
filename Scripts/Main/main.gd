@@ -254,7 +254,10 @@ func _on_Radio_Completed() -> void:
 		0:
 			Dialogic.start("Day_0 Radio Completed")
 		1:
-			Dialogic.start("Day_1 Radio Completed")
+			if GameManager.currentTaskStep == 2:
+				Dialogic.start("Day_1 Radio Completed")
+			elif GameManager.currentTaskStep == 4:
+				Dialogic.start("Day_1 Smith Dialogue")
 		2:
 			Dialogic.start("Day_2 Radio Completed")
 		3:
@@ -265,20 +268,20 @@ func _on_Radio_Completed() -> void:
 func _on_Gear_Completed() -> void:
 	match GameManager.currentDay:
 		0:
-			Dialogic.start("Day_0 GearBox Completed")
+			return
 		1:
-			Dialogic.start("Day_1 GearBox Completed")
+			Dialogic.start("Day_1 Gearbox Completed")
 		2:
-			Dialogic.start("Day_2 GearBox Completed")
+			Dialogic.start("Day_2 Gearbox Completed")
 		3:
-			Dialogic.start("Day_3 GearBox Completed")
+			Dialogic.start("Day_3 Gearbox Completed")
 		4:
-			Dialogic.start("Day_4 GearBox Completed")
+			Dialogic.start("Day_4 Gearbox Completed")
 
 func _on_Morse_Completed() -> void:
 	match GameManager.currentDay:
 		0:
-			Dialogic.start("Day_0 Morse Completed")
+			return
 		1:
 			Dialogic.start("Day_1 Morse Completed")
 		2:
@@ -291,7 +294,7 @@ func _on_Morse_Completed() -> void:
 func _on_Kitchen_Completed() -> void:
 	match GameManager.currentDay:
 		0:
-			Dialogic.start("Day_0 Kitchen Completed")
+			return
 		1:
 			Dialogic.start("Day_1 Kitchen Completed")
 		2:

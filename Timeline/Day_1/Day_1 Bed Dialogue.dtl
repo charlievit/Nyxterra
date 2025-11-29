@@ -1,5 +1,5 @@
 Narrator: Sutherland goes to his bedroom and the screen fades to black.
-if {Day_1_response} == "Yes":
+if {Day1_response} == "Yes":
 	[voice path="res://Assets/Audio/VA/Sutherland/I go on to remember her.mp3" volume="0.0" bus="Character Voice"]
 	Sutherland: I go on to remember her...
 elif {Day1_response} == "No":
