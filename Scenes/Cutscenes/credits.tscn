@@ -1,0 +1,122 @@
+[gd_scene load_steps=6 format=3 uid="uid://b0j61i6f0ru0"]
+
+[ext_resource type="Theme" uid="uid://b4lurv8njswua" path="res://Resources/theme.tres" id="1_5nodu"]
+[ext_resource type="FontFile" uid="uid://bugymcbk132rp" path="res://Assets/Fonts/Fry's Baskerville Regular.otf" id="2_ob67c"]
+[ext_resource type="FontFile" uid="uid://cd5qpfhq7agn5" path="res://Assets/Fonts/Baskerville Bold.otf" id="3_67l8c"]
+[ext_resource type="FontFile" uid="uid://bywip54qbjgkh" path="res://Assets/Fonts/Baskerville Bold Italic.otf" id="4_ljipc"]
+[ext_resource type="FontFile" uid="uid://kfa54uxh70rd" path="res://Assets/Fonts/Baskerville Italic.ttf" id="5_86xij"]
+
+[node name="Credits" type="RichTextLabel"]
+offset_top = 624.0
+offset_right = 4563.0
+offset_bottom = 23184.0
+scale = Vector2(0.2525396, 0.2525396)
+theme = ExtResource("1_5nodu")
+theme_override_fonts/normal_font = ExtResource("2_ob67c")
+theme_override_fonts/bold_font = ExtResource("3_67l8c")
+theme_override_fonts/bold_italics_font = ExtResource("4_ljipc")
+theme_override_fonts/italics_font = ExtResource("5_86xij")
+theme_override_font_sizes/normal_font_size = 200
+bbcode_enabled = true
+text = "[font_size={80}][i]Dedicated to Jennifer and Aria [/i][/font_size]
+
+[font_size={150}][b]Development Team[/b][/font_size]
+[font_size={100}][b]Game Director & Executive Producer[/b][/font_size]
+[font_size={150}]Charlie Vaughn[/font_size]
+
+[font_size={100}][b]Writers[/b][/font_size]
+[font_size={150}]Charlie Vaughn[/font_size]
+[font_size={150}]Mani \"Nykur\" Amini[/font_size]
+
+[font_size={100}][b]Lead Systems Designer[/b][/font_size]
+[font_size={150}]Jordon Call[/font_size]
+
+[font_size={100}][b]Systems Designers[/b][/font_size]
+[font_size={150}]Charlie Vaughn[/font_size]
+[font_size={150}]Mani \"Nykur\" Amini[/font_size]
+[font_size={150}]Toxic_Humble[/font_size]
+
+[font_size={100}][b]Technical Director[/b][/font_size]
+[font_size={150}]Jordon Call[/font_size]
+
+[font_size={100}][b]Lead Programmers[/b][/font_size]
+[font_size={150}]Jordon Call[/font_size] [font_size={150}][i](Graphics, Gameplay, UI, & Build)[/i][/font_size]
+[font_size={150}]Toxic_Humble[/font_size] [font_size={150}][i](Data, Tools, & Gameplay)[/i][/font_size]
+
+[font_size={100}][b]Art Director & Lead Animator[/b][/font_size]
+[font_size={150}]Phrenix[/font_size]
+
+[font_size={100}][b]Lead Character & Props Artist[/b][/font_size]
+[font_size={150}]DreamCatcher[/font_size]
+
+[font_size={100}][b]Technical Artists[/b][/font_size]
+[font_size={150}]Charlie Vaughn[/font_size]
+[font_size={150}]DreamCatcher[/font_size]
+[font_size={150}]Jordon Call[/font_size]
+[font_size={150}]Phrenix[/font_size]
+
+[font_size={100}][b]Audio Director & Sound Engineer[/b][/font_size]
+[font_size={150}]Charlie Vaughn[/font_size]
+
+[font_size={100}][b]Marketing Director[/b][/font_size]
+[font_size={150}]Charlie Vaughn[/font_size]
+
+[font_size={100}][b]Cast[/b][/font_size]
+[font_size={150}]Gavin Lindsay[/font_size] [font_size={100}]as[/font_size] [font_size={150}][i]Archie Sutherland[/i][/font_size]
+[font_size={150}]Chrissy Vargas-Rosales[/font_size] [font_size={100}]as[/font_size] [font_size={150}][i]Elise Sutherland[/i][/font_size]
+[font_size={150}]Ry Hillemeyer[/font_size] [font_size={100}]as[/font_size] [font_size={150}][i]Smith[/i][/font_size]
+
+[font_size={100}][b]Additional Voices[/b][/font_size]
+[font_size={150}]Jordon Call[/font_size]
+[font_size={150}]Phrenix[/font_size]
+[font_size={150}]Ry Hillemeyer[/font_size]
+
+[font_size={100}][b]Music[/b][/font_size]
+Music Composed and Produced by
+[font_size={150}]GodSnail[/font_size] [font_size={150}][i](All Rights Reserved)[/i][/font_size]
+
+[font_size={200}][i]\"I Keep the Light\"[/i][/font_size]
+[font_size={100}]by[/font_size] [font_size={150}]Rissa Baker[/font_size] [font_size={150}][i](All Rights Reserved)[/i][/font_size]
+
+[font_size={150}][b]Studios[/b][/font_size]
+A PRODUCTION OF
+NyxForge Studios
+[font_size={100}][i]in association with[/i][/font_size]
+[img={1800}]res://Socials/Logos/CyberSugar Studios Logo (2).png[/img]
+--------------------------------------------------------------------
+[font_size={150}][b]NyxForge Studios[/b][/font_size]
+
+Founder 
+[font_size={150}]Mani \"Nykur\" Amini[/font_size]
+
+Contributors
+[font_size={150}]GodSnail[/font_size]
+[font_size={150}]Toxic_Humble[/font_size]
+
+--------------------------------------------------------------------
+
+[font_size={150}][b]CyberSugar Studio[/b][/font_size]
+
+Co-Founders 
+[font_size={150}]Charlie Vaughn[/font_size]
+[font_size={150}]Jordon Call[/font_size]
+
+Art Director
+[font_size={150}]Phrenix[/font_size]
+
+Studio Support 
+[font_size={150}]Paprika & Wasabi the Cats[/font_size]
+
+--------------------------------------------------------------------
+
+[font_size={150}][b]Dragonsight Studios[/b][/font_size]
+
+Founder 
+[font_size={150}]DreamCatcher[/font_size]
+
+Studio Support
+[font_size={150}]Fred the Hamster[/font_size]"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1

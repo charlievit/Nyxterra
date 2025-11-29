@@ -1,4 +1,4 @@
-[gd_scene load_steps=143 format=3 uid="uid://dg2vlcecdam70"]
+[gd_scene load_steps=144 format=3 uid="uid://dg2vlcecdam70"]
 
 [ext_resource type="Texture2D" uid="uid://bla003it4b2qg" path="res://Assets/Images/Cutscenes/BombDrop/frame0000.png" id="1_k50hm"]
 [ext_resource type="Script" uid="uid://stnauo7sinvs" path="res://Scripts/Cutscenes/bombing_cutscene.gd" id="1_kn6hq"]
@@ -139,6 +139,7 @@
 [ext_resource type="Texture2D" uid="uid://btcuejgroefli" path="res://Assets/Images/Cutscenes/SmokePlume/frame0023.png" id="136_utavt"]
 [ext_resource type="Texture2D" uid="uid://yvosi5ib6l6i" path="res://Assets/Images/Cutscenes/SmokePlume/frame0024.png" id="137_y2svt"]
 [ext_resource type="Texture2D" uid="uid://cwxksaxjk6yam" path="res://Assets/Images/Cutscenes/SmokePlume/frame0025.png" id="138_5c4tj"]
+[ext_resource type="PackedScene" uid="uid://b0j61i6f0ru0" path="res://Scenes/Cutscenes/credits.tscn" id="140_3kspl"]
 
 [sub_resource type="Gradient" id="Gradient_kn6hq"]
 colors = PackedColorArray(0.09411765, 0.12156863, 0.14901961, 1, 1, 1, 1, 1)
@@ -603,3 +604,5 @@ position = Vector2(576.00006, 324)
 scale = Vector2(2.3999999, 2.4000003)
 sprite_frames = SubResource("SpriteFrames_vq74j")
 animation = &"planeFlyNight"
+
+[node name="Credits" parent="." instance=ExtResource("140_3kspl")]

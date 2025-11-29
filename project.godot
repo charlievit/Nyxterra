@@ -82,6 +82,13 @@ directories/dtl_directory={
 "Day_5 BadEnding Dialogue": "res://Timeline/Day_5/Day_5 BadEnding Dialogue.dtl",
 "Day_5 Lockbox Completed": "res://Timeline/Day_5/Day_5 Lockbox Completed.dtl",
 "Day_5 Smell Dialogue": "res://Timeline/Day_5/Day_5 Smell Dialogue.dtl",
+"EndCookingBad_1": "res://Timeline/Cooking Minigame/EndCookingBad_1.dtl",
+"EndCookingGood_Day1or2_1": "res://Timeline/Cooking Minigame/EndCookingGood_Day1or2_1.dtl",
+"EndCookingGood_Day1or2_2": "res://Timeline/Cooking Minigame/EndCookingGood_Day1or2_2.dtl",
+"EndCookingGood_Day1or2_3": "res://Timeline/Cooking Minigame/EndCookingGood_Day1or2_3.dtl",
+"EndCookingGood_Day3or4_1": "res://Timeline/Cooking Minigame/EndCookingGood_Day3or4_1.dtl",
+"EndCookingGood_Day3or4_2": "res://Timeline/Cooking Minigame/EndCookingGood_Day3or4_2.dtl",
+"EndCookingGood_Day3or4_3": "res://Timeline/Cooking Minigame/EndCookingGood_Day3or4_3.dtl",
 "Intro": "res://Timeline/Intro.dtl"
 }
 layout/style_directory={

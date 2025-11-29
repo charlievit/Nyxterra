@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://cmtligtuxkyt"
-path="res://.godot/imported/Eyesome Italic.otf-eb7e2b05a8fd3e2c76a6cd3396b8dc60.fontdata"
+uid="uid://cd5qpfhq7agn5"
+path="res://.godot/imported/Baskerville Bold.otf-9bd5bc11267eab7a86486cb88c5c2ad6.fontdata"
 
 [deps]
 
-source_file="res://Assets/Fonts/Eyesome Italic.otf"
-dest_files=["res://.godot/imported/Eyesome Italic.otf-eb7e2b05a8fd3e2c76a6cd3396b8dc60.fontdata"]
+source_file="res://Assets/Fonts/Baskerville Bold.otf"
+dest_files=["res://.godot/imported/Baskerville Bold.otf-9bd5bc11267eab7a86486cb88c5c2ad6.fontdata"]
 
 [params]
 

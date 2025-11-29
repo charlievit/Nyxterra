@@ -457,11 +457,12 @@ position = Vector2(-44.17267, 31.475586)
 shape = SubResource("RectangleShape2D_e3oeg")
 
 [node name="ButtonPrompt" type="RichTextLabel" parent="MIDDLE/Bed Detection Area"]
+z_index = 1
 texture_filter = 1
-offset_left = -75.72462
-offset_top = -72.394554
-offset_right = 295.20148
-offset_bottom = 49.598366
+offset_left = -67.310776
+offset_top = -81.837326
+offset_right = 303.6153
+offset_bottom = 40.155594
 scale = Vector2(0.35400146, 0.24660678)
 theme = ExtResource("3_j2rhv")
 text = "Sleep 'E'"
