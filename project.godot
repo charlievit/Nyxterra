@@ -114,7 +114,7 @@ variables={
 "Day4_response": ""
 }
 extensions_folder="res://addons/dialogic_additions"
-text/letter_speed=0.04
+text/letter_speed=0.01
 text/initial_text_reveal_skippable=false
 text/text_reveal_skip_delay=0.1
 text/advance_delay=0.1
