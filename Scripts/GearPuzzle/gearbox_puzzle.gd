@@ -272,7 +272,7 @@ func TriggerWinState():
 	loopPlayer.volume_db += 5.0
 	
 	GameManager.SetPlayerSpawn(returnFloorIndex, returnPosition)
-	
+	GameManager.gearBoxSolved = true
 	await get_tree().create_timer(3.0).timeout
 	GameManager.CompleteTask(currentTaskID)
 	GameManager.pending_post_source = GameManager.ReturnSource.GEARBOX

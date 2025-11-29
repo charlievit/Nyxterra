@@ -57,6 +57,7 @@ var isIntroPlayed: bool = false # Dialogue flag
 var pending_post_source: int = ReturnSource.NONE
 var load_from_save_next_main: bool = false
 var smithTalkedToDay1: bool = false
+var gearBoxSolved: bool = false
 
 var player: Node = null
 #endregion

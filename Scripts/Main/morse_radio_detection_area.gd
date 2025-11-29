@@ -40,6 +40,15 @@ func _process(_delta):
 			self.set_process(true)
 			GameManager.player.set_physics_process(true)
 			
+			if GameManager.gearBoxSolved and GameManager.currentDay == 1:
+				Dialogic.start("Day_1 Smith Dialogue")
+				var currentTaskID
+				for key in TaskManager.activeTasks.keys():
+					if String(key).contains("afterGearbox"):
+						currentTaskID = key
+				GameManager.CompleteTask(currentTaskID)
+				return # don't play minigame
+			
 			if ResourceLoader.exists(radioScenePath):
 				SceneLoader.change_scene_with_loading(radioScenePath)
 			else:

@@ -2,6 +2,7 @@ extends Node2D
 
 @onready var black: TextureRect = $"Black Background"
 @onready var animation: AnimatedSprite2D = $Animation
+@onready var credits: RichTextLabel = $Credits
 
 var windSoundPlayer: AudioStreamPlayer
 var engineSoundPlayer: AudioStreamPlayer
@@ -44,7 +45,7 @@ func _ready():
 	oceanPlayer.stream = oceanSound
 	
 	windSoundPlayer.play()
-	engineSoundPlayer.play(1.33)
+	engineSoundPlayer.play()
 	
 	oceanPlayer.play()
 	oceanPlayer.volume_db = -80.0
@@ -93,7 +94,17 @@ func PlayBomb():
 	tween.tween_property(animation, "modulate:a", 0.0, 4.0)
 	tween.tween_property(bombPlayer, "volume_db", -80.0, 3.0)
 	
-	tween.tween_callback(CutToSmokePlume)
+	tween.tween_callback(CheckForEnding)
+
+func CheckForEnding():
+	#GameManager.isBadEnding = true # TESTING
+	if GameManager.isBadEnding:
+		CutToSmokePlume()
+	else:
+		#play cath death audio
+		print("Day 0 Transition: Playing Intro/Arrival Cutscene.")
+		GameManager.introPlayed = true
+		CutsceneManager.PlayCutscene("res://Scenes/Cutscenes/arrival_cutscene.tscn")
 
 func CutToSmokePlume():
 	var tween = create_tween()
@@ -106,20 +117,14 @@ func CutToSmokePlume():
 	tween.tween_property(animation, "modulate:a", 1.0, 3.0)
 	tween.tween_property(engineSoundPlayer, "volume_db", -80.0, 3.0)
 	tween.set_parallel(false)
-	tween.tween_callback(End)
+	tween.tween_callback(EndingCredits)
 
-func End():
+func EndingCredits():
 	var tween = create_tween()
-	tween.set_parallel(true)
-	tween.tween_property(oceanPlayer, "volume_db", -80.0, 32.0)
-	tween.tween_property(windSoundPlayer, "volume_db", -80.0, 32.0)
 	
-	await get_tree().create_timer(8.0).timeout
-	
-	if GameManager.isBadEnding:
-		print("Bad Ending Reached. Ending Game.")
-		CutsceneManager.EndGame()
-	else:
-		print("Day 0 Transition: Playing Intro/Arrival Cutscene.")
-		GameManager.introPlayed = true
-		CutsceneManager.PlayCutscene("res://Scenes/Cutscenes/arrival_cutscene.tscn")
+	tween.tween_property(credits, "position:y", -5780, 120.0)
+	tween.tween_property(animation, "modulate:a", 0.0, 3.0)
+	tween.tween_callback(EndTheGame)
+
+func EndTheGame():
+	CutsceneManager.EndGame()
