@@ -37,6 +37,10 @@ directories/dch_directory={
 "Sutherland": "res://Timeline/character/Sutherland.dch"
 }
 directories/dtl_directory={
+"Burning_1": "res://Timeline/Cooking Minigame/Burning_1.dtl",
+"Burning_2": "res://Timeline/Cooking Minigame/Burning_2.dtl",
+"Chop_Day1or2": "res://Timeline/Cooking Minigame/Chop_Day1or2.dtl",
+"Chop_Day3or4": "res://Timeline/Cooking Minigame/Chop_Day3or4.dtl",
 "Day_-1 Elise Dialogue": "res://Timeline/Day_-1/Day_-1 Elise Dialogue.dtl",
 "Day_-1 GearBox Completed": "res://Timeline/Day_-1/Day_-1 GearBox Completed.dtl",
 "Day_-1 GearBox Dialogue": "res://Timeline/Day_-1/Day_-1 GearBox Dialogue.dtl",
@@ -83,6 +87,8 @@ directories/dtl_directory={
 "Day_5 Lockbox Completed": "res://Timeline/Day_5/Day_5 Lockbox Completed.dtl",
 "Day_5 Smell Dialogue": "res://Timeline/Day_5/Day_5 Smell Dialogue.dtl",
 "EndCookingBad_1": "res://Timeline/Cooking Minigame/EndCookingBad_1.dtl",
+"EndCookingBad_2": "res://Timeline/Cooking Minigame/EndCookingBad_2.dtl",
+"EndCookingBad_3": "res://Timeline/Cooking Minigame/EndCookingBad_3.dtl",
 "EndCookingGood_Day1or2_1": "res://Timeline/Cooking Minigame/EndCookingGood_Day1or2_1.dtl",
 "EndCookingGood_Day1or2_2": "res://Timeline/Cooking Minigame/EndCookingGood_Day1or2_2.dtl",
 "EndCookingGood_Day1or2_3": "res://Timeline/Cooking Minigame/EndCookingGood_Day1or2_3.dtl",
