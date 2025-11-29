@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://rx4a1oion8ow"]
+[gd_scene load_steps=8 format=3 uid="uid://rx4a1oion8ow"]
 
 [ext_resource type="Texture2D" uid="uid://dbbpn2fw4io1v" path="res://Assets/Images/Daughter Elise/frame0000.png" id="1_lgdst"]
 [ext_resource type="Script" uid="uid://kds0fwv510th" path="res://Scripts/Main/daughter_talk_detector.gd" id="2_0qx48"]
+[ext_resource type="Theme" uid="uid://b4lurv8njswua" path="res://Resources/theme.tres" id="3_c8eu5"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0qx48"]
 atlas = ExtResource("1_lgdst")
@@ -48,12 +49,26 @@ shape = SubResource("RectangleShape2D_lgdst")
 
 [node name="ButtonPrompt" type="RichTextLabel" parent="TalkDetector"]
 texture_filter = 1
-offset_left = -34.0
-offset_top = -34.0
-offset_right = 36.0
+offset_left = -11.0
+offset_top = -45.0
+offset_right = 12.0
 offset_bottom = -13.0
 bbcode_enabled = true
-text = "Talk 'E'"
+text = "[img]res://Assets/Images/UI/KeyOutline.png[/img]"
+fit_content = true
 scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Label" type="Label" parent="TalkDetector/ButtonPrompt"]
+z_index = 1
+texture_filter = 1
+layout_mode = 0
+offset_left = 7.999999
+offset_top = 8.0
+offset_right = 16601.0
+offset_bottom = 15441.0
+scale = Vector2(0.10082376, 0.10082376)
+theme = ExtResource("3_c8eu5")
+theme_override_font_sizes/font_size = 100
+text = "E"

@@ -1,6 +1,7 @@
-[gd_scene load_steps=74 format=3 uid="uid://bty042lmdfi02"]
+[gd_scene load_steps=78 format=3 uid="uid://bty042lmdfi02"]
 
 [ext_resource type="Texture2D" uid="uid://brrqynw57auwm" path="res://Assets/Images/Lighthouse/Structure/FullTowerBuild2.png" id="1_w401g"]
+[ext_resource type="Script" uid="uid://duquj7bcb54rw" path="res://Scripts/Main/lighthouse_button_area.gd" id="1_we2es"]
 [ext_resource type="Texture2D" uid="uid://clfxft8e4odug" path="res://Assets/Images/Lighthouse/Structure/Light Lever/lever_Light_START_POSITION.png" id="3_b1qtg"]
 [ext_resource type="Theme" uid="uid://b4lurv8njswua" path="res://Resources/theme.tres" id="3_j2rhv"]
 [ext_resource type="PackedScene" uid="uid://cuku1ylw6a6a6" path="res://Scenes/RadioPuzzle/radioAnimated.tscn" id="3_qkcrh"]
@@ -63,6 +64,9 @@
 [ext_resource type="Texture2D" uid="uid://j420r5weyj55" path="res://Assets/Images/Lighthouse/Props/Kitchen and Dining Room/kitchen.png" id="59_l1a87"]
 [ext_resource type="Texture2D" uid="uid://did1xliodinev" path="res://Assets/Images/Lighthouse/Props/Kitchen and Dining Room/sink.png" id="60_ugh0q"]
 [ext_resource type="Texture2D" uid="uid://b6hm6oy6xlks1" path="res://Assets/Images/Lighthouse/Props/Kitchen and Dining Room/washing-machine.png" id="61_xhv2u"]
+[ext_resource type="Texture2D" uid="uid://b4n6cg1y8xc61" path="res://Assets/Images/Lighthouse/Props/Kitchen and Dining Room/plate.png" id="63_pm18c"]
+[ext_resource type="Texture2D" uid="uid://c8ytipb6iq06u" path="res://Assets/Images/Lighthouse/Props/Kitchen and Dining Room/miniLockbox.png" id="64_v23lm"]
+[ext_resource type="Script" uid="uid://ptduaxougvs3" path="res://Scenes/Environments/lockbox_detection_area.gd" id="65_v23lm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b2lj4"]
 size = Vector2(25.488739, 42.957886)
@@ -231,6 +235,7 @@ anchor_right = 0.29138103
 anchor_bottom = 1.0
 grow_vertical = 2
 size_flags_horizontal = 0
+script = ExtResource("1_we2es")
 metadata/_edit_use_anchors_ = true
 
 [node name="FullTowerArt" type="Sprite2D" parent="."]
@@ -257,14 +262,30 @@ shape = SubResource("RectangleShape2D_b2lj4")
 
 [node name="ButtonPrompt" type="RichTextLabel" parent="TOP/TopToF4Teleporter"]
 texture_filter = 1
-offset_left = -14.897171
-offset_top = -21.804132
-offset_right = 54.184113
-offset_bottom = 86.36823
-scale = Vector2(0.113562725, 0.113562725)
-theme = ExtResource("3_j2rhv")
-text = "E"
+offset_left = -11.0
+offset_top = -45.0
+offset_right = 12.0
+offset_bottom = -13.0
+bbcode_enabled = true
+text = "[img]res://Assets/Images/UI/KeyOutline.png[/img]"
+fit_content = true
 scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label" type="Label" parent="TOP/TopToF4Teleporter/ButtonPrompt"]
+z_index = 1
+texture_filter = 1
+layout_mode = 0
+offset_left = 7.999999
+offset_top = 8.0
+offset_right = 16601.0
+offset_bottom = 15441.0
+scale = Vector2(0.10082376, 0.10082376)
+theme = ExtResource("3_j2rhv")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 100
+text = "E"
 
 [node name="Lamp" type="AnimatedSprite2D" parent="TOP"]
 position = Vector2(157, 153)
@@ -287,14 +308,31 @@ shape = SubResource("RectangleShape2D_b1qtg")
 
 [node name="ButtonPrompt" type="RichTextLabel" parent="TOP/Main Light Switch/switchDecisionDetector"]
 texture_filter = 1
-offset_left = 15.849191
-offset_top = -100.378174
-offset_right = 626.3819
-offset_bottom = 26.36908
-scale = Vector2(0.2227192, 0.22411713)
-theme = ExtResource("3_j2rhv")
-text = "Main Light 'E'"
+offset_left = 44.906055
+offset_top = -150.5673
+offset_right = 67.90605
+offset_bottom = -118.56731
+scale = Vector2(2.6665077, 2.695009)
+bbcode_enabled = true
+text = "[img]res://Assets/Images/UI/KeyOutline.png[/img]"
+fit_content = true
 scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label" type="Label" parent="TOP/Main Light Switch/switchDecisionDetector/ButtonPrompt"]
+z_index = 1
+texture_filter = 1
+layout_mode = 0
+offset_left = 7.999999
+offset_top = 8.0
+offset_right = 16601.0
+offset_bottom = 15441.0
+scale = Vector2(0.10082376, 0.10082376)
+theme = ExtResource("3_j2rhv")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 100
+text = "E"
 
 [node name="MIDDLE" type="Control" parent="."]
 layout_mode = 1
@@ -334,14 +372,30 @@ shape = SubResource("RectangleShape2D_b2lj4")
 
 [node name="ButtonPrompt" type="RichTextLabel" parent="MIDDLE/F3toF2Teleporter"]
 texture_filter = 1
-offset_left = -28.000004
-offset_top = -18.999994
-offset_right = 44.006847
-offset_bottom = 85.97651
-scale = Vector2(0.13353598, 0.13353598)
-theme = ExtResource("3_j2rhv")
-text = "E"
+offset_left = -11.0
+offset_top = -45.0
+offset_right = 12.0
+offset_bottom = -13.0
+bbcode_enabled = true
+text = "[img]res://Assets/Images/UI/KeyOutline.png[/img]"
+fit_content = true
 scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label" type="Label" parent="MIDDLE/F3toF2Teleporter/ButtonPrompt"]
+z_index = 1
+texture_filter = 1
+layout_mode = 0
+offset_left = 7.999999
+offset_top = 8.0
+offset_right = 16601.0
+offset_bottom = 15441.0
+scale = Vector2(0.10082376, 0.10082376)
+theme = ExtResource("3_j2rhv")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 100
+text = "E"
 
 [node name="F3toF4Teleporter" type="Area2D" parent="MIDDLE"]
 position = Vector2(287.71796, 153.62102)
@@ -356,15 +410,31 @@ shape = SubResource("RectangleShape2D_b2lj4")
 
 [node name="ButtonPrompt" type="RichTextLabel" parent="MIDDLE/F3toF4Teleporter"]
 texture_filter = 1
-offset_left = 1.2820435
-offset_top = -23.62104
-offset_right = 72.54254
-offset_bottom = 82.738335
-scale = Vector2(0.12602846, 0.12602846)
-theme = ExtResource("3_j2rhv")
-theme_override_constants/outline_size = 3
-text = "E"
+offset_left = -11.0
+offset_top = -45.0
+offset_right = 12.0
+offset_bottom = -13.0
+bbcode_enabled = true
+text = "[img]res://Assets/Images/UI/KeyOutline.png[/img]"
+fit_content = true
 scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label" type="Label" parent="MIDDLE/F3toF4Teleporter/ButtonPrompt"]
+z_index = 1
+texture_filter = 1
+layout_mode = 0
+offset_left = 7.999999
+offset_top = 8.0
+offset_right = 16601.0
+offset_bottom = 15441.0
+scale = Vector2(0.10082376, 0.10082376)
+theme = ExtResource("3_j2rhv")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 100
+text = "E"
 
 [node name="F4toF3Teleporter" type="Area2D" parent="MIDDLE"]
 position = Vector2(232.77182, 47.724823)
@@ -379,14 +449,30 @@ shape = SubResource("RectangleShape2D_b2lj4")
 
 [node name="ButtonPrompt" type="RichTextLabel" parent="MIDDLE/F4toF3Teleporter"]
 texture_filter = 1
-offset_left = 18.981396
-offset_top = -22.977476
-offset_right = 94.22818
-offset_bottom = 92.27518
-scale = Vector2(0.14653024, 0.14653024)
-theme = ExtResource("3_j2rhv")
-text = "E"
+offset_left = -11.0
+offset_top = -45.0
+offset_right = 12.0
+offset_bottom = -13.0
+bbcode_enabled = true
+text = "[img]res://Assets/Images/UI/KeyOutline.png[/img]"
+fit_content = true
 scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label" type="Label" parent="MIDDLE/F4toF3Teleporter/ButtonPrompt"]
+z_index = 1
+texture_filter = 1
+layout_mode = 0
+offset_left = 7.999999
+offset_top = 8.0
+offset_right = 16601.0
+offset_bottom = 15441.0
+scale = Vector2(0.10082376, 0.10082376)
+theme = ExtResource("3_j2rhv")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 100
+text = "E"
 
 [node name="F4toTopTeleporter" type="Area2D" parent="MIDDLE"]
 position = Vector2(52.94809, 63.709152)
@@ -401,15 +487,31 @@ shape = SubResource("RectangleShape2D_b2lj4")
 
 [node name="ButtonPrompt" type="RichTextLabel" parent="MIDDLE/F4toTopTeleporter"]
 texture_filter = 1
-offset_left = -6.9480934
-offset_top = -24.709167
-offset_right = 76.11653
-offset_bottom = 88.56012
-scale = Vector2(0.13440236, 0.13440236)
-theme = ExtResource("3_j2rhv")
-theme_override_constants/outline_size = 3
-text = "E"
+offset_left = -11.0
+offset_top = -45.0
+offset_right = 12.0
+offset_bottom = -13.0
+bbcode_enabled = true
+text = "[img]res://Assets/Images/UI/KeyOutline.png[/img]"
+fit_content = true
 scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label" type="Label" parent="MIDDLE/F4toTopTeleporter/ButtonPrompt"]
+z_index = 1
+texture_filter = 1
+layout_mode = 0
+offset_left = 7.999999
+offset_top = 8.0
+offset_right = 16601.0
+offset_bottom = 15441.0
+scale = Vector2(0.10082376, 0.10082376)
+theme = ExtResource("3_j2rhv")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 100
+text = "E"
 
 [node name="MainGearTurningThingy" type="AnimatedSprite2D" parent="MIDDLE"]
 z_index = 2
@@ -438,14 +540,31 @@ shape = SubResource("RectangleShape2D_71vhx")
 
 [node name="ButtonPrompt" type="RichTextLabel" parent="MIDDLE/GearBox/MinigameDetectionArea"]
 texture_filter = 1
-offset_left = -119.832855
-offset_top = -1.90762
-offset_right = 382.35403
-offset_bottom = 122.41299
-scale = Vector2(0.13179648, 0.09181292)
-theme = ExtResource("3_j2rhv")
-text = "Gearbox 'E'"
+offset_left = -89.23722
+offset_top = -15.260958
+offset_right = -66.23722
+offset_bottom = 16.739042
+scale = Vector2(1.3152696, 1.0284258)
+bbcode_enabled = true
+text = "[img]res://Assets/Images/UI/KeyOutline.png[/img]"
+fit_content = true
 scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label" type="Label" parent="MIDDLE/GearBox/MinigameDetectionArea/ButtonPrompt"]
+z_index = 1
+texture_filter = 1
+layout_mode = 0
+offset_left = 7.999999
+offset_top = 8.0
+offset_right = 16601.0
+offset_bottom = 15441.0
+scale = Vector2(0.10082376, 0.10082376)
+theme = ExtResource("3_j2rhv")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 100
+text = "E"
 
 [node name="Bed Detection Area" type="Area2D" parent="MIDDLE"]
 position = Vector2(143, 146)
@@ -457,16 +576,33 @@ position = Vector2(-44.17267, 31.475586)
 shape = SubResource("RectangleShape2D_e3oeg")
 
 [node name="ButtonPrompt" type="RichTextLabel" parent="MIDDLE/Bed Detection Area"]
+z_index = 2
+texture_filter = 1
+offset_left = -54.68999
+offset_top = -129.05115
+offset_right = -31.689991
+offset_bottom = -97.05115
+scale = Vector2(4.279311, 3.2170255)
+bbcode_enabled = true
+text = "[img]res://Assets/Images/UI/KeyOutline.png[/img]"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label" type="Label" parent="MIDDLE/Bed Detection Area/ButtonPrompt"]
 z_index = 1
 texture_filter = 1
-offset_left = -67.310776
-offset_top = -81.837326
-offset_right = 303.6153
-offset_bottom = 40.155594
-scale = Vector2(0.35400146, 0.24660678)
+layout_mode = 0
+offset_left = 7.999999
+offset_top = 8.0
+offset_right = 16601.0
+offset_bottom = 15441.0
+scale = Vector2(0.10082376, 0.10082376)
 theme = ExtResource("3_j2rhv")
-text = "Sleep 'E'"
-scroll_active = false
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 100
+text = "E"
 
 [node name="BedsideTable" type="Sprite2D" parent="MIDDLE"]
 position = Vector2(126, 153)
@@ -487,17 +623,31 @@ shape = SubResource("RectangleShape2D_w401g")
 
 [node name="ButtonPrompt" type="RichTextLabel" parent="MIDDLE/Morse_Radio Detection Area"]
 texture_filter = 1
-offset_left = -159.86304
+offset_left = -63.103798
 offset_top = -132.19873
-offset_right = 635.23206
-offset_bottom = 113.69324
-scale = Vector2(0.35982904, 0.25066644)
-theme = ExtResource("3_j2rhv")
-text = "Morse Machine 'E'
-Radio 'R'"
+offset_right = -40.103798
+offset_bottom = -100.19873
+scale = Vector2(3.726862, 2.7439468)
+bbcode_enabled = true
+text = "[img]res://Assets/Images/UI/KeyOutline.png[/img]"
+fit_content = true
 scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Label" type="Label" parent="MIDDLE/Morse_Radio Detection Area/ButtonPrompt"]
+z_index = 1
+texture_filter = 1
+layout_mode = 0
+offset_left = 7.999999
+offset_top = 8.0
+offset_right = 16601.0
+offset_bottom = 15441.0
+scale = Vector2(0.10082376, 0.10082376)
+theme = ExtResource("3_j2rhv")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 100
+text = "E"
 
 [node name="MorseCodeMachine" type="Sprite2D" parent="MIDDLE"]
 position = Vector2(201, 147)
@@ -535,16 +685,31 @@ shape = SubResource("RectangleShape2D_b2lj4")
 
 [node name="ButtonPrompt" type="RichTextLabel" parent="BOTTOM/F1ToF2Teleporter"]
 texture_filter = 1
-offset_left = -1.699337
-offset_top = -25.445684
-offset_right = 70.57782
-offset_bottom = 84.08904
-scale = Vector2(0.1249975, 0.1249975)
-theme = ExtResource("3_j2rhv")
-theme_override_constants/outline_size = 3
-text = "E"
+offset_left = -11.0
+offset_top = -45.0
+offset_right = 12.0
+offset_bottom = -13.0
+bbcode_enabled = true
+text = "[img]res://Assets/Images/UI/KeyOutline.png[/img]"
+fit_content = true
 scroll_active = false
-metadata/_edit_use_anchors_ = true
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label" type="Label" parent="BOTTOM/F1ToF2Teleporter/ButtonPrompt"]
+z_index = 1
+texture_filter = 1
+layout_mode = 0
+offset_left = 7.999999
+offset_top = 8.0
+offset_right = 16601.0
+offset_bottom = 15441.0
+scale = Vector2(0.10082376, 0.10082376)
+theme = ExtResource("3_j2rhv")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 100
+text = "E"
 
 [node name="F2toF1Teleporter" type="Area2D" parent="BOTTOM"]
 position = Vector2(260.7444, 49.54658)
@@ -558,14 +723,31 @@ shape = SubResource("RectangleShape2D_b2lj4")
 
 [node name="ButtonPrompt" type="RichTextLabel" parent="BOTTOM/F2toF1Teleporter"]
 texture_filter = 1
-offset_left = 13.255619
-offset_top = -24.546568
-offset_right = 88.5318
-offset_bottom = 92.88434
-scale = Vector2(0.17495267, 0.17495267)
-theme = ExtResource("3_j2rhv")
-text = "E"
+offset_left = 11.331146
+offset_top = -32.419434
+offset_right = 34.331146
+offset_bottom = -0.4194336
+bbcode_enabled = true
+text = "[img]res://Assets/Images/UI/KeyOutline.png[/img]"
+fit_content = true
 scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label" type="Label" parent="BOTTOM/F2toF1Teleporter/ButtonPrompt"]
+z_index = 1
+texture_filter = 1
+layout_mode = 0
+offset_left = 7.999999
+offset_top = 8.0
+offset_right = 16601.0
+offset_bottom = 15441.0
+scale = Vector2(0.10082376, 0.10082376)
+theme = ExtResource("3_j2rhv")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 0
+theme_override_font_sizes/font_size = 100
+text = "E"
 
 [node name="F2toF3Teleporter" type="Area2D" parent="BOTTOM"]
 position = Vector2(33.966705, 64.53189)
@@ -580,15 +762,31 @@ shape = SubResource("RectangleShape2D_b2lj4")
 
 [node name="ButtonPrompt" type="RichTextLabel" parent="BOTTOM/F2toF3Teleporter"]
 texture_filter = 1
-offset_left = -5.9667034
-offset_top = -24.53189
-offset_right = 69.08226
-offset_bottom = 87.91467
-scale = Vector2(0.12403708, 0.12403708)
-theme = ExtResource("3_j2rhv")
-theme_override_constants/outline_size = 3
-text = "E"
+offset_left = -12.998045
+offset_top = -41.50357
+offset_right = 10.001955
+offset_bottom = -9.503571
+bbcode_enabled = true
+text = "[img]res://Assets/Images/UI/KeyOutline.png[/img]"
+fit_content = true
 scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label" type="Label" parent="BOTTOM/F2toF3Teleporter/ButtonPrompt"]
+z_index = 1
+texture_filter = 1
+layout_mode = 0
+offset_left = 7.999999
+offset_top = 8.0
+offset_right = 16601.0
+offset_bottom = 15441.0
+scale = Vector2(0.10082376, 0.10082376)
+theme = ExtResource("3_j2rhv")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 100
+text = "E"
 
 [node name="Kitchen Detection Area" type="Area2D" parent="BOTTOM"]
 position = Vector2(120, 52)
@@ -601,14 +799,31 @@ shape = SubResource("RectangleShape2D_va83y")
 
 [node name="ButtonPrompt" type="RichTextLabel" parent="BOTTOM/Kitchen Detection Area"]
 texture_filter = 1
-offset_left = -46.276154
-offset_top = -116.4608
-offset_right = 308.67703
-offset_bottom = -0.18632507
-scale = Vector2(0.38704705, 0.26962724)
-theme = ExtResource("3_j2rhv")
-text = "Cook 'E'"
+offset_left = -46.276142
+offset_top = -147.93665
+offset_right = -23.276142
+offset_bottom = -115.936646
+scale = Vector2(4.2528114, 3.152907)
+bbcode_enabled = true
+text = "[img]res://Assets/Images/UI/KeyOutline.png[/img]"
+fit_content = true
 scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label" type="Label" parent="BOTTOM/Kitchen Detection Area/ButtonPrompt"]
+z_index = 1
+texture_filter = 1
+layout_mode = 0
+offset_left = 7.999999
+offset_top = 8.0
+offset_right = 16601.0
+offset_bottom = 15441.0
+scale = Vector2(0.10082376, 0.10082376)
+theme = ExtResource("3_j2rhv")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 100
+text = "E"
 
 [node name="Couch" type="Sprite2D" parent="BOTTOM"]
 position = Vector2(76, 151)
@@ -664,6 +879,63 @@ z_index = 1
 position = Vector2(224, 78)
 texture = ExtResource("38_sai28")
 
+[node name="Plate" type="Sprite2D" parent="BOTTOM"]
+visible = false
+z_index = 2
+position = Vector2(207, 70)
+scale = Vector2(0.4375, 0.40625)
+texture = ExtResource("63_pm18c")
+
+[node name="Plate2" type="Sprite2D" parent="BOTTOM"]
+visible = false
+z_index = 2
+position = Vector2(242, 70)
+scale = Vector2(0.4375, 0.40625)
+texture = ExtResource("63_pm18c")
+
+[node name="MiniLockbox" type="Sprite2D" parent="BOTTOM"]
+z_index = 1
+position = Vector2(204, 66.00003)
+scale = Vector2(0.40625024, 0.42187607)
+texture = ExtResource("64_v23lm")
+
+[node name="Lockbox Detection Area" type="Area2D" parent="BOTTOM/MiniLockbox"]
+position = Vector2(-12.3076935, -11.8519)
+scale = Vector2(0.5851159, 0.75307304)
+script = ExtResource("65_v23lm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BOTTOM/MiniLockbox/Lockbox Detection Area"]
+position = Vector2(6.3103027, 37.770996)
+shape = SubResource("RectangleShape2D_va83y")
+
+[node name="ButtonPrompt" type="RichTextLabel" parent="BOTTOM/MiniLockbox/Lockbox Detection Area"]
+texture_filter = 1
+offset_left = -46.276142
+offset_top = -147.93665
+offset_right = -23.276142
+offset_bottom = -115.936646
+scale = Vector2(4.2528114, 3.152907)
+bbcode_enabled = true
+text = "[img]res://Assets/Images/UI/KeyOutline.png[/img]"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label" type="Label" parent="BOTTOM/MiniLockbox/Lockbox Detection Area/ButtonPrompt"]
+z_index = 1
+texture_filter = 1
+layout_mode = 0
+offset_left = 7.999999
+offset_top = 8.0
+offset_right = 16601.0
+offset_bottom = 15441.0
+scale = Vector2(0.10082376, 0.10082376)
+theme = ExtResource("3_j2rhv")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 100
+text = "E"
+
 [node name="PlaceholderDude" type="Sprite2D" parent="."]
 visible = false
 modulate = Color(1, 1, 1, 0.3764706)
@@ -672,6 +944,7 @@ position = Vector2(207, 566)
 texture = ExtResource("5_rf6kk")
 
 [node name="Lighthouse Collision" type="StaticBody2D" parent="."]
+visible = false
 z_index = 2
 position = Vector2(1, 324)
 

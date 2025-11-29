@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://bxfmchwss31t7"]
+[gd_scene load_steps=7 format=3 uid="uid://bxfmchwss31t7"]
 
 [ext_resource type="Script" uid="uid://c1ano0mxhou43" path="res://Scripts/UI/task_menu.gd" id="1_wbwnl"]
 [ext_resource type="Texture2D" uid="uid://cx2lxil4ct2c3" path="res://Assets/Images/UI/taskMenuPopDownButton.png" id="2_8qum5"]
 [ext_resource type="Texture2D" uid="uid://bsrqyi7a25v3a" path="res://Assets/Images/UI/taskMenu_Arrow.png" id="3_gccdi"]
 [ext_resource type="Texture2D" uid="uid://ccivhor1sy68x" path="res://Assets/Images/UI/taskMenu_Alert.png" id="4_om70i"]
+[ext_resource type="Theme" uid="uid://b4lurv8njswua" path="res://Resources/theme.tres" id="5_8qum5"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wsu2k"]
 bg_color = Color(0.39607844, 0.36862746, 0.3372549, 1)
@@ -34,6 +35,7 @@ layout_mode = 2
 
 [node name="TitleLabel" type="Label" parent="SlideController/TaskPanel/VBox"]
 layout_mode = 2
+theme = ExtResource("5_8qum5")
 text = "   Today's Tasks"
 
 [node name="ScrollContainer" type="ScrollContainer" parent="SlideController/TaskPanel/VBox"]
@@ -44,6 +46,7 @@ size_flags_vertical = 3
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+theme = ExtResource("5_8qum5")
 
 [node name="TabButton" type="TextureButton" parent="SlideController"]
 texture_filter = 1
@@ -69,3 +72,41 @@ position = Vector2(39, 28)
 scale = Vector2(2.072903, 2.072903)
 texture = ExtResource("4_om70i")
 offset = Vector2(-0.205, 0.265)
+
+[node name="TaskKey" type="RichTextLabel" parent="SlideController/TabButton"]
+z_index = 1
+texture_filter = 1
+layout_mode = 0
+offset_left = -10.1757765
+offset_top = 33.555397
+offset_right = 12.8242235
+offset_bottom = 65.5554
+scale = Vector2(4.1376395, 4.129529)
+bbcode_enabled = true
+text = "[img]res://Assets/Images/UI/KeyOutline.png[/img]"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label" type="Label" parent="SlideController/TabButton/TaskKey"]
+z_index = 1
+texture_filter = 1
+layout_mode = 0
+offset_left = 6.796495
+offset_top = 7.570712
+offset_right = 16599.797
+offset_bottom = 15440.57
+scale = Vector2(0.10082376, 0.10082376)
+theme = ExtResource("5_8qum5")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 100
+text = "Q"
+
+[node name="ArrowIcon2" type="Sprite2D" parent="SlideController/TabButton/TaskKey"]
+texture_filter = 1
+position = Vector2(11.587955, 3.0981674)
+rotation = -3.1415927
+scale = Vector2(0.5009868, 0.50197077)
+texture = ExtResource("3_gccdi")
+offset = Vector2(-5, 7)

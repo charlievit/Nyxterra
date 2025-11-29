@@ -36,6 +36,7 @@ var needDaughter: bool = false
 var needKitchen: bool = false 
 var needLight: bool = false
 var needBed: bool = false
+var needLockbox: bool = false
 
 # GLOBAL ENDING VARIABLES
 var yesterdaysMorality: int = 0
@@ -52,6 +53,16 @@ var todaysRecipe: String
 
 # CUTSCENES / DIALOGUE
 var introPlayed: bool = false
+var usedStairs: bool = false
+var usedRadio: bool = false
+var usedMorse: bool = false
+var usedKitchen: bool = false
+var usedSwitch: bool = false
+var usedTalk: bool = false
+var usedBed: bool = false
+var usedMovement: bool = false
+var usedMorseClicker: bool = false
+var tutorialMode = false
 var introScenePlayed: bool = false
 var isIntroPlayed: bool = false # Dialogue flag
 var pending_post_source: int = ReturnSource.NONE
@@ -281,6 +292,7 @@ func UpdateObjective():
 						needDaughter = true
 						TaskManager.AddTask("lastDay_checkDaughter", "Is someone cooking?")
 					1:
+						needLockbox = true
 						TaskManager.AddTask("lastDay_openLockBox", "Find the code.")
 					2:
 						TaskManager.AddTask("lastDay_readLetter", "Read the letter.")

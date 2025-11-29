@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://6825wwab2n3q"]
+[gd_scene load_steps=4 format=3 uid="uid://6825wwab2n3q"]
 
 [ext_resource type="Script" uid="uid://c8gmv4cxbf5kv" path="res://Scripts/save_load/pause_menu.gd" id="1_lj4oq"]
+[ext_resource type="Theme" uid="uid://b4lurv8njswua" path="res://Resources/theme.tres" id="2_238ko"]
+[ext_resource type="PackedScene" uid="uid://cnhqsrc4gxenp" path="res://Scenes/UI/options_panel.tscn" id="3_2bpff"]
 
 [node name="PauseMenu" type="Control"]
 process_mode = 2
@@ -19,7 +21,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 0.30980393)
+color = Color(0.13725491, 0.12156863, 0.1254902, 0.47058824)
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 layout_mode = 1
@@ -35,23 +37,35 @@ offset_bottom = 68.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+[node name="Buttons" type="VBoxContainer" parent="CenterContainer"]
 layout_mode = 2
 
-[node name="ResumeButton" type="Button" parent="CenterContainer/VBoxContainer"]
+[node name="ResumeButton" type="Button" parent="CenterContainer/Buttons"]
 layout_mode = 2
+theme = ExtResource("2_238ko")
 text = "Resume
 "
 
-[node name="SaveButton" type="Button" parent="CenterContainer/VBoxContainer"]
+[node name="SaveButton" type="Button" parent="CenterContainer/Buttons"]
 layout_mode = 2
+theme = ExtResource("2_238ko")
 text = "Save Game"
 
-[node name="LoadButton" type="Button" parent="CenterContainer/VBoxContainer"]
+[node name="LoadButton" type="Button" parent="CenterContainer/Buttons"]
 layout_mode = 2
+theme = ExtResource("2_238ko")
 text = "Load Game"
 
-[node name="MainMenuButton" type="Button" parent="CenterContainer/VBoxContainer"]
+[node name="MainMenuButton" type="Button" parent="CenterContainer/Buttons"]
 layout_mode = 2
+theme = ExtResource("2_238ko")
 text = "Main Menu
 "
+
+[node name="OptionsButton" type="Button" parent="CenterContainer/Buttons"]
+layout_mode = 2
+theme = ExtResource("2_238ko")
+text = "Options"
+
+[node name="OptionsPanel" parent="." instance=ExtResource("3_2bpff")]
+layout_mode = 0

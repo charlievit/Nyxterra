@@ -6,8 +6,6 @@ extends Area2D
 var baseLabelPos: Vector2
 var playerBody: CharacterBody2D = null
 
-@export var popUpScene: PackedScene = preload("res://Scenes/UI/yesNoLightPopUp.tscn")
-
 var hasBeenPrompted = false
 var activePopUp: Control = null
 
@@ -40,6 +38,7 @@ func _process(_delta):
 	
 	if playerBody:
 		if Input.is_action_just_pressed("ui_accept") and GameManager.needLight:
+			GameManager.usedKitchen = true
 			#Dialogue system
 			GameManager.player.set_physics_process(false)
 			OnBodyExited(playerBody)
@@ -52,8 +51,9 @@ func _process(_delta):
 			#SpawnDecisionPopUp()
 
 func OnBodyEntered(body):
-	if body.is_in_group("player") and GameManager.needLight and not hasBeenPrompted:
+	if body.is_in_group("player"):
 		playerBody = body # Store the player
+	if (body.is_in_group("player") and GameManager.needLight and not hasBeenPrompted and not GameManager.usedSwitch) or (body.is_in_group("player") and GameManager.needLight and not hasBeenPrompted and GameManager.tutorialMode):
 		if label:
 			label.visible = true
 
@@ -68,8 +68,6 @@ func SpawnDecisionPopUp():
 	
 	playerBody.controlsDisabled = true
 	label.visible = false
-	
-	activePopUp = popUpScene.instantiate()
 	
 	var uiLayer = get_tree().current_scene.find_child("Control_GAME SCREEN UI", true, false)
 	

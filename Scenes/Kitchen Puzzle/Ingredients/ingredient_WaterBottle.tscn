@@ -1,8 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://kjdhnyujwwxq"]
+[gd_scene load_steps=12 format=3 uid="uid://kjdhnyujwwxq"]
 
 [ext_resource type="Script" uid="uid://dl1l46fikvopu" path="res://Scripts/CookingMinigame/ingredient.gd" id="1_jf0ra"]
 [ext_resource type="Texture2D" uid="uid://b0sqwltykofvo" path="res://Assets/Images/KitchenPuzzle/Ingredients/waterBottle.png" id="2_21guq"]
 [ext_resource type="Texture2D" uid="uid://bo6l7eq7c6jlr" path="res://Assets/Images/icon.svg" id="3_ad2ek"]
+[ext_resource type="Theme" uid="uid://b4lurv8njswua" path="res://Resources/theme.tres" id="4_21guq"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1868s"]
 atlas = ExtResource("2_21guq")
@@ -80,9 +81,9 @@ shape = SubResource("RectangleShape2D_jf0ra")
 [node name="PourOrShake Amount Label" type="RichTextLabel" parent="."]
 offset_left = 34.0
 offset_top = -104.0
-offset_right = 74.0
-offset_bottom = -64.0
-scale = Vector2(1.3870325, 1.3870325)
-theme_override_colors/default_color = Color(0.64705884, 0.98039216, 0.9843137, 1)
+offset_right = 203.05249
+offset_bottom = 15.306
+scale = Vector2(0.18439397, 0.18439397)
+theme = ExtResource("4_21guq")
 bbcode_enabled = true
 text = "100"

@@ -10,6 +10,7 @@ signal nightArrived
 @onready var zoomCamera = $"Control_GAME SCREEN UI/SubViewportContainer/SubViewport/ZoomCamera"
 @onready var subVPort = $"Control_GAME SCREEN UI/SubViewportContainer/SubViewport"
 @onready var subVPortContainer = $"Control_GAME SCREEN UI/SubViewportContainer"
+@onready var tutorialButton = $"Control_GAME SCREEN UI/ToggleTutorial"
 var viewportMapShownSize: Vector2i = Vector2i(817, 648)
 var viewportMapShowPosition: Vector2 = Vector2(335, 0)
 var viewportMapHiddenSize: Vector2i = Vector2i(1150, 648)

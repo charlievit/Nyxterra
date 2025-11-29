@@ -1,8 +1,9 @@
-[gd_scene load_steps=14 format=3 uid="uid://ctuyv2i3q62q"]
+[gd_scene load_steps=15 format=3 uid="uid://ctuyv2i3q62q"]
 
 [ext_resource type="Script" uid="uid://bthfal06ejpjt" path="res://Scripts/Main/characterController.gd" id="1_cvnsp"]
 [ext_resource type="Texture2D" uid="uid://c2bjfaemqpvp3" path="res://Assets/Images/Player/PLACEHOLDER_DUDE.png" id="2_6t5aa"]
 [ext_resource type="Texture2D" uid="uid://brbbvqioqjn4p" path="res://Assets/Images/Player/Walk_sutherland.png" id="2_cvnsp"]
+[ext_resource type="Theme" uid="uid://b4lurv8njswua" path="res://Resources/theme.tres" id="4_vgqql"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6t5aa"]
 atlas = ExtResource("2_cvnsp")
@@ -99,3 +100,119 @@ texture = ExtResource("2_6t5aa")
 z_index = 1
 position = Vector2(0, 1)
 shape = SubResource("CapsuleShape2D_8gbba")
+
+[node name="WKey" type="RichTextLabel" parent="."]
+z_index = 1
+texture_filter = 1
+offset_left = -6.9467726
+offset_top = -52.79397
+offset_right = 16.053226
+offset_bottom = -20.793968
+scale = Vector2(0.5914499, 0.60367125)
+bbcode_enabled = true
+text = "[img]res://Assets/Images/UI/KeyOutline.png[/img]"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label" type="Label" parent="WKey"]
+z_index = 1
+texture_filter = 1
+layout_mode = 0
+offset_left = 6.3131275
+offset_top = 8.055029
+offset_right = 16599.313
+offset_bottom = 15441.055
+scale = Vector2(0.10082376, 0.10082376)
+theme = ExtResource("4_vgqql")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 100
+text = "W"
+
+[node name="SKey" type="RichTextLabel" parent="."]
+z_index = 1
+texture_filter = 1
+offset_left = -6.946772
+offset_top = -40.290123
+offset_right = 16.053228
+offset_bottom = -8.290123
+scale = Vector2(0.5914499, 0.60367125)
+bbcode_enabled = true
+text = "[img]res://Assets/Images/UI/KeyOutline.png[/img]"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label" type="Label" parent="SKey"]
+z_index = 1
+texture_filter = 1
+layout_mode = 0
+offset_left = 8.515361
+offset_top = 8.055037
+offset_right = 16601.516
+offset_bottom = 15441.055
+scale = Vector2(0.10082376, 0.10082376)
+theme = ExtResource("4_vgqql")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 100
+text = "S"
+
+[node name="AKey" type="RichTextLabel" parent="."]
+z_index = 1
+texture_filter = 1
+offset_left = -20.840317
+offset_top = -40.29013
+offset_right = 2.1596832
+offset_bottom = -8.290131
+scale = Vector2(0.5914499, 0.60367125)
+bbcode_enabled = true
+text = "[img]res://Assets/Images/UI/KeyOutline.png[/img]"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label" type="Label" parent="AKey"]
+z_index = 1
+texture_filter = 1
+layout_mode = 0
+offset_left = 7.9280944
+offset_top = 7.7673697
+offset_right = 16600.928
+offset_bottom = 15440.768
+scale = Vector2(0.10082376, 0.10082376)
+theme = ExtResource("4_vgqql")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 100
+text = "A"
+
+[node name="DKey" type="RichTextLabel" parent="."]
+z_index = 1
+texture_filter = 1
+offset_left = 6.9467735
+offset_top = -40.29013
+offset_right = 29.946774
+offset_bottom = -8.290131
+scale = Vector2(0.5914499, 0.60367125)
+bbcode_enabled = true
+text = "[img]res://Assets/Images/UI/KeyOutline.png[/img]"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label" type="Label" parent="DKey"]
+z_index = 1
+texture_filter = 1
+layout_mode = 0
+offset_left = 7.487661
+offset_top = 8.34269
+offset_right = 16600.488
+offset_bottom = 15441.343
+scale = Vector2(0.10082376, 0.10082376)
+theme = ExtResource("4_vgqql")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 100
+text = "D"

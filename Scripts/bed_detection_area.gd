@@ -25,6 +25,7 @@ func _process(_delta):
 	
 	if playerBody:
 		if Input.is_action_pressed("ui_accept") and GameManager.needBed:
+			GameManager.usedBed = true
 			GameManager.set_physics_process(false)
 			OnBodyExited(playerBody)
 			await Dialogue_system()
@@ -39,8 +40,9 @@ func _process(_delta):
 func OnBodyEntered(body):
 	if body.is_in_group("player") and GameManager.needBed:
 		playerBody = body # Store the player
-		if label:
-			label.visible = true
+		if not GameManager.usedBed or GameManager.tutorialMode:
+			if label:
+				label.visible = true
 
 func OnBodyExited(body):
 	if body.is_in_group("player"):
