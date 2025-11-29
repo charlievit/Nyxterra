@@ -603,6 +603,6 @@ texture_filter = 1
 position = Vector2(576.00006, 324)
 scale = Vector2(2.3999999, 2.4000003)
 sprite_frames = SubResource("SpriteFrames_vq74j")
-animation = &"planeFlyNight"
+animation = &"bombDropNight"
 
 [node name="Credits" parent="." instance=ExtResource("140_3kspl")]
