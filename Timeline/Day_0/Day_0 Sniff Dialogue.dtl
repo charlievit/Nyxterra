@@ -1,0 +1,4 @@
+audio "res://Assets/Audio/VA/Sutherland/Sniff.mp3" [volume="-5.0"]
+[wait time="1.0"]
+[voice path="res://Assets/Audio/VA/Sutherland/Cath must be making elises favorite.mp3" volume="-3.0"]
+Sutherland: (sniffs) Cath must be making Elise's favorite tonight.

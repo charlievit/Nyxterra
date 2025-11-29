@@ -120,7 +120,7 @@ func Chop():
 			GameManager.chopSpeakCooldown = 50
 	
 	KitchenController.oneShotAudioPlayer.stream = KitchenController.chopSound
-	KitchenController.oneShotAudioPlayer.volume_db = 0.0
+	KitchenController.oneShotAudioPlayer.volume_db = -10.0
 	KitchenController.oneShotAudioPlayer.play()
 	chopCount += 1
 	

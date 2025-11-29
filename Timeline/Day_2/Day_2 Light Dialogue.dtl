@@ -1,10 +1,10 @@
 - Yes
-	[voice path="res://Assets/Audio/VA/Sutherland/Cant do much harm.mp3" volume="0.0" bus="Character Voice"]
-	Sutherland: Suppose it can't do much harm.
+	[voice path="res://Assets/Audio/VA/Sutherland/Cant do much harm.mp3" volume="-5.0" bus="Character Voice"]
+	Sutherland: Suppose it can't really do much harm.
 	set {Day2_response} = "Yes"
 	[signal arg="Yes"]
 - No
 	[voice path="res://Assets/Audio/VA/Sutherland/Nice try ye bastards.mp3" volume="0.0" bus="Character Voice"]
-	Sutherland: Nice try, ye bastards.
+	Sutherland: (Chuckle) Nice try, ye bastards.
 	set {Day2_response} = "No"
 	[signal arg="No"]

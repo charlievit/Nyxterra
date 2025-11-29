@@ -23,7 +23,7 @@ var playerSpawnFloor: int = 3
 var playerSpawnPosition: Vector2 = Vector2(88, 278)
 var shouldUseStoredSpawn: bool = false
 
-var currentDay: int = 0 
+var currentDay: int = 0
 var daySTATE: DayState = DayState.NIGHT_IDLE
 var currentTaskStep: int = 0 
 var hasCompletedTutorial: bool = false 

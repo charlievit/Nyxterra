@@ -1,6 +1,6 @@
 if {KitchenController.recipeQuality} >= 50 and {KitchenController.recipeQuality} <= 100:
-	[voice path="res://Assets/Audio/VA/Elise/Not Bad Actually.mp3" volume="0.0" bus="Character Voice"]
+	[voice path="res://Assets/Audio/VA/Elise/Not Bad Actually.mp3" volume="-5.0" bus="Character Voice"]
 	Elise: Not bad actually
 else:
-	[voice path="res://Assets/Audio/VA/Elise/I Miss Mom.mp3" volume="0.0" bus="Character Voice"]
+	[voice path="res://Assets/Audio/VA/Elise/I Miss Mom.mp3" volume="-17.0" bus="Character Voice"]
 	Elise: I miss mom.

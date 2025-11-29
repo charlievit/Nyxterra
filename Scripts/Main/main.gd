@@ -91,7 +91,12 @@ func _ready() -> void:
 		await Dialogic.timeline_ended
 		player.set_physics_process(true)
 		GameManager.isIntroPlayed = true
-	
+	elif GameManager.currentDay == 5 and not GameManager.isBadEnding:
+		player.set_physics_process(false)
+		Dialogic.start("Day_5 Sniff Dialogue")
+		await Dialogic.timeline_ended
+		player.set_physics_process(true)
+
 	var morse_radio_node = $"Lighthouse/MIDDLE/Morse_Radio Detection Area"
 	morse_radio_node.set_process(false)
 	player.set_physics_process(false)
@@ -273,6 +278,11 @@ func _on_Radio_Completed() -> void:
 		4:
 			Dialogic.start("Day_4 Radio Completed") 
 	await Dialogic.timeline_ended
+	if GameManager.currentDay == 0:
+		player.set_physics_process(false)
+		Dialogic.start("Day_0 Sniff Dialogue")
+		await Dialogic.timeline_ended
+		player.set_physics_process(true)
 
 func _on_Gear_Completed() -> void:
 	match GameManager.currentDay:

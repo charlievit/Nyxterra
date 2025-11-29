@@ -193,7 +193,7 @@ func CheckForMatch():
 				push_error("ERROR: Main game scene path not found.")
 
 func Radio():
-	if GameManager.smithTalkedToDay1 == true:
+	if GameManager.smithTalkedToDay1 == true and GameManager.currentDay == 1:
 		Dialogic.start("Day_1 Smith Dialogue")
 	match GameManager.currentDay:
 		1:

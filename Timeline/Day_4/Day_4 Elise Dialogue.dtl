@@ -1,8 +1,8 @@
-[voice path="res://Assets/Audio/VA/Sutherland/Headed out.mp3" volume="0.0" bus="Character Voice"]
+[voice path="res://Assets/Audio/VA/Sutherland/Headed out.mp3" volume="-2.0" bus="Character Voice"]
 Sutherland: Good morning. You headed out?
-[voice path="res://Assets/Audio/VA/Elise/Aye its a beautiful day.mp3" volume="0.0" bus="Character Voice"]
+[voice path="res://Assets/Audio/VA/Elise/Aye its a beautiful day.mp3" volume="-2.0" bus="Character Voice"]
 Elise: Aye, it's a beautiful day, isn't it?
-[voice path="res://Assets/Audio/VA/Sutherland/Love you kiddo.mp3" volume="0.0" bus="Character Voice"]
-Sutherland: Yeah... Yeah, I suppose it is. Elise, before you go. I... I... love you kiddo.
+[voice path="res://Assets/Audio/VA/Sutherland/Love you kiddo.mp3" volume="-6.0" bus="Character Voice"]
+Sutherland: Yeah... Yeah, I suppose it is. Elise, before you go. I... I love you kiddo.
 [voice path="res://Assets/Audio/VA/Elise/Thanks Dad.mp3" volume="0.0" bus="Character Voice"]
 Elise: Thanks dad.

@@ -1,6 +1,6 @@
-[voice path="res://Assets/Audio/VA/Misc Radio/Radio-German-Swedish.mp3" volume="0.0" bus="Character Voice"]
+[voice path="res://Assets/Audio/VA/Misc Radio/Radio-German-Swedish.mp3" volume="-15.0" bus="Character Voice"]
 "Suspicious voice": Fair Isle Light, Fair Isle Light, this is Gotlandfjäll from Sweden, carrying... general cargo. Do you receive, over?
-[voice path="res://Assets/Audio/VA/Sutherland/Doesnt sound swedish.mp3" volume="0.0" bus="Character Voice"]
-Sutherland: (speaking to himself) I know a Swedish ship was expected... But he doesn't sound Swedish..
-[voice path="res://Assets/Audio/VA/Sutherland/heard over.mp3" volume="0.0"]
-Sutherland: (speaking on radio) Aye, heard. Over.
+[voice path="res://Assets/Audio/VA/Sutherland/Doesnt sound swedish.mp3" volume="2.0" bus="Character Voice"]
+Sutherland: (speaking to himself) I know a Swedish ship was expected... But he doesn't sound Swedish...
+[voice path="res://Assets/Audio/VA/Sutherland/heard over.mp3" volume="-3.0"]
+Sutherland: (speaking on radio) Heard. Over.
