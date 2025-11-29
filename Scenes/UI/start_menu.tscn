@@ -318,6 +318,7 @@ text = "Quit
 "
 
 [node name="OptionsPanel" type="Panel" parent="."]
+visible = false
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
@@ -507,6 +508,107 @@ theme_override_styles/disabled = SubResource("StyleBoxEmpty_g8uic")
 theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_0v2ic")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_ee1bv")
 icon = ExtResource("9_flpep")
+icon_alignment = 1
+expand_icon = true
+
+[node name="NyxForge Studio" type="Label" parent="SocialsPanel"]
+layout_mode = 0
+offset_left = 21.892624
+offset_top = 9.285068
+offset_right = 975.89264
+offset_bottom = 149.28506
+scale = Vector2(0.013278421, 0.024508782)
+theme = ExtResource("3_3kyvb")
+theme_override_font_sizes/font_size = 116
+text = "NyxForge Studio"
+
+[node name="itchButton" type="Button" parent="SocialsPanel/NyxForge Studio"]
+layout_mode = 0
+offset_left = 157.27237
+offset_top = 144.55989
+offset_right = 300.5304
+offset_bottom = 300.81046
+scale = Vector2(1.1234008, 1)
+theme_override_styles/normal = SubResource("StyleBoxEmpty_flpep")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_4j130")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_vxxty")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_8hnkv")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_dotjr")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_1gelb")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_dapwv")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_28ark")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_g8uic")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_0v2ic")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ee1bv")
+icon = ExtResource("7_flpep")
+icon_alignment = 1
+expand_icon = true
+
+[node name="instagramButton2" type="Button" parent="SocialsPanel/NyxForge Studio"]
+layout_mode = 0
+offset_left = -13.105835
+offset_top = 147.05228
+offset_right = 130.15222
+offset_bottom = 303.3028
+scale = Vector2(1.1234008, 1)
+theme_override_icons/icon = ExtResource("6_6aj3n")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_flpep")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_4j130")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_vxxty")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_8hnkv")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_dotjr")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_1gelb")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_dapwv")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_28ark")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_g8uic")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_0v2ic")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ee1bv")
+icon = ExtResource("6_6aj3n")
+icon_alignment = 1
+expand_icon = true
+
+[node name="Dragonsight Studio" type="Label" parent="SocialsPanel"]
+layout_mode = 0
+offset_left = 1.8446883
+offset_top = 20.097284
+offset_right = 955.84467
+offset_bottom = 160.09729
+scale = Vector2(0.013278421, 0.024508782)
+theme = ExtResource("3_3kyvb")
+theme_override_font_sizes/font_size = 116
+text = "Dragonsight Studio"
+
+[node name="Email" type="Label" parent="SocialsPanel/Dragonsight Studio"]
+layout_mode = 0
+offset_left = 10.484792
+offset_top = 137.08263
+offset_right = 1038.4847
+offset_bottom = 277.08264
+scale = Vector2(0.8080646, 0.711797)
+theme = ExtResource("3_3kyvb")
+theme_override_font_sizes/font_size = 77
+text = "Email: info@dragonsight.studio"
+
+[node name="instagramButton" type="Button" parent="SocialsPanel/Dragonsight Studio"]
+layout_mode = 0
+offset_left = 10.48479
+offset_top = 209.36258
+offset_right = 153.7428
+offset_bottom = 365.6131
+scale = Vector2(1.1234008, 1)
+theme_override_icons/icon = ExtResource("6_6aj3n")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_flpep")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_4j130")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_vxxty")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_8hnkv")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_dotjr")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_1gelb")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_dapwv")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_28ark")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_g8uic")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_0v2ic")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ee1bv")
+icon = ExtResource("6_6aj3n")
 icon_alignment = 1
 expand_icon = true
 

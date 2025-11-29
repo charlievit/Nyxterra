@@ -35,6 +35,16 @@ func _process(_delta):
 		if Input.is_action_pressed("radio_accept") and GameManager.needRadio:
 			OnBodyExited(playerBody)
 			await Radio_Dialogue()
+			
+			if GameManager.gearBoxSolved and GameManager.currentDay == 1:
+				Dialogic.start("Day_1 Smith Dialogue")
+				var currentTaskID
+				for key in TaskManager.activeTasks.keys():
+					if String(key).contains("afterGearbox"):
+						currentTaskID = key
+				GameManager.CompleteTask(currentTaskID)
+				return # don't play minigame
+			
 			if ResourceLoader.exists(radioScenePath):
 				SceneLoader.change_scene_with_loading(radioScenePath)
 			else:

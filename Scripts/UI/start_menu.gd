@@ -21,7 +21,7 @@ const SETTINGS_KEY_VOICE  := "voice_volume"
 @onready var continue_button: Button = $CenterContainer/Buttons/ContinueButton
 @onready var volume_slider2: HSlider = $OptionsPanel/VolumeSlider2
 #region Socials
-# CyberSugar Studios
+# CyberSugar Studio
 @onready var CS_instaButton: Button = $SocialsPanel/CyberSugar/instagramButton
 var CS_instaLink: String = "https://www.instagram.com/cybersugarstudios"
 @onready var CS_itchButton: Button = $SocialsPanel/CyberSugar/itchButton
@@ -30,6 +30,16 @@ var CS_itchLink: String = "https://cybersugarstudios.itch.io"
 var CS_xLink: String = "https://x.com/CyberSugarGames"
 @onready var CS_tikTokButton: Button = $SocialsPanel/CyberSugar/tikTokButton
 var CS_tikTokLink: String = "https://www.tiktok.com/@cybersugarstudios"
+
+# NyxForge Studio
+@onready var NF_itchButton: Button = $"SocialsPanel/NyxForge Studio/itchButton"
+var NF_itchLink: String = "https://itch.io/profile/nyxforgestudio"
+@onready var NF_instaButton: Button = $"SocialsPanel/NyxForge Studio/instagramButton2"
+var NF_instaLink: String = "https://www.instagram.com/nyxforgestudio"
+
+# Dragonsight Studio
+@onready var DS_instaButton: Button = $"SocialsPanel/Dragonsight Studio/instagramButton"
+var DS_instaLink: String = "https://www.instagram.com/karma97090/"
 #endregion
 
 var _cached_volume_db: float = 0.0   # for Return (revert)
@@ -78,7 +88,12 @@ func _ready() -> void:
 	CS_itchButton.pressed.connect(CS_ItchClicked)
 	CS_xButton.pressed.connect(CS_X_ButtonClicked)
 	CS_tikTokButton.pressed.connect(CS_TikTokClicked)
-
+	
+	NF_instaButton.pressed.connect(NF_InstaClicked)
+	NF_itchButton.pressed.connect(NF_ItchClicked)
+	
+	DS_instaButton.pressed.connect(DS_InstaClicked)
+	
 	options_panel.visible = false
 	socialsPanel.visible = false
 
@@ -168,13 +183,18 @@ func _load_volume(key: String, default_value: float) -> float:
 #region Social Buttons
 func CS_InstaClicked():
 	OS.shell_open(CS_instaLink)
-
 func CS_ItchClicked():
 	OS.shell_open(CS_itchLink)
-
 func CS_X_ButtonClicked():
 	OS.shell_open(CS_xLink)
-
 func CS_TikTokClicked():
 	OS.shell_open(CS_tikTokLink)
+
+func NF_InstaClicked():
+	OS.shell_open(NF_instaLink)
+func NF_ItchClicked():
+	OS.shell_open(NF_itchLink)
+
+func DS_InstaClicked():
+	OS.shell_open(DS_instaLink)
 #endregion
