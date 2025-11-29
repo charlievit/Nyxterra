@@ -82,6 +82,7 @@ func _ready() -> void:
 	currentState = GameManager.daySTATE
 	SyncVisualsToState()
 	
+	Dialogic.Text.set_text_voice_synced(true)
 	#Dialogue System
 	if GameManager.currentDay == 0 and GameManager.isIntroPlayed == false:
 		player.set_physics_process(false)
