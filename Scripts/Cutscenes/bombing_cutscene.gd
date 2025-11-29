@@ -86,18 +86,31 @@ func FadeToBlack():
 	tween.tween_property(animation, "modulate:a", 0.0, 2.45)
 	
 	tween.tween_callback(PlayBomb)
-
+	
 func PlayBomb():
-	var tween = create_tween()
 	bombPlayer.play()
 	
+	var tween = create_tween()
 	tween.tween_property(animation, "modulate:a", 0.0, 4.0)
 	tween.tween_property(bombPlayer, "volume_db", -80.0, 3.0)
 	
-	tween.tween_callback(CheckForEnding)
+	tween.tween_callback(func() -> void:
+		bombPlayer.stop()
+
+		# Start the dialogue
+		Dialogic.start("Bombing_Cutscene Dialogue")
+
+		# Wait until the timeline finishes
+		await Dialogic.timeline_ended
+
+		# Now call your existing function
+		CheckForEnding()
+	)
 
 func CheckForEnding():
 	#GameManager.isBadEnding = true # TESTING
+	Dialogic.end_timeline()
+
 	if GameManager.isBadEnding:
 		CutToSmokePlume()
 	else:

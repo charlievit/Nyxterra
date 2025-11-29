@@ -38,6 +38,7 @@ directories/dch_directory={
 "Sutherland": "res://Timeline/character/Sutherland.dch"
 }
 directories/dtl_directory={
+"Bombing_Cutscene Dialogue": "res://Timeline/Bombing_Cutscene Dialogue.dtl",
 "Burning_1": "res://Timeline/Cooking Minigame/Burning_1.dtl",
 "Burning_2": "res://Timeline/Cooking Minigame/Burning_2.dtl",
 "Chop_Day1or2": "res://Timeline/Cooking Minigame/Chop_Day1or2.dtl",
