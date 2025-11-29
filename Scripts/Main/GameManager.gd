@@ -40,10 +40,10 @@ var needLockbox: bool = false
 
 # GLOBAL ENDING VARIABLES
 var yesterdaysMorality: int = 0
-var morality: int = 1000 
+var morality: int = 0
 var moralityNeeded: int = 50 
 var yesterdaysRelationship: int = 0
-var relationship: int = 1000
+var relationship: int = 50
 var isBadEnding: bool = false
 var shouldLightBeOnTonight: bool = false
 var choseLightToBeOn: bool = false
@@ -69,6 +69,7 @@ var pending_post_source: int = ReturnSource.NONE
 var load_from_save_next_main: bool = false
 var smithTalkedToDay1: bool = false
 var gearBoxSolved: bool = false
+var chopSpeakCooldown = 50
 
 var player: Node = null
 #endregion
@@ -126,7 +127,7 @@ func CompleteTask(task_id: String):
 	UpdateObjective()
 
 func AddCookingScore(quality: int):
-	# "Relationship increases by an amount equal to the recipe quality /10 rounded up"
+	# Relationship increases by an amount equal to the recipe quality /10 rounded up
 	var increase = ceil(quality / 10.0)
 	yesterdaysRelationship = relationship
 	relationship += int(increase)

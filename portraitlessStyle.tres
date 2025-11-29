@@ -50,6 +50,11 @@ scene = ExtResource("7_4fnpx")
 [sub_resource type="Resource" id="Resource_vsie1"]
 script = ExtResource("2_va7u1")
 scene = ExtResource("8_emihh")
+overrides = {
+"boxes_min_size": "Vector2(200, 100)",
+"font_size_custom": "32.0",
+"font_size_use_global": "false"
+}
 
 [sub_resource type="Resource" id="Resource_oin3t"]
 script = ExtResource("2_va7u1")
@@ -74,4 +79,4 @@ layer_info = {
 "16": SubResource("Resource_oin3t"),
 "17": SubResource("Resource_46kqc")
 }
-metadata/_latest_layer = "13"
+metadata/_latest_layer = "15"

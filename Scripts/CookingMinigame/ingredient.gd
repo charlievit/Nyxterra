@@ -109,6 +109,16 @@ func Chop():
 	if not isChoppable or isChopped:
 		return
 	
+	var randomChanceToSpeak = randf_range(0, 100)
+	GameManager.chopSpeakCooldown -= 1
+	if randomChanceToSpeak >= 95 and GameManager.chopSpeakCooldown <= 0:
+		if GameManager.currentDay < 3:
+			Dialogic.start("Chop_Day1or2")
+			GameManager.chopSpeakCooldown = 50
+		else:
+			Dialogic.start("Chop_Day3or4")
+			GameManager.chopSpeakCooldown = 50
+	
 	KitchenController.oneShotAudioPlayer.stream = KitchenController.chopSound
 	KitchenController.oneShotAudioPlayer.volume_db = 0.0
 	KitchenController.oneShotAudioPlayer.play()

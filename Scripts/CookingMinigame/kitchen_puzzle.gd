@@ -2,6 +2,10 @@
 extends Control
 
 #region VARIABLES
+var kitchenGameMusicPlayer: AudioStreamPlayer
+var kitchenGameMusic: AudioStream = preload("res://Assets/Audio/Music/kitchen minigame idea.wav")
+var gameDone: bool = false
+
 # EXPORT RETURN SETTINGS
 @export_group("Return Settings")
 @export var returnFloorIndex = 2
@@ -33,6 +37,12 @@ var stoveOffSound: AudioStreamMP3
 var stoveOnSound: AudioStreamMP3
 var pourSound: AudioStreamMP3
 var shakerSounds: Array = []
+
+var burningVAs: Array = ["Burning_1", "Burning_2"]
+var hasMentionedBurning: bool = false
+var endCookingBadLines: Array = ["EndCookingBad_1", "EndCookingBad_2", "EndCookingBad_3"]
+var endCookingGoodLinesEarly: Array = ["EndCookingGood_Day1or2_1", "EndCookingGood_Day1or2_2", "EndCookingGood_Day1or2_3"]
+var endCookingGoodLinesLate: Array = ["EndCookingGood_Day3or4_1", "EndCookingGood_Day3or4_2", "EndCookingGood_Day3or4_3"]
 #endregion SOUNDS
 
 #region PROGRESS BAR
@@ -141,7 +151,18 @@ func _ready():
 	barStyleOvertime = StyleBoxFlat.new()
 	barStyleOvertime.bg_color = STEP_END_COLOR
 	
+	kitchenGameMusicPlayer = AudioStreamPlayer.new()
+	add_child(kitchenGameMusicPlayer)
+	kitchenGameMusicPlayer.stream = kitchenGameMusic
+	kitchenGameMusicPlayer.volume_db = -30.0
+	kitchenGameMusicPlayer.finished.connect(Loop)
+	
 	set_process(false)
+
+func Loop():
+	if gameDone:
+		return
+	kitchenGameMusicPlayer.play()
 
 func OnLoopSound(player):
 	player.play()
@@ -248,6 +269,8 @@ func ApplyPenalty(amount: int):
 
 func StartRecipe(recipeName: String):
 	print("Starting recipe: %s" % recipeName)
+	gameDone = false
+	kitchenGameMusicPlayer.play()
 	
 	currentRecipeName = recipeName #store in case of reset needed
 	
@@ -580,10 +603,14 @@ func OnStepTimerTimeout():
 	
 	progressBar.add_theme_stylebox_override("fill", barStyleOvertime) # setting to red
 	progressBar.value = progressBar.max_value
+	hasMentionedBurning = false
 	overtimeTimer.start()
 
 func OnOvertimeTimerTimeout():
 	ApplyPenalty(1)
+	if not hasMentionedBurning:
+		Dialogic.start(burningVAs.pick_random())
+		hasMentionedBurning = true
 
 func AdvanceToNextStep():
 	currentStepIndex += 1
@@ -596,14 +623,22 @@ func AdvanceToNextStep():
 		# Set dialogue flags
 		if recipeQuality >= 50 and recipeQuality <= 100:
 			Dialogic.VAR.Cooking_Response = "Good"
+			
+			if GameManager.currentDay == 1 or GameManager.currentDay == 2:
+				Dialogic.start(endCookingGoodLinesEarly.pick_random())
+			else:
+				Dialogic.start(endCookingGoodLinesLate.pick_random())
 		else:
 			Dialogic.VAR.Cooking_Response = "Bad"
+			Dialogic.start(endCookingBadLines.pick_random())
 			
 		print("Recipe complete. Final Quality: %d" % recipeQuality)
-			
-		# NEW: Update Relationship based on performance
+		gameDone = true
+		
 		GameManager.AddCookingScore(recipeQuality)
 		
+		await get_tree().create_timer(8.0).timeout
+		kitchenGameMusicPlayer.stop()
 		GameManager.CompleteTask(currentTaskID)
 		GameManager.SetPlayerSpawn(returnFloorIndex, returnPosition)
 		GameManager.pending_post_source = GameManager.ReturnSource.KITCHEN

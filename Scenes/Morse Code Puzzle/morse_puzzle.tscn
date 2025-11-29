@@ -36,6 +36,13 @@ offset_right = 1156.0
 offset_bottom = 646.0
 texture = ExtResource("2_jhqy5")
 
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 495.0
+offset_top = 75.0
+offset_right = 1066.0
+offset_bottom = 186.0
+
 [node name="Notepad" type="TextureRect" parent="."]
 layout_mode = 0
 offset_left = 509.0
@@ -69,16 +76,15 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_gvhvc")
 
 [node name="TargetLabel" type="RichTextLabel" parent="."]
 layout_mode = 0
-offset_left = 633.0
-offset_top = 1.5258789e-05
-offset_right = 1298.0
-offset_bottom = 129.00002
-scale = Vector2(0.37317014, 0.33831316)
+offset_left = 509.0
+offset_top = 78.0
+offset_right = 1055.0
+offset_bottom = 198.0
 size_flags_vertical = 3
 theme = ExtResource("5_vpjeu")
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 5
-text = "asdasdasssssssssssssssssssssssssssssss"
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/normal_font_size = 32
 
 [node name="MorseLive" type="Label" parent="."]
 layout_mode = 0

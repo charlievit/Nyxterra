@@ -1,4 +1,5 @@
 - Yes
+	[voice path="res://Assets/Audio/VA/Sutherland/Americans get lost.mp3" volume="0.0" bus="Character Voice"]
 	Sutherland: Don't want the Americans getting lost.
 	set {Day3_response} = "Yes"
 	[signal arg="Yes"]
