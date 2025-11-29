@@ -41,8 +41,11 @@ func _process(_delta):
 	if playerBody:
 		if Input.is_action_just_pressed("ui_accept") and GameManager.needLight:
 			#Dialogue system
-			Dialogue_system()
+			GameManager.player.set_physics_process(false)
+			OnBodyExited(playerBody)
 			await Dialogue_system()
+			GameManager.player.set_physics_process(true)
+			
 			if hasBeenPrompted:
 				return
 			

@@ -33,8 +33,12 @@ func _process(_delta):
 			else:
 				push_error("ERROR: Morse game scene path not found.")
 		if Input.is_action_pressed("radio_accept") and GameManager.needRadio:
+			GameManager.player.set_physics_process(false)
+			self.set_process(false)
 			OnBodyExited(playerBody)
 			await Radio_Dialogue()
+			self.set_process(true)
+			GameManager.player.set_physics_process(true)
 			
 			if GameManager.gearBoxSolved and GameManager.currentDay == 1:
 				Dialogic.start("Day_1 Smith Dialogue")

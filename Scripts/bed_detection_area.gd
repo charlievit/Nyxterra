@@ -25,8 +25,10 @@ func _process(_delta):
 	
 	if playerBody:
 		if Input.is_action_pressed("ui_accept") and GameManager.needBed:
+			GameManager.set_physics_process(false)
 			OnBodyExited(playerBody)
 			await Dialogue_system()
+			GameManager.set_physics_process(true)
 			print("going to bed...")
 			var currentTask: String = ""
 			for key in TaskManager.activeTasks.keys():

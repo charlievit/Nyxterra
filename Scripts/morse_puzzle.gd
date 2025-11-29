@@ -12,8 +12,14 @@ const DOT_MAX := UNIT * 1.5
 const LETTER_GAP := UNIT * 2.5
 const WORD_GAP := UNIT * 6.5
 
-# --- Sentences file ---
-const SENTENCE_PATH := "res://data/morse_sentences.txt"
+# Fixed sentences per day
+const DAY_SENTENCES := {
+	0: "ATTACK IMMINENT DISABLE LIGHT",
+	1: "FISHING SEASON",
+	2: "QUIET SEAS",
+	3: "INCOMING SHIPMENT",
+	4: "SWEDISH DELIVERY",
+}
 
 const MORSE: Dictionary[String, String] = {
 	"A": ".-", "B": "-...", "C": "-.-.", "D": "-..", "E": ".",
@@ -181,26 +187,12 @@ func _on_backspace_pressed() -> void:
 		label_feedback.text = ""
 		_update_labels()
 
-# --- Sentence loading / sanitizing / target render ---
+# ---sanitizing / target render ---
 func _load_random_sentence() -> void:
-	var lines_str := ""
-	if FileAccess.file_exists(SENTENCE_PATH):
-		lines_str = FileAccess.get_file_as_string(SENTENCE_PATH)
+	if DAY_SENTENCES.has(GameManager.currentDay):
+		target_full = _sanitize_sentence(DAY_SENTENCES[GameManager.currentDay])
 
-	var lines := lines_str.split("\n", false)
-	var cleaned: Array[String] = []
-	for raw: String in lines:
-		var s := _sanitize_sentence(raw)
-		if s.length() > 0:
-			cleaned.append(s)
-
-	if cleaned.is_empty():
-		target_full = "HELP"
-	else:
-		var rng := RandomNumberGenerator.new()
-		rng.randomize()
-		target_full = cleaned[rng.randi_range(0, cleaned.size() - 1)]
-
+	# Common setup for both cases
 	target_words = target_full.split(" ", false)
 	word_i = 0
 	decoded_current_word = ""
