@@ -82,6 +82,7 @@ scale = Vector2(0.71975875, 0.71977925)
 script = ExtResource("1_cvnsp")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
+visible = false
 z_index = 1
 texture_filter = 1
 position = Vector2(0, -1.3893149)

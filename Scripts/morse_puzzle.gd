@@ -56,8 +56,10 @@ var current_symbol: String = ""
 # --- Sentence / word-by-word state ---
 var target_full: String = ""
 var target_words: PackedStringArray = []
+var morse_target_words: PackedStringArray = [] 
 var word_i: int = 0
 var decoded_current_word: String = ""
+
 
 # Task Key for Game Manager communication
 var currentTaskID: String = ""
@@ -126,6 +128,7 @@ func _commit_letter_if_any() -> void:
 		decoded_current_word += ch
 		current_symbol = ""
 		_update_labels()
+		_show_target_with_highlight() 
 		_check_word_progress()
 
 # The player completes the word, then we auto-advance and reset.
@@ -186,14 +189,20 @@ func _on_backspace_pressed() -> void:
 		decoded_current_word = decoded_current_word.substr(0, decoded_current_word.length() - 1)
 		label_feedback.text = ""
 		_update_labels()
-
+		_show_target_with_highlight()
+		
 # ---sanitizing / target render ---
 func _load_random_sentence() -> void:
 	if DAY_SENTENCES.has(GameManager.currentDay):
 		target_full = _sanitize_sentence(DAY_SENTENCES[GameManager.currentDay])
 
-	# Common setup for both cases
 	target_words = target_full.split(" ", false)
+
+	# Build Morse version of each word
+	morse_target_words.clear()
+	for w in target_words:
+		morse_target_words.append(_encode_word_to_morse(w))
+
 	word_i = 0
 	decoded_current_word = ""
 	current_symbol = ""
@@ -216,15 +225,33 @@ func _show_target_with_highlight() -> void:
 	if target_words.is_empty():
 		label_target.text = "Target: (none)"
 		return
+
 	var bb := "[b]Target:[/b] "
-	for idx in target_words.size():
-		var w := target_words[idx]
-		if idx == word_i:
-			bb += "[color=yellow]%s[/color]" % w
+
+	for w_index in target_words.size():
+		var morse_word := morse_target_words[w_index]  # e.g. ".- - - .- -.-"
+
+		if w_index == word_i:
+			# We are on this word → highlight current letter
+			var letter_codes := morse_word.split(" ", false)
+			var highlight_idx := decoded_current_word.length()  # which letter we’re on
+
+			for l_index in letter_codes.size():
+				var code := letter_codes[l_index]
+				if l_index == highlight_idx:
+					bb += "[color=yellow]%s[/color]" % code
+				else:
+					bb += code
+
+				if l_index < letter_codes.size() - 1:
+					bb += " "          # space between letters
 		else:
-			bb += w
-		if idx < target_words.size() - 1:
-			bb += " "
+			# Other words: show full Morse word normally
+			bb += morse_word
+
+		if w_index < target_words.size() - 1:
+			bb += "   "              # gap between words
+
 	label_target.text = bb
 
 func _update_labels() -> void:
@@ -239,6 +266,17 @@ func _update_labels() -> void:
 
 	var display := (prefix + decoded_current_word).strip_edges()
 	label_out.text = "You typed: %s" % display
+
+func _encode_word_to_morse(word: String) -> String:
+	var parts: Array[String] = []
+	for i in word.length():
+		var ch := word[i]
+		if ch == " ":
+			continue
+		var code: String = MORSE.get(ch, "?") as String
+		parts.append(code)
+	return " ".join(parts)  # ".- - - .- -.-" etc.
+
 
 func _Dialogue_System() -> void:
 	Dialogic.start("Day_0 Morse Completed")
