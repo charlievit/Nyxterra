@@ -29,6 +29,7 @@ func _process(_delta):
 	
 	if playerBody and GameManager.needDaughter:
 		if Input.is_action_pressed("ui_accept") and GameManager.needDaughter:
+			GameManager.usedTalk = true
 			GameManager.player.set_physics_process(false)
 			OnBodyExited(playerBody)
 			#Dialogue system
@@ -41,9 +42,9 @@ func _process(_delta):
 			GameManager.CompleteTask(currentTask)
 
 func OnBodyEntered(body):
-	if body.is_in_group("player") and GameManager.needDaughter:
+	if body.is_in_group("player"):
 		playerBody = body # Store the player
-		if label:
+		if (body.is_in_group("player") and GameManager.needDaughter and not GameManager.usedTalk) or (body.is_in_group("player") and GameManager.needDaughter and GameManager.tutorialMode):
 			label.visible = true
 
 func OnBodyExited(body):

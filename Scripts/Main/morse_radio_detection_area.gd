@@ -28,11 +28,13 @@ func _process(_delta):
 	
 	if playerBody:
 		if Input.is_action_pressed("ui_accept") and GameManager.needMorse:
+			GameManager.usedMorse = true
 			if ResourceLoader.exists(morseScenePath):
 				SceneLoader.change_scene_with_loading(morseScenePath)
 			else:
 				push_error("ERROR: Morse game scene path not found.")
 		if Input.is_action_pressed("radio_accept") and GameManager.needRadio:
+			GameManager.usedRadio = true
 			GameManager.player.set_physics_process(false)
 			self.set_process(false)
 			OnBodyExited(playerBody)
@@ -56,8 +58,11 @@ func _process(_delta):
 				
 func OnBodyEntered(body):
 	if body.is_in_group("player"):
-		if GameManager.needRadio or GameManager.needMorse:
-			playerBody = body # Store the player
+		playerBody = body # Store the player
+		if (GameManager.needRadio and not GameManager.usedRadio) or (GameManager.needRadio and GameManager.tutorialMode):
+			if label:
+				label.visible = true
+		elif (GameManager.needMorse and not GameManager.usedMorse) or (GameManager.needMorse and GameManager.tutorialMode):
 			if label:
 				label.visible = true
 

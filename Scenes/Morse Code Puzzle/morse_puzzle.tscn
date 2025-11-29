@@ -1,10 +1,12 @@
-[gd_scene load_steps=12 format=3 uid="uid://q4bvqbk8pn"]
+[gd_scene load_steps=14 format=3 uid="uid://q4bvqbk8pn"]
 
 [ext_resource type="Script" uid="uid://by7yfvqxg6534" path="res://Scripts/morse_puzzle.gd" id="1_sk6lw"]
 [ext_resource type="Texture2D" uid="uid://sxi357hheqg7" path="res://Assets/Images/MorseCode/1MorseCodeMachineClipboard.png" id="2_jhqy5"]
 [ext_resource type="Texture2D" uid="uid://6ijfhfb0b543" path="res://Assets/Images/MorseCode/Notepad.png" id="3_cbnwp"]
 [ext_resource type="Texture2D" uid="uid://8nt10bv5lyph" path="res://Assets/Images/MorseCode/MorseKey.png" id="3_o1vg4"]
 [ext_resource type="Texture2D" uid="uid://c3flplkwdkhfe" path="res://Assets/Images/MorseCode/NotepadMessage.png" id="3_qt645"]
+[ext_resource type="Theme" uid="uid://b4lurv8njswua" path="res://Resources/theme.tres" id="5_vpjeu"]
+[ext_resource type="PackedScene" uid="uid://bigtupvdnq1dd" path="res://Scenes/UI/cursor.tscn" id="6_ku1dl"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jhqy5"]
 
@@ -79,6 +81,7 @@ offset_top = 78.0
 offset_right = 1055.0
 offset_bottom = 198.0
 size_flags_vertical = 3
+theme = ExtResource("5_vpjeu")
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 6
 theme_override_font_sizes/normal_font_size = 32
@@ -90,6 +93,7 @@ offset_top = 261.0
 offset_right = 779.0
 offset_bottom = 287.0
 size_flags_vertical = 6
+theme = ExtResource("5_vpjeu")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Current letter: "
 
@@ -100,6 +104,7 @@ offset_top = 309.0
 offset_right = 778.0
 offset_bottom = 383.0
 size_flags_vertical = 6
+theme = ExtResource("5_vpjeu")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 autowrap_mode = 3
 autowrap_trim_flags = 0
@@ -110,6 +115,7 @@ offset_left = 524.0
 offset_top = 384.0
 offset_right = 774.0
 offset_bottom = 407.0
+theme = ExtResource("5_vpjeu")
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 4
 
@@ -120,9 +126,10 @@ offset_top = 462.0
 offset_right = 778.0
 offset_bottom = 583.0
 size_flags_vertical = 3
+theme = ExtResource("5_vpjeu")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_styles/normal = SubResource("StyleBoxFlat_qt645")
-text = "BackSpace"
+text = "Backspace"
 
 [node name="Sheet" type="TextureRect" parent="."]
 layout_mode = 0
@@ -131,3 +138,9 @@ offset_top = 61.0
 offset_right = 603.0
 offset_bottom = 644.0
 texture = ExtResource("3_o1vg4")
+
+[node name="Cursor" parent="." instance=ExtResource("6_ku1dl")]
+visible = false
+position = Vector2(1077, 591)
+rotation = -0.36651915
+scale = Vector2(2.6279182, 2.6279182)

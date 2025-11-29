@@ -17,6 +17,11 @@ var controlsDisabled: bool = false
 # Stores the current floor the player is of for latter mapping of Y-values
 var currentFloor: int = 1
 
+# Stores what keys have been pressed for tutorial
+@onready var WKey: RichTextLabel = $WKey
+@onready var SKey: RichTextLabel = $SKey
+@onready var AKey: RichTextLabel = $AKey
+@onready var DKey: RichTextLabel = $DKey
 # Stores the sprite's starting scale and color (this should be the same at the bottom of each floor)
 var baseScale: Vector2 = Vector2.ONE
 var animBaseScale: Vector2 = Vector2(0.124, 0.124)
@@ -40,6 +45,12 @@ func _ready():
 	#save & load
 	GameManager.player = self
 	GameManager.ConsumeSpawnData(self)
+	
+	if GameManager.usedMovement:
+		WKey.visible = false
+		AKey.visible = false
+		SKey.visible = false
+		DKey.visible = false
 	
 	self.position = GameManager.playerSpawnPosition
 	currentFloor = GameManager.playerSpawnFloor
@@ -67,6 +78,20 @@ func _physics_process(_delta):
 	# Get input direction and set velocity
 	var inputVector = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 	velocity = inputVector * moveSpeed
+	# Tutorial updates on keypressed
+	match inputVector:
+		Vector2(-1.0, 0.0):
+			AKey.visible = false
+			GameManager.usedMovement = true
+		Vector2(1.0, 0.0):
+			DKey.visible = false
+			GameManager.usedMovement = true
+		Vector2(0.0, -1.0):
+			WKey.visible = false
+			GameManager.usedMovement = true
+		Vector2(0.0, 1.0):
+			SKey.visible = false
+			GameManager.usedMovement = true
 	
 	# Move the character and update the sprite
 	if not controlsDisabled:

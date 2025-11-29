@@ -5,7 +5,7 @@ extends Area2D
 var baseLabelPos: Vector2
 var playerBody: CharacterBody2D = null
 
-@export var kitchenScenePath: String = "res://Scenes/Kitchen Puzzle/kitchen_puzzle.tscn"
+@export var lockboxScenePath: String = "res://Scenes/Lockbox Puzzle/lockbox_minigame.tscn"
 
 func _ready():
 	# Connect signals
@@ -27,17 +27,16 @@ func _process(_delta):
 
 	
 	if playerBody:
-		if Input.is_action_pressed("ui_accept") and GameManager.needKitchen:
-			GameManager.usedKitchen = true
-			if ResourceLoader.exists(kitchenScenePath):
-				SceneLoader.change_scene_with_loading(kitchenScenePath)
+		if Input.is_action_pressed("ui_accept") and GameManager.needlockbox:
+			if ResourceLoader.exists(lockboxScenePath):
+				SceneLoader.change_scene_with_loading(lockboxScenePath)
 			else:
 				push_error("ERROR: Main game scene path not found.")
 
 func OnBodyEntered(body):
 	if body.is_in_group("player"):
 		playerBody = body # Store the player
-	if (body.is_in_group("player") and GameManager.needKitchen and not GameManager.usedKitchen) or (body.is_in_group("player") and GameManager.needKitchen and GameManager.tutorialMode):
+	if body.is_in_group("player") and GameManager.needLockbox:
 		if label:
 			label.visible = true
 

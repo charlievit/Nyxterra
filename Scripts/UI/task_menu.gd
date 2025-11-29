@@ -12,6 +12,9 @@ var shouldBeHidden: bool = false
 @onready var arrowIcon = $SlideController/TabButton/ArrowIcon
 @onready var alertIcon = $SlideController/TabButton/AlertIcon
 @onready var tabButton = $SlideController/TabButton
+@onready var taskIndicator = $SlideController/TabButton/TaskKey
+
+var shouldTaskIndicatorBeVisible: bool = true
 
 var clickPlayer: AudioStreamPlayer2D
 @onready var hapticClickSound = preload("res://Assets/Audio/UI/HapticClick.mp3")
@@ -41,9 +44,14 @@ func _process(_delta):
 	else:
 		self.visible = true
 
+func ToggleTaskKey():
+	taskIndicator.visible = not taskIndicator.visible
+
 func _input(event):
 	if event.is_action_pressed("toggle_tasks"):
 		ToggleWindow()
+		if not GameManager.tutorialMode:
+			taskIndicator.visible = false
 
 # CORE LOGIC
 func ToggleWindow():

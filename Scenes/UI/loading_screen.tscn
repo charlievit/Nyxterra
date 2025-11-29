@@ -1,7 +1,8 @@
-[gd_scene load_steps=30 format=3 uid="uid://cmm7tsafh30uc"]
+[gd_scene load_steps=31 format=3 uid="uid://cmm7tsafh30uc"]
 
-[ext_resource type="Script" uid="uid://bbnbdu7cheyj7" path="res://Scripts/UI/loading_screen.gd" id="1_qj53y"]
+[ext_resource type="Script" uid="uid://ck6kjlrbq7m8c" path="res://Scripts/UI/loading_screen.gd" id="1_qj53y"]
 [ext_resource type="Texture2D" uid="uid://jx3yb0oa748d" path="res://Assets/Images/Lighthouse/AnimatedLightHouseScreen/LighthouseAnim2.png" id="2_63kij"]
+[ext_resource type="Theme" uid="uid://b4lurv8njswua" path="res://Resources/theme.tres" id="3_u08of"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_u08of"]
 atlas = ExtResource("2_63kij")
@@ -216,13 +217,15 @@ offset_left = 945.0
 offset_top = 597.0
 offset_right = 1020.0
 offset_bottom = 620.0
+theme = ExtResource("3_u08of")
 text = "Loading..."
 
 [node name="PercentLabel" type="Label" parent="."]
 texture_filter = 1
 layout_mode = 0
-offset_left = 1047.0
+offset_left = 1076.0
 offset_top = 598.0
-offset_right = 1087.0
-offset_bottom = 621.0
+offset_right = 1116.0
+offset_bottom = 628.0
+theme = ExtResource("3_u08of")
 text = "0%"

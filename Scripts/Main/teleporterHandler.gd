@@ -10,6 +10,7 @@ extends Area2D
 
 var baseLabelPos: Vector2
 var playerBody: CharacterBody2D = null
+var usedStairsOnce: bool = false
 
 @export var centerOfTower: float = 167 # used for flipping character on teleport
 #endregion VARIABLES
@@ -41,7 +42,7 @@ func _process(_delta):
 func OnBodyEntered(body):
 	if body.is_in_group("player"):
 		playerBody = body # Store the player
-		if label:
+		if not GameManager.usedStairs or GameManager.tutorialMode:
 			label.visible = true
 		
 		if body.has_method("EnterTeleporterArea"):
@@ -57,6 +58,8 @@ func OnBodyExited(body):
 			body.ExitTeleporterArea(self)
 
 func DoTeleport(body):
+	GameManager.usedStairs = true
+	
 	# Find the target
 	var target = get_node_or_null(targetTeleporter)
 	

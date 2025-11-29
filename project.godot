@@ -25,6 +25,7 @@ SaveManager="*res://Scripts/save_load/save_manager.gd"
 SceneLoader="*res://Scripts/scene_loader.gd"
 Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
 CutsceneManager="*res://Scripts/CutsceneManager.gd"
+ToggleTutorial="*res://Scenes/UI/toggle_tutorial.tscn"
 
 [dialogic]
 
