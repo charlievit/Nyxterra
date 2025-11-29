@@ -41,7 +41,6 @@ var cycleProgress: float = 0.0
 @onready var snowFall: TileMap = $AnimatedSnowMap
 
 @onready var hapticClickSound = preload("res://Assets/Audio/UI/HapticClick.mp3")
-
 #save & load
 @onready var pause_menu : Control = $"Control_GAME SCREEN UI/PauseMenu"
 #endregion
@@ -85,11 +84,18 @@ func _ready() -> void:
 	
 	#Dialogue System
 	if GameManager.currentDay == 0 and GameManager.isIntroPlayed == false:
+		player.set_physics_process(false)
 		Dialogic.start("Intro")
 		await Dialogic.timeline_ended
+		player.set_physics_process(true)
 		GameManager.isIntroPlayed = true
-		
-	_play_pending_post_dialogue()
+	
+	var morse_radio_node = $"Lighthouse/MIDDLE/Morse_Radio Detection Area"
+	morse_radio_node.set_process(false)
+	player.set_physics_process(false)
+	await _play_pending_post_dialogue()
+	player.set_physics_process(true)
+	morse_radio_node.set_process(true)
 	
 func _process(delta):
 	# Force the zoomed-in camera to follow the player
@@ -259,11 +265,12 @@ func _on_Radio_Completed() -> void:
 			elif GameManager.currentTaskStep == 4:
 				Dialogic.start("Day_1 Smith Dialogue")
 		2:
-			Dialogic.start("Day_2 Radio Completed")
+			Dialogic.start("Day_2 Radio Completed") 
 		3:
-			Dialogic.start("Day_3 Radio Completed")
+			Dialogic.start("Day_3 Radio Completed") 
 		4:
-			Dialogic.start("Day_4 Radio Completed")
+			Dialogic.start("Day_4 Radio Completed") 
+	await Dialogic.timeline_ended
 
 func _on_Gear_Completed() -> void:
 	match GameManager.currentDay:
@@ -277,7 +284,8 @@ func _on_Gear_Completed() -> void:
 			Dialogic.start("Day_3 Gearbox Completed")
 		4:
 			Dialogic.start("Day_4 Gearbox Completed")
-
+	await Dialogic.timeline_ended
+	
 func _on_Morse_Completed() -> void:
 	match GameManager.currentDay:
 		0:
@@ -290,7 +298,8 @@ func _on_Morse_Completed() -> void:
 			Dialogic.start("Day_3 Morse Completed")
 		4:
 			Dialogic.start("Day_4 Morse Completed")
-
+	await Dialogic.timeline_ended
+	
 func _on_Kitchen_Completed() -> void:
 	match GameManager.currentDay:
 		0:
@@ -303,18 +312,18 @@ func _on_Kitchen_Completed() -> void:
 			Dialogic.start("Day_3 Kitchen Completed")
 		4:
 			Dialogic.start("Day_4 Kitchen Completed")
-	
+	await Dialogic.timeline_ended
 	
 func _play_pending_post_dialogue() -> void:
 	match GameManager.pending_post_source:
 		GameManager.ReturnSource.RADIO:
-			_on_Radio_Completed()
+			await _on_Radio_Completed()
 		GameManager.ReturnSource.MORSE:
-			_on_Morse_Completed()
+			await _on_Morse_Completed()
 		GameManager.ReturnSource.KITCHEN:
-			_on_Kitchen_Completed()
+			await _on_Kitchen_Completed()
 		GameManager.ReturnSource.GEARBOX:
-			_on_Gear_Completed()
+			await _on_Gear_Completed()
 		GameManager.ReturnSource.NONE:
 			pass
 	GameManager.pending_post_source = GameManager.ReturnSource.NONE

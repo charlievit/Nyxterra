@@ -29,10 +29,11 @@ func _process(_delta):
 	
 	if playerBody and GameManager.needDaughter:
 		if Input.is_action_pressed("ui_accept") and GameManager.needDaughter:
+			GameManager.player.set_physics_process(false)
 			OnBodyExited(playerBody)
 			#Dialogue system
 			await Dialogue_system()
-
+			GameManager.player.set_physics_process(true)
 			var currentTask: String = ""
 			for key in TaskManager.activeTasks.keys():
 				if String(key).contains("Daughter"):
