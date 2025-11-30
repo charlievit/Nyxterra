@@ -27,7 +27,7 @@ func _process(_delta):
 
 	
 	if playerBody:
-		if Input.is_action_pressed("ui_accept") and GameManager.needlockbox:
+		if Input.is_action_pressed("ui_accept") and GameManager.needLockbox:
 			if ResourceLoader.exists(lockboxScenePath):
 				SceneLoader.change_scene_with_loading(lockboxScenePath)
 			else:

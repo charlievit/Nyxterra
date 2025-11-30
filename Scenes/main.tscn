@@ -69,6 +69,7 @@ scale = Vector2(1.3964909, 1.3964909)
 script = ExtResource("1_8gbba")
 cameraLimitLeft = 9
 cameraLimitRight = 325
+riseDuration = 50.0
 
 [node name="Elise (Daughter)" parent="." instance=ExtResource("17_h1bgf")]
 z_index = 1

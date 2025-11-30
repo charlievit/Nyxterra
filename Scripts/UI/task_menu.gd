@@ -121,6 +121,12 @@ func AddTask(taskID: String, taskText: String):
 	# 1. Create a container for the row
 	var row = HBoxContainer.new()
 	row.mouse_filter = Control.MOUSE_FILTER_IGNORE # Player cannot click the row
+	row.add_theme_constant_override("separation", 10)
+	
+	var spacer = Control.new()
+	spacer.custom_minimum_size.x = 10 # Adjust this number to move Checkbox further right
+	spacer.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	row.add_child(spacer)
 	
 	# 2. Create the Checkbox (Visual only)
 	var checkbox = CheckBox.new()
@@ -130,7 +136,7 @@ func AddTask(taskID: String, taskText: String):
 	
 	# 3. Create the Text (RichTextLabel allows strikethrough)
 	var label = RichTextLabel.new()
-	label.text = taskText
+	label.text = "[font_size=18]" + taskText + "[/font_size]"
 	label.bbcode_enabled = true
 	label.fit_content = true # Auto-height
 	label.scroll_active = false
@@ -142,6 +148,7 @@ func AddTask(taskID: String, taskText: String):
 	label.size_flags_vertical = Control.SIZE_EXPAND_FILL
 	
 	row.add_child(label)
+	#label.add_theme_font_size_override("normal_font_size", 20)
 	taskList.add_child(row)
 
 	# 4. Store references so we can find them later
@@ -166,7 +173,7 @@ func CompleteTask(taskID: String):
 	
 	# 2. Apply Strikethrough and dim color using BBCode
 	# [s] = strikethrough, [color] = gray
-	var finalText = "[color=#888888][s]" + taskData["text"] + "[/s][/color]"
+	var finalText = "[font_size=18][color=#888888][s]" + taskData["text"] + "[/s][/color][/font_size]"
 	taskData["label"].text = finalText
 
 func CompleteDay():

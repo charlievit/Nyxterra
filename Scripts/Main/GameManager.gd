@@ -24,9 +24,10 @@ var playerSpawnPosition: Vector2 = Vector2(88, 278)
 var shouldUseStoredSpawn: bool = false
 
 var currentDay: int = 0
+var isNewDay: bool = false
 var daySTATE: DayState = DayState.NIGHT_IDLE
 var currentTaskStep: int = 0 
-var hasCompletedTutorial: bool = false 
+var hasCompletedTutorial: bool = false
 
 # GLOBAL NEEDS
 var needGearBox: bool = false
@@ -72,6 +73,18 @@ var gearBoxSolved: bool = false
 var chopSpeakCooldown = 50
 
 var player: Node = null
+
+# MUSIC
+var day1AfterSmithMusic = preload("res://Assets/Audio/Music/ Day 1 After_MrSmith21_revision (1).wav")
+var day1BeforeDaughterMusic = preload("res://Assets/Audio/Music/day1 before talk daughter.wav")
+var day1TalkWithDaughterMusic = preload("res://Assets/Audio/Music/day1 talk with daughter.wav")
+var day1TalkwithSmithMusic = preload("res://Assets/Audio/Music/Day 1 talk with Mr Smith.wav")
+var music1 = preload("res://Assets/Audio/Music/Music 1 lighthouse.wav")
+var music2 = preload("res://Assets/Audio/Music/music 2 idea.wav")
+var kitchenThemeMusic = preload("res://Assets/Audio/Music/kitchen minigame idea.wav")
+var radioThemeMusic = preload("res://Assets/Audio/Music/Radio theme.wav")
+
+var LightKeeperMusic = preload("res://Assets/Audio/Music/Light keeper.mp3")
 #endregion
 
 func _ready():
@@ -94,7 +107,7 @@ func StartNewGame():
 	
 	TaskManager.CompleteDay()
 	
-	daySTATE = DayState.NIGHT_FADING 
+	daySTATE = DayState.SUN_RISING
 	todaysRecipe = "BarfitStovies"
 	hasCompletedTutorial = false
 	
@@ -108,6 +121,7 @@ func StartNewGame():
 func StartDay(day: int):
 	print("GAMEMANAGER: Starting Day ", day)
 	currentDay = day
+	isNewDay = true
 	currentTaskStep = 0
 	
 	# Reset spawn to bedroom for a new day
@@ -116,7 +130,10 @@ func StartDay(day: int):
 	shouldUseStoredSpawn = true
 	
 	# Start the day visually
-	daySTATE = DayState.NIGHT_FADING
+	if currentDay == 5:
+		daySTATE = DayState.DAY_IDLE
+	else:
+		daySTATE = DayState.SUN_RISING
 	emit_signal("requestDayCycle")
 	
 	UpdateObjective()

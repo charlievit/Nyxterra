@@ -3,7 +3,6 @@ extends Control
 
 #region VARIABLES
 var kitchenGameMusicPlayer: AudioStreamPlayer
-var kitchenGameMusic: AudioStream = preload("res://Assets/Audio/Music/kitchen minigame idea.wav")
 var gameDone: bool = false
 
 # EXPORT RETURN SETTINGS
@@ -153,8 +152,8 @@ func _ready():
 	
 	kitchenGameMusicPlayer = AudioStreamPlayer.new()
 	add_child(kitchenGameMusicPlayer)
-	kitchenGameMusicPlayer.stream = kitchenGameMusic
-	kitchenGameMusicPlayer.volume_db = -30.0
+	kitchenGameMusicPlayer.stream = GameManager.kitchenThemeMusic
+	kitchenGameMusicPlayer.volume_db = -25.0
 	kitchenGameMusicPlayer.finished.connect(Loop)
 	
 	set_process(false)

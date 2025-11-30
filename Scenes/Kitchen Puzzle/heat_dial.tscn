@@ -33,7 +33,7 @@ theme_override_styles/hover = SubResource("StyleBoxEmpty_56nxb")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_avvmv")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_o7q6h")
 script = ExtResource("1_isk16")
-clickLineWidth = 6.0
+clickLineColor = Color(0.5921569, 0.7411765, 0.7019608, 1)
 
 [node name="DialArt" type="Sprite2D" parent="."]
 texture_filter = 1

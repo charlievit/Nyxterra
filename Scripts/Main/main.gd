@@ -189,11 +189,18 @@ func SyncVisualsToState():
 	
 	match currentState:
 		GameManager.DayState.SUN_RISING:
-			# If we loaded mid-rise, we skip to DAY_IDLE 
-			sun.position.y = endY_Pos
-			sunRiseGradient.position = gradientStartPosition
-			nightBackground.modulate.a = 0.0
-			snowFall.modulate.a = 0.0
+			if GameManager.isNewDay:
+				sun.position = sunStartPosition
+				nightBackground.modulate.a = 1.0 
+				snowFall.modulate.a = 1.0
+				sunRiseGradient.position = gradientStartPosition
+				GameManager.isNewDay = false
+			else:
+				currentState = GameManager.DayState.DAY_IDLE
+				sun.position.y = endY_Pos
+				sunRiseGradient.position = gradientStartPosition
+				nightBackground.modulate.a = 0.0
+				snowFall.modulate.a = 0.0
 			
 		GameManager.DayState.DAY_IDLE:
 			sun.position.y = endY_Pos
@@ -202,13 +209,15 @@ func SyncVisualsToState():
 			snowFall.modulate.a = 0.0
 			
 		GameManager.DayState.NIGHT_FADING:
+			currentState = GameManager.DayState.NIGHT_IDLE
 			sun.position = sunStartPosition
+			moon.position.y = endY_Pos
 			nightBackground.modulate.a = 1.0
 			snowFall.modulate.a = 1.0
 			
 		GameManager.DayState.MOON_RISING:
-			# Reset to start of moon rise
-			moon.position = moonStartPosition
+			currentState = GameManager.DayState.NIGHT_IDLE
+			moon.position.y = endY_Pos
 			nightBackground.modulate.a = 1.0
 			snowFall.modulate.a = 1.0
 			
@@ -218,8 +227,7 @@ func SyncVisualsToState():
 			snowFall.modulate.a = 1.0
 
 func StartNightCycle():
-	if currentState == GameManager.DayState.DAY_IDLE or currentState == GameManager.DayState.SUN_RISING or currentState == GameManager.DayState.NIGHT_IDLE: 
-		print("MAIN: Starting night cycle.")
+	if currentState == GameManager.DayState.DAY_IDLE or currentState == GameManager.DayState.SUN_RISING: 
 		currentState = GameManager.DayState.NIGHT_FADING
 		cycleProgress = 0.0
 

@@ -49,7 +49,6 @@ var currentTaskID: String = ""
 @onready var tuningSounds = preload("res://Assets/Audio/SineWave Puzzle/RadioStatic.mp3")
 @onready var buttonSound = preload("res://Assets/Audio/SineWave Puzzle/RadioOnButton.mp3")
 #@onready var messageSound = preload("res://Assets/Audio/SineWave Puzzle/AUDIO_NEEDED_HERE")
-@onready var radioMusic = preload("res://Assets/Audio/Music/Radio theme.wav")
 
 var oneShotPlayer: AudioStreamPlayer2D
 var tuningSoundPlayer: AudioStreamPlayer2D
@@ -89,8 +88,8 @@ func _ready():
 	
 	backgroundMusicPlayer = AudioStreamPlayer.new()
 	add_child(backgroundMusicPlayer)
-	backgroundMusicPlayer.stream = radioMusic
-	backgroundMusicPlayer.volume_db = -30.0
+	backgroundMusicPlayer.stream = GameManager.radioThemeMusic
+	backgroundMusicPlayer.volume_db = -10.0
 	backgroundMusicPlayer.play()
 	#messagePlayer.stream = todaysMessage
 	

@@ -1,6 +1,6 @@
 [gd_scene load_steps=100 format=3 uid="uid://b268fafjkgqee"]
 
-[ext_resource type="Script" uid="uid://csvnlbyy1ctn3" path="res://Scripts/CookingMinigame/kitchenMinigameLoader.gd" id="1_aecf8"]
+[ext_resource type="Script" uid="uid://dgrielhvrnwwo" path="res://Scripts/CookingMinigame/kitchenMinigameLoader.gd" id="1_aecf8"]
 [ext_resource type="PackedScene" uid="uid://cpmufmthgj1px" path="res://Scenes/Environments/animated_snow_map.tscn" id="2_5165p"]
 [ext_resource type="Texture2D" uid="uid://dgxdq0boqv10u" path="res://Assets/Images/KitchenPuzzle/Kitchen.png" id="2_xey2f"]
 [ext_resource type="Texture2D" uid="uid://cf4bdb0ln48n8" path="res://Assets/Images/KitchenPuzzle/Pot.png" id="3_5165p"]
