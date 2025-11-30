@@ -15,7 +15,6 @@ input_pickable = true
 physics_material_override = SubResource("PhysicsMaterial_kvk3b")
 script = ExtResource("1_dyqf5")
 ingredientName = "Rosemary"
-ingredientType = 1
 isChoppable = true
 chopsNeeded = 10
 potDetectorArea = NodePath("potDetectionArea")

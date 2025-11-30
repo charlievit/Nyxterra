@@ -6,6 +6,7 @@ signal nightArrived
 #region Variable Declaration
 # Camera Variables
 @onready var player = $Player
+@onready var Elise = $"Elise (Daughter)"
 @onready var mainCamera = $MainStaticCamera
 @onready var zoomCamera = $"Control_GAME SCREEN UI/SubViewportContainer/SubViewport/ZoomCamera"
 @onready var subVPort = $"Control_GAME SCREEN UI/SubViewportContainer/SubViewport"
@@ -67,6 +68,33 @@ func _ready() -> void:
 	snowFall.modulate.a = 1.0
 	
 	currentState = GameManager.DayState.NIGHT_IDLE
+	
+	match GameManager.currentDay:
+		0:
+			Elise.position = Vector2(170.427,338.706)
+			Elise.scale = Vector2(0.308,0.308)
+			Elise.play("sitting")
+		1: 
+			Elise.position = Vector2(66.984,402.489)
+			Elise.scale = Vector2(0.091,0.091)
+			Elise.play("laying")
+		2:
+			Elise.position = Vector2(66.984,402.489)
+			Elise.scale = Vector2(0.091,0.091)
+			Elise.play("laying")
+		3: 
+			Elise.position = Vector2(66.984,402.489)
+			Elise.scale = Vector2(0.091,0.091)
+			Elise.play("laying")
+		4: 
+			Elise.scale = Vector2(0.445,0.445)
+			Elise.play("idle")
+			Elise.position = Vector2(104.548,408.166)
+		5:
+			if not GameManager.isBadEnding:
+				Elise.position = Vector2(118,337)
+				Elise.scale = Vector2(0.445,0.445)
+				Elise.play("idle")
 	
 	TaskManager.shouldBeHidden = false
 	

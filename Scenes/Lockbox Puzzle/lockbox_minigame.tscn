@@ -1,12 +1,60 @@
-[gd_scene load_steps=13 format=3 uid="uid://bjqpbi5da3fxa"]
+[gd_scene load_steps=39 format=3 uid="uid://bjqpbi5da3fxa"]
 
 [ext_resource type="Script" uid="uid://cad1jyqfuvow6" path="res://Scripts/LockboxPuzzle/lockbox_minigame.gd" id="1_mxwii"]
 [ext_resource type="Texture2D" uid="uid://c8es8g6y3wo61" path="res://Assets/Images/Lockbox Puzzle/Box/Lockbox2.png" id="1_tmf43"]
 [ext_resource type="Texture2D" uid="uid://r85o7k4toril" path="res://Assets/Images/KitchenPuzzle/ChoppingBoard.png" id="2_ivhkk"]
+[ext_resource type="Texture2D" uid="uid://de5vwoi1yk6a5" path="res://Assets/Images/Lockbox Puzzle/CodeNote.png" id="3_dh7wh"]
 [ext_resource type="Texture2D" uid="uid://dr5gtavy8nhq0" path="res://Assets/Images/Lockbox Puzzle/Box/LockBoxOpen.png" id="4_y5g4c"]
 [ext_resource type="Texture2D" uid="uid://ck3ougtemtsye" path="res://Assets/Images/Lockbox Puzzle/Letter.png" id="5_48x3o"]
 [ext_resource type="Texture2D" uid="uid://dt7sot8xv2gpu" path="res://Assets/Images/Lockbox Puzzle/UnfoldedLetter.png" id="6_qycvt"]
+[ext_resource type="Theme" uid="uid://b4lurv8njswua" path="res://Resources/theme.tres" id="8_a2igt"]
+[ext_resource type="FontFile" uid="uid://n0n6mmkjc76j" path="res://Assets/Fonts/Eyesome Script.otf" id="9_dh7wh"]
+[ext_resource type="Texture2D" uid="uid://bsrqyi7a25v3a" path="res://Assets/Images/UI/taskMenu_Arrow.png" id="9_q0bgi"]
 [ext_resource type="PackedScene" uid="uid://63skfimij3nu" path="res://Scenes/Lockbox Puzzle/lockButton.tscn" id="14_e01p4"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_q0bgi"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pekfi"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mxwii"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_e01p4"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_y5a4p"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4ijnw"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_u15qe"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_iqxhc"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3ptl8"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ds88n"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_m1phy"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ors75"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_f65gl"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_im38s"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mqlws"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ued3j"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gf7ig"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_c6pv0"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mcuwc"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7dfl4"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nu37d"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_y5bdr"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qycvt"]
 
@@ -35,6 +83,79 @@ offset_bottom = -5792.999
 rotation = 0.12766536
 scale = Vector2(1.6515749, 23.797726)
 texture = ExtResource("2_ivhkk")
+
+[node name="CodeNote" type="Sprite2D" parent="."]
+position = Vector2(1011.4835, 550.7887)
+scale = Vector2(2.4, 2.3999999)
+texture = ExtResource("3_dh7wh")
+
+[node name="codeText" type="RichTextLabel" parent="."]
+z_index = 2
+offset_left = 688.73566
+offset_top = 39.78772
+offset_right = 1091.0889
+offset_bottom = 589.7053
+theme = ExtResource("8_a2igt")
+theme_override_colors/default_color = Color(0.13725491, 0.12156863, 0.1254902, 1)
+theme_override_constants/paragraph_separation = 2
+theme_override_fonts/normal_font = ExtResource("9_dh7wh")
+theme_override_font_sizes/normal_font_size = 21
+text = "12/27/1928
+Dear Elise,
+
+You aren't here yet. You have exactly one more month to go. But I already love you so much. I'm so grateful that I get to raise you with your father. He is the best man I have ever known. I am positive we will raise you to be a beautiful soul.
+I love you.
+
+Love, Mom"
+scroll_active = false
+
+[node name="letterUnfolded" type="Sprite2D" parent="."]
+z_index = 1
+position = Vector2(967, 326)
+scale = Vector2(2.3650002, 2.3650005)
+texture = ExtResource("6_qycvt")
+
+[node name="readClueButton" type="Button" parent="."]
+offset_left = 883.6864
+offset_top = 567.6362
+offset_right = 1115.1929
+offset_bottom = 716.4025
+rotation = -0.44301692
+theme_override_styles/normal = SubResource("StyleBoxEmpty_q0bgi")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_pekfi")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_mxwii")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_e01p4")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_y5a4p")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_4ijnw")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_u15qe")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_iqxhc")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_3ptl8")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_ds88n")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_m1phy")
+
+[node name="backButtonIcon" type="Sprite2D" parent="."]
+z_index = 1
+position = Vector2(695.6748, 48.806458)
+scale = Vector2(1.7942308, 1.818796)
+texture = ExtResource("9_q0bgi")
+
+[node name="backButton" type="Button" parent="."]
+z_index = 8
+offset_left = 687.3474
+offset_top = 24.529236
+offset_right = 722.1599
+offset_bottom = 48.52265
+theme_override_styles/normal = SubResource("StyleBoxEmpty_ors75")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_f65gl")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_im38s")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_mqlws")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_ued3j")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_gf7ig")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_c6pv0")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_mcuwc")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_7dfl4")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_nu37d")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_y5bdr")
 
 [node name="boxClosed" type="Sprite2D" parent="."]
 position = Vector2(575.99994, 324)
@@ -80,7 +201,35 @@ position = Vector2(162.91669, 0.83332825)
 scale = Vector2(0.98541677, 0.9854169)
 texture = ExtResource("6_qycvt")
 
+[node name="letterText" type="RichTextLabel" parent="boxOpened"]
+visible = false
+offset_left = 46.973206
+offset_top = -123.42178
+offset_right = 219.96234
+offset_bottom = 113.01169
+theme = ExtResource("8_a2igt")
+theme_override_colors/default_color = Color(0.13725491, 0.12156863, 0.1254902, 1)
+theme_override_constants/paragraph_separation = 2
+theme_override_fonts/normal_font = ExtResource("9_dh7wh")
+theme_override_font_sizes/normal_font_size = 5
+text = "27/01
+I don't think I'll ever forget this day... Not for as long as I live.
+This morning I was terrified, hands shaking, heart pounding louder than the sea outside.
+I kept wondering if I was even ready... If I could ever be a father that she deserves.
+But then I saw her.
+So small, so warm... And the moment I held her, ghe fear just... Broke apart.
+Like the waves hitting the rocks and turning soft again.
+I looked at her tiny fingers, at the way she calmed down when I whispered her name, and I swear something changed in me.
+A light turned on somewhere I didn't even know exsited.
+I'm still nervous, God knows I am, But I've never been this happy in my life.
+If I ever lose my way in the years ahead, I hope I remember today.
+27th of January
+The day my life found its purpose."
+scroll_active = false
+
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 volume_db = 15.0
 
+[connection signal="pressed" from="readClueButton" to="." method="_on_code_button_pressed"]
+[connection signal="pressed" from="backButton" to="." method="_on_back_button_pressed"]
 [connection signal="pressed" from="boxOpened/readLetterButton" to="." method="_on_read_letter_button_pressed"]

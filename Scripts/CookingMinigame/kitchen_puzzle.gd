@@ -74,10 +74,10 @@ var barStyleStep: StyleBoxFlat
 var barStyleOvertime: StyleBoxFlat
 
 # Colors
-const WAIT_COLOR = Color.CYAN
-const STEP_START_COLOR = Color.SEA_GREEN
-const STEP_MID_COLOR = Color.YELLOW_GREEN
-const STEP_END_COLOR = Color.DARK_RED
+const WAIT_COLOR = Color("#5b7b85")
+const STEP_START_COLOR = Color("#4a795c")
+const STEP_MID_COLOR = Color("#b39567")
+const STEP_END_COLOR = Color("#8c524f")
 #endregion Progress Bar Styles
 
 var recipes = {

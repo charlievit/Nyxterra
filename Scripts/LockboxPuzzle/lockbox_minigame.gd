@@ -22,6 +22,13 @@ var boxUnlocked: bool = false
 @onready var letterFolded: Sprite2D = $boxOpened/letterFolded
 var letterRead = false
 @onready var letterUnfolded: Sprite2D = $boxOpened/letterUnfolded
+@onready var codeNoteUnfolded: Sprite2D = $letterUnfolded
+@onready var codeNoteFolded: Sprite2D = $CodeNote
+@onready var codeNoteText: RichTextLabel = $codeText
+@onready var backButton: Sprite2D = $backButtonIcon
+@onready var letterText: RichTextLabel = $boxOpened/letterText
+@onready var readClueButton: Button = $readClueButton
+@onready var readLetterButton: Button = $boxOpened/readLetterButton
 
 @onready var sfxPlayer: AudioStreamPlayer2D = $AudioStreamPlayer2D
 @onready var openLetterSound: AudioStream = preload("res://Assets/Audio/Lockbox Puzzle/LetterUnfold.mp3")
@@ -42,10 +49,14 @@ func _ready():
 	dialThreeValue = 0
 	dialFourValue = 0
 	
-	letterFolded.visible = false
+	letterFolded.visible = true
 	letterUnfolded.visible = false
+	codeNoteUnfolded.visible = false
 	lockBoxClosed.visible = true
 	lockBoxOpen.visible = false
+	codeNoteText.visible = false
+	backButton.visible = false
+	letterText.visible = false
 	
 	TutorialManager.ShowClickTutorial("lockbox", dialOne.global_position)
 
@@ -79,6 +90,30 @@ func _on_read_letter_button_pressed() -> void:
 	
 	letterRead = true
 	letterUnfolded.visible = true
+	letterText.visible = true
 	sfxPlayer.stream = openLetterSound
 	sfxPlayer.play()
 	GameManager.CompleteTask(currentTaskID)
+	readLetterButton.disabled = true
+	Dialogic.start("Day_5 Final Letter")
+
+
+func _on_code_button_pressed() -> void:
+	codeNoteFolded.visible = false
+	codeNoteUnfolded.visible = true
+	sfxPlayer.stream = openLetterSound
+	sfxPlayer.play()
+	codeNoteText.visible = true
+	backButton.visible = true
+	readClueButton.disabled = true
+	Dialogic.start("Day_5 Lockbox CodeNote Clue")
+
+
+func _on_back_button_pressed() -> void:
+	codeNoteFolded.visible = true
+	codeNoteUnfolded.visible = false
+	sfxPlayer.stream = openLetterSound
+	sfxPlayer.play()
+	codeNoteText.visible = false
+	backButton.visible = false
+	readClueButton.disabled = false

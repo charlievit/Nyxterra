@@ -91,7 +91,7 @@ func _ready():
 	backgroundMusicPlayer = AudioStreamPlayer.new()
 	add_child(backgroundMusicPlayer)
 	backgroundMusicPlayer.stream = GameManager.radioThemeMusic
-	backgroundMusicPlayer.volume_db = -10.0
+	backgroundMusicPlayer.volume_db = -10
 	backgroundMusicPlayer.play()
 	#messagePlayer.stream = todaysMessage
 	
