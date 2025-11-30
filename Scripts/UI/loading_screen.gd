@@ -13,7 +13,9 @@ const FADE_TIME := 1.0          # fade in/out duration
 
 func _ready() -> void:
 	TaskManager.shouldBeHidden = true
-	if GameManager.daySTATE == GameManager.DayState.SUN_RISING or GameManager.daySTATE == GameManager.DayState.DAY_IDLE or GameManager.daySTATE == GameManager.DayState.NIGHT_FADING:
+	TutorialManager.shouldBeHidden = true
+	
+	if GameManager.daySTATE == GameManager.DayState.SUN_RISING or GameManager.daySTATE == GameManager.DayState.DAY_IDLE:
 		loadingAnimation.play("day")
 	else:
 		loadingAnimation.play("default")

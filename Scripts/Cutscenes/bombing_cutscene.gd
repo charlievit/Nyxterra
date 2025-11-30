@@ -21,6 +21,7 @@ var originalPosition
 
 func _ready():
 	TaskManager.shouldBeHidden = true
+	TutorialManager.shouldBeHidden = true
 	
 	originalScale = animation.scale
 	originalPosition = animation.global_position

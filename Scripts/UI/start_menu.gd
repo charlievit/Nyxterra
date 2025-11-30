@@ -53,6 +53,7 @@ var titleScreenMusic: AudioStream = preload("res://Assets/Audio/Music/Music 1 li
 func _ready() -> void:
 	animScreen.play("default")
 	TaskManager.shouldBeHidden = true
+	TutorialManager.shouldBeHidden = true
 	
 	titleScreenMusicPlayer = AudioStreamPlayer.new()
 	add_child(titleScreenMusicPlayer)

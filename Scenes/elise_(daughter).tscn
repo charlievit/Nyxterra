@@ -135,7 +135,6 @@ size = Vector2(56, 20)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D"]
 texture_filter = 1
-position = Vector2(524, 584)
 sprite_frames = SubResource("SpriteFrames_fem48")
 animation = &"laying"
 frame_progress = 0.053235117

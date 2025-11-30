@@ -11,7 +11,6 @@ signal nightArrived
 @onready var zoomCamera = $"Control_GAME SCREEN UI/SubViewportContainer/SubViewport/ZoomCamera"
 @onready var subVPort = $"Control_GAME SCREEN UI/SubViewportContainer/SubViewport"
 @onready var subVPortContainer = $"Control_GAME SCREEN UI/SubViewportContainer"
-@onready var tutorialButton = $"Control_GAME SCREEN UI/ToggleTutorial"
 var viewportMapShownSize: Vector2i = Vector2i(817, 648)
 var viewportMapShowPosition: Vector2 = Vector2(335, 0)
 var viewportMapHiddenSize: Vector2i = Vector2i(1150, 648)
@@ -48,6 +47,7 @@ var cycleProgress: float = 0.0
 #endregion
 
 func _ready() -> void:
+	TutorialManager.ClearTutorial()
 	# 1. Check for Pending Day Start first (This sets up the Spawn Data in GameManager)
 	CutsceneManager.CheckForPendingDayStart()
 	
@@ -132,6 +132,15 @@ func _ready() -> void:
 	player.set_physics_process(true)
 	morse_radio_node.set_process(true)
 	
+	SetFocusNone(self)
+
+func SetFocusNone(node):
+	if node is Control:
+		node.focus_mode = Control.FOCUS_NONE
+	
+	for child in node.get_children():
+		SetFocusNone(child)
+
 func _process(delta):
 	# Force the zoomed-in camera to follow the player
 	var visibleSize = Vector2(subVPort.size) / zoomCamera.zoom

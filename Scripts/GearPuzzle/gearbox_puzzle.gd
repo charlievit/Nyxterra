@@ -321,6 +321,7 @@ func PlaySFX(stream: AudioStream):
 		sfxPlayer.play()
 
 func TriggerWinState():
+	TutorialManager.ClearTutorial()
 	puzzleSolved = true
 	#print("Puzzle Solved!")
 	loopPlayer.volume_db += 5.0

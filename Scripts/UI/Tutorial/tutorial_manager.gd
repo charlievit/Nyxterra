@@ -89,10 +89,16 @@ func RefreshCursorState():
 		return
 	
 	var isCompleted = false
-	if "completed_tutorials" in GameManager and GameManager.completed_tutorials.has(currentTutorialID):
+	if "completedTutorials" in GameManager and GameManager.completedTutorials.has(currentTutorialID):
 		isCompleted = true
-
-	var shouldShow = GameManager.tutorialMode or not isCompleted
+	
+	var shouldShow = false
+	if GameManager.tutorialMode:
+		shouldShow = true
+	elif GameManager.currentDay > 1:
+		shouldShow = false
+	else:
+		shouldShow = not isCompleted
 	
 	if shouldShow and not currentTutorialConfig.is_empty():
 		match currentTutorialConfig["type"]:
@@ -111,3 +117,4 @@ func UpdateVisibility():
 	visible = !shouldBeHidden
 	if shouldBeHidden:
 		cursor.StopTutorial()
+		TutorialManager.ClearTutorial()

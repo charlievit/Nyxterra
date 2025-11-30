@@ -1,6 +1,6 @@
 [gd_scene load_steps=50 format=3 uid="uid://bf5g134nk8ebe"]
 
-[ext_resource type="Script" uid="uid://jl5amhydi3l8" path="res://Scripts/UI/start_menu.gd" id="1_juhg0"]
+[ext_resource type="Script" uid="uid://ch3y31u7yadh8" path="res://Scripts/UI/start_menu.gd" id="1_juhg0"]
 [ext_resource type="Texture2D" uid="uid://jx3yb0oa748d" path="res://Assets/Images/Lighthouse/AnimatedLightHouseScreen/LighthouseAnim2.png" id="2_qpngb"]
 [ext_resource type="FontFile" uid="uid://bugymcbk132rp" path="res://Assets/Fonts/Fry's Baskerville Regular.otf" id="3_2ybwg"]
 [ext_resource type="Theme" uid="uid://b4lurv8njswua" path="res://Resources/theme.tres" id="3_3kyvb"]
@@ -233,6 +233,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 1.0
 offset_right = 1.0
+offset_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_juhg0")
@@ -321,7 +322,7 @@ layout_mode = 0
 [node name="SocialsPanel" type="Panel" parent="."]
 layout_mode = 0
 offset_right = 40.0
-offset_bottom = 40.0
+offset_bottom = 39.644794
 scale = Vector2(28.731138, 16.37037)
 theme_override_styles/panel = SubResource("StyleBoxFlat_flpep")
 

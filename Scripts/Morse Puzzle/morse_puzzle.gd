@@ -163,8 +163,9 @@ func _check_word_progress() -> void:
 			label_feedback.modulate = Color(1, 0.6, 0.4)
 
 func _on_sentence_solved() -> void:
-	label_feedback.text = "Correct!"
-	label_feedback.modulate = Color(0, 1, 0)
+	TutorialManager.ClearTutorial()
+	#label_feedback.text = "Correct!"
+	#label_feedback.modulate = Color(0, 1, 0)
 	
 	# 1. Set return spawn so Player is back at the machine in Main scene
 	GameManager.SetPlayerSpawn(returnFloorIndex, returnPosition)

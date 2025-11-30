@@ -19,13 +19,15 @@ var currentTaskID: String = ""
 
 func _ready():
 	TaskManager.shouldBeHidden = true
+	TutorialManager.shouldBeHidden = true
 	
 	for key in TaskManager.activeTasks.keys():
 		if String(key).contains("_goToBed"):
 			currentTaskID = key
 	
 	yesterdaysMorality = GameManager.yesterdaysMorality
-	morality = GameManager.morality
+	morality = GameManager.CheckMorality()
+	
 	yesterdaysRelationship = GameManager.yesterdaysRelationship
 	relationship = GameManager.relationship
 	
@@ -50,12 +52,12 @@ func UpdateValues():
 	var tween = create_tween()
 	# morality value counts up or down
 	tween.tween_method(func(val):
-		moralityLabel.text = str(int(val)), yesterdaysMorality, morality, 1.0).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
+		moralityLabel.text = str(int(val)), yesterdaysMorality, morality, 2.0).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
 	# short pause
 	tween.tween_interval(1.0)
 	# relationship value counts up or down
 	tween.tween_method(func(val):
-		relationshipLabel.text = str(int(val)), yesterdaysRelationship, relationship, 1.0).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
+		relationshipLabel.text = str(int(val)), yesterdaysRelationship, relationship, 2.0).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
 	
 	tween.finished.connect(AllowToProceed)
 

@@ -1,0 +1,82 @@
+[gd_scene load_steps=13 format=3 uid="uid://djpx22k4xnkwv"]
+
+[ext_resource type="Script" uid="uid://dunu3vmcn6cmy" path="res://Scripts/Cutscenes/post_cooking_scene.gd" id="1_citul"]
+[ext_resource type="Texture2D" uid="uid://brrqynw57auwm" path="res://Assets/Images/Lighthouse/Structure/FullTowerBuild2.png" id="1_h2r2y"]
+[ext_resource type="Texture2D" uid="uid://bqwod0spj8tjt" path="res://Assets/Images/Lighthouse/Props/Post-Bombing/Cracks.png" id="2_citul"]
+[ext_resource type="Texture2D" uid="uid://dus3k2emrwltj" path="res://Assets/Images/Lighthouse/Props/Kitchen and Dining Room/fridge.png" id="3_tr1ao"]
+[ext_resource type="Texture2D" uid="uid://j420r5weyj55" path="res://Assets/Images/Lighthouse/Props/Kitchen and Dining Room/kitchen.png" id="4_dvlir"]
+[ext_resource type="Texture2D" uid="uid://b6hm6oy6xlks1" path="res://Assets/Images/Lighthouse/Props/Kitchen and Dining Room/washing-machine.png" id="5_w0dos"]
+[ext_resource type="Texture2D" uid="uid://d4lvnvbu21c8w" path="res://Assets/Images/Lighthouse/Props/Kitchen and Dining Room/table.png" id="6_hj08s"]
+[ext_resource type="Texture2D" uid="uid://b4n6cg1y8xc61" path="res://Assets/Images/Lighthouse/Props/Kitchen and Dining Room/plate.png" id="7_uk4xp"]
+[ext_resource type="Texture2D" uid="uid://by4cblitw4xyk" path="res://Assets/Images/Daughter Elise/SittingChair.png" id="8_4x3cb"]
+[ext_resource type="Texture2D" uid="uid://ca224mbqfoasl" path="res://Assets/Images/Player/Sitting2.png" id="9_7f51c"]
+
+[sub_resource type="Gradient" id="Gradient_citul"]
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_tr1ao"]
+gradient = SubResource("Gradient_citul")
+
+[node name="PostCookingScene" type="Node2D"]
+position = Vector2(-19.133606, -75.7584)
+scale = Vector2(1.176044, 1.176044)
+script = ExtResource("1_citul")
+
+[node name="LightHouse" type="Sprite2D" parent="."]
+position = Vector2(345, -586)
+scale = Vector2(6.6860447, 6.6860447)
+texture = ExtResource("1_h2r2y")
+
+[node name="Cracks" type="Sprite2D" parent="."]
+position = Vector2(100, 119.000015)
+scale = Vector2(6.3908463, 6.3908463)
+texture = ExtResource("2_citul")
+
+[node name="Fridge" type="Sprite2D" parent="."]
+position = Vector2(498, 353)
+scale = Vector2(6.651901, 6.651901)
+texture = ExtResource("3_tr1ao")
+offset = Vector2(0.5, 0.5)
+
+[node name="Kitchen" type="Sprite2D" parent="."]
+position = Vector2(184.88625, 306.50412)
+scale = Vector2(6.651901, 6.651901)
+texture = ExtResource("4_dvlir")
+offset = Vector2(0.5, -0.5)
+
+[node name="WashingMachine" type="Sprite2D" parent="."]
+position = Vector2(355.00003, 420)
+scale = Vector2(6.651901, 6.651901)
+texture = ExtResource("5_w0dos")
+
+[node name="Table" type="Sprite2D" parent="."]
+z_index = 3
+position = Vector2(719.55316, 535.55316)
+scale = Vector2(6.651901, 6.651901)
+texture = ExtResource("6_hj08s")
+
+[node name="Plate" type="Sprite2D" parent="."]
+z_index = 3
+position = Vector2(590.9924, 473.64273)
+scale = Vector2(3.0620232, 2.8433073)
+texture = ExtResource("7_uk4xp")
+
+[node name="Plate2" type="Sprite2D" parent="."]
+z_index = 3
+position = Vector2(852, 474)
+scale = Vector2(2.600955, 2.4151723)
+texture = ExtResource("7_uk4xp")
+
+[node name="EliseInChair" type="Sprite2D" parent="."]
+position = Vector2(836.5531, 444.16516)
+scale = Vector2(2.3628714, 2.3628714)
+texture = ExtResource("8_4x3cb")
+
+[node name="SuthInChair" type="Sprite2D" parent="."]
+position = Vector2(526.81177, 384.58768)
+scale = Vector2(6.7982044, 6.7982044)
+texture = ExtResource("9_7f51c")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = SubResource("GradientTexture1D_tr1ao")
