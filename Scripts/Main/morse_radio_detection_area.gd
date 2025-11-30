@@ -38,7 +38,7 @@ func _process(_delta):
 			GameManager.usedRadio = true
 			GameManager.player.set_physics_process(false)
 			self.set_process(false)
-			OnBodyExited(playerBody)
+			#OnBodyExited(playerBody)
 			await Radio_Dialogue()
 			self.set_process(true)
 			GameManager.player.set_physics_process(true)

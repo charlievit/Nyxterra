@@ -9,7 +9,7 @@ var gameDone: bool = false
 @export_group("Return Settings")
 @export var returnFloorIndex = 2
 @export var returnPosition: Vector2 = Vector2(80, 340)
-@export var mainGameScenePath: String = "res://Scenes/main.tscn"
+@export var endGameScenePath: String = "res://Scenes/UI/CookingGraded.tscn"
 
 #region NODES
 var heatDial: Button
@@ -704,8 +704,8 @@ func AdvanceToNextStep():
 		GameManager.CompleteTask(currentTaskID)
 		GameManager.SetPlayerSpawn(returnFloorIndex, returnPosition)
 		GameManager.pending_post_source = GameManager.ReturnSource.KITCHEN
-		if ResourceLoader.exists(mainGameScenePath):
-			SceneLoader.change_scene_with_loading(mainGameScenePath)
+		if ResourceLoader.exists(endGameScenePath):
+			SceneLoader.change_scene_with_loading(endGameScenePath)
 		else:
 			push_error("ERROR: Main game scene path not found.")
 	else:

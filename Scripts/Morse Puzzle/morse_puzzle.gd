@@ -198,9 +198,8 @@ func _on_sentence_solved() -> void:
 	# 3. Set dialogue flag and return to Main
 	GameManager.pending_post_source = GameManager.ReturnSource.MORSE
 	
-	await get_tree().create_timer(6.0).timeout
-	
 	if ResourceLoader.exists(mainGameScenePath):
+		await get_tree().create_timer(3.0).timeout
 		SceneLoader.change_scene_with_loading(mainGameScenePath)
 	else:
 		push_error("ERROR: Main game scene path not found.")
