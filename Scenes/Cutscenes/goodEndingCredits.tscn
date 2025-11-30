@@ -1,0 +1,251 @@
+[gd_scene load_steps=32 format=3 uid="uid://dnt8m5x44vxqr"]
+
+[ext_resource type="Script" uid="uid://ds1cr0yk1bkoi" path="res://Scripts/Cutscenes/goodEndCredits.gd" id="1_f1nrj"]
+[ext_resource type="PackedScene" uid="uid://b0j61i6f0ru0" path="res://Scenes/Cutscenes/credits.tscn" id="1_t2qi1"]
+[ext_resource type="Texture2D" uid="uid://cv8j21iu37bo0" path="res://Assets/Images/Cutscenes/Ending/frame0000.png" id="3_2bddm"]
+[ext_resource type="Texture2D" uid="uid://dgokwji26rsj8" path="res://Assets/Images/Cutscenes/Ending/frame0001.png" id="4_6q3xf"]
+[ext_resource type="Texture2D" uid="uid://7setjmevj2iy" path="res://Assets/Images/Cutscenes/Ending/frame0002.png" id="5_7cwaq"]
+[ext_resource type="Texture2D" uid="uid://dir22nky6fgq" path="res://Assets/Images/Cutscenes/Ending/frame0003.png" id="6_ycved"]
+[ext_resource type="Texture2D" uid="uid://0mdjuvgg7jwj" path="res://Assets/Images/Cutscenes/Ending/frame0004.png" id="7_anyqi"]
+[ext_resource type="Texture2D" uid="uid://c5jjd1ji5bttj" path="res://Assets/Images/Cutscenes/Ending/frame0005.png" id="8_anwru"]
+[ext_resource type="Texture2D" uid="uid://bx8f8144cvtme" path="res://Assets/Images/Cutscenes/Ending/frame0006.png" id="9_x0vss"]
+[ext_resource type="Texture2D" uid="uid://cjeyhn5517i5g" path="res://Assets/Images/Cutscenes/Ending/frame0007.png" id="10_hev2p"]
+[ext_resource type="Texture2D" uid="uid://b6rhfnpokoj60" path="res://Assets/Images/Cutscenes/Ending/frame0008.png" id="11_a2y13"]
+[ext_resource type="Texture2D" uid="uid://cfe24n2xe1kfb" path="res://Assets/Images/Cutscenes/Ending/frame0009.png" id="12_xjyid"]
+[ext_resource type="Texture2D" uid="uid://ck2afkabwut6j" path="res://Assets/Images/Cutscenes/Ending/frame0010.png" id="13_4iv2n"]
+[ext_resource type="Texture2D" uid="uid://cyblg0bfl1oht" path="res://Assets/Images/Cutscenes/Ending/frame0011.png" id="14_oxkho"]
+[ext_resource type="Texture2D" uid="uid://ia7jy5jo5vy7" path="res://Assets/Images/Cutscenes/Ending/frame0012.png" id="15_716xo"]
+[ext_resource type="Texture2D" uid="uid://1870308ojatj" path="res://Assets/Images/Cutscenes/Ending/frame0013.png" id="16_l6md3"]
+[ext_resource type="Texture2D" uid="uid://cuhpni6d80wpw" path="res://Assets/Images/Cutscenes/Ending/frame0014.png" id="17_hwatp"]
+[ext_resource type="Texture2D" uid="uid://b1yhn01rjp4jo" path="res://Assets/Images/Cutscenes/Ending/frame0015.png" id="18_pagxo"]
+[ext_resource type="Texture2D" uid="uid://0dmw6vxqdh3j" path="res://Assets/Images/Cutscenes/Ending/frame0016.png" id="19_qia60"]
+[ext_resource type="Texture2D" uid="uid://dv3oiebfs4sbk" path="res://Assets/Images/Cutscenes/Ending/frame0017.png" id="20_ewaxr"]
+[ext_resource type="Texture2D" uid="uid://cm8e3phvsdolk" path="res://Assets/Images/Cutscenes/Ending/frame0018.png" id="21_m1vyj"]
+[ext_resource type="Texture2D" uid="uid://xydt4kvygetv" path="res://Assets/Images/Cutscenes/Ending/frame0019.png" id="22_pi01b"]
+[ext_resource type="Texture2D" uid="uid://wby2n1teo2xa" path="res://Assets/Images/Cutscenes/Ending/frame0020.png" id="23_kma7b"]
+[ext_resource type="Texture2D" uid="uid://v7c1ih8t0ejk" path="res://Assets/Images/Cutscenes/Ending/frame0021.png" id="24_a66b2"]
+[ext_resource type="Texture2D" uid="uid://cx5cwsea7v7pf" path="res://Assets/Images/Cutscenes/Ending/frame0022.png" id="25_d10f4"]
+[ext_resource type="Texture2D" uid="uid://ce2qjg6flmyjg" path="res://Assets/Images/Cutscenes/Ending/frame0023.png" id="26_5rlvg"]
+[ext_resource type="Texture2D" uid="uid://bivqscn0nrxox" path="res://Assets/Images/Cutscenes/Ending/frame0024.png" id="27_vi502"]
+[ext_resource type="Texture2D" uid="uid://w8x7awdw5lry" path="res://Assets/Images/Cutscenes/Ending/frame0025.png" id="28_f8q31"]
+
+[sub_resource type="Gradient" id="Gradient_2bddm"]
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_6q3xf"]
+gradient = SubResource("Gradient_2bddm")
+width = 1
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_02rkw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_2bddm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_6q3xf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_7cwaq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_ycved")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_anyqi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_anwru")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_x0vss")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_hev2p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_a2y13")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_xjyid")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_4iv2n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_oxkho")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_716xo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_l6md3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_hwatp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_pagxo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_qia60")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_ewaxr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_m1vyj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_pi01b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_kma7b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_a66b2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_d10f4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_5rlvg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_vi502")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_f8q31")
+}],
+"loop": true,
+"name": &"default",
+"speed": 13.0
+}]
+
+[node name="Good Ending Credits" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_f1nrj")
+
+[node name="Black Background" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+texture = SubResource("GradientTexture1D_6q3xf")
+
+[node name="Animation" type="AnimatedSprite2D" parent="."]
+position = Vector2(576, 324)
+scale = Vector2(2.4, 2.4)
+sprite_frames = SubResource("SpriteFrames_02rkw")
+frame_progress = 0.10751795
+
+[node name="Credits" parent="." instance=ExtResource("1_t2qi1")]
+texture_filter = 1
+layout_mode = 0
+offset_top = 647.99994
+offset_bottom = 24882.0
+theme_override_constants/outline_size = 25
+text = "[font_size={100}][i]From the bottom of all our hearts, thank you for playing...[/i][/font_size]
+[font_size=1000][font=\"res://Assets/Fonts/Eyesome Script.otf\"]Solais[/font][/font_size]
+--------------------------------------------------------------------
+[font_size={100}][i]Dedicated to Jennifer and Aria [/i][/font_size]
+
+[font_size={150}][b]Development Team[/b][/font_size]
+[font_size={100}][b]Game Director & Executive Producer[/b][/font_size]
+[font_size={150}]Charlie Vaughn[/font_size]
+
+[font_size={100}][b]Writers[/b][/font_size]
+[font_size={150}]Charlie Vaughn[/font_size]
+[font_size={150}]Mani \"Nykur\" Amini[/font_size]
+
+[font_size={100}][b]Lead Systems Designer[/b][/font_size]
+[font_size={150}]Jordon Call[/font_size]
+
+[font_size={100}][b]Systems Designers[/b][/font_size]
+[font_size={150}]Charlie Vaughn[/font_size]
+[font_size={150}]Mani \"Nykur\" Amini[/font_size]
+[font_size={150}]Toxic_Humble[/font_size]
+
+[font_size={100}][b]Technical Director[/b][/font_size]
+[font_size={150}]Jordon Call[/font_size]
+
+[font_size={100}][b]Lead Programmers[/b][/font_size]
+[font_size={150}]Jordon Call[/font_size] [font_size={150}][i](Graphics, Gameplay, UI, & Build)[/i][/font_size]
+[font_size={150}]Toxic_Humble[/font_size] [font_size={150}][i](Data, Tools, & Gameplay)[/i][/font_size]
+
+[font_size={100}][b]Art Director & Lead Animator[/b][/font_size]
+[font_size={150}]Phrenix[/font_size]
+
+[font_size={100}][b]Lead Character & Props Artist[/b][/font_size]
+[font_size={150}]DreamCatcher[/font_size]
+
+[font_size={100}][b]Technical Artists[/b][/font_size]
+[font_size={150}]Charlie Vaughn[/font_size]
+[font_size={150}]DreamCatcher[/font_size]
+[font_size={150}]Jordon Call[/font_size]
+[font_size={150}]Phrenix[/font_size]
+
+[font_size={100}][b]Audio Director & Sound Engineer[/b][/font_size]
+[font_size={150}]Charlie Vaughn[/font_size]
+
+[font_size={100}][b]Marketing Director[/b][/font_size]
+[font_size={150}]Charlie Vaughn[/font_size]
+
+[font_size={100}][b]Cast[/b][/font_size]
+[font_size={150}]Gavin Lindsay[/font_size] [font_size={100}]as[/font_size] [font_size={150}][i]Archie Sutherland[/i][/font_size]
+[font_size={150}]Chrissy Vargas-Rosales[/font_size] [font_size={100}]as[/font_size] [font_size={150}][i]Elise Sutherland[/i][/font_size]
+[font_size={150}]Ry Hillemeyer[/font_size] [font_size={100}]as[/font_size] [font_size={150}][i]Smith[/i][/font_size]
+
+[font_size={100}][b]Additional Voices[/b][/font_size]
+[font_size={150}]Jordon Call[/font_size]
+[font_size={150}]Phrenix[/font_size]
+[font_size={150}]Ry Hillemeyer[/font_size]
+
+[font_size={100}][b]Music[/b][/font_size]
+Music Composed and Produced by
+[font_size={150}]GodSnail[/font_size] [font_size={150}][i](All Rights Reserved)[/i][/font_size]
+
+[font_size={200}][i]\"Light Keeper\"[/i][/font_size]
+[font_size={100}]by[/font_size] [font_size={150}]Rissa Baker[/font_size] [font_size={150}][i](All Rights Reserved)[/i][/font_size]
+
+[font_size={150}][b]Studios[/b][/font_size]
+A PRODUCTION OF
+NyxForge Studios
+[font_size={100}][i]in association with[/i][/font_size]
+[img={1800}]res://Socials/Logos/CyberSugar Studios Logo (2).png[/img]
+--------------------------------------------------------------------
+[font_size={150}][b]NyxForge Studios[/b][/font_size]
+
+Founder 
+[font_size={150}]Mani \"Nykur\" Amini[/font_size]
+
+Contributors
+[font_size={150}]GodSnail[/font_size]
+[font_size={150}]Toxic_Humble[/font_size]
+
+--------------------------------------------------------------------
+
+[font_size={150}][b]CyberSugar Studio[/b][/font_size]
+
+Co-Founders 
+[font_size={150}]Charlie Vaughn[/font_size]
+[font_size={150}]Jordon Call[/font_size]
+
+Art Director
+[font_size={150}]Phrenix[/font_size]
+
+Studio Support 
+[font_size={150}]Paprika & Wasabi the Cats[/font_size]
+
+--------------------------------------------------------------------
+
+[font_size={150}][b]Dragonsight Studios[/b][/font_size]
+
+Founder 
+[font_size={150}]DreamCatcher[/font_size]
+
+Studio Support
+[font_size={150}]Fred the Hamster[/font_size]"

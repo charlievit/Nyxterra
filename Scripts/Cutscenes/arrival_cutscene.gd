@@ -9,6 +9,9 @@ var cutsceneMusicPlayer: AudioStreamPlayer2D
 var introMusic: AudioStream = preload("res://Assets/Audio/Music/Music 1 lighthouse.wav")
 
 func _ready():
+	TaskManager.shouldBeHidden = true
+	TutorialManager.shouldBeHidden = true
+	
 	print("Cutscene running")
 	Begin()
 

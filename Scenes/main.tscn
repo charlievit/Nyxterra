@@ -71,9 +71,9 @@ cameraLimitRight = 325
 riseDuration = 50.0
 
 [node name="Elise (Daughter)" parent="." instance=ExtResource("17_h1bgf")]
-z_index = 1
-position = Vector2(170.42717, 338.7061)
-scale = Vector2(0.30816323, 0.30816323)
+z_index = 2
+position = Vector2(172.57542, 340.13824)
+scale = Vector2(0.26596916, 0.28275225)
 animation = &"sitting"
 
 [node name="Player" parent="." instance=ExtResource("2_8gbba")]

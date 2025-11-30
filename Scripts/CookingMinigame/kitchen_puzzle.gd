@@ -698,7 +698,7 @@ func AdvanceToNextStep():
 		gameDone = true
 		
 		GameManager.AddCookingScore(recipeQuality)
-		
+		TutorialManager.ClearTutorial()
 		await get_tree().create_timer(8.0).timeout
 		kitchenGameMusicPlayer.stop()
 		GameManager.CompleteTask(currentTaskID)

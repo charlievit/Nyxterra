@@ -41,12 +41,11 @@ var needBed: bool = false
 var needLockbox: bool = false
 
 # GLOBAL ENDING VARIABLES
-var yesterdaysMorality: int = 0
+var yesterdaysMorality: int = 25
 var morality: int = 0
 var moralityNeeded: int = 50 
-var yesterdaysRelationship: int = 60
-var relationship: int = 60
-var recipeQuality: int = 0
+var yesterdaysRelationship: int = 50
+var relationship: int = 50
 var isBadEnding: bool = false
 var shouldLightBeOnTonight: bool = false
 var choseLightToBeOn: bool = false
@@ -147,9 +146,28 @@ func AddCookingScore(quality: int):
 	recipeQuality = quality
 	# Relationship increases by an amount equal to the recipe quality /10 rounded up
 	var increase = ceil(quality / 10.0)
+	if currentDay == 3: # double relationship bonus for making Elise's favorite meal
+		increase *= 2
 	yesterdaysRelationship = relationship
 	relationship += int(increase)
 	print("Cooking Quality: %d. Relationship increased by %d. Total: %d" % [quality, increase, relationship])
+
+func CheckMorality() -> int:
+	yesterdaysMorality = morality
+	match currentDay:
+		1:
+			if Dialogic.VAR.Day1_response == "Yes":
+				morality += 25
+		2:
+			if Dialogic.VAR.Day2_response == "No":
+				morality += 25
+		3:
+			if Dialogic.VAR.Day3_response == "Yes":
+				morality += 25
+		4:
+			if Dialogic.VAR.Day4_responce == "No":
+				morality += 25
+	return morality
 
 func UpdateObjective():
 	# 1. Reset needs for the new step

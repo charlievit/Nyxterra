@@ -2,8 +2,7 @@ extends TextureButton
 
 func onToggleTutorial() -> void:
 	GameManager.tutorialMode = not GameManager.tutorialMode
-	# self.focus_mode = false
-	print(GameManager.tutorialMode)
+	self.focus_mode = Control.FOCUS_NONE
 	TaskManager.ToggleTaskKey()
 
 # Called when the node enters the scene tree for the first time.

@@ -9,7 +9,7 @@
 [node name="Credits" type="RichTextLabel"]
 offset_top = 624.0
 offset_right = 4563.0
-offset_bottom = 23184.0
+offset_bottom = 24858.0
 scale = Vector2(0.2525396, 0.2525396)
 theme = ExtResource("1_5nodu")
 theme_override_fonts/normal_font = ExtResource("2_ob67c")
