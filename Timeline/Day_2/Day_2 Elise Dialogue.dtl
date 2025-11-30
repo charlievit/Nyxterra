@@ -1,5 +1,5 @@
-[voice path="res://Assets/Audio/VA/Elise/Remember how she used to sing.mp3" volume="0.0" bus="Character Voice"]
-Elise: Remember how she used to sing? She should have been a singer.
-[voice path="res://Assets/Audio/VA/Sutherland/She should have been.mp3" volume="0.0" bus="Character Voice"]
-Sutherland: She should have. I miss her too.
+[voice path="res://Assets/Audio/VA/Elise/Remember how she used to sing.mp3" volume="-3.0" bus="Character Voice"]
+Elise: Remember how she used to sing? She would have been a singer.
+[voice path="res://Assets/Audio/VA/Sutherland/She should have been.mp3" volume="5.0" bus="Character Voice"]
+Sutherland: Aye, she should have been. I miss her too.
 Narrator: Elise disengages.

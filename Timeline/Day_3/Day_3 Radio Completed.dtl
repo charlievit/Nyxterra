@@ -1,11 +1,14 @@
 if {Day2_response} == "Yes":
-	[voice path="res://Assets/Audio/VA/Smith/Bad-Attack.mp3" volume="0.0" bus="Character Voice"]
-	Smith: Suth, do you read me? Real bad attack happened down south last night. Don't know how they slipped past us. Bloody animals. Be safe over there. By the way, we're expecting a Swedish cargo ship tonight. Thanks for your help. Over.
+	[voice path="res://Assets/Audio/VA/Smith/Bad-Attack.mp3" volume="-15.0" bus="Character Voice"]
+	Smith: Suth, do you read me? Real bad attack happened down south last night. Don't know how they slipped past us. Bloody animals. Be safe over there. By the way, we're expecting a Swedish cargo ship overnight. Anyway, thanks for your help. Over.
 elif {Day2_response} == "No":
-	[voice path="res://Assets/Audio/VA/Misc Radio/Radio American.mp3" volume="0.0" bus="Character Voice"]
-	"Suspicious voice": Fair Isle Light, Fair Isle Light, this is American Merchant Vessel SS Liberty Bay, Whiskey Lima Five Six. Do you receive, over?
+	[voice path="res://Assets/Audio/VA/Smith/Swedish Cargo Ship.mp3" volume="-13.0"]
+	Smith: Suth, we're expecting a Swedish cargo ship tonight. Thanks for your help. Over.
+Narrator: As he finishes, the radio crackles and a new voice can be heard.
+[voice path="res://Assets/Audio/VA/Misc Radio/Radio American.mp3" volume="-15.0" bus="Character Voice"]
+"Suspicious voice": Fair Isle Light, Fair Isle Light, this is American Merchant Vessel SS Liberty Bay, Whiskey Lima Five Six. Do you receive? Over.
 [voice path="res://Assets/Audio/VA/Sutherland/Container Ship.mp3" volume="0.0" bus="Character Voice"]
 Sutherland: (speaking to himself) Ah, container ship.
-[voice path="res://Assets/Audio/VA/Sutherland/Aye all clear.mp3" volume="0.0" bus="Character Voice"]
-[voice path="res://Assets/Audio/VA/Sutherland/Bright as a star.mp3" volume="0.0" bus="Character Voice"]
-Sutherland: Aye, all clear. We'll be bright as a star. Over.
+[voice path="res://Assets/Audio/VA/Sutherland/Aye all clear.mp3" volume="-7.0" bus="Character Voice"]
+[voice path="res://Assets/Audio/VA/Sutherland/Bright as a star.mp3" volume="-7.0" bus="Character Voice"]
+Sutherland: (speaking on radio) Aye, all clear. We'll be bright as a star. Over.
