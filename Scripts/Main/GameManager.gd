@@ -25,7 +25,7 @@ var playerSpawnFloor: int = 3
 var playerSpawnPosition: Vector2 = Vector2(88, 278)
 var shouldUseStoredSpawn: bool = false
 
-var currentDay: int = 0
+var currentDay: int = 2
 var isNewDay: bool = false
 var daySTATE: DayState = DayState.NIGHT_IDLE
 var currentTaskStep: int = 0 
@@ -44,8 +44,9 @@ var needLockbox: bool = false
 var yesterdaysMorality: int = 0
 var morality: int = 0
 var moralityNeeded: int = 50 
-var yesterdaysRelationship: int = 0
-var relationship: int = 50
+var yesterdaysRelationship: int = 60
+var relationship: int = 60
+var recipeQuality: int = 0
 var isBadEnding: bool = false
 var shouldLightBeOnTonight: bool = false
 var choseLightToBeOn: bool = false
@@ -94,7 +95,7 @@ func _ready():
 	
 func StartNewGame():
 	# Reset all internal state
-	currentDay = 0
+	currentDay = 2
 	currentTaskStep = 0
 	
 	isIntroPlayed = false
@@ -143,6 +144,7 @@ func CompleteTask(task_id: String):
 	UpdateObjective()
 
 func AddCookingScore(quality: int):
+	recipeQuality = quality
 	# Relationship increases by an amount equal to the recipe quality /10 rounded up
 	var increase = ceil(quality / 10.0)
 	yesterdaysRelationship = relationship
@@ -172,7 +174,6 @@ func UpdateObjective():
 				3:
 					needLight = true
 					TaskManager.AddTask("dayZERO_decision", "Turn off the Light")
-					if not hasCompletedTutorial: emit_signal("showTutorialPopUp", "interactionTutorial")				
 				4:
 					# END OF DAY 0 -> BOMBING CUTSCENE -> ARRIVAL -> DAY 1
 					TaskManager.CompleteDay()

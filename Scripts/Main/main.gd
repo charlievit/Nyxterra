@@ -11,7 +11,6 @@ signal nightArrived
 @onready var zoomCamera = $"Control_GAME SCREEN UI/SubViewportContainer/SubViewport/ZoomCamera"
 @onready var subVPort = $"Control_GAME SCREEN UI/SubViewportContainer/SubViewport"
 @onready var subVPortContainer = $"Control_GAME SCREEN UI/SubViewportContainer"
-@onready var tutorialButton = $"Control_GAME SCREEN UI/ToggleTutorial"
 var viewportMapShownSize: Vector2i = Vector2i(817, 648)
 var viewportMapShowPosition: Vector2 = Vector2(335, 0)
 var viewportMapHiddenSize: Vector2i = Vector2i(1150, 648)
@@ -75,15 +74,15 @@ func _ready() -> void:
 			Elise.scale = Vector2(0.308,0.308)
 			Elise.play("sitting")
 		1: 
-			Elise.position = Vector2(66.984,402.489)
+			Elise.position = Vector2(66.984,410)
 			Elise.scale = Vector2(0.091,0.091)
 			Elise.play("laying")
 		2:
-			Elise.position = Vector2(66.984,402.489)
+			Elise.position = Vector2(66.984,410)
 			Elise.scale = Vector2(0.091,0.091)
 			Elise.play("laying")
 		3: 
-			Elise.position = Vector2(66.984,402.489)
+			Elise.position = Vector2(66.984,410)
 			Elise.scale = Vector2(0.091,0.091)
 			Elise.play("laying")
 		4: 
