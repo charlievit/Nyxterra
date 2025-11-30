@@ -1,10 +1,10 @@
 - No
 	[voice path="res://Assets/Audio/VA/Sutherland/I cant risk her life.mp3" volume="5.0" bus="Character Voice"]
 	Sutherland: I'm sorry. I can't risk her life too.
-	set {Day1_response} = "Yes"
-	[signal arg="Yes"]
+	set {Day1_response} = "No"
+	[signal arg="No"]
 - Yes
 	[voice path="res://Assets/Audio/VA/Sutherland/Not losing you to the sea.mp3" volume="5.0" bus="Character Voice"]
 	Sutherland: Not losing you to the sea tonight.
-	set {Day1_response} = "No"
-	[signal arg="No"]
+	set {Day1_response} = "Yes"
+	[signal arg="Yes"]

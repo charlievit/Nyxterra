@@ -1,8 +1,33 @@
-[gd_scene load_steps=31 format=3 uid="uid://cmm7tsafh30uc"]
+[gd_scene load_steps=56 format=3 uid="uid://cmm7tsafh30uc"]
 
-[ext_resource type="Script" uid="uid://ck6kjlrbq7m8c" path="res://Scripts/UI/loading_screen.gd" id="1_qj53y"]
+[ext_resource type="Script" uid="uid://bbnbdu7cheyj7" path="res://Scripts/UI/loading_screen.gd" id="1_qj53y"]
 [ext_resource type="Texture2D" uid="uid://jx3yb0oa748d" path="res://Assets/Images/Lighthouse/AnimatedLightHouseScreen/LighthouseAnim2.png" id="2_63kij"]
+[ext_resource type="Texture2D" uid="uid://d4fb7d7jm5rhe" path="res://Assets/Images/Lighthouse/AnimatedLightHouseScreen/Day Transition/frame0000.png" id="2_cfl86"]
+[ext_resource type="Texture2D" uid="uid://dag82cwskw1es" path="res://Assets/Images/Lighthouse/AnimatedLightHouseScreen/Day Transition/frame0001.png" id="3_gbd4q"]
 [ext_resource type="Theme" uid="uid://b4lurv8njswua" path="res://Resources/theme.tres" id="3_u08of"]
+[ext_resource type="Texture2D" uid="uid://b4hqwlpu6aarf" path="res://Assets/Images/Lighthouse/AnimatedLightHouseScreen/Day Transition/frame0002.png" id="4_oh422"]
+[ext_resource type="Texture2D" uid="uid://ocvx1rx0i72i" path="res://Assets/Images/Lighthouse/AnimatedLightHouseScreen/Day Transition/frame0003.png" id="5_43ot3"]
+[ext_resource type="Texture2D" uid="uid://cvbgfm8510qxe" path="res://Assets/Images/Lighthouse/AnimatedLightHouseScreen/Day Transition/frame0004.png" id="6_cdsgd"]
+[ext_resource type="Texture2D" uid="uid://c6wlkfg4usfiq" path="res://Assets/Images/Lighthouse/AnimatedLightHouseScreen/Day Transition/frame0005.png" id="7_drp12"]
+[ext_resource type="Texture2D" uid="uid://duiyyqntwgvq5" path="res://Assets/Images/Lighthouse/AnimatedLightHouseScreen/Day Transition/frame0006.png" id="8_3wgpv"]
+[ext_resource type="Texture2D" uid="uid://dttwcgxh00tq8" path="res://Assets/Images/Lighthouse/AnimatedLightHouseScreen/Day Transition/frame0007.png" id="9_8c6b0"]
+[ext_resource type="Texture2D" uid="uid://2hif1te5drvr" path="res://Assets/Images/Lighthouse/AnimatedLightHouseScreen/Day Transition/frame0008.png" id="10_a44g3"]
+[ext_resource type="Texture2D" uid="uid://cokscc1uccp35" path="res://Assets/Images/Lighthouse/AnimatedLightHouseScreen/Day Transition/frame0009.png" id="11_1m054"]
+[ext_resource type="Texture2D" uid="uid://c5dhwmyurnv5r" path="res://Assets/Images/Lighthouse/AnimatedLightHouseScreen/Day Transition/frame0010.png" id="12_lupt6"]
+[ext_resource type="Texture2D" uid="uid://dtkvf2t1jabe8" path="res://Assets/Images/Lighthouse/AnimatedLightHouseScreen/Day Transition/frame0011.png" id="13_mrtme"]
+[ext_resource type="Texture2D" uid="uid://dlry0dxonxd6d" path="res://Assets/Images/Lighthouse/AnimatedLightHouseScreen/Day Transition/frame0012.png" id="14_h4mqo"]
+[ext_resource type="Texture2D" uid="uid://bl8g04n5exj75" path="res://Assets/Images/Lighthouse/AnimatedLightHouseScreen/Day Transition/frame0013.png" id="15_bqcyf"]
+[ext_resource type="Texture2D" uid="uid://b5i1qiyy35twl" path="res://Assets/Images/Lighthouse/AnimatedLightHouseScreen/Day Transition/frame0014.png" id="16_kan12"]
+[ext_resource type="Texture2D" uid="uid://cxpf8ik41q1p2" path="res://Assets/Images/Lighthouse/AnimatedLightHouseScreen/Day Transition/frame0015.png" id="17_2ytr6"]
+[ext_resource type="Texture2D" uid="uid://ctv0j6s0jxwcx" path="res://Assets/Images/Lighthouse/AnimatedLightHouseScreen/Day Transition/frame0016.png" id="18_ruxam"]
+[ext_resource type="Texture2D" uid="uid://cptw2pgthr8ef" path="res://Assets/Images/Lighthouse/AnimatedLightHouseScreen/Day Transition/frame0017.png" id="19_h0bxc"]
+[ext_resource type="Texture2D" uid="uid://dhetemuqfcgac" path="res://Assets/Images/Lighthouse/AnimatedLightHouseScreen/Day Transition/frame0018.png" id="20_ik82p"]
+[ext_resource type="Texture2D" uid="uid://lku8wsywonyu" path="res://Assets/Images/Lighthouse/AnimatedLightHouseScreen/Day Transition/frame0019.png" id="21_tx46b"]
+[ext_resource type="Texture2D" uid="uid://b8nv3gblify5i" path="res://Assets/Images/Lighthouse/AnimatedLightHouseScreen/Day Transition/frame0020.png" id="22_wbchn"]
+[ext_resource type="Texture2D" uid="uid://bybff2tbqgsvf" path="res://Assets/Images/Lighthouse/AnimatedLightHouseScreen/Day Transition/frame0021.png" id="23_16873"]
+[ext_resource type="Texture2D" uid="uid://bpccpxi5nwgji" path="res://Assets/Images/Lighthouse/AnimatedLightHouseScreen/Day Transition/frame0022.png" id="24_32ycx"]
+[ext_resource type="Texture2D" uid="uid://c0urklcc0rw0o" path="res://Assets/Images/Lighthouse/AnimatedLightHouseScreen/Day Transition/frame0023.png" id="25_po1o4"]
+[ext_resource type="Texture2D" uid="uid://dpq5ctj3iqv8" path="res://Assets/Images/Lighthouse/AnimatedLightHouseScreen/Day Transition/frame0024.png" id="26_r6m56"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_u08of"]
 atlas = ExtResource("2_63kij")
@@ -112,6 +137,86 @@ region = Rect2(12000, 0, 480, 270)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("2_cfl86")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_gbd4q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_oh422")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_43ot3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_cdsgd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_drp12")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_3wgpv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_8c6b0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_a44g3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_1m054")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_lupt6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_mrtme")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_h4mqo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_bqcyf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_kan12")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_2ytr6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_ruxam")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_h0bxc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_ik82p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_tx46b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_wbchn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_16873")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_32ycx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_po1o4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_r6m56")
+}],
+"loop": true,
+"name": &"day",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_u08of")
 }, {
 "duration": 1.0,
@@ -208,7 +313,7 @@ texture_filter = 1
 position = Vector2(576, 324)
 scale = Vector2(2.3999999, 2.3999999)
 sprite_frames = SubResource("SpriteFrames_gbd4q")
-frame_progress = 0.43400407
+frame_progress = 0.761748
 
 [node name="LoadingLabel" type="Label" parent="."]
 texture_filter = 1

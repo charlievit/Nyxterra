@@ -73,8 +73,10 @@ riseDuration = 50.0
 
 [node name="Elise (Daughter)" parent="." instance=ExtResource("17_h1bgf")]
 z_index = 1
-position = Vector2(53.70604, 398.8568)
-scale = Vector2(0.44479263, 0.44479263)
+position = Vector2(170.42717, 338.7061)
+scale = Vector2(0.30816323, 0.30816323)
+animation = &"sitting"
+frame_progress = 0.0
 
 [node name="Player" parent="." instance=ExtResource("2_8gbba")]
 position = Vector2(88, 278)

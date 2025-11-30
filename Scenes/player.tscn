@@ -1,8 +1,9 @@
-[gd_scene load_steps=15 format=3 uid="uid://ctuyv2i3q62q"]
+[gd_scene load_steps=16 format=3 uid="uid://ctuyv2i3q62q"]
 
 [ext_resource type="Script" uid="uid://bthfal06ejpjt" path="res://Scripts/Main/characterController.gd" id="1_cvnsp"]
 [ext_resource type="Texture2D" uid="uid://c2bjfaemqpvp3" path="res://Assets/Images/Player/PLACEHOLDER_DUDE.png" id="2_6t5aa"]
 [ext_resource type="Texture2D" uid="uid://brbbvqioqjn4p" path="res://Assets/Images/Player/Walk_sutherland.png" id="2_cvnsp"]
+[ext_resource type="Texture2D" uid="uid://ca224mbqfoasl" path="res://Assets/Images/Player/Sitting2.png" id="2_fkybt"]
 [ext_resource type="Theme" uid="uid://b4lurv8njswua" path="res://Resources/theme.tres" id="4_vgqql"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6t5aa"]
@@ -42,6 +43,14 @@ animations = [{
 "frames": [],
 "loop": true,
 "name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_fkybt")
+}],
+"loop": true,
+"name": &"sitting",
 "speed": 5.0
 }, {
 "frames": [{

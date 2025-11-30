@@ -169,7 +169,7 @@ func UpdateObjective():
 				2:
 					# TRIGGER NIGHT
 					emit_signal("requestNightCycle")
-					daySTATE = DayState.MOON_RISING
+					daySTATE = DayState.NIGHT_FADING
 					needMorse = true
 					TaskManager.AddTask("nightZERO_checkMorse", "Check for morse code messages.")
 				3:

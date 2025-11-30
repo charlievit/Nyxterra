@@ -13,7 +13,10 @@ const FADE_TIME := 1.0          # fade in/out duration
 
 func _ready() -> void:
 	TaskManager.shouldBeHidden = true
-	loadingAnimation.play("default")
+	if GameManager.daySTATE == GameManager.DayState.SUN_RISING or GameManager.daySTATE == GameManager.DayState.DAY_IDLE or GameManager.daySTATE == GameManager.DayState.NIGHT_FADING:
+		loadingAnimation.play("day")
+	else:
+		loadingAnimation.play("default")
 	
 	# Get the target scene path from SceneLoader
 	_target_path = SceneLoader.target_scene_path

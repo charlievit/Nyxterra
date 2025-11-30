@@ -42,7 +42,6 @@
 [ext_resource type="Script" uid="uid://qxikudipxih8" path="res://Scripts/Main/mainGearAnimation.gd" id="24_kx1qn"]
 [ext_resource type="Script" uid="uid://fo1o3pb5mktu" path="res://Scripts/GearPuzzle/gearBoxDetectionForMainScene.gd" id="26_cln54"]
 [ext_resource type="Script" uid="uid://bhg0dsk0yreiu" path="res://Scripts/Main/bed_detection_area.gd" id="31_71vhx"]
-[ext_resource type="Texture2D" uid="uid://bp7jqmyb3kdwc" path="res://Assets/Images/Lighthouse/Props/Living Areas/couch_s.png" id="32_2jvc2"]
 [ext_resource type="Script" uid="uid://qnsant6mcp75" path="res://Scripts/Main/morse_radio_detection_area.gd" id="32_w401g"]
 [ext_resource type="Script" uid="uid://b3j4sfwnj3nnw" path="res://Scripts/Main/kitchen_detection_area.gd" id="34_4c1dk"]
 [ext_resource type="Texture2D" uid="uid://bqwod0spj8tjt" path="res://Assets/Images/Lighthouse/Props/Post-Bombing/Cracks.png" id="36_2jvc2"]
@@ -68,6 +67,7 @@
 [ext_resource type="Texture2D" uid="uid://b4n6cg1y8xc61" path="res://Assets/Images/Lighthouse/Props/Kitchen and Dining Room/plate.png" id="63_pm18c"]
 [ext_resource type="Texture2D" uid="uid://c8ytipb6iq06u" path="res://Assets/Images/Lighthouse/Props/Kitchen and Dining Room/miniLockbox.png" id="64_v23lm"]
 [ext_resource type="Script" uid="uid://ptduaxougvs3" path="res://Scripts/Main/lockbox_detection_area.gd" id="66_we2es"]
+[ext_resource type="Texture2D" uid="uid://bi3k3i52hdwlr" path="res://Assets/Images/Lighthouse/Props/Living Areas/couch_l.png" id="67_l1a87"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b2lj4"]
 size = Vector2(25.488739, 42.957886)
@@ -827,10 +827,6 @@ theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 100
 text = "E"
 
-[node name="Couch" type="Sprite2D" parent="BOTTOM"]
-position = Vector2(76, 151)
-texture = ExtResource("32_2jvc2")
-
 [node name="Bookshelf" type="Sprite2D" parent="BOTTOM"]
 position = Vector2(46, 142)
 texture = ExtResource("37_411ja")
@@ -937,6 +933,10 @@ theme = ExtResource("3_j2rhv")
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 100
 text = "E"
+
+[node name="CouchL" type="Sprite2D" parent="BOTTOM"]
+position = Vector2(94, 157.40607)
+texture = ExtResource("67_l1a87")
 
 [node name="PlaceholderDude" type="Sprite2D" parent="."]
 visible = false
