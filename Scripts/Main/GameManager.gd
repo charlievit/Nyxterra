@@ -173,6 +173,10 @@ func UpdateObjective():
 					needMorse = true
 					TaskManager.AddTask("nightZERO_checkMorse", "Check for morse code messages.")
 				3:
+					needLight = true
+					TaskManager.AddTask("dayZERO_decision", "Turn off the Light")
+					if not hasCompletedTutorial: emit_signal("showTutorialPopUp", "interactionTutorial")				
+				4:
 					# END OF DAY 0 -> BOMBING CUTSCENE -> ARRIVAL -> DAY 1
 					TaskManager.CompleteDay()
 					introPlayed = true

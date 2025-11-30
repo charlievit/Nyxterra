@@ -111,10 +111,10 @@ autowrap_trim_flags = 0
 
 [node name="Feedback" type="Label" parent="."]
 layout_mode = 0
-offset_left = 524.0
-offset_top = 384.0
-offset_right = 774.0
-offset_bottom = 407.0
+offset_left = 528.0
+offset_top = 419.0
+offset_right = 778.0
+offset_bottom = 449.0
 theme = ExtResource("5_vpjeu")
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 4

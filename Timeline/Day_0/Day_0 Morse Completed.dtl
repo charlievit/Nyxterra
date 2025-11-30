@@ -1,6 +1,2 @@
 [voice path="res://Assets/Audio/VA/Sutherland/No no.mp3" volume="5.0" bus="Character Voice"]
 Sutherland: No... No!
-[voice path="res://Assets/Audio/VA/Smith/Get-Out.mp3" volume="-25.0"]
-Smith: Get out of there! Suth get out! Get the girls! Suth! Suth!
-[voice path="res://Assets/Audio/VA/Sutherland/Cath No.mp3" volume="5.0"]
-Sutherland: Cath! No! No... no...

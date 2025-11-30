@@ -651,16 +651,7 @@ func AdvanceToNextStep():
 		LoadStep(currentStepIndex)
 		StartStepTimer()
 
-#DEBUG ONLY
-func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed("H"):
-		recipeQuality = 100
-		AdvanceToNextStep()
-	elif event.is_action_pressed("J"):
-		recipeQuality = 30
-		AdvanceToNextStep()
 
-	
 func CleanUpReferences():
 	print("KitchenController: Cleaning up node references.")
 	

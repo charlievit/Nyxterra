@@ -104,7 +104,7 @@ func PlayBomb():
 		await Dialogic.timeline_ended
 
 		# Now call your existing function
-		CheckForEnding()
+		_fade_out_all_audio_and_check()
 	)
 
 func CheckForEnding():
@@ -131,6 +131,34 @@ func CutToSmokePlume():
 	tween.tween_property(engineSoundPlayer, "volume_db", -80.0, 3.0)
 	tween.set_parallel(false)
 	tween.tween_callback(EndingCredits)
+
+func _fade_out_all_audio_and_check() -> void:
+	var tween := create_tween()
+	tween.set_parallel(true)
+
+	# Fade every player you care about
+	if is_instance_valid(windSoundPlayer):
+		tween.tween_property(windSoundPlayer, "volume_db", -80.0, 2.0)
+	if is_instance_valid(engineSoundPlayer):
+		tween.tween_property(engineSoundPlayer, "volume_db", -80.0, 2.0)
+	if is_instance_valid(oceanPlayer):
+		tween.tween_property(oceanPlayer, "volume_db", -80.0, 2.0)
+	if is_instance_valid(hatchSoundPlayer):
+		tween.tween_property(hatchSoundPlayer, "volume_db", -80.0, 2.0)
+	if is_instance_valid(bombPlayer):
+		tween.tween_property(bombPlayer, "volume_db", -80.0, 2.0)
+
+	tween.set_parallel(false)
+	tween.tween_callback(func() -> void:
+		# fully stop them once faded
+		if is_instance_valid(windSoundPlayer): windSoundPlayer.stop()
+		if is_instance_valid(engineSoundPlayer): engineSoundPlayer.stop()
+		if is_instance_valid(oceanPlayer): oceanPlayer.stop()
+		if is_instance_valid(hatchSoundPlayer): hatchSoundPlayer.stop()
+		if is_instance_valid(bombPlayer): bombPlayer.stop()
+
+		CheckForEnding()
+	)
 
 func EndingCredits():
 	var tween = create_tween()

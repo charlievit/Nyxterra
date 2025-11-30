@@ -159,25 +159,13 @@ func _check_word_progress() -> void:
 		if goal.begins_with(decoded_current_word):
 			label_feedback.text = ""
 		else:
-			label_feedback.text = "Mismatch. Backspace or continue."
+			label_feedback.text = "Mismatch. Backspace."
 			label_feedback.modulate = Color(1, 0.6, 0.4)
 
 func _on_sentence_solved() -> void:
-	label_feedback.text = "Correct! The light will guide you tonight."
+	label_feedback.text = "Correct!"
 	label_feedback.modulate = Color(0, 1, 0)
 	
-	# DAY 0 EXCEPTION HANDLING
-	# On Day 0, CompleteTask() triggers the Bombing Cutscene via GameManager logic.
-	# We simply return, ensuring we don't accidentally set a return spawn point or change scene.
-	# The Cutscene Manager will eventually trigger GameManager.StartDay(1), which handles the spawn.
-	if GameManager.currentDay == 0:
-		self.set_process(false)
-		await _Dialogue_System()
-		self.set_process(true)
-		GameManager.CompleteTask(currentTaskID)
-		return
-
-	# STANDARD DAY HANDLING (Day 1+)
 	# 1. Set return spawn so Player is back at the machine in Main scene
 	GameManager.SetPlayerSpawn(returnFloorIndex, returnPosition)
 	
