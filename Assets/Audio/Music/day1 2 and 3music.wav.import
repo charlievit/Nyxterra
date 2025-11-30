@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cnjmy0ewh50nv"
+path="res://.godot/imported/day1 2 and 3music.wav-d89232a0fcb651dfaf33ec49d1467a90.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/Music/day1 2 and 3music.wav"
+dest_files=["res://.godot/imported/day1 2 and 3music.wav-d89232a0fcb651dfaf33ec49d1467a90.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

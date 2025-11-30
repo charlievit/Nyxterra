@@ -30,6 +30,7 @@ func _process(_delta):
 		if Input.is_action_pressed("ui_accept") and GameManager.needLockbox:
 			if ResourceLoader.exists(lockboxScenePath):
 				SceneLoader.change_scene_with_loading(lockboxScenePath)
+				GameManager.StopBGM()
 			else:
 				push_error("ERROR: Main game scene path not found.")
 

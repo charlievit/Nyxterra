@@ -6,7 +6,9 @@ extends Node2D
 @onready var animation: AnimatedSprite2D = $Animation
 @onready var title: RichTextLabel = $Solais
 var cutsceneMusicPlayer: AudioStreamPlayer2D
-var introMusic: AudioStream = preload("res://Assets/Audio/Music/Music 1 lighthouse.wav")
+var introMusic: AudioStream = preload("res://Assets/Audio/Music/Light keeper.mp3")
+var cutsceneWavesPlayer: AudioStreamPlayer2D
+var waveSound: AudioStream = preload("res://Assets/Audio/Cutscenes/Ocean Waves.mp3")
 
 func _ready():
 	TaskManager.shouldBeHidden = true
@@ -21,10 +23,15 @@ func Begin():
 	trueStoryText.modulate.a = 0.0
 	choicesText.modulate.a = 0.0
 	
+	cutsceneWavesPlayer = AudioStreamPlayer2D.new()
+	add_child(cutsceneWavesPlayer)
+	cutsceneWavesPlayer.stream = waveSound
+	cutsceneWavesPlayer.volume_db = -3.0 # Set a lower volume for background
+	cutsceneWavesPlayer.play()
 	cutsceneMusicPlayer = AudioStreamPlayer2D.new()
 	add_child(cutsceneMusicPlayer)
 	cutsceneMusicPlayer.stream = introMusic
-	cutsceneMusicPlayer.play(2.0)
+	cutsceneMusicPlayer.play(18.0)
 	
 	await get_tree().create_timer(9.0).timeout
 	FadeInTitle()
@@ -45,7 +52,6 @@ func EndScene():
 	var tween = create_tween()
 	tween.set_parallel(true)
 	tween.tween_property(title, "modulate:a", 0.0, 3.0)
-	tween.tween_property(cutsceneMusicPlayer, "volume_db", -80.0, 3.0)
 	await get_tree().create_timer(3.0).timeout
 	LastStep()
 
@@ -57,11 +63,13 @@ func LastStep():
 	tween.tween_property(trueStoryText, "modulate:a", 0.0, 1.5)
 	tween.tween_interval(1.25)
 	tween.tween_property(choicesText, "modulate:a", 0.0, 1.5)
-	tween.tween_interval(2.5)
+	tween.tween_property(cutsceneMusicPlayer, "volume_db", -80.0, 3.0)
+	tween.tween_property(cutsceneWavesPlayer, "volume_db", -40.0, 3.0) # NEW: Waves fade-out
 	tween.tween_callback(ContinueToGame)
 
 func ContinueToGame():
 	GameManager.introScenePlayed = true
+	GameManager.PlayBGM()
 	# This triggers CutsceneManager to load Main. 
 	# CutsceneManager will see the pending Day 1 (preserved from Bombing) and trigger GameManager.StartDay(1)
 	CutsceneManager.FinishCutscene()

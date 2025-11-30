@@ -33,6 +33,9 @@ const placedGearScene = preload("res://Scenes/GearPuzzle/PlacedGear.tscn")
 @onready var sfxPlayer: AudioStreamPlayer2D = $OneShotAudioPlayer
 @onready var loopPlayer: AudioStreamPlayer = $LoopAudioPlayer
 
+@onready var musicPlayer: AudioStreamPlayer = AudioStreamPlayer.new()
+var backgroundMusic: AudioStream = preload("res://Assets/Audio/Music/gearboxGame.mp3")
+
 # STATES
 var isHoldingGear = false
 var heldGearInstance = null 
@@ -75,8 +78,19 @@ func _ready():
 	for key in TaskManager.activeTasks.keys():
 		if String(key).find("GearBox") != -1:
 			currentTaskID = key
+			
+	add_child(musicPlayer)
+	musicPlayer.stream = backgroundMusic
+	musicPlayer.autoplay = true
+	musicPlayer.volume_db = -17.0
+	musicPlayer.set_bus("Music")
+	musicPlayer.play()
 	
 	StartPlacingTutorial()
+	
+func _exit_tree():
+	musicPlayer.stop()
+	musicPlayer.queue_free()
 
 # Called by the Gear Button signal to assign data to the instantiated held gear
 func onGearButtonPressed(buttonData: Dictionary):
@@ -334,8 +348,11 @@ func TriggerWinState():
 	if ResourceLoader.exists(mainGameScenePath):
 		await GearboxDialogue()
 		SceneLoader.change_scene_with_loading(mainGameScenePath)
+		GameManager.PlayBGM()
 	else:
 		push_error("ERROR: Main game scene path not found.")
 
 func GearboxDialogue():
+	var tween = create_tween()
+	tween.tween_property(musicPlayer, "volume_db", -80.0, 1.5)
 	Dialogic.start("Day_1 Gearbox Complete")

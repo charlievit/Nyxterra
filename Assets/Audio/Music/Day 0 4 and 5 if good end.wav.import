@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dnyayinv7pr8s"
+path="res://.godot/imported/Day 0 4 and 5 if good end.wav-a2dc6db2228c6a9ef8449551f9415232.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/Music/Day 0 4 and 5 if good end.wav"
+dest_files=["res://.godot/imported/Day 0 4 and 5 if good end.wav-a2dc6db2228c6a9ef8449551f9415232.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

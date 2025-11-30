@@ -21,7 +21,7 @@ const DAY_SENTENCES := {
 	1: "FISHING SEASON",
 	2: "QUIET SEAS",
 	3: "INCOMING SHIPMENT",
-	4: "SWEDISH DELIVERY",
+	4: "SVAEDISH DELIVERY",
 }
 
 const MORSE: Dictionary[String, String] = {
@@ -45,6 +45,11 @@ var REVERSE: Dictionary[String, String] = {}
 @onready var return_button: Button   = $ReturnButton
 @onready var sheet: TextureRect      = $Sheet
 @onready var background: TextureRect = $Background
+@onready var sfxPlayer: AudioStreamPlayer2D = $AudioStreamPlayer2D
+@onready var musicPlayer: AudioStreamPlayer = AudioStreamPlayer.new()
+var backgroundMusic: AudioStream = preload("res://Assets/Audio/Music/gearboxGame.mp3")
+@onready var beepSound: AudioStream = preload("res://Assets/Audio/Morse Minigame/Beep.mp3")
+@onready var completeSound: AudioStream = preload("res://Assets/Audio/Morse Minigame/Complete.mp3")
 
 # --- Background textures ---
 const TEX_UP   := preload("res://Assets/Images/MorseCode/1MorseCodeMachineClipboard.png")
@@ -97,6 +102,17 @@ func _ready() -> void:
 	
 	if is_instance_valid(background):
 		background.texture = TEX_UP
+	
+	add_child(musicPlayer)
+	musicPlayer.stream = backgroundMusic
+	musicPlayer.autoplay = true
+	musicPlayer.volume_db = -17.0
+	musicPlayer.set_bus("Music")
+	musicPlayer.play()
+	
+func _exit_tree():
+	musicPlayer.stop()
+	musicPlayer.queue_free()
 
 func _process(_delta: float) -> void:
 	# After a release, watch the silence gap to end letter or word
@@ -122,6 +138,9 @@ func _on_morse_key_down() -> void:
 func _on_morse_key_up() -> void:
 	if !pressing:
 		return
+	sfxPlayer.stream = beepSound
+	sfxPlayer.volume_db = -22.0
+	sfxPlayer.play()
 	pressing = false
 	background.texture = TEX_UP
 	var now: float = Time.get_ticks_msec() / 1000.0
@@ -147,7 +166,7 @@ func _check_word_progress() -> void:
 	var goal := target_words[word_i]
 	if decoded_current_word == goal:
 		label_feedback.text = "Word ✓"
-		label_feedback.modulate = Color(0, 1, 0)
+		label_feedback.modulate = Color("#4a795c")
 		word_i += 1
 		decoded_current_word = ""
 		_show_target_with_highlight()
@@ -160,9 +179,12 @@ func _check_word_progress() -> void:
 			label_feedback.text = ""
 		else:
 			label_feedback.text = "Mismatch. Backspace."
-			label_feedback.modulate = Color(1, 0.6, 0.4)
+			label_feedback.modulate = Color("#8c524f")
 
 func _on_sentence_solved() -> void:
+	sfxPlayer.stream = completeSound
+	sfxPlayer.volume_db = 0
+	sfxPlayer.play()
 	TutorialManager.ClearTutorial()
 	#label_feedback.text = "Correct!"
 	#label_feedback.modulate = Color(0, 1, 0)
@@ -182,6 +204,7 @@ func _on_sentence_solved() -> void:
 		SceneLoader.change_scene_with_loading(mainGameScenePath)
 	else:
 		push_error("ERROR: Main game scene path not found.")
+	GameManager.PlayBGM()
 
 # --- Backspace edits current word only ---
 func _on_backspace_pressed() -> void:
@@ -239,7 +262,7 @@ func _show_target_with_highlight() -> void:
 			for l_index in letter_codes.size():
 				var code := letter_codes[l_index]
 				if l_index == highlight_idx:
-					bb += "[color=yellow]%s[/color]" % code
+					bb += "[color=#85b97c]%s[/color]" % code
 				else:
 					bb += code
 
@@ -265,7 +288,7 @@ func _update_labels() -> void:
 		prefix += " "  
 
 	var display := (prefix + decoded_current_word).strip_edges()
-	label_out.text = "You typed: %s" % display
+	label_out.text = "You decoded: %s" % display
 
 func _encode_word_to_morse(word: String) -> String:
 	var parts: Array[String] = []
@@ -280,4 +303,6 @@ func _encode_word_to_morse(word: String) -> String:
 
 func _Dialogue_System() -> void:
 	Dialogic.start("Day_0 Morse Completed")
+	var tween = create_tween()
+	tween.tween_property(musicPlayer, "volume_db", -80.0, 1.5)
 	await Dialogic.timeline_ended
