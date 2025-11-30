@@ -1,0 +1,51 @@
+[gd_scene load_steps=5 format=3 uid="uid://bkg5t0b12oxws"]
+
+[ext_resource type="Script" uid="uid://cpiilsgkrpfvj" path="res://Scripts/CookingMinigame/cooking_graded.gd" id="1_q2y2m"]
+[ext_resource type="Texture2D" uid="uid://besx2dmee73x5" path="res://Assets/Images/KitchenPuzzle/dinner1.png" id="2_yfn86"]
+[ext_resource type="Theme" uid="uid://b4lurv8njswua" path="res://Resources/theme.tres" id="3_plywk"]
+[ext_resource type="FontFile" uid="uid://cd5qpfhq7agn5" path="res://Assets/Fonts/Baskerville Bold.otf" id="3_yfn86"]
+
+[node name="CookingGraded" type="VBoxContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+theme_override_constants/separation = 74
+alignment = 1
+script = ExtResource("1_q2y2m")
+
+[node name="Header" type="Label" parent="."]
+layout_mode = 2
+theme = ExtResource("3_plywk")
+theme_override_fonts/font = ExtResource("3_yfn86")
+theme_override_font_sizes/font_size = 65
+text = "Meal complete!"
+horizontal_alignment = 1
+
+[node name="Header3" type="Label" parent="."]
+layout_mode = 2
+theme = ExtResource("3_plywk")
+theme_override_font_sizes/font_size = 65
+horizontal_alignment = 1
+
+[node name="Dinner1" type="Sprite2D" parent="."]
+position = Vector2(579, 233)
+scale = Vector2(10.664062, 9.542968)
+texture = ExtResource("2_yfn86")
+
+[node name="Header2" type="Label" parent="."]
+layout_mode = 2
+theme = ExtResource("3_plywk")
+theme_override_font_sizes/font_size = 65
+text = "Quality:"
+horizontal_alignment = 1
+
+[node name="Score" type="Label" parent="."]
+layout_mode = 2
+theme = ExtResource("3_plywk")
+theme_override_font_sizes/font_size = 65
+text = "0"
+horizontal_alignment = 1

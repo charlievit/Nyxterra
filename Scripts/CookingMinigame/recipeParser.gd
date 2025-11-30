@@ -38,6 +38,7 @@ func ParseRecipeToInstructions(recipeName: String) -> Dictionary:
 	for i in recipeData.size():
 		var step = recipeData[i]
 		var step_text = ""
+		var waitTime = step["wait"] # Retrieve the wait time for cooking
 		
 		# Check for end marker
 		if step["heat"] == 0.0 and step["ingredients"].is_empty() and step["wait"] == 0.0 and step["time"] == 0.0:
@@ -47,10 +48,19 @@ func ParseRecipeToInstructions(recipeName: String) -> Dictionary:
 			step_text += GetHeatIcons(step["heat"])
 			step_text += "\n"
 			
-			for ingredient in step["ingredients"]:
-				step_text += GetIngredientLine(ingredient)
+			if step["ingredients"].is_empty() and waitTime > 0.0: # Check if there are no ingredients and there is a wait time
+				step_text += "Cover and braise."
 				step_text += "\n"
+			else:
+				for ingredient in step["ingredients"]:
+					step_text += GetIngredientLine(ingredient)
+					step_text += "\n"
 			
+			# Add the cooking time (wait time) to the output
+			if waitTime > 0.0:
+				step_text += "(Wait for %.0f seconds)" % waitTime
+				step_text += "\n"
+				
 			step_text += "\n" # Extra spacing between steps
 		
 		# DECIDE WHICH PAGE TO PUT TEXT ON

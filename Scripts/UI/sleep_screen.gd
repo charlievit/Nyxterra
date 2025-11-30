@@ -18,6 +18,34 @@ var mainGameScenePath: String = "res://Scenes/main.tscn"
 var currentTaskID: String = ""
 
 func _ready():
+	match GameManager.currentDay:
+		1: 
+			if Dialogic.VAR.Day1_response == "Yes":
+				choiceText = "Tonight, you chose to turn the light on..."
+				GameManager.morality += 25
+			else:
+				choiceText = "Tonight, you chose to keep the light off..."
+		3:
+			if Dialogic.VAR.Day3_response == "Yes":
+				choiceText = "Tonight, you chose to turn the light on..."
+				GameManager.morality += 25
+			else:
+				choiceText = "Tonight, you chose to keep the light off..."
+		2: 
+			if Dialogic.VAR.Day3_response == "Yes":
+				choiceText = "Tonight, you chose to turn the light on..."
+			else:
+				GameManager.morality += 25
+				choiceText = "Tonight, you chose to keep the light off..."
+		4:
+			if Dialogic.VAR.Day4_response == "Yes":
+				choiceText = "Tonight, you chose to turn the light on..."
+			else:
+				GameManager.morality += 25
+				choiceText = "Tonight, you chose to keep the light off..."
+			
+	choiceLabel.text = choiceText
+	
 	TaskManager.shouldBeHidden = true
 	
 	for key in TaskManager.activeTasks.keys():
@@ -34,12 +62,6 @@ func _ready():
 	
 	madeTheRightChoice = yesterdaysMorality < morality
 	choiceImage.flip_h = madeTheRightChoice
-	
-	if GameManager.choseLightToBeOn:
-		choiceText = "Tonight, you chose to turn the light on..."
-	else:
-		choiceText = "Tonight, you chose to keep the light off..."
-	choiceLabel.text = choiceText
 	
 	continuePrompt.modulate.a = 0.0
 	

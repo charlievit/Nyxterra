@@ -4,7 +4,7 @@
 	set {Day4_response} = "Yes"
 	[signal arg="Yes"]
 - No
-	[voice path="res://Assets/Audio/VA/Sutherland/Never again.mp3" volume="0.0" bus="Character Voice"]
+	audio "res://Assets/Audio/VA/Sutherland/Never again.mp3"
 	[voice path="res://Assets/Audio/VA/Sutherland/Ill take care of Elise.mp3" volume="-1.0" bus="Character Voice"]
 	Sutherland: Not again. Never again. I love you Cath. I'll take care of Elise for you.
 	set {Day4_response} = "No"

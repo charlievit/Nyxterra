@@ -103,7 +103,6 @@ func ClosePopUp():
 func Dialogue_system() -> void:
 	match GameManager.currentDay:
 		0:
-			Dialogic.start("Day_0 Light Dialogue")
 			OnNoPressed()
 		1:
 			Dialogic.start("Day_1 Light Dialogue")

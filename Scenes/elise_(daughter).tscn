@@ -131,28 +131,31 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lgdst"]
-size = Vector2(56, 20)
+size = Vector2(298.87637, 161.79771)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D"]
 texture_filter = 1
-position = Vector2(524, 584)
+position = Vector2(118, 408.166)
+scale = Vector2(0.445, 0.445)
 sprite_frames = SubResource("SpriteFrames_fem48")
-animation = &"laying"
-frame_progress = 0.053235117
+animation = &"idle"
 
 [node name="TalkDetector" type="Area2D" parent="."]
 script = ExtResource("2_0qx48")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TalkDetector"]
-position = Vector2(1, 10)
+position = Vector2(-57.3033, -26.966309)
+scale = Vector2(0.9999998, 0.9999998)
 shape = SubResource("RectangleShape2D_lgdst")
 
 [node name="ButtonPrompt" type="RichTextLabel" parent="TalkDetector"]
+z_index = 8
 texture_filter = 1
-offset_left = -11.0
-offset_top = -45.0
-offset_right = 12.0
-offset_bottom = -13.0
+offset_left = -7.97303
+offset_top = -43.06961
+offset_right = 15.02697
+offset_bottom = -11.069611
+scale = Vector2(0.7579214, 0.7579214)
 bbcode_enabled = true
 text = "[img]res://Assets/Images/UI/KeyOutline.png[/img]"
 fit_content = true
@@ -161,7 +164,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Label" type="Label" parent="TalkDetector/ButtonPrompt"]
-z_index = 1
+z_index = 8
 texture_filter = 1
 layout_mode = 0
 offset_left = 7.999999
