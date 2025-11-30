@@ -21,6 +21,17 @@ const SETTINGS_KEY_VOICE  := "voice_volume"
 @onready var continue_button: Button = $CenterContainer/Buttons/ContinueButton
 @onready var volume_slider2: HSlider = $OptionsPanel/VolumeSlider2
 #region Socials
+@onready var team_gitHubButton: Button = $SocialsPanel/githubRepoButton
+var team_gitHubLink: String = "https://github.com/charlievit/Nyxterra"
+
+# Toxic_Humble
+@onready var TH_linkedInButton: Button = $SocialsPanel/Toxic_Humble/linkedInButton
+var TH_linkedInLink: String = "https://www.linkedin.com/in/ben-ho-4857002bb/"
+
+# Rissa Baker
+@onready var RB_instaButton: Button = $"SocialsPanel/Rissa Baker/instagramButton"
+var RB_instaLink: String = "https://www.instagram.com/rissazinks/"
+
 # CyberSugar Studio
 @onready var CS_instaButton: Button = $SocialsPanel/CyberSugar/instagramButton
 var CS_instaLink: String = "https://www.instagram.com/cybersugarstudios"
@@ -40,6 +51,14 @@ var NF_instaLink: String = "https://www.instagram.com/nyxforgestudio"
 # Dragonsight Studio
 @onready var DS_instaButton: Button = $"SocialsPanel/Dragonsight Studio/instagramButton"
 var DS_instaLink: String = "https://www.instagram.com/karma97090/"
+@onready var DS_redditButton: Button = $"SocialsPanel/Dragonsight Studio/redditButton"
+var DS_redditLink: String = "https://www.reddit.com/user/PixelDragon9709/"
+
+# GodSnail
+@onready var GS_soundCloudButton: Button = $SocialsPanel/GodSnail/soundCloudButton
+var GS_soundCloudLink: String = "https://www.soundcloud.com/tetaban-moi"
+@onready var GS_bandLabButton: Button = $SocialsPanel/GodSnail/bandLabButton
+var GS_bandLabLink: String = "https://www.bandlab.com/tetebanmortaccio"
 #endregion
 
 var _cached_volume_db: float = 0.0   # for Return (revert)
@@ -85,6 +104,12 @@ func _ready() -> void:
 	volume_slider.value_changed.connect(_on_volume_changed)
 	volume_slider2.value_changed.connect(_on_voice_volume_changed)   
 	# Social Signals
+	team_gitHubButton.pressed.connect(Team_GitHubClicked)
+	
+	TH_linkedInButton.pressed.connect(TH_LinkedInClicked)
+	
+	RB_instaButton.pressed.connect(RB_InstaClicked)
+	
 	CS_instaButton.pressed.connect(CS_InstaClicked)
 	CS_itchButton.pressed.connect(CS_ItchClicked)
 	CS_xButton.pressed.connect(CS_X_ButtonClicked)
@@ -94,6 +119,10 @@ func _ready() -> void:
 	NF_itchButton.pressed.connect(NF_ItchClicked)
 	
 	DS_instaButton.pressed.connect(DS_InstaClicked)
+	DS_redditButton.pressed.connect(DS_RedditClicked)
+	
+	GS_bandLabButton.pressed.connect(GS_BandLabClicked)
+	GS_soundCloudButton.pressed.connect(GS_SoundCloudClicked)
 	
 	options_panel.visible = false
 	socialsPanel.visible = false
@@ -182,6 +211,15 @@ func _load_volume(key: String, default_value: float) -> float:
 	return default_value
 
 #region Social Buttons
+func Team_GitHubClicked():
+	OS.shell_open(team_gitHubLink)
+
+func RB_InstaClicked():
+	OS.shell_open(RB_instaLink)
+
+func TH_LinkedInClicked():
+	OS.shell_open(TH_linkedInLink)
+
 func CS_InstaClicked():
 	OS.shell_open(CS_instaLink)
 func CS_ItchClicked():
@@ -198,4 +236,11 @@ func NF_ItchClicked():
 
 func DS_InstaClicked():
 	OS.shell_open(DS_instaLink)
+func DS_RedditClicked():
+	OS.shell_open(DS_redditLink)
+
+func GS_BandLabClicked():
+	OS.shell_open(GS_bandLabLink)
+func GS_SoundCloudClicked():
+	OS.shell_open(GS_soundCloudLink)
 #endregion

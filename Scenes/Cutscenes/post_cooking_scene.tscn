@@ -12,9 +12,11 @@
 [ext_resource type="Texture2D" uid="uid://ca224mbqfoasl" path="res://Assets/Images/Player/Sitting2.png" id="9_7f51c"]
 
 [sub_resource type="Gradient" id="Gradient_citul"]
+colors = PackedColorArray(0.13725491, 0.12156863, 0.1254902, 1, 1, 1, 1, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_tr1ao"]
 gradient = SubResource("Gradient_citul")
+width = 1
 
 [node name="PostCookingScene" type="Node2D"]
 position = Vector2(-19.133606, -75.7584)
@@ -77,6 +79,9 @@ scale = Vector2(6.7982044, 6.7982044)
 texture = ExtResource("9_7f51c")
 
 [node name="TextureRect" type="TextureRect" parent="."]
-offset_right = 40.0
-offset_bottom = 40.0
+z_index = 3
+offset_left = -1.5258789e-05
+offset_top = 55.73581
+offset_right = 1004.34705
+offset_bottom = 626.4874
 texture = SubResource("GradientTexture1D_tr1ao")

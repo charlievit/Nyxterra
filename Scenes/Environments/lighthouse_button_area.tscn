@@ -354,7 +354,7 @@ texture = ExtResource("54_nesot")
 position = Vector2(228, 135)
 
 [node name="Door and Wall" type="Sprite2D" parent="MIDDLE"]
-z_index = 1
+z_index = 2
 texture_filter = 1
 position = Vector2(180, 139)
 scale = Vector2(1, 0.95555556)
@@ -868,7 +868,7 @@ position = Vector2(248, 76)
 texture = ExtResource("54_sw6gy")
 
 [node name="ChairLeft" type="Sprite2D" parent="BOTTOM"]
-z_index = 1
+z_index = 2
 position = Vector2(201, 76)
 texture = ExtResource("55_oijgy")
 
@@ -946,7 +946,6 @@ position = Vector2(207, 566)
 texture = ExtResource("5_rf6kk")
 
 [node name="Lighthouse Collision" type="StaticBody2D" parent="."]
-visible = false
 z_index = 2
 position = Vector2(1, 324)
 

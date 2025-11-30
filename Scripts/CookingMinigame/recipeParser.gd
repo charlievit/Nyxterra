@@ -3,7 +3,7 @@ extends Node
 
 # Config
 const ICON_SIZE = 32
-const STEPS_PER_PAGE = 4
+const STEPS_PER_PAGE = 3
 
 # Simple sprites for recipe instructions, attempting to use emojis as placeholders
 const FIRE_ICON_PATH = "res://Assets/Images/KitchenPuzzle/heatHighIcon.png"

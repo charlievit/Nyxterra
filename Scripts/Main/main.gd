@@ -48,6 +48,7 @@ var cycleProgress: float = 0.0
 
 func _ready() -> void:
 	TutorialManager.ClearTutorial()
+	TutorialManager.shouldBeHidden = false
 	# 1. Check for Pending Day Start first (This sets up the Spawn Data in GameManager)
 	CutsceneManager.CheckForPendingDayStart()
 	
@@ -69,32 +70,7 @@ func _ready() -> void:
 	
 	currentState = GameManager.DayState.NIGHT_IDLE
 	
-	match GameManager.currentDay:
-		0:
-			Elise.position = Vector2(170.427,338.706)
-			Elise.scale = Vector2(0.308,0.308)
-			Elise.play("sitting")
-		1: 
-			Elise.position = Vector2(66.984,410)
-			Elise.scale = Vector2(0.091,0.091)
-			Elise.play("laying")
-		2:
-			Elise.position = Vector2(66.984,410)
-			Elise.scale = Vector2(0.091,0.091)
-			Elise.play("laying")
-		3: 
-			Elise.position = Vector2(66.984,410)
-			Elise.scale = Vector2(0.091,0.091)
-			Elise.play("laying")
-		4: 
-			Elise.scale = Vector2(0.445,0.445)
-			Elise.play("idle")
-			Elise.position = Vector2(104.548,408.166)
-		5:
-			if not GameManager.isBadEnding:
-				Elise.position = Vector2(118,337)
-				Elise.scale = Vector2(0.445,0.445)
-				Elise.play("idle")
+	SetUpDay()
 	
 	TaskManager.shouldBeHidden = false
 	
@@ -133,6 +109,29 @@ func _ready() -> void:
 	morse_radio_node.set_process(true)
 	
 	SetFocusNone(self)
+
+func SetUpDay():
+	match GameManager.currentDay:
+		0:
+			Elise.position = Vector2(170.427,338.706)
+			Elise.scale = Vector2(0.308,0.308)
+			Elise.play("sitting")
+		1, 2, 3: 
+			Elise.position = Vector2(66.984,410)
+			Elise.scale = Vector2(0.091,0.091)
+			Elise.play("laying")
+		4: 
+			Elise.scale = Vector2(0.445,0.445)
+			Elise.play("idle")
+			Elise.position = Vector2(104.548,408.166)
+		5:
+			if not GameManager.isBadEnding:
+				Elise.position = Vector2(118,337)
+				Elise.scale = Vector2(0.445,0.445)
+				Elise.play("idle")
+	
+	if Elise.has_node("TalkDetector"):
+		Elise.get_node("TalkDetector").UpdateEliseState()
 
 func SetFocusNone(node):
 	if node is Control:
@@ -276,6 +275,9 @@ func StartDayCycle():
 		
 		sun.position = sunStartPosition
 		sunRiseGradient.position = gradientStartPosition
+	
+		SetUpDay()
+		GameManager.ConsumeSpawnData(player)
 
 func _input(input: InputEvent):
 	if input.is_action_pressed("toggleMap"):

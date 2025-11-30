@@ -41,7 +41,7 @@ var needBed: bool = false
 var needLockbox: bool = false
 
 # GLOBAL ENDING VARIABLES
-var yesterdaysMorality: int = 25
+var yesterdaysMorality: int = 0
 var morality: int = 0
 var moralityNeeded: int = 50 
 var yesterdaysRelationship: int = 50
@@ -52,6 +52,7 @@ var choseLightToBeOn: bool = false
 
 # COOKING
 var todaysRecipe: String
+var recipeQuality: int
 
 # CUTSCENES / DIALOGUE
 var introPlayed: bool = false
@@ -105,6 +106,10 @@ func StartNewGame():
 	pending_post_source = ReturnSource.NONE
 	shouldUseStoredSpawn = false
 	
+	relationship = 50
+	yesterdaysRelationship = 50
+	
+	ResetDailyFlags()
 	TaskManager.CompleteDay()
 	
 	daySTATE = DayState.SUN_RISING
@@ -136,6 +141,15 @@ func StartDay(day: int):
 	emit_signal("requestDayCycle")
 	
 	UpdateObjective()
+
+func ResetDailyFlags():
+	usedTalk = false
+	usedRadio = false
+	usedMorse = false
+	usedKitchen = false
+	usedSwitch = false
+	usedBed = false
+	usedStairs = false
 
 func CompleteTask(task_id: String):
 	TaskManager.CompleteTask(task_id)

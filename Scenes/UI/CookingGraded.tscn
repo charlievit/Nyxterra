@@ -1,9 +1,69 @@
-[gd_scene load_steps=5 format=3 uid="uid://bkg5t0b12oxws"]
+[gd_scene load_steps=19 format=3 uid="uid://bkg5t0b12oxws"]
 
 [ext_resource type="Script" uid="uid://cpiilsgkrpfvj" path="res://Scripts/CookingMinigame/cooking_graded.gd" id="1_q2y2m"]
 [ext_resource type="Texture2D" uid="uid://besx2dmee73x5" path="res://Assets/Images/KitchenPuzzle/dinner1.png" id="2_yfn86"]
 [ext_resource type="Theme" uid="uid://b4lurv8njswua" path="res://Resources/theme.tres" id="3_plywk"]
 [ext_resource type="FontFile" uid="uid://cd5qpfhq7agn5" path="res://Assets/Fonts/Baskerville Bold.otf" id="3_yfn86"]
+[ext_resource type="Texture2D" uid="uid://bd1gskhtw576f" path="res://Assets/Images/KitchenPuzzle/Steam Animation/frame0000.png" id="4_8uhr8"]
+[ext_resource type="Texture2D" uid="uid://c2rcq3ue0hxhu" path="res://Assets/Images/KitchenPuzzle/Steam Animation/frame0001.png" id="5_r5hgd"]
+[ext_resource type="Texture2D" uid="uid://2mbqdmcf006h" path="res://Assets/Images/KitchenPuzzle/Steam Animation/frame0002.png" id="6_jxc8f"]
+[ext_resource type="Texture2D" uid="uid://dvgl7g2cdd3f" path="res://Assets/Images/KitchenPuzzle/Steam Animation/frame0003.png" id="7_w24cu"]
+[ext_resource type="Texture2D" uid="uid://13bgj5nh544j" path="res://Assets/Images/KitchenPuzzle/Steam Animation/frame0004.png" id="8_hryyp"]
+[ext_resource type="Texture2D" uid="uid://c3hvvbss22ekb" path="res://Assets/Images/KitchenPuzzle/Steam Animation/frame0005.png" id="9_kobf3"]
+[ext_resource type="Texture2D" uid="uid://cgqq1yoyixq5j" path="res://Assets/Images/KitchenPuzzle/Steam Animation/frame0006.png" id="10_0llpu"]
+[ext_resource type="Texture2D" uid="uid://3v6l04ohuhdn" path="res://Assets/Images/KitchenPuzzle/Steam Animation/frame0007.png" id="11_quwrk"]
+[ext_resource type="Texture2D" uid="uid://bowuogmrjhjeq" path="res://Assets/Images/KitchenPuzzle/Steam Animation/frame0008.png" id="12_kbtbm"]
+[ext_resource type="Texture2D" uid="uid://b6g832jyo8y6j" path="res://Assets/Images/KitchenPuzzle/Steam Animation/frame0009.png" id="13_ujnxj"]
+[ext_resource type="Texture2D" uid="uid://b7oh5atu2ubxf" path="res://Assets/Images/KitchenPuzzle/Steam Animation/frame0010.png" id="14_nxrl5"]
+[ext_resource type="Texture2D" uid="uid://rnndc4v3m02a" path="res://Assets/Images/KitchenPuzzle/Steam Animation/frame0011.png" id="15_ly5nr"]
+[ext_resource type="Texture2D" uid="uid://bf0elhfhyy7vi" path="res://Assets/Images/KitchenPuzzle/Steam Animation/frame0012.png" id="16_0s75d"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_y08yo"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_8uhr8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_r5hgd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_jxc8f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_w24cu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_hryyp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_kobf3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_0llpu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_quwrk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_kbtbm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_ujnxj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_nxrl5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_ly5nr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_0s75d")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
 
 [node name="CookingGraded" type="VBoxContainer"]
 anchors_preset = 15
@@ -30,6 +90,20 @@ layout_mode = 2
 theme = ExtResource("3_plywk")
 theme_override_font_sizes/font_size = 65
 horizontal_alignment = 1
+
+[node name="Steam" type="AnimatedSprite2D" parent="."]
+z_index = 5
+position = Vector2(990.00006, 219.00002)
+scale = Vector2(2.2747436, 3.8429024)
+sprite_frames = SubResource("SpriteFrames_y08yo")
+frame_progress = 0.33623135
+
+[node name="Steam2" type="AnimatedSprite2D" parent="."]
+z_index = 5
+position = Vector2(1019, 219.00002)
+scale = Vector2(2.2747436, 3.8429024)
+sprite_frames = SubResource("SpriteFrames_y08yo")
+frame_progress = 0.36649993
 
 [node name="Dinner1" type="Sprite2D" parent="."]
 position = Vector2(579, 233)

@@ -201,7 +201,9 @@ func CheckForMatch():
 			GameManager.SetPlayerSpawn(returnFloorIndex, returnPosition)
 			GameManager.CompleteTask(currentTaskID)
 			GameManager.pending_post_source = GameManager.ReturnSource.RADIO
+			
 			if ResourceLoader.exists(mainGameScenePath):
+				await get_tree().create_timer(2.0).timeout
 				SceneLoader.change_scene_with_loading(mainGameScenePath)
 			else:
 				push_error("ERROR: Main game scene path not found.")

@@ -107,8 +107,6 @@ func LoadNextDay():
 	canProceed = false
 	set_process_unhandled_input(false)
 	
-	GameManager.CompleteTask(currentTaskID)
-	
 	if ResourceLoader.exists(mainGameScenePath):
 		SceneLoader.change_scene_with_loading(mainGameScenePath)
 	else:

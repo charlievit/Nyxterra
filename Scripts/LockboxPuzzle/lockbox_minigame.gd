@@ -34,6 +34,8 @@ var letterRead = false
 @onready var openLetterSound: AudioStream = preload("res://Assets/Audio/Lockbox Puzzle/LetterUnfold.mp3")
 @onready var openBoxSound: AudioStream = preload("res://Assets/Audio/Lockbox Puzzle/Opened.mp3")
 
+var goodEndingScenePath: String = "res://Scenes/Cutscenes/goodEndingCredits.tscn"
+
 var currentTaskID: String = ""
 
 func _ready():
@@ -96,6 +98,10 @@ func _on_read_letter_button_pressed() -> void:
 	GameManager.CompleteTask(currentTaskID)
 	readLetterButton.disabled = true
 	Dialogic.start("Day_5 Final Letter")
+	
+	await Dialogic.timeline_ended
+	
+	SceneLoader.change_scene_with_loading(goodEndingScenePath)
 
 
 func _on_code_button_pressed() -> void:

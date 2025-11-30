@@ -185,7 +185,7 @@ func UpdateSpriteEffects(): # Runs every frame
 
 
 func UpdateAnimation(_inputVector: Vector2):
-	if velocity.length() > 0:
+	if velocity.length() > 0 and not controlsDisabled:
 		# Player is moving
 		animSprite.visible = true
 		sprite.visible = false

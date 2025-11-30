@@ -1,10 +1,11 @@
-[gd_scene load_steps=22 format=3 uid="uid://rx4a1oion8ow"]
+[gd_scene load_steps=38 format=3 uid="uid://rx4a1oion8ow"]
 
 [ext_resource type="Texture2D" uid="uid://dbbpn2fw4io1v" path="res://Assets/Images/Daughter Elise/frame0000.png" id="1_lgdst"]
 [ext_resource type="Script" uid="uid://kds0fwv510th" path="res://Scripts/Main/daughter_talk_detector.gd" id="2_0qx48"]
 [ext_resource type="Texture2D" uid="uid://bjbqnsdnimp78" path="res://Assets/Images/Daughter Elise/eliseCouchSpriteSheet.png" id="2_smt5g"]
 [ext_resource type="Texture2D" uid="uid://by4cblitw4xyk" path="res://Assets/Images/Daughter Elise/SittingChair.png" id="3_3x5un"]
 [ext_resource type="Theme" uid="uid://b4lurv8njswua" path="res://Resources/theme.tres" id="3_c8eu5"]
+[ext_resource type="Texture2D" uid="uid://bpgws1wy4w1yr" path="res://Assets/Images/Daughter Elise/WalkSheet/walks.png" id="4_3x5un"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0qx48"]
 atlas = ExtResource("1_lgdst")
@@ -58,9 +59,69 @@ region = Rect2(4800, 0, 480, 264)
 atlas = ExtResource("2_smt5g")
 region = Rect2(5280, 0, 480, 264)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_c8eu5"]
-atlas = ExtResource("1_lgdst")
+[sub_resource type="AtlasTexture" id="AtlasTexture_tb1wt"]
+atlas = ExtResource("4_3x5un")
+region = Rect2(0, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t3o0n"]
+atlas = ExtResource("4_3x5un")
 region = Rect2(32, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_osxnr"]
+atlas = ExtResource("4_3x5un")
+region = Rect2(64, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ppg06"]
+atlas = ExtResource("4_3x5un")
+region = Rect2(96, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7gys6"]
+atlas = ExtResource("4_3x5un")
+region = Rect2(128, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4uxnt"]
+atlas = ExtResource("4_3x5un")
+region = Rect2(160, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oyyux"]
+atlas = ExtResource("4_3x5un")
+region = Rect2(192, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qrjp7"]
+atlas = ExtResource("4_3x5un")
+region = Rect2(224, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hv8jh"]
+atlas = ExtResource("4_3x5un")
+region = Rect2(256, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v70lh"]
+atlas = ExtResource("4_3x5un")
+region = Rect2(288, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ett1u"]
+atlas = ExtResource("4_3x5un")
+region = Rect2(320, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c0c0l"]
+atlas = ExtResource("4_3x5un")
+region = Rect2(352, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jd7kq"]
+atlas = ExtResource("4_3x5un")
+region = Rect2(384, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_15qgt"]
+atlas = ExtResource("4_3x5un")
+region = Rect2(416, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8pp0d"]
+atlas = ExtResource("4_3x5un")
+region = Rect2(448, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_872s1"]
+atlas = ExtResource("4_3x5un")
+region = Rect2(480, 0, 32, 64)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_fem48"]
 animations = [{
@@ -123,11 +184,56 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_c8eu5")
+"texture": SubResource("AtlasTexture_tb1wt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t3o0n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_osxnr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ppg06")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7gys6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4uxnt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oyyux")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qrjp7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hv8jh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v70lh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ett1u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c0c0l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jd7kq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_15qgt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8pp0d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_872s1")
 }],
 "loop": true,
 "name": &"walk",
-"speed": 5.0
+"speed": 12.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lgdst"]
@@ -138,7 +244,8 @@ texture_filter = 1
 position = Vector2(118, 408.166)
 scale = Vector2(0.445, 0.445)
 sprite_frames = SubResource("SpriteFrames_fem48")
-animation = &"idle"
+animation = &"walk"
+frame_progress = 0.14611247
 
 [node name="TalkDetector" type="Area2D" parent="."]
 script = ExtResource("2_0qx48")

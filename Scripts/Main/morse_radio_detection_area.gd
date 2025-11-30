@@ -27,17 +27,17 @@ func _process(_delta):
 		label.position.y = baseLabelPos.y + (sin(Time.get_ticks_msec() * 0.005) * 3.0)
 	
 	if playerBody:
-		if Input.is_action_pressed("ui_accept") and GameManager.needMorse:
+		if Input.is_action_just_pressed("ui_accept") and GameManager.needMorse:
 			GameManager.usedMorse = true
 			if ResourceLoader.exists(morseScenePath):
 				SceneLoader.change_scene_with_loading(morseScenePath)
 			else:
 				push_error("ERROR: Morse game scene path not found.")
-		if Input.is_action_pressed("ui_accept") and GameManager.needRadio:
+		if Input.is_action_just_pressed("ui_accept") and GameManager.needRadio:
 			GameManager.usedRadio = true
 			GameManager.player.set_physics_process(false)
 			self.set_process(false)
-			OnBodyExited(playerBody)
+			#OnBodyExited(playerBody)
 			await Radio_Dialogue()
 			self.set_process(true)
 			GameManager.player.set_physics_process(true)
