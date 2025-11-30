@@ -325,6 +325,7 @@ func LoadStep(index: int):
 func OnHeatDialValueChanged(newHeatValue: float):
 	print("Heat set to: %.0f" % newHeatValue)
 	if newHeatValue > currentHeat:
+		oneShotAudioPlayer.volume_db = -6.0
 		oneShotAudioPlayer.stream = stoveOnSound
 		oneShotAudioPlayer.play()
 	else:
@@ -332,8 +333,8 @@ func OnHeatDialValueChanged(newHeatValue: float):
 		oneShotAudioPlayer.play()
 	
 	if currentHeat == 0 and newHeatValue > 0:
+		constantAudioPlayer.volume_db = -85.0
 		constantAudioPlayer.stream = boilingSound
-		constantAudioPlayer.volume_db = -45.0
 		constantAudioPlayer.play()
 		constantAudioPlayer.autoplay = true
 	

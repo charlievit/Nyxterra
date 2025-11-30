@@ -1,10 +1,10 @@
 - Yes
-	[voice path="res://Assets/Audio/VA/Sutherland/Americans get lost.mp3" volume="0.0" bus="Character Voice"]
+	[voice path="res://Assets/Audio/VA/Sutherland/Americans get lost.mp3" volume="2.0" bus="Character Voice"]
 	Sutherland: Don't want the Americans getting lost.
 	set {Day3_response} = "Yes"
 	[signal arg="Yes"]
 - No
-	[voice path="res://Assets/Audio/VA/Sutherland/Isolation.mp3" volume="0.0" bus="Character Voice"]
+	[voice path="res://Assets/Audio/VA/Sutherland/Isolation.mp3" volume="6.0" bus="Character Voice"]
 	Sutherland: Isolation is the only path to safety.
 	set {Day3_response} = "No"
 	[signal arg="No"]

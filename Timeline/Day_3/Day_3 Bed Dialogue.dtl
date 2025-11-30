@@ -1,6 +1,6 @@
 if {Day3_response} == "Yes":
-	[voice path="res://Assets/Audio/VA/Sutherland/Tides are turning.mp3" volume="0.0" bus="Character Voice"]
+	[voice path="res://Assets/Audio/VA/Sutherland/Tides are turning.mp3" volume="5.0" bus="Character Voice"]
 	Sutherland: I feel the tides are turning for the better.
 elif {Day3_response} == "No":
-	[voice path="res://Assets/Audio/VA/Sutherland/Unforgiving beast.mp3" volume="0.0" bus="Character Voice"]
+	[voice path="res://Assets/Audio/VA/Sutherland/Unforgiving beast.mp3" volume="5.0" bus="Character Voice"]
 	Sutherland: The sea is an unforgiving beast.

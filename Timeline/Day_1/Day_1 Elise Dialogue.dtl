@@ -1,5 +1,5 @@
 Narrator: Sutherland approaches his daughter who's on the couch laying down but not sleeping. A visible scar is on her face. It's clear they haven't spoken for some time.
 [voice path="res://Assets/Audio/VA/Sutherland/Elise Im Sorry.mp3" volume="0.0" bus="Character Voice"]
-Sutherland: Elise... Look, I... I'm sor-
-[voice path="res://Assets/Audio/VA/Elise/Im Tired Im Going to Sleep.mp3" volume="0.0" bus="Character Voice"]
+Sutherland: Elise... Look, I... I'm sorry.
+[voice path="res://Assets/Audio/VA/Elise/Im Tired Im Going to Sleep.mp3" volume="-5.0" bus="Character Voice"]
 Elise: (cutting him off) I'm tired. I'm going to sleep.

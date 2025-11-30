@@ -1,0 +1,4 @@
+audio "res://Assets/Audio/VA/Sutherland/Sniff.mp3" [volume="-5.0"]
+[wait time="1.0"]
+[voice path="res://Assets/Audio/VA/Sutherland/that smell.mp3" volume="0.0"]
+Sutherland: (sniffs) What's that smell?

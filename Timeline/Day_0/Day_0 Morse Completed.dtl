@@ -1,8 +1,6 @@
-Narrator: As player decodes the puzzle. It is warning about a bombing plane headed straight for the shore.
-[voice path="res://Assets/Audio/VA/Sutherland/No no.mp3" volume="0.0" bus="Character Voice"]
+[voice path="res://Assets/Audio/VA/Sutherland/No no.mp3" volume="5.0" bus="Character Voice"]
 Sutherland: No... No!
-Narrator: Panicked, Sutherland rushes upstairs. As he turns off the light, He hears the radio echo through the house.
-[voice path="res://Assets/Audio/VA/Smith/Get-Out.mp3" volume="0.0"]
+[voice path="res://Assets/Audio/VA/Smith/Get-Out.mp3" volume="-25.0"]
 Smith: Get out of there! Suth get out! Get the girls! Suth! Suth!
-[voice path="res://Assets/Audio/VA/Sutherland/Cath No.mp3" volume="0.0"]
+[voice path="res://Assets/Audio/VA/Sutherland/Cath No.mp3" volume="5.0"]
 Sutherland: Cath! No! No... no...

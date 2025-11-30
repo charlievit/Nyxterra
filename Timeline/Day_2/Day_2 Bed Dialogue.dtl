@@ -1,7 +1,7 @@
 if {Day2_response} == "No":
-	[voice path="res://Assets/Audio/VA/Sutherland/Id protect elise with my life.mp3" volume="0.0" bus="Character Voice"]
+	[voice path="res://Assets/Audio/VA/Sutherland/Id protect elise with my life.mp3" volume="-5.0" bus="Character Voice"]
 	Sutherland: I'll protect Elise with my life.
 elif {Day2_response} == "Yes":
-	[voice path="res://Assets/Audio/VA/Sutherland/Im sorry Elise.mp3" volume="0.0" bus="Character Voice"]
-	[voice path="res://Assets/Audio/VA/Sutherland/Im so so sorry.mp3" volume="0.0"]
+	[voice path="res://Assets/Audio/VA/Sutherland/Im sorry Elise.mp3" volume="-3.0" bus="Character Voice"]
+	[voice path="res://Assets/Audio/VA/Sutherland/Im so so sorry.mp3" volume="-2.0"]
 	Sutherland: I'm sorry Elise. I-I'm so sorry.
