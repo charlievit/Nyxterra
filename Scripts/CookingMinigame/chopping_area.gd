@@ -12,6 +12,8 @@ func _ready():
 func OnBodyEntered(body: Node2D):
 	# Check the body to ensure it is an ingredient AND is choppable
 	if "ingredientType" in body and body.get("isChoppable"):
+		TutorialManager.CompleteTutorial("kitchenDragBoard")
+		KitchenController.UpdateTutorialState("KNIFE")
 		if not ingredientsInArea.has(body):
 			ingredientsInArea.append(body)
 			print("Entered: %s" % body.name)

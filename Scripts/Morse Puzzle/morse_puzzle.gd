@@ -12,6 +12,9 @@ const DOT_MAX := UNIT * 1.5
 const LETTER_GAP := UNIT * 2.5
 const WORD_GAP := UNIT * 6.5
 
+# TUTORIAL
+const TUTORIAL_ID = "morseCodeTap"
+
 # Fixed sentences per day
 const DAY_SENTENCES := {
 	0: "ATTACK IMMINENT DISABLE LIGHT",
@@ -42,7 +45,6 @@ var REVERSE: Dictionary[String, String] = {}
 @onready var return_button: Button   = $ReturnButton
 @onready var sheet: TextureRect      = $Sheet
 @onready var background: TextureRect = $Background
-@onready var cursor: AnimatedSprite2D = $Cursor
 
 # --- Background textures ---
 const TEX_UP   := preload("res://Assets/Images/MorseCode/1MorseCodeMachineClipboard.png")
@@ -68,9 +70,9 @@ var currentTaskID: String = ""
 func _ready() -> void:
 	TaskManager.shouldBeHidden = true
 	
-	if not GameManager.usedMorseClicker or GameManager.tutorialMode:
-		cursor.visible = true
-		cursor.play("Morse Clicking")
+	# TUTORIAL
+	var buttonCenter = morse_key.global_position + (morse_key.size / 2)
+	TutorialManager.ShowClickTutorial(TUTORIAL_ID, buttonCenter, "Morse Clicking")
 	
 	for key in TaskManager.activeTasks.keys():
 		if String(key).contains("Morse"):
@@ -111,9 +113,7 @@ func _process(_delta: float) -> void:
 # --- MorseKey handlers (button press duration decides dot vs dash) ---
 func _on_morse_key_down() -> void:
 	GameManager.usedMorseClicker = true
-	if not GameManager.tutorialMode:
-		cursor.visible = false
-		cursor.stop()
+	TutorialManager.CompleteTutorial(TUTORIAL_ID)
 	pressing = true
 	background.texture = TEX_DOWN
 	press_started_at = Time.get_ticks_msec() / 1000.0
@@ -174,6 +174,8 @@ func _on_sentence_solved() -> void:
 	
 	# 3. Set dialogue flag and return to Main
 	GameManager.pending_post_source = GameManager.ReturnSource.MORSE
+	
+	await get_tree().create_timer(6.0).timeout
 	
 	if ResourceLoader.exists(mainGameScenePath):
 		SceneLoader.change_scene_with_loading(mainGameScenePath)

@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://bigtupvdnq1dd"]
+[gd_scene load_steps=5 format=3 uid="uid://bigtupvdnq1dd"]
 
 [ext_resource type="Texture2D" uid="uid://cj2aksqb03gkh" path="res://Assets/Images/UI/cursorDefault.png" id="1_ua2ut"]
 [ext_resource type="Texture2D" uid="uid://tgdy4ttjt1qu" path="res://Assets/Images/UI/cursorClicked.png" id="2_55evu"]
+[ext_resource type="Script" uid="uid://dd3g21cfffleb" path="res://Scripts/UI/Tutorial/cursor.gd" id="3_55evu"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_62ffu"]
 animations = [{
@@ -53,14 +54,43 @@ animations = [{
 "texture": ExtResource("2_55evu")
 }, {
 "duration": 1.0,
+"texture": ExtResource("2_55evu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_55evu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_55evu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_ua2ut")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_55evu")
+}, {
+"duration": 1.0,
 "texture": ExtResource("1_ua2ut")
 }],
 "loop": true,
 "name": &"Morse Clicking",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_ua2ut")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_55evu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_ua2ut")
+}],
+"loop": false,
+"name": &"Single Click",
 "speed": 5.0
 }]
 
 [node name="Cursor" type="AnimatedSprite2D"]
 sprite_frames = SubResource("SpriteFrames_62ffu")
 animation = &"Morse Clicking"
-frame_progress = 0.6512714
+script = ExtResource("3_55evu")

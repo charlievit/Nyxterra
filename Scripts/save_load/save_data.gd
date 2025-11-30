@@ -8,6 +8,8 @@ class_name SaveData
 @export var player_floor: int = 3
 
 # --- GameManager data to persist ---
+@export var tutorial_mode: bool = false
+@export var completed_tutorials: Dictionary = {}
 @export var current_day: int = 0
 @export var currentTaskStep : int = 0
 @export var need_gear_box: bool = false

@@ -107,6 +107,10 @@ func OnPotAreaExited(area: Area2D):
 
 func Chop():
 	if not isChoppable or isChopped:
+		if isChopped:
+			TutorialManager.CompleteTutorial("kitchenChop")
+			KitchenController.UpdateTutorialState("BOARD_TO_POT")
+			return
 		return
 	
 	var randomChanceToSpeak = randf_range(0, 100)

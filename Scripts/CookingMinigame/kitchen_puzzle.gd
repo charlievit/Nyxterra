@@ -26,7 +26,31 @@ const STEAM_STEP_DELAY: float = 6.0
 var oneShotAudioPlayer: AudioStreamPlayer2D
 var constantAudioPlayer: AudioStreamPlayer2D
 var currentSizzleVolume: float = 0.0
+var kitchenRecipeButton: Button
+var knifeButton: Button
+var cuttingBoardArea: Area2D
+var ingredientShelfPosition: Vector2
 #endregion NODES
+
+#region TUTORIAL
+const TUTORIAL_BOOK = "kitchenOpenBook"
+const TUTORIAL_DIAL = "kitchenDial"
+const TUTORIAL_DRAG_BOARD = "kitchenDragBoard"
+const TUTORIAL_DRAG_POT = "kitchenDragPot"
+const TUTORIAL_CHOP = "kitchenChop"
+
+var tutorialKnifeButton
+var tutorialCuttingBoard
+var tutorialIngredients
+var tutorialBook
+var tutorialPotArea
+
+var kitchenTutorialsCompleted: bool = false
+
+# TRACKING
+var currentTutorialState: String = "BOOK" # Defaults to book
+var lastTutorialMode: bool = false
+#endregion
 
 #region SOUNDS
 var chopSound: AudioStreamMP3
@@ -167,6 +191,11 @@ func OnLoopSound(player):
 	player.play()
 
 func _process(_delta): #this is purely for the progress bar
+	# TUTORIAL
+	if GameManager.tutorialMode and not lastTutorialMode:
+		UpdateTutorialState("BOOK")
+	lastTutorialMode = GameManager.tutorialMode
+	
 	if not is_instance_valid(progressBar) or not is_instance_valid(steamAnim):
 		set_process(false)
 		return
@@ -203,7 +232,7 @@ func UpdateStepTimerColor(percent: float): # This function lerps the color of th
 	
 	progressBar.add_theme_stylebox_override("fill", barStyleStep)
 
-func RegisterNodes(heatDialNode: Button, potAreaNode: Area2D, progressBarNode: ProgressBar, recipeParser: Node, fireAnimNodeLow: AnimatedSprite2D, fireAnimNodeMedium: AnimatedSprite2D, fireAnimNodeHigh: AnimatedSprite2D, steamAnimNode: AnimatedSprite2D, oneShotAudioNode: AudioStreamPlayer2D, constantAudioNode: AudioStreamPlayer2D):
+func RegisterNodes(heatDialNode: Button, potAreaNode: Area2D, progressBarNode: ProgressBar, recipeParser: Node, fireAnimNodeLow: AnimatedSprite2D, fireAnimNodeMedium: AnimatedSprite2D, fireAnimNodeHigh: AnimatedSprite2D, steamAnimNode: AnimatedSprite2D, oneShotAudioNode: AudioStreamPlayer2D, constantAudioNode: AudioStreamPlayer2D, knifeButtonArea: Button, cuttingBoardTutorialArea: Area2D, ingredientShelf: HBoxContainer, recipeBook: Button, potAreaDrop: Area2D):
 	# This func is called by the Autoload to reference all needed nodes
 	heatDial = heatDialNode
 	potArea = potAreaNode
@@ -216,6 +245,11 @@ func RegisterNodes(heatDialNode: Button, potAreaNode: Area2D, progressBarNode: P
 	steamAnim.speed_scale = 1.0
 	oneShotAudioPlayer = oneShotAudioNode
 	constantAudioPlayer = constantAudioNode
+	tutorialKnifeButton = knifeButtonArea
+	tutorialCuttingBoard = cuttingBoardTutorialArea
+	tutorialIngredients = ingredientShelf
+	tutorialBook = recipeBook
+	tutorialPotArea = potAreaDrop
 	
 	# Connect to the heat dial's signal
 	if heatDial:
@@ -242,6 +276,8 @@ func RegisterNodes(heatDialNode: Button, potAreaNode: Area2D, progressBarNode: P
 		push_error("KitchenController: Cannot find 'ProgressBar' node.")
 	
 	set_process(true)
+	
+	UpdateTutorialState("BOOK")
 
 func PrepareSounds(chopSoundFile, plopSoundFile, boilingSoundFile, stoveOffSoundFile, stoveOnSoundFile, pourSoundFile, shakerSoundFiles):
 	chopSound = chopSoundFile
@@ -251,6 +287,30 @@ func PrepareSounds(chopSoundFile, plopSoundFile, boilingSoundFile, stoveOffSound
 	stoveOnSound = stoveOnSoundFile
 	pourSound = pourSoundFile
 	shakerSounds = shakerSoundFiles
+
+func UpdateTutorialState(state: String):
+	currentTutorialState = state
+	
+	if kitchenTutorialsCompleted and not GameManager.tutorialMode:
+		return
+	match state:
+		"BOOK":
+			var cursorPosition = tutorialBook.global_position + (tutorialBook.size / 2.0)
+			TutorialManager.ShowClickTutorial(TUTORIAL_BOOK, cursorPosition)
+		"DIAL":
+			TutorialManager.ShowDialTutorial(TUTORIAL_DIAL, heatDial)
+		"SHELF_TO_BOARD":
+			var startPosition = tutorialIngredients.global_position + (tutorialIngredients.size / 2.0)
+			TutorialManager.ShowDragTutorial(TUTORIAL_DRAG_BOARD, startPosition, tutorialCuttingBoard.global_position)
+		"PICKED_UP":
+			TutorialManager.CompleteTutorial(TUTORIAL_DRAG_BOARD)
+		"KNIFE":
+			var cursorPosition = tutorialKnifeButton.global_position + (tutorialKnifeButton.size / 2.0)
+			TutorialManager.ShowClickTutorial(TUTORIAL_CHOP, cursorPosition)
+		"BOARD_TO_POT":
+			TutorialManager.ShowDragTutorial(TUTORIAL_DRAG_POT, tutorialCuttingBoard.global_position, tutorialPotArea.global_position)
+		"COMPLETE":
+			kitchenTutorialsCompleted = true
 
 # Reset the recipe if beyond a failure threshold or on button press at player-will
 func ResetRecipe():
@@ -323,6 +383,8 @@ func LoadStep(index: int):
 		print("Add: %.0f of %s" % [liquidData.needed, liquidName])
 
 func OnHeatDialValueChanged(newHeatValue: float):
+	TutorialManager.CompleteTutorial("kitchenDial")
+	KitchenController.UpdateTutorialState("SHELF_TO_BOARD")
 	print("Heat set to: %.0f" % newHeatValue)
 	if newHeatValue > currentHeat:
 		oneShotAudioPlayer.volume_db = -6.0

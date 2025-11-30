@@ -43,6 +43,13 @@ var shakeSoundOne = preload("res://Assets/Audio/Cooking Minigame/Shake1.mp3")
 var shakeSoundTwo = preload("res://Assets/Audio/Cooking Minigame/Shake2.mp3")
 var shakeSoundThree = preload("res://Assets/Audio/Cooking Minigame/Shake.mp3")
 
+@export_group("TUTORIAL AREAS")
+@export var knifeButton: Button
+@export var cuttingBoardArea: Area2D
+@export var ingredientShelf: HBoxContainer
+@export var recipeBook: Button
+@export var potAreaDrop: Area2D
+
 func _ready():
 	#region DEBUG SAFETY CHECKS, should be safe to remove (I will not be doing that)
 	if not heatDial:
@@ -76,7 +83,7 @@ func _ready():
 		push_error("No constant audio player found")
 	#endregion
 	
-	KitchenController.RegisterNodes(heatDial, potArea, progressBar, recipeParser, fireAnimLow, fireAnimMedium, fireAnimHigh, steamAnim, oneShotAudioPlayer, constantAudioPlayer)
+	KitchenController.RegisterNodes(heatDial, potArea, progressBar, recipeParser, fireAnimLow, fireAnimMedium, fireAnimHigh, steamAnim, oneShotAudioPlayer, constantAudioPlayer, knifeButton, cuttingBoardArea, ingredientShelf, recipeBook, potAreaDrop)
 	
 	KitchenController.PrepareSounds(chopSound, plopSound, boilingSound, stoveOffSound, stoveOnSound, pourSound, [shakeSoundOne, shakeSoundTwo, shakeSoundThree])
 	
@@ -113,9 +120,11 @@ func _ready():
 
 func _on_close_pressed() -> void:
 	recipeBookScreen.visible = false
+	KitchenController.UpdateTutorialState("DIAL")
 
 func _on_recipe_book_button_pressed() -> void:
 	recipeBookScreen.visible = true
+	TutorialManager.CompleteTutorial("kitchenOpenBook")
 
 func _exit_tree():
 	KitchenController.CleanUpReferences()

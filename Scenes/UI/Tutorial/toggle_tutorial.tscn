@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://cbe7k86hoyy4i" path="res://Assets/Images/UI/QuestionButtonoff.png" id="1_4f12r"]
 [ext_resource type="Texture2D" uid="uid://byau4evawy5x6" path="res://Assets/Images/UI/QuestionButton.png" id="2_rsnum"]
-[ext_resource type="Script" uid="uid://cx211qxsvtnot" path="res://Scenes/UI/toggle_tutorial.gd" id="3_rsnum"]
+[ext_resource type="Script" uid="uid://cx211qxsvtnot" path="res://Scripts/UI/Tutorial/toggle_tutorial.gd" id="3_rsnum"]
 
 [node name="ToggleTutorial" type="TextureButton"]
 texture_filter = 1
