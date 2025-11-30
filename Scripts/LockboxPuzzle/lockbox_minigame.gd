@@ -33,6 +33,8 @@ var letterRead = false
 @onready var sfxPlayer: AudioStreamPlayer2D = $AudioStreamPlayer2D
 @onready var openLetterSound: AudioStream = preload("res://Assets/Audio/Lockbox Puzzle/LetterUnfold.mp3")
 @onready var openBoxSound: AudioStream = preload("res://Assets/Audio/Lockbox Puzzle/Opened.mp3")
+@onready var musicPlayer: AudioStreamPlayer = AudioStreamPlayer.new()
+var backgroundMusic: AudioStream = preload("res://Assets/Audio/Music/gearboxGame.mp3")
 
 var currentTaskID: String = ""
 
@@ -58,7 +60,19 @@ func _ready():
 	backButton.visible = false
 	letterText.visible = false
 	
+	add_child(musicPlayer)
+	musicPlayer.stream = backgroundMusic
+	musicPlayer.autoplay = true
+	musicPlayer.volume_db = -17.0
+	musicPlayer.set_bus("Music")
+	musicPlayer.play()
+	
 	TutorialManager.ShowClickTutorial("lockbox", dialOne.global_position)
+
+func _exit_tree():
+	musicPlayer.stop()
+	musicPlayer.queue_free()
+	
 
 func _process(_delta):
 	if boxUnlocked:
@@ -82,7 +96,8 @@ func CheckCode():
 		lockBoxClosed.visible = false
 		letterFolded.visible = true
 		lockBoxOpen.visible = true
-
+		var tween = create_tween()
+		tween.tween_property(musicPlayer, "volume_db", -80.0, 1.5)
 
 func _on_read_letter_button_pressed() -> void:
 	if letterRead:

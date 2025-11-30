@@ -118,6 +118,7 @@ func _on_load_pressed() -> void:
 		SceneLoader.change_scene_with_loading(path)
 
 func _on_main_menu_pressed() -> void:
+	GameManager.StopBGM()
 	# Optional: auto-save here if you want
 	# SaveGame.save_game()
 	get_tree().paused = false

@@ -1,0 +1,2 @@
+audio "res://Assets/Audio/Music/day1 2 and 3music.wav" [volume="-5.0"]
+audio music "res://Assets/Audio/Cutscenes/Ocean Waves.mp3" [volume="-1.0" loop="true"]

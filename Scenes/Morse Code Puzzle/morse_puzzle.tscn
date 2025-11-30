@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://q4bvqbk8pn"]
+[gd_scene load_steps=14 format=3 uid="uid://q4bvqbk8pn"]
 
 [ext_resource type="Script" uid="uid://by7yfvqxg6534" path="res://Scripts/Morse Puzzle/morse_puzzle.gd" id="1_sk6lw"]
 [ext_resource type="Texture2D" uid="uid://sxi357hheqg7" path="res://Assets/Images/MorseCode/1MorseCodeMachineClipboard.png" id="2_jhqy5"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://8nt10bv5lyph" path="res://Assets/Images/MorseCode/MorseKey.png" id="3_o1vg4"]
 [ext_resource type="Texture2D" uid="uid://c3flplkwdkhfe" path="res://Assets/Images/MorseCode/NotepadMessage.png" id="3_qt645"]
 [ext_resource type="Theme" uid="uid://b4lurv8njswua" path="res://Resources/theme.tres" id="5_vpjeu"]
+[ext_resource type="FontFile" uid="uid://cd5qpfhq7agn5" path="res://Assets/Fonts/Baskerville Bold.otf" id="6_vpjeu"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jhqy5"]
 
@@ -83,6 +84,7 @@ size_flags_vertical = 3
 theme = ExtResource("5_vpjeu")
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 6
+theme_override_fonts/bold_font = ExtResource("6_vpjeu")
 theme_override_font_sizes/normal_font_size = 32
 
 [node name="MorseLive" type="Label" parent="."]
@@ -137,3 +139,5 @@ offset_top = 61.0
 offset_right = 603.0
 offset_bottom = 644.0
 texture = ExtResource("3_o1vg4")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]

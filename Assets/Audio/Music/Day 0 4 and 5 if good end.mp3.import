@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dvc5ka1f68v1l"
+path="res://.godot/imported/Day 0 4 and 5 if good end.mp3-ee4e3a72b58ad54ca7e99bcfe5866a39.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/Music/Day 0 4 and 5 if good end.mp3"
+dest_files=["res://.godot/imported/Day 0 4 and 5 if good end.mp3-ee4e3a72b58ad54ca7e99bcfe5866a39.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4

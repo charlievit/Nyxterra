@@ -4,6 +4,6 @@ Sutherland: I'm operational.
 Smith: Oh thank god. I was beginning to think you'd... well, never mind. It's good to hear from you. Be careful out there. I've had some unsavory folks trying to slip through the cracks lately.
 Narrator: As he finishes, the radio crackles and a new voice can be heard.
 [voice path="res://Assets/Audio/VA/Misc Radio/Jimmythefisherbro.mp3" volume="-5.0" bus="Character Voice"]
-"Scottish Fisherman": Fair Isle South, Fair Isle South, this is fishing vessel Salty Lass, Salty Lass. Do you read, over?
+"Unknown Voice": Fair Isle South, Fair Isle South, this is fishing vessel Salty Lass, Salty Lass. Do you read, over?
 [voice path="res://Assets/Audio/VA/Sutherland/Light the Way.mp3" volume="5.0" bus="Character Voice"]
 Sutherland: Aye, all clear for docking. We'll light the way sailor. Over.

@@ -31,6 +31,7 @@ func _process(_delta):
 			GameManager.usedKitchen = true
 			if ResourceLoader.exists(kitchenScenePath):
 				SceneLoader.change_scene_with_loading(kitchenScenePath)
+				GameManager.StopBGM()
 			else:
 				push_error("ERROR: Main game scene path not found.")
 

@@ -199,6 +199,7 @@ func CheckForMatch():
 			TutorialManager.ClearTutorial()
 			await Radio()
 			GameManager.SetPlayerSpawn(returnFloorIndex, returnPosition)
+			GameManager.PlayBGM()
 			GameManager.CompleteTask(currentTaskID)
 			GameManager.pending_post_source = GameManager.ReturnSource.RADIO
 			if ResourceLoader.exists(mainGameScenePath):

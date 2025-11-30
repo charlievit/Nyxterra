@@ -52,6 +52,7 @@ var choseLightToBeOn: bool = false
 
 # COOKING
 var todaysRecipe: String
+var recipeQuality: int
 
 # CUTSCENES / DIALOGUE
 var introPlayed: bool = false
@@ -74,13 +75,12 @@ var chopSpeakCooldown = 50
 
 var player: Node = null
 
+@onready var musicPlayer: AudioStreamPlayer = AudioStreamPlayer.new()
+var backgroundMusic123: AudioStream = preload("res://Assets/Audio/Music/day1 2 and 3music.mp3")
+var backgroundMusic045: AudioStream = preload("res://Assets/Audio/Music/Day 0 4 and 5 if good end.mp3")
+
 # MUSIC
-var day1AfterSmithMusic = preload("res://Assets/Audio/Music/ Day 1 After_MrSmith21_revision (1).wav")
-var day1BeforeDaughterMusic = preload("res://Assets/Audio/Music/day1 before talk daughter.wav")
-var day1TalkWithDaughterMusic = preload("res://Assets/Audio/Music/day1 talk with daughter.wav")
-var day1TalkwithSmithMusic = preload("res://Assets/Audio/Music/Day 1 talk with Mr Smith.wav")
 var music1 = preload("res://Assets/Audio/Music/Music 1 lighthouse.wav")
-var music2 = preload("res://Assets/Audio/Music/music 2 idea.wav")
 var kitchenThemeMusic = preload("res://Assets/Audio/Music/kitchen minigame idea.wav")
 var radioThemeMusic = preload("res://Assets/Audio/Music/Radio theme.wav")
 
@@ -136,6 +136,23 @@ func StartDay(day: int):
 	emit_signal("requestDayCycle")
 	
 	UpdateObjective()
+	
+	match currentDay:
+		0, 4, 5:
+			if not isBadEnding:
+				add_child(musicPlayer)
+				musicPlayer.stream = backgroundMusic045
+				musicPlayer.autoplay = true
+				musicPlayer.volume_db = -5.0
+				musicPlayer.set_bus("Music")
+				musicPlayer.play()
+		1, 2, 3:
+			add_child(musicPlayer)
+			musicPlayer.stream = backgroundMusic123
+			musicPlayer.autoplay = true
+			musicPlayer.volume_db = -15.0
+			musicPlayer.set_bus("Music")
+			musicPlayer.play()
 
 func CompleteTask(task_id: String):
 	TaskManager.CompleteTask(task_id)
@@ -215,7 +232,7 @@ func UpdateObjective():
 					TaskManager.AddTask("dayONE_checkRadio_afterGearbox", "Report back to Smith.")
 				4:
 					needMorse = true
-					TaskManager.AddTask("dayONE_checkMorse", "Translate received morse code.")
+					TaskManager.AddTask("dayONE_checkMorse", "Check for morse code messages.")
 				5:
 					# NIGHT
 					emit_signal("requestNightCycle")
@@ -243,7 +260,7 @@ func UpdateObjective():
 					TaskManager.AddTask("dayTWO_checkRadio", "Check radio.")
 				2:
 					needMorse = true
-					TaskManager.AddTask("dayTWO_checkMorse", "Check Morse signal.")
+					TaskManager.AddTask("dayTWO_checkMorse", "Check for morse code messages.")
 				3:
 					emit_signal("requestNightCycle")
 					daySTATE = DayState.MOON_RISING
@@ -270,7 +287,7 @@ func UpdateObjective():
 					TaskManager.AddTask("dayTHREE_checkRadio", "Check radio.")
 				2:
 					needMorse = true
-					TaskManager.AddTask("dayTHREE_checkMorse", "Check signal.")
+					TaskManager.AddTask("dayTHREE_checkMorse", "Check for morse code messages.")
 				3:
 					emit_signal("requestNightCycle")
 					daySTATE = DayState.MOON_RISING
@@ -297,7 +314,7 @@ func UpdateObjective():
 					TaskManager.AddTask("dayFOUR_checkRadio", "Check radio.")
 				2:
 					needMorse = true
-					TaskManager.AddTask("dayFOUR_checkMorse", "Check signal.")
+					TaskManager.AddTask("dayFOUR_checkMorse", "Check for morse code messages.")
 				3:
 					emit_signal("requestNightCycle")
 					daySTATE = DayState.MOON_RISING
@@ -318,6 +335,7 @@ func UpdateObjective():
 			if isBadEnding:
 				# Trigger Bad Ending Sequence
 				# We loop back to bombing cutscene, but isBadEnding flag will trigger Game Over in the cutscene script
+				GameManager.StopBGM()
 				CutsceneManager.PlayCutscene("res://Scenes/Cutscenes/bombing_cutscene.tscn", -1)
 			else:
 				# GOOD ENDING FLOW
@@ -355,6 +373,28 @@ func ConsumeSpawnData(playerNode):
 			playerNode.SetFloor(playerSpawnFloor)
 		shouldUseStoredSpawn = false
 		
+func StopBGM():
+	if musicPlayer.is_playing():
+		musicPlayer.stop()
+
+func PlayBGM():
+	# If music is already playing, do nothing
+	if musicPlayer.is_playing():
+		return
+
+	# Logic to determine which track to play based on the current day
+	# This duplicates the logic from StartDay to ensure the right track is loaded and played.
+	match currentDay:
+		0, 4, 5:
+			if not isBadEnding:
+				musicPlayer.stream = backgroundMusic045
+				musicPlayer.volume_db = -5.0
+				musicPlayer.play()
+		1, 2, 3:
+			musicPlayer.stream = backgroundMusic123
+			musicPlayer.volume_db = -15.0
+			musicPlayer.play()
+
 #save & load
 func write_save_data() -> void:
 	var data := SaveManager.current_save

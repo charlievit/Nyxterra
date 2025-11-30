@@ -29,6 +29,7 @@ func _process(_delta):
 		if Input.is_action_pressed("ui_accept") and GameManager.needGearBox:
 			if ResourceLoader.exists(gearboxScenePath):
 				SceneLoader.change_scene_with_loading(gearboxScenePath)
+				GameManager.StopBGM()
 			else:
 				push_error("ERROR: Main game scene path not found.")
 

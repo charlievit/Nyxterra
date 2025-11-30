@@ -1,3 +1,4 @@
+audio music "res://Assets/Audio/Music/Maybe letter.wav" [volume="-20.0" loop="true"]
 [voice path="res://Assets/Audio/VA/Sutherland/ReadsLetter.mp3" volume="-5.0"]
 Narrator: 01/27\
 I don't think I'll ever forget this day... Not for as long as I live.\
