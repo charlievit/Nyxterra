@@ -113,7 +113,7 @@ layout/default_style="res://portraitlessStyle.tres"
 variables={
 "Cooking_Response": "Good",
 "Day1_response": "",
-"Day2_response": "",
+"Day2_response": "Yes",
 "Day3_response": "",
 "Day4_response": ""
 }

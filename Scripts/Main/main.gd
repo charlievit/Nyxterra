@@ -309,7 +309,7 @@ func _on_Gear_Completed() -> void:
 func _on_Morse_Completed() -> void:
 	match GameManager.currentDay:
 		0:
-			return
+			Dialogic.start("Day_0 Morse Completed")
 		1:
 			Dialogic.start("Day_1 Morse Completed")
 		2:
