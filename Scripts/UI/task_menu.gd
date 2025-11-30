@@ -43,6 +43,8 @@ func _process(_delta):
 		self.visible = false
 	else:
 		self.visible = true
+	
+	tabButton.focus_mode = false
 
 func ToggleTaskKey():
 	taskIndicator.visible = not taskIndicator.visible

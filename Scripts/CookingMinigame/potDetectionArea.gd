@@ -12,6 +12,9 @@ func OnBodyEntered(body: RigidBody2D):
 	KitchenController.oneShotAudioPlayer.stream = KitchenController.plopSound
 	KitchenController.oneShotAudioPlayer.play()
 	
+	TutorialManager.CompleteTutorial("kitchenDragPot")
+	KitchenController.UpdateTutorialState("COMPLETE")
+	
 	# Check if an ingredient entered
 	if not "ingredientType" in body:
 		return

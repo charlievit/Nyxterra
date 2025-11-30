@@ -43,6 +43,10 @@ var currentTaskID: String = ""
 var allGears = []
 var puzzleSolved = false
 var lastPoweredCount = 0
+# TUTORIAL LOGIC
+var allButtons = []
+var tutorialStage = 0
+var currentTutorialPeg = null
 #endregion
 
 func _ready():
@@ -57,7 +61,7 @@ func _ready():
 	startingGear.rotationSpeed = 1.0
 	
 	# Connect all the buttons
-	var allButtons = get_tree().get_nodes_in_group("Gear Buttons")
+	allButtons = get_tree().get_nodes_in_group("Gear Buttons")
 	for button in allButtons:
 		button.gearButtonPressed.connect(onGearButtonPressed)
 	
@@ -71,6 +75,8 @@ func _ready():
 	for key in TaskManager.activeTasks.keys():
 		if String(key).find("GearBox") != -1:
 			currentTaskID = key
+	
+	StartPlacingTutorial()
 
 # Called by the Gear Button signal to assign data to the instantiated held gear
 func onGearButtonPressed(buttonData: Dictionary):
@@ -175,6 +181,9 @@ func placeGearOnPeg(peg: Node2D):
 	heldGearInstance.queue_free()
 	heldGearInstance = null
 	isHoldingGear = false
+	
+	if tutorialStage == 1:
+		StartRemovingTutorial(peg)
 
 func _on_placed_gear_clicked(gearToRemove: Area2D):
 	if isHoldingGear or puzzleSolved:
@@ -188,8 +197,10 @@ func _on_placed_gear_clicked(gearToRemove: Area2D):
 	if gearToRemove.currentPeg:
 		gearToRemove.currentPeg.isOccupied = false
 	
-	allGears.erase(gearToRemove)
+	if tutorialStage == 2 and gearToRemove.currentPeg == currentTutorialPeg:
+		EndTutorialSequence()
 	
+	allGears.erase(gearToRemove)
 	gearToRemove.queue_free()
 
 func returnHeldGear():
@@ -204,6 +215,10 @@ func returnHeldGear():
 	isHoldingGear = false
 
 func _process(_delta):
+	if GameManager.tutorialMode and tutorialStage == 0 and not puzzleSolved:
+		if allGears.size() <= 2:
+			StartPlacingTutorial()
+	
 	if puzzleSolved:
 		return
 	# ROTATION LOGIC
@@ -244,6 +259,45 @@ func _process(_delta):
 	if not puzzleSolved and endingGear.isPowered == true:
 		emit_signal("puzzle_solved")
 		TriggerWinState()
+
+func StartPlacingTutorial():
+	if puzzleSolved or isHoldingGear:
+		return
+	
+	tutorialStage = 1
+	
+	var randomButtom = allButtons.pick_random()
+	
+	var validPegs = []
+	for peg in pegContainer.get_children():
+		if not peg.get("isOccupied"):
+			validPegs.append(peg)
+	
+	var randomPeg = validPegs.pick_random()
+	
+	TutorialManager.ShowClickMoveClickTutorial(
+		"gearboxPlace",
+		randomButtom.global_position + Vector2(20, 20),
+		randomPeg.global_position
+	)
+
+func StartRemovingTutorial(targetPeg):
+	tutorialStage = 2
+	currentTutorialPeg = targetPeg
+	
+	TutorialManager.CompleteTutorial("gearPlace")
+	
+	TutorialManager.ShowClickTutorial(
+		"gearboxRemove",
+		targetPeg.global_position,
+		"Continuous Clicking"
+	)
+
+func EndTutorialSequence():
+	tutorialStage = 0
+	currentTutorialPeg = null
+	TutorialManager.CompleteTutorial("gearboxRemove")
+	TutorialManager.ClearTutorial()
 
 func UpdateLoopVolume():
 	var currentPoweredCount = 0
