@@ -75,15 +75,15 @@ func _ready() -> void:
 			Elise.scale = Vector2(0.308,0.308)
 			Elise.play("sitting")
 		1: 
-			Elise.position = Vector2(66.984,402.489)
+			Elise.position = Vector2(66.984,410)
 			Elise.scale = Vector2(0.091,0.091)
 			Elise.play("laying")
 		2:
-			Elise.position = Vector2(66.984,402.489)
+			Elise.position = Vector2(66.984,410)
 			Elise.scale = Vector2(0.091,0.091)
 			Elise.play("laying")
 		3: 
-			Elise.position = Vector2(66.984,402.489)
+			Elise.position = Vector2(66.984,410)
 			Elise.scale = Vector2(0.091,0.091)
 			Elise.play("laying")
 		4: 

@@ -25,7 +25,7 @@ var playerSpawnFloor: int = 3
 var playerSpawnPosition: Vector2 = Vector2(88, 278)
 var shouldUseStoredSpawn: bool = false
 
-var currentDay: int = 0
+var currentDay: int = 2
 var isNewDay: bool = false
 var daySTATE: DayState = DayState.NIGHT_IDLE
 var currentTaskStep: int = 0 
@@ -94,7 +94,7 @@ func _ready():
 	
 func StartNewGame():
 	# Reset all internal state
-	currentDay = 0
+	currentDay = 2
 	currentTaskStep = 0
 	
 	isIntroPlayed = false
@@ -143,6 +143,7 @@ func CompleteTask(task_id: String):
 	UpdateObjective()
 
 func AddCookingScore(quality: int):
+	recipeQuality = quality
 	# Relationship increases by an amount equal to the recipe quality /10 rounded up
 	var increase = ceil(quality / 10.0)
 	if currentDay == 3: # double relationship bonus for making Elise's favorite meal

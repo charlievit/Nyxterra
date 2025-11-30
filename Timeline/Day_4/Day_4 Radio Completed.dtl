@@ -1,3 +1,5 @@
+[voice path="res://Assets/Audio/VA/Smith/Swedish Cargo Ship.mp3" volume="-5.0"]
+Smith: Suth, we're expecting a Swedish cargo ship tonight. Thanks for all your help. Over.
 [voice path="res://Assets/Audio/VA/Misc Radio/Radio-German-Swedish.mp3" volume="-15.0" bus="Character Voice"]
 "Suspicious voice": Fair Isle Light, Fair Isle Light, this is Gotlandfjäll from Sweden, carrying... general cargo. Do you receive, over?
 [voice path="res://Assets/Audio/VA/Sutherland/Doesnt sound swedish.mp3" volume="2.0" bus="Character Voice"]

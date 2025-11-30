@@ -55,7 +55,6 @@ directories/dtl_directory={
 "Day_-1 Radio Completed": "res://Timeline/Day_-1/Day_-1 Radio Completed.dtl",
 "Day_-1 Radio Dialogue": "res://Timeline/Day_-1/Day_-1 Radio Dialogue.dtl",
 "Day_0 Elise Dialogue": "res://Timeline/Day_0/Day_0 Elise Dialogue.dtl",
-"Day_0 Light Dialogue": "res://Timeline/Day_0/Day_0 Light Dialogue.dtl",
 "Day_0 Morse Completed": "res://Timeline/Day_0/Day_0 Morse Completed.dtl",
 "Day_0 Radio Completed": "res://Timeline/Day_0/Day_0 Radio Completed.dtl",
 "Day_0 Radio Dialogue": "res://Timeline/Day_0/Day_0 Radio Dialogue.dtl",
@@ -114,7 +113,7 @@ layout/default_style="res://portraitlessStyle.tres"
 variables={
 "Cooking_Response": "Good",
 "Day1_response": "",
-"Day2_response": "Yes",
+"Day2_response": "",
 "Day3_response": "",
 "Day4_response": ""
 }

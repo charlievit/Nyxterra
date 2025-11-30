@@ -1,12 +1,47 @@
 extends Area2D
 
 @onready var label: RichTextLabel = $ButtonPrompt
+@onready var EliseCollision: CollisionShape2D = $CollisionShape2D
+@onready var EliseTutorial: RichTextLabel = $ButtonPrompt
 
 var baseLabelPos: Vector2
 var playerBody: CharacterBody2D = null
 
 
 func _ready():
+	
+	match GameManager.currentDay:
+		0:
+			EliseCollision.scale = Vector2(0.3,0.7)
+			EliseCollision.position = Vector2(27.384,10.695)
+			EliseTutorial.scale = Vector2(1.282,1.282)
+			EliseTutorial.position = Vector2(21.341,-73.721)
+		1: 
+			EliseCollision.scale = Vector2(1,1)
+			EliseCollision.position = Vector2(-60.291,-29.374)
+			EliseTutorial.scale = Vector2(3.365,3.365)
+			EliseTutorial.position = Vector2(-43.78,-214.165)
+		2:
+			EliseCollision.scale = Vector2(1,1)
+			EliseCollision.position = Vector2(-60.291,-29.374)
+			EliseTutorial.scale = Vector2(3.365,3.365)
+			EliseTutorial.position = Vector2(-43.78,-214.165)
+		3: 
+			EliseCollision.scale = Vector2(1,1)
+			EliseCollision.position = Vector2(-60.291,-29.374)
+			EliseTutorial.scale = Vector2(3.365,3.365)
+			EliseTutorial.position = Vector2(-43.78,-214.165)
+		4: 
+			EliseCollision.scale = Vector2(0.2,0.4)
+			EliseCollision.position = Vector2(-1.231,4.121)
+			EliseTutorial.scale = Vector2(0.758,0.758)
+			EliseTutorial.position = Vector2(-7.973,-45.317)
+		5:
+			EliseCollision.scale = Vector2(0.2,0.4)
+			EliseCollision.position = Vector2(0.0,2.247)
+			EliseTutorial.scale = Vector2(0.758,0.758)
+			EliseTutorial.position = Vector2(-7.973,-43.07)
+
 	# Connect signals
 	self.body_entered.connect(OnBodyEntered)
 	self.body_exited.connect(OnBodyExited)
