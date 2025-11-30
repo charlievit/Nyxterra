@@ -10,5 +10,6 @@ Narrator: As he finishes, the radio crackles and a new voice can be heard.
 [voice path="res://Assets/Audio/VA/Sutherland/Container Ship.mp3" volume="0.0" bus="Character Voice"]
 Sutherland: (speaking to himself) Ah, container ship.
 [voice path="res://Assets/Audio/VA/Sutherland/Aye all clear.mp3" volume="-7.0" bus="Character Voice"]
+Sutherland: (speaking on radio) Aye, all clear.
 [voice path="res://Assets/Audio/VA/Sutherland/Bright as a star.mp3" volume="-7.0" bus="Character Voice"]
-Sutherland: (speaking on radio) Aye, all clear. We'll be bright as a star. Over.
+Sutherland: We'll be bright as a star. Over.

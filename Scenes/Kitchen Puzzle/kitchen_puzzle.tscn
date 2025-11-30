@@ -276,7 +276,7 @@ border_width_right = 3
 border_width_bottom = 3
 border_color = Color(0.8141041, 0.5762769, 0.5602711, 1)
 
-[node name="Kitchen Puzzle" type="Control" node_paths=PackedStringArray("heatDial", "potArea", "progressBar", "recipeParser", "fireAnimLow", "fireAnimMedium", "fireAnimHigh", "steamAnim", "oneShotAudioPlayer", "constantAudioPlayer", "recipeDisplayLocation", "recipeDisplayLocation2")]
+[node name="Kitchen Puzzle" type="Control" node_paths=PackedStringArray("heatDial", "potArea", "progressBar", "recipeParser", "fireAnimLow", "fireAnimMedium", "fireAnimHigh", "steamAnim", "oneShotAudioPlayer", "constantAudioPlayer", "recipeDisplayLocation", "recipeDisplayLocation2", "knifeButton", "cuttingBoardArea", "ingredientShelf", "recipeBook", "potAreaDrop")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -297,6 +297,11 @@ oneShotAudioPlayer = NodePath("OneShotSounds")
 constantAudioPlayer = NodePath("ConstantSounds")
 recipeDisplayLocation = NodePath("RecipeBookScreen/Recipe Instructions Page 1")
 recipeDisplayLocation2 = NodePath("RecipeBookScreen/Recipe Instructions Page 2")
+knifeButton = NodePath("Ingredients Area/Chopping Area/ChopButton")
+cuttingBoardArea = NodePath("Ingredients Area/Chopping Area")
+ingredientShelf = NodePath("Ingredients Area/Ingredients")
+recipeBook = NodePath("Ingredients Area/RecipeBookButton")
+potAreaDrop = NodePath("Pot Area/Pot/Pot Area For Partial Ingredients")
 
 [node name="SkyNightBackground" type="Sprite2D" parent="."]
 position = Vector2(799.80005, 329.41754)
@@ -395,18 +400,18 @@ offset_bottom = 648.0
 mouse_filter = 2
 
 [node name="Chopping Area" type="Area2D" parent="Ingredients Area"]
-position = Vector2(-76, -153)
+position = Vector2(173, 436)
 script = ExtResource("8_et0ww")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ingredients Area/Chopping Area"]
-position = Vector2(248.75, 590.5)
+position = Vector2(12, 5)
 shape = SubResource("RectangleShape2D_aecf8")
 
 [node name="ChopButton" type="Button" parent="Ingredients Area/Chopping Area"]
-offset_left = 416.0
-offset_top = 453.0
-offset_right = 428.43298
-offset_bottom = 518.526
+offset_left = 185.99997
+offset_top = -132.0
+offset_right = 198.43295
+offset_bottom = -66.474
 rotation = 0.32729906
 scale = Vector2(2.5382888, 2.5382888)
 theme_override_styles/normal = SubResource("StyleBoxEmpty_1s044")
@@ -416,13 +421,13 @@ theme_override_styles/disabled = SubResource("StyleBoxEmpty_o7q6h")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_yuwkw")
 
 [node name="Knife" type="Sprite2D" parent="Ingredients Area/Chopping Area"]
-position = Vector2(403, 545)
+position = Vector2(173, -42)
 rotation = 0.30805305
 scale = Vector2(3.019906, 3.019906)
 texture = ExtResource("7_5165p")
 
 [node name="CuttingBoard" type="Sprite2D" parent="Ingredients Area/Chopping Area"]
-position = Vector2(251, 660.00006)
+position = Vector2(14, 72)
 scale = Vector2(2.27147, 2.27147)
 texture = ExtResource("7_xey2f")
 

@@ -57,12 +57,16 @@ func _ready():
 	codeNoteText.visible = false
 	backButton.visible = false
 	letterText.visible = false
+	
+	TutorialManager.ShowClickTutorial("lockbox", dialOne.global_position)
 
 func _process(_delta):
 	if boxUnlocked:
 		pass
 	else:
 		CheckCode()
+		if dialOneValue > 0:
+			TutorialManager.CompleteTutorial("lockbox")
 	
 
 func CheckCode():

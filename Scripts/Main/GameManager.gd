@@ -12,10 +12,12 @@ enum DayState {
 enum ReturnSource { NONE, RADIO, MORSE, KITCHEN, GEARBOX }
 #endregion
 
+var completedTutorials: Dictionary = {}
+var tutorialMode = false
+
 #region SIGNALS
 signal requestDayCycle
 signal requestNightCycle
-signal showTutorialPopUp(tutorial_id: String)
 #endregion
 
 #region VARIABLES
@@ -27,7 +29,6 @@ var currentDay: int = 0
 var isNewDay: bool = false
 var daySTATE: DayState = DayState.NIGHT_IDLE
 var currentTaskStep: int = 0 
-var hasCompletedTutorial: bool = false
 
 # GLOBAL NEEDS
 var needGearBox: bool = false
@@ -63,7 +64,6 @@ var usedTalk: bool = false
 var usedBed: bool = false
 var usedMovement: bool = false
 var usedMorseClicker: bool = false
-var tutorialMode = false
 var introScenePlayed: bool = false
 var isIntroPlayed: bool = false # Dialogue flag
 var pending_post_source: int = ReturnSource.NONE
@@ -109,7 +109,6 @@ func StartNewGame():
 	
 	daySTATE = DayState.SUN_RISING
 	todaysRecipe = "BarfitStovies"
-	hasCompletedTutorial = false
 	
 	morality = 0
 	relationship = 0
@@ -161,11 +160,9 @@ func UpdateObjective():
 				0:
 					needDaughter = true
 					TaskManager.AddTask("dayZERO_checkDaughter", "Check on Elise.")
-					if not hasCompletedTutorial: emit_signal("showTutorialPopUp", "movementTutorial")
 				1:
 					needRadio = true
 					TaskManager.AddTask("dayZERO_checkRadio", "Check the radio.")
-					if not hasCompletedTutorial: emit_signal("showTutorialPopUp", "interactionTutorial")
 				2:
 					# TRIGGER NIGHT
 					emit_signal("requestNightCycle")
@@ -173,6 +170,10 @@ func UpdateObjective():
 					needMorse = true
 					TaskManager.AddTask("nightZERO_checkMorse", "Check for morse code messages.")
 				3:
+					needLight = true
+					TaskManager.AddTask("dayZERO_decision", "Turn off the Light")
+					if not hasCompletedTutorial: emit_signal("showTutorialPopUp", "interactionTutorial")				
+				4:
 					# END OF DAY 0 -> BOMBING CUTSCENE -> ARRIVAL -> DAY 1
 					TaskManager.CompleteDay()
 					introPlayed = true
@@ -190,26 +191,22 @@ func UpdateObjective():
 				2:
 					needGearBox = true
 					TaskManager.AddTask("dayONE_oneTimeGearBoxPuzzle", "Fix the gearbox (4th floor).")
-					if not hasCompletedTutorial: emit_signal("showTutorialPopUp", "gearBoxTutorial")
 				3:
 					needRadio = true
 					TaskManager.AddTask("dayONE_checkRadio_afterGearbox", "Report back to Smith.")
 				4:
 					needMorse = true
-					TaskManager.AddTask("dayONE_checkMorse", "Send morse code.")
+					TaskManager.AddTask("dayONE_checkMorse", "Translate received morse code.")
 				5:
 					# NIGHT
 					emit_signal("requestNightCycle")
 					daySTATE = DayState.MOON_RISING
 					needKitchen = true
 					TaskManager.AddTask("dayONE_cookMeal", "Make dinner (Barfit Stovies).")
-					if not hasCompletedTutorial: emit_signal("showTutorialPopUp", "cookingTutorial")
 					todaysRecipe = "BarfitStovies"
 				6:
 					needLight = true
 					TaskManager.AddTask("dayONE_decision", "Turn the light On or Off?")
-					if not hasCompletedTutorial: emit_signal("showTutorialPopUp", "lightSwitchTutorial")
-					hasCompletedTutorial = true 
 				7:
 					needBed = true
 					TaskManager.AddTask("dayONE_goToBed", "Go to bed.")
@@ -342,8 +339,9 @@ func ConsumeSpawnData(playerNode):
 #save & load
 func write_save_data() -> void:
 	var data := SaveManager.current_save
+	data.tutorial_mode = tutorialMode
+	data.completed_tutorials = completedTutorials
 	data.day_state = daySTATE
-	data.hasCompletedTutorial = hasCompletedTutorial
 	data.current_day = currentDay
 	data.currentTaskStep = currentTaskStep
 	data.need_gear_box = needGearBox
@@ -367,7 +365,8 @@ func apply_save_data() -> void:
 	var data := SaveManager.current_save
 	@warning_ignore("int_as_enum_without_cast")
 	daySTATE = data.day_state
-	hasCompletedTutorial = data.hasCompletedTutorial
+	tutorialMode = data.tutorial_mode
+	completedTutorials = data.completed_tutorials
 	currentDay = data.current_day
 	currentTaskStep = data.currentTaskStep
 	needGearBox = data.need_gear_box

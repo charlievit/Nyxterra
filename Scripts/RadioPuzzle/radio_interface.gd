@@ -54,6 +54,8 @@ var oneShotPlayer: AudioStreamPlayer2D
 var tuningSoundPlayer: AudioStreamPlayer2D
 var messagePlayer: AudioStreamPlayer2D
 var backgroundMusicPlayer: AudioStreamPlayer
+
+var tutorialStage = 0
 #endregion
 
 func _ready():
@@ -97,6 +99,13 @@ func _ready():
 	SetTargetStation(randf_range(10.0, 100.0), randf_range(1.0, 10.0))
 	# -------
 	
+	call_deferred("StartRadioTutorial")
+
+func StartRadioTutorial():
+	var buttonCenter = powerButton.global_position + powerButton.size / 2.0
+	tutorialStage = 1
+	TutorialManager.ShowClickTutorial("radioPower", buttonCenter, "Continuous Clicking")
+
 func _process(delta):
 	if not isPoweredOn:
 		return
@@ -144,6 +153,11 @@ func _on_power_button_pressed():
 	else:
 		machineOn.stop()
 		tuningSoundPlayer.stop()
+	
+	if tutorialStage == 1 and isPoweredOn:
+		tutorialStage = 2
+		TutorialManager.CompleteTutorial("radioPower")
+		TutorialManager.ShowDialTutorial("radioAmp", amplitudeDial)
 
 func ToggleButtons(toggleState: bool):
 	amplitudeDial.disabled = toggleState
@@ -182,6 +196,7 @@ func CheckForMatch():
 			playerWave.default_color = tunedInColor
 			tuningSoundPlayer.volume_db = -15.0
 			emit_signal("stationTuned")
+			TutorialManager.ClearTutorial()
 			await Radio()
 			GameManager.SetPlayerSpawn(returnFloorIndex, returnPosition)
 			GameManager.CompleteTask(currentTaskID)
@@ -230,8 +245,17 @@ func SetPlayerAmplitude(newAmp: float):
 	playerAmplitude = newAmp
 	playerAmplitude = clamp(playerAmplitude, 5.0, 100)
 	UpdateAudio()
+	
+	if tutorialStage == 2:
+		tutorialStage = 3
+		TutorialManager.CompleteTutorial("radioAmp")
+		TutorialManager.ShowDialTutorial("radioFreq", frequencyDial)
 
 func SetPlayerFrequency(newFreq: float):
 	playerFrequency = newFreq / 10
 	playerFrequency = clamp(playerFrequency, 0.5, 10.0)
 	UpdateAudio()
+	
+	if tutorialStage == 3:
+		tutorialStage = 4
+		TutorialManager.CompleteTutorial("radioFreq")
