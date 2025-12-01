@@ -1,206 +1,127 @@
-[gd_scene load_steps=56 format=3 uid="uid://bf5g134nk8ebe"]
+[gd_scene load_steps=55 format=3 uid="uid://dq75ao1vn2g22"]
 
-[ext_resource type="Script" uid="uid://ch3y31u7yadh8" path="res://Scripts/UI/start_menu.gd" id="1_juhg0"]
-[ext_resource type="Texture2D" uid="uid://jx3yb0oa748d" path="res://Assets/Images/Lighthouse/AnimatedLightHouseScreen/LighthouseAnim2.png" id="2_qpngb"]
-[ext_resource type="FontFile" uid="uid://bugymcbk132rp" path="res://Assets/Fonts/Fry's Baskerville Regular.otf" id="3_2ybwg"]
-[ext_resource type="Theme" uid="uid://b4lurv8njswua" path="res://Resources/theme.tres" id="3_3kyvb"]
-[ext_resource type="FontFile" uid="uid://n0n6mmkjc76j" path="res://Assets/Fonts/Eyesome Script.otf" id="3_8wf1d"]
-[ext_resource type="PackedScene" uid="uid://cnhqsrc4gxenp" path="res://Scenes/UI/options_panel.tscn" id="6_4j130"]
-[ext_resource type="Texture2D" uid="uid://cl5m1ag2c73rw" path="res://Socials/instagramLogo.png" id="6_6aj3n"]
-[ext_resource type="Texture2D" uid="uid://ofq8rlceejkj" path="res://Socials/itch.ioLogo.png" id="7_flpep"]
-[ext_resource type="Texture2D" uid="uid://nqv7yxtq17yu" path="res://Socials/X_TwitterLogo_Inverted.png" id="8_4j130"]
-[ext_resource type="Texture2D" uid="uid://clrkcs60j62i7" path="res://Socials/githubLogo.png" id="8_dapwv"]
-[ext_resource type="Texture2D" uid="uid://dyat81sk4l0my" path="res://Socials/TikTokLogo.png" id="9_flpep"]
-[ext_resource type="Texture2D" uid="uid://c183q4u3evnkt" path="res://Socials/RedditLogo.png" id="11_dotjr"]
-[ext_resource type="Texture2D" uid="uid://c4yt30qi4s5pu" path="res://Socials/soundCloudLogo.png" id="12_8hnkv"]
-[ext_resource type="Texture2D" uid="uid://da5s4no21relq" path="res://Socials/bandLabLogo.png" id="13_1gelb"]
-[ext_resource type="Texture2D" uid="uid://dby8t5470r2bp" path="res://Socials/linkedInLogo.png" id="14_1gelb"]
-[ext_resource type="Texture2D" uid="uid://wdrj1fxdpqm8" path="res://Socials/artStationLogo.png" id="16_28ark"]
+[ext_resource type="Script" uid="uid://ch3y31u7yadh8" path="res://Scripts/UI/start_menu.gd" id="1_x7740"]
+[ext_resource type="Texture2D" uid="uid://dhrmvq1g1trpl" path="res://Assets/Images/Cutscenes/SmokePlume/frame0000.png" id="2_pruqg"]
+[ext_resource type="Texture2D" uid="uid://d22r2unu8fgyv" path="res://Assets/Images/Cutscenes/SmokePlume/frame0001.png" id="3_tp1dt"]
+[ext_resource type="Texture2D" uid="uid://cqd822daygrrg" path="res://Assets/Images/Cutscenes/SmokePlume/frame0002.png" id="4_yfqq1"]
+[ext_resource type="Texture2D" uid="uid://crstaupxpuw0a" path="res://Assets/Images/Cutscenes/SmokePlume/frame0003.png" id="5_7551c"]
+[ext_resource type="Texture2D" uid="uid://cxhdjosr13wxu" path="res://Assets/Images/Cutscenes/SmokePlume/frame0004.png" id="6_e84b8"]
+[ext_resource type="Texture2D" uid="uid://dvaisyp7egbh3" path="res://Assets/Images/Cutscenes/SmokePlume/frame0005.png" id="7_ct2x3"]
+[ext_resource type="Texture2D" uid="uid://ctst6lkrj6k2a" path="res://Assets/Images/Cutscenes/SmokePlume/frame0006.png" id="8_nlmy1"]
+[ext_resource type="Texture2D" uid="uid://d03npra10xtk5" path="res://Assets/Images/Cutscenes/SmokePlume/frame0007.png" id="9_pc0xo"]
+[ext_resource type="Texture2D" uid="uid://dcyrssx3b8iee" path="res://Assets/Images/Cutscenes/SmokePlume/frame0008.png" id="10_sht8d"]
+[ext_resource type="Texture2D" uid="uid://yypuqgmtxnyw" path="res://Assets/Images/Cutscenes/SmokePlume/frame0009.png" id="11_04keo"]
+[ext_resource type="Texture2D" uid="uid://me5bmnh1gpvh" path="res://Assets/Images/Cutscenes/SmokePlume/frame0010.png" id="12_sgyms"]
+[ext_resource type="Texture2D" uid="uid://vpuronsfa78p" path="res://Assets/Images/Cutscenes/SmokePlume/frame0011.png" id="13_r1q8w"]
+[ext_resource type="Texture2D" uid="uid://sjoh48tdhroh" path="res://Assets/Images/Cutscenes/SmokePlume/frame0012.png" id="14_tg1ra"]
+[ext_resource type="Texture2D" uid="uid://cnb2015j41lvv" path="res://Assets/Images/Cutscenes/SmokePlume/frame0013.png" id="15_jr03n"]
+[ext_resource type="Texture2D" uid="uid://cemdp0v16o15r" path="res://Assets/Images/Cutscenes/SmokePlume/frame0014.png" id="16_kcuyj"]
+[ext_resource type="Texture2D" uid="uid://dgdpjlxuqe5er" path="res://Assets/Images/Cutscenes/SmokePlume/frame0015.png" id="17_scce1"]
+[ext_resource type="Texture2D" uid="uid://bs6girhqw4ift" path="res://Assets/Images/Cutscenes/SmokePlume/frame0016.png" id="18_sufwb"]
+[ext_resource type="Texture2D" uid="uid://dcd0nwcaefwej" path="res://Assets/Images/Cutscenes/SmokePlume/frame0017.png" id="19_vtj17"]
+[ext_resource type="Texture2D" uid="uid://rxicku0v7h1j" path="res://Assets/Images/Cutscenes/SmokePlume/frame0018.png" id="20_lo7j0"]
+[ext_resource type="Texture2D" uid="uid://cu24wv3a2nfpu" path="res://Assets/Images/Cutscenes/SmokePlume/frame0019.png" id="21_acx7n"]
+[ext_resource type="Texture2D" uid="uid://chytcssutob6j" path="res://Assets/Images/Cutscenes/SmokePlume/frame0020.png" id="22_c7b8u"]
+[ext_resource type="Texture2D" uid="uid://cqiyynsfoedy5" path="res://Assets/Images/Cutscenes/SmokePlume/frame0021.png" id="23_4av6w"]
+[ext_resource type="Texture2D" uid="uid://3s2w347accm2" path="res://Assets/Images/Cutscenes/SmokePlume/frame0022.png" id="24_jxq4o"]
+[ext_resource type="Texture2D" uid="uid://btcuejgroefli" path="res://Assets/Images/Cutscenes/SmokePlume/frame0023.png" id="25_5iclm"]
+[ext_resource type="Texture2D" uid="uid://yvosi5ib6l6i" path="res://Assets/Images/Cutscenes/SmokePlume/frame0024.png" id="26_40nkd"]
+[ext_resource type="Texture2D" uid="uid://cwxksaxjk6yam" path="res://Assets/Images/Cutscenes/SmokePlume/frame0025.png" id="27_hv4fk"]
+[ext_resource type="FontFile" uid="uid://n0n6mmkjc76j" path="res://Assets/Fonts/Eyesome Script.otf" id="28_nnuji"]
+[ext_resource type="Theme" uid="uid://b4lurv8njswua" path="res://Resources/theme.tres" id="29_fhwr0"]
+[ext_resource type="FontFile" uid="uid://bugymcbk132rp" path="res://Assets/Fonts/Fry's Baskerville Regular.otf" id="30_01fsn"]
+[ext_resource type="PackedScene" uid="uid://cnhqsrc4gxenp" path="res://Scenes/UI/options_panel.tscn" id="31_76mws"]
+[ext_resource type="Texture2D" uid="uid://cl5m1ag2c73rw" path="res://Socials/instagramLogo.png" id="32_ii1fg"]
+[ext_resource type="Texture2D" uid="uid://clrkcs60j62i7" path="res://Socials/githubLogo.png" id="33_dk04g"]
+[ext_resource type="Texture2D" uid="uid://ofq8rlceejkj" path="res://Socials/itch.ioLogo.png" id="34_883rd"]
+[ext_resource type="Texture2D" uid="uid://nqv7yxtq17yu" path="res://Socials/X_TwitterLogo_Inverted.png" id="35_rg5xd"]
+[ext_resource type="Texture2D" uid="uid://dyat81sk4l0my" path="res://Socials/TikTokLogo.png" id="36_poak7"]
+[ext_resource type="Texture2D" uid="uid://c183q4u3evnkt" path="res://Socials/RedditLogo.png" id="37_nvrlp"]
+[ext_resource type="Texture2D" uid="uid://c4yt30qi4s5pu" path="res://Socials/soundCloudLogo.png" id="38_knt6f"]
+[ext_resource type="Texture2D" uid="uid://da5s4no21relq" path="res://Socials/bandLabLogo.png" id="39_pgrap"]
+[ext_resource type="Texture2D" uid="uid://dby8t5470r2bp" path="res://Socials/linkedInLogo.png" id="40_kdcmi"]
+[ext_resource type="Texture2D" uid="uid://wdrj1fxdpqm8" path="res://Socials/artStationLogo.png" id="41_kcw8g"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_8wf1d"]
-atlas = ExtResource("2_qpngb")
-region = Rect2(0, 0, 480, 270)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_2ybwg"]
-atlas = ExtResource("2_qpngb")
-region = Rect2(480, 0, 480, 270)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_3kyvb"]
-atlas = ExtResource("2_qpngb")
-region = Rect2(960, 0, 480, 270)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_fa70d"]
-atlas = ExtResource("2_qpngb")
-region = Rect2(1440, 0, 480, 270)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_j6k6k"]
-atlas = ExtResource("2_qpngb")
-region = Rect2(1920, 0, 480, 270)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_6aj3n"]
-atlas = ExtResource("2_qpngb")
-region = Rect2(2400, 0, 480, 270)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_flpep"]
-atlas = ExtResource("2_qpngb")
-region = Rect2(2880, 0, 480, 270)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_4j130"]
-atlas = ExtResource("2_qpngb")
-region = Rect2(3360, 0, 480, 270)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_dotjr"]
-atlas = ExtResource("2_qpngb")
-region = Rect2(3840, 0, 480, 270)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_vxxty"]
-atlas = ExtResource("2_qpngb")
-region = Rect2(4320, 0, 480, 270)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_8hnkv"]
-atlas = ExtResource("2_qpngb")
-region = Rect2(4800, 0, 480, 270)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_1gelb"]
-atlas = ExtResource("2_qpngb")
-region = Rect2(5280, 0, 480, 270)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_dapwv"]
-atlas = ExtResource("2_qpngb")
-region = Rect2(5760, 0, 480, 270)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_28ark"]
-atlas = ExtResource("2_qpngb")
-region = Rect2(6240, 0, 480, 270)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_g8uic"]
-atlas = ExtResource("2_qpngb")
-region = Rect2(6720, 0, 480, 270)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_0v2ic"]
-atlas = ExtResource("2_qpngb")
-region = Rect2(7200, 0, 480, 270)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ee1bv"]
-atlas = ExtResource("2_qpngb")
-region = Rect2(7680, 0, 480, 270)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_sv1v3"]
-atlas = ExtResource("2_qpngb")
-region = Rect2(8160, 0, 480, 270)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_4rjbl"]
-atlas = ExtResource("2_qpngb")
-region = Rect2(8640, 0, 480, 270)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_6q7j5"]
-atlas = ExtResource("2_qpngb")
-region = Rect2(9120, 0, 480, 270)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ho5tr"]
-atlas = ExtResource("2_qpngb")
-region = Rect2(9600, 0, 480, 270)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_mj5xc"]
-atlas = ExtResource("2_qpngb")
-region = Rect2(10080, 0, 480, 270)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_5tb6a"]
-atlas = ExtResource("2_qpngb")
-region = Rect2(10560, 0, 480, 270)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_82exy"]
-atlas = ExtResource("2_qpngb")
-region = Rect2(11040, 0, 480, 270)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_6pru2"]
-atlas = ExtResource("2_qpngb")
-region = Rect2(11520, 0, 480, 270)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_58o8m"]
-atlas = ExtResource("2_qpngb")
-region = Rect2(12000, 0, 480, 270)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_yxcpp"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_idqw4"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_8wf1d")
+"texture": ExtResource("2_pruqg")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_2ybwg")
+"texture": ExtResource("3_tp1dt")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_3kyvb")
+"texture": ExtResource("4_yfqq1")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_fa70d")
+"texture": ExtResource("5_7551c")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_j6k6k")
+"texture": ExtResource("6_e84b8")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_6aj3n")
+"texture": ExtResource("7_ct2x3")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_flpep")
+"texture": ExtResource("8_nlmy1")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_4j130")
+"texture": ExtResource("9_pc0xo")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_dotjr")
+"texture": ExtResource("10_sht8d")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_vxxty")
+"texture": ExtResource("11_04keo")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_8hnkv")
+"texture": ExtResource("12_sgyms")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_1gelb")
+"texture": ExtResource("13_r1q8w")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_dapwv")
+"texture": ExtResource("14_tg1ra")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_28ark")
+"texture": ExtResource("15_jr03n")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_g8uic")
+"texture": ExtResource("16_kcuyj")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_0v2ic")
+"texture": ExtResource("17_scce1")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ee1bv")
+"texture": ExtResource("18_sufwb")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_sv1v3")
+"texture": ExtResource("19_vtj17")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_4rjbl")
+"texture": ExtResource("20_lo7j0")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_6q7j5")
+"texture": ExtResource("21_acx7n")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ho5tr")
+"texture": ExtResource("22_c7b8u")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_mj5xc")
+"texture": ExtResource("23_4av6w")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_5tb6a")
+"texture": ExtResource("24_jxq4o")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_82exy")
+"texture": ExtResource("25_5iclm")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_6pru2")
+"texture": ExtResource("26_40nkd")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_58o8m")
+"texture": ExtResource("27_hv4fk")
 }],
 "loop": true,
 "name": &"default",
@@ -232,8 +153,16 @@ bg_color = Color(0.13725491, 0.12156863, 0.1254902, 0.9019608)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ee1bv"]
 
-[node name="StartMenu" type="Control"]
+[node name="Control" type="Control"]
 layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="StartMenu" type="Control" parent="."]
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -242,14 +171,14 @@ offset_right = 1.0
 offset_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_juhg0")
+script = ExtResource("1_x7740")
 
-[node name="TextureRect" type="AnimatedSprite2D" parent="."]
+[node name="TextureRect" type="AnimatedSprite2D" parent="StartMenu"]
 position = Vector2(575, 324)
 scale = Vector2(2.3999999, 2.4000003)
-sprite_frames = SubResource("SpriteFrames_yxcpp")
+sprite_frames = SubResource("SpriteFrames_idqw4")
 
-[node name="Title" type="RichTextLabel" parent="."]
+[node name="Title" type="RichTextLabel" parent="StartMenu"]
 texture_filter = 1
 layout_mode = 0
 offset_left = 509.0
@@ -258,13 +187,13 @@ offset_right = 1921.0
 offset_bottom = 894.0
 scale = Vector2(0.4954999, 0.5062728)
 theme_override_colors/default_color = Color(0.8745098, 0.8980392, 0.7294118, 1)
-theme_override_fonts/normal_font = ExtResource("3_8wf1d")
+theme_override_fonts/normal_font = ExtResource("28_nnuji")
 theme_override_font_sizes/normal_font_size = 512
 text = "Solais"
 scroll_active = false
 autowrap_mode = 0
 
-[node name="CenterContainer" type="CenterContainer" parent="."]
+[node name="CenterContainer" type="CenterContainer" parent="StartMenu"]
 layout_mode = 1
 offset_left = 464.0
 offset_top = 378.0
@@ -272,72 +201,72 @@ offset_right = 717.0
 offset_bottom = 689.0
 scale = Vector2(0.79494154, 0.8267256)
 
-[node name="Buttons" type="VBoxContainer" parent="CenterContainer"]
+[node name="Buttons" type="VBoxContainer" parent="StartMenu/CenterContainer"]
 texture_filter = 1
 layout_mode = 2
 theme_override_constants/separation = 4
 
-[node name="StartButton" type="Button" parent="CenterContainer/Buttons"]
+[node name="StartButton" type="Button" parent="StartMenu/CenterContainer/Buttons"]
 texture_filter = 1
 layout_mode = 2
-theme = ExtResource("3_3kyvb")
-theme_override_fonts/font = ExtResource("3_2ybwg")
+theme = ExtResource("29_fhwr0")
+theme_override_fonts/font = ExtResource("30_01fsn")
 theme_override_font_sizes/font_size = 49
 action_mode = 0
 text = " New Game "
 
-[node name="ContinueButton" type="Button" parent="CenterContainer/Buttons"]
+[node name="ContinueButton" type="Button" parent="StartMenu/CenterContainer/Buttons"]
 texture_filter = 1
 layout_mode = 2
-theme = ExtResource("3_3kyvb")
-theme_override_fonts/font = ExtResource("3_2ybwg")
+theme = ExtResource("29_fhwr0")
+theme_override_fonts/font = ExtResource("30_01fsn")
 theme_override_font_sizes/font_size = 49
 text = "Continue
 "
 
-[node name="OptionsButton" type="Button" parent="CenterContainer/Buttons"]
+[node name="OptionsButton" type="Button" parent="StartMenu/CenterContainer/Buttons"]
 texture_filter = 1
 layout_mode = 2
-theme = ExtResource("3_3kyvb")
-theme_override_fonts/font = ExtResource("3_2ybwg")
+theme = ExtResource("29_fhwr0")
+theme_override_fonts/font = ExtResource("30_01fsn")
 theme_override_font_sizes/font_size = 49
 text = "Options"
 
-[node name="SocialsButton" type="Button" parent="CenterContainer/Buttons"]
+[node name="SocialsButton" type="Button" parent="StartMenu/CenterContainer/Buttons"]
 texture_filter = 1
 layout_mode = 2
-theme = ExtResource("3_3kyvb")
-theme_override_fonts/font = ExtResource("3_2ybwg")
+theme = ExtResource("29_fhwr0")
+theme_override_fonts/font = ExtResource("30_01fsn")
 theme_override_font_sizes/font_size = 49
 text = "Links"
 
-[node name="QuitButton" type="Button" parent="CenterContainer/Buttons"]
+[node name="QuitButton" type="Button" parent="StartMenu/CenterContainer/Buttons"]
 texture_filter = 1
 layout_mode = 2
-theme = ExtResource("3_3kyvb")
-theme_override_fonts/font = ExtResource("3_2ybwg")
+theme = ExtResource("29_fhwr0")
+theme_override_fonts/font = ExtResource("30_01fsn")
 theme_override_font_sizes/font_size = 49
 text = "Quit
 "
 
-[node name="OptionsPanel" parent="." instance=ExtResource("6_4j130")]
+[node name="OptionsPanel" parent="StartMenu" instance=ExtResource("31_76mws")]
 layout_mode = 0
 
-[node name="SocialsPanel" type="Panel" parent="."]
+[node name="SocialsPanel" type="Panel" parent="StartMenu"]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 39.644794
 scale = Vector2(28.731138, 16.37037)
 theme_override_styles/panel = SubResource("StyleBoxFlat_flpep")
 
-[node name="githubRepoButton" type="Button" parent="SocialsPanel"]
+[node name="githubRepoButton" type="Button" parent="StartMenu/SocialsPanel"]
 layout_mode = 0
 offset_left = 17.518091
 offset_top = 17.172277
 offset_right = 160.77611
 offset_bottom = 173.42276
 scale = Vector2(0.027727112, 0.046241343)
-theme_override_icons/icon = ExtResource("6_6aj3n")
+theme_override_icons/icon = ExtResource("32_ii1fg")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_flpep")
 theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_4j130")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_vxxty")
@@ -349,29 +278,29 @@ theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_28ark"
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_g8uic")
 theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_0v2ic")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_ee1bv")
-icon = ExtResource("8_dapwv")
+icon = ExtResource("33_dk04g")
 icon_alignment = 1
 expand_icon = true
 
-[node name="CyberSugar" type="Label" parent="SocialsPanel"]
+[node name="CyberSugar" type="Label" parent="StartMenu/SocialsPanel"]
 layout_mode = 0
 offset_left = 1.9142996
 offset_top = 7.387984
 offset_right = 955.9143
 offset_bottom = 147.38799
 scale = Vector2(0.013278421, 0.024508782)
-theme = ExtResource("3_3kyvb")
+theme = ExtResource("29_fhwr0")
 theme_override_font_sizes/font_size = 116
 text = "CyberSugar Studios"
 
-[node name="instagramButton" type="Button" parent="SocialsPanel/CyberSugar"]
+[node name="instagramButton" type="Button" parent="StartMenu/SocialsPanel/CyberSugar"]
 layout_mode = 0
 offset_left = 23.590847
 offset_top = 147.05228
 offset_right = 166.84886
 offset_bottom = 303.3028
 scale = Vector2(1.1234008, 1)
-theme_override_icons/icon = ExtResource("6_6aj3n")
+theme_override_icons/icon = ExtResource("32_ii1fg")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_flpep")
 theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_4j130")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_vxxty")
@@ -383,11 +312,11 @@ theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_28ark"
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_g8uic")
 theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_0v2ic")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_ee1bv")
-icon = ExtResource("6_6aj3n")
+icon = ExtResource("32_ii1fg")
 icon_alignment = 1
 expand_icon = true
 
-[node name="itchButton" type="Button" parent="SocialsPanel/CyberSugar"]
+[node name="itchButton" type="Button" parent="StartMenu/SocialsPanel/CyberSugar"]
 layout_mode = 0
 offset_left = 191.34787
 offset_top = 139.57506
@@ -405,11 +334,11 @@ theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_28ark"
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_g8uic")
 theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_0v2ic")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_ee1bv")
-icon = ExtResource("7_flpep")
+icon = ExtResource("34_883rd")
 icon_alignment = 1
 expand_icon = true
 
-[node name="xButton" type="Button" parent="SocialsPanel/CyberSugar"]
+[node name="xButton" type="Button" parent="StartMenu/SocialsPanel/CyberSugar"]
 layout_mode = 0
 offset_left = 364.34726
 offset_top = 147.05226
@@ -427,11 +356,11 @@ theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_28ark"
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_g8uic")
 theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_0v2ic")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_ee1bv")
-icon = ExtResource("8_4j130")
+icon = ExtResource("35_rg5xd")
 icon_alignment = 1
 expand_icon = true
 
-[node name="tikTokButton" type="Button" parent="SocialsPanel/CyberSugar"]
+[node name="tikTokButton" type="Button" parent="StartMenu/SocialsPanel/CyberSugar"]
 layout_mode = 0
 offset_left = 524.2407
 offset_top = 134.59023
@@ -449,22 +378,22 @@ theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_28ark"
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_g8uic")
 theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_0v2ic")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_ee1bv")
-icon = ExtResource("9_flpep")
+icon = ExtResource("36_poak7")
 icon_alignment = 1
 expand_icon = true
 
-[node name="NyxForge Studio" type="Label" parent="SocialsPanel"]
+[node name="NyxForge Studio" type="Label" parent="StartMenu/SocialsPanel"]
 layout_mode = 0
 offset_left = 23.406216
 offset_top = 6.285019
 offset_right = 977.4062
 offset_bottom = 146.28502
 scale = Vector2(0.013278421, 0.024508782)
-theme = ExtResource("3_3kyvb")
+theme = ExtResource("29_fhwr0")
 theme_override_font_sizes/font_size = 116
 text = "NyxForge Studio"
 
-[node name="itchButton" type="Button" parent="SocialsPanel/NyxForge Studio"]
+[node name="itchButton" type="Button" parent="StartMenu/SocialsPanel/NyxForge Studio"]
 layout_mode = 0
 offset_left = 185.13385
 offset_top = 144.55989
@@ -482,18 +411,18 @@ theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_28ark"
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_g8uic")
 theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_0v2ic")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_ee1bv")
-icon = ExtResource("7_flpep")
+icon = ExtResource("34_883rd")
 icon_alignment = 1
 expand_icon = true
 
-[node name="instagramButton2" type="Button" parent="SocialsPanel/NyxForge Studio"]
+[node name="instagramButton2" type="Button" parent="StartMenu/SocialsPanel/NyxForge Studio"]
 layout_mode = 0
 offset_left = 14.75565
 offset_top = 147.05228
 offset_right = 158.0137
 offset_bottom = 303.3028
 scale = Vector2(1.1234008, 1)
-theme_override_icons/icon = ExtResource("6_6aj3n")
+theme_override_icons/icon = ExtResource("32_ii1fg")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_flpep")
 theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_4j130")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_vxxty")
@@ -505,40 +434,40 @@ theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_28ark"
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_g8uic")
 theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_0v2ic")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_ee1bv")
-icon = ExtResource("6_6aj3n")
+icon = ExtResource("32_ii1fg")
 icon_alignment = 1
 expand_icon = true
 
-[node name="Dragonsight Studio" type="Label" parent="SocialsPanel"]
+[node name="Dragonsight Studio" type="Label" parent="StartMenu/SocialsPanel"]
 layout_mode = 0
 offset_left = 22.998447
 offset_top = 13.66247
 offset_right = 976.9985
 offset_bottom = 153.66248
 scale = Vector2(0.013278421, 0.024508782)
-theme = ExtResource("3_3kyvb")
+theme = ExtResource("29_fhwr0")
 theme_override_font_sizes/font_size = 116
 text = "Dragonsight Studio"
 
-[node name="Email" type="Label" parent="SocialsPanel/Dragonsight Studio"]
+[node name="Email" type="Label" parent="StartMenu/SocialsPanel/Dragonsight Studio"]
 layout_mode = 0
 offset_left = 10.484792
 offset_top = 137.08263
 offset_right = 1038.4847
 offset_bottom = 277.08264
 scale = Vector2(0.8080646, 0.711797)
-theme = ExtResource("3_3kyvb")
+theme = ExtResource("29_fhwr0")
 theme_override_font_sizes/font_size = 77
 text = "Email: info@dragonsight.studio"
 
-[node name="instagramButton" type="Button" parent="SocialsPanel/Dragonsight Studio"]
+[node name="instagramButton" type="Button" parent="StartMenu/SocialsPanel/Dragonsight Studio"]
 layout_mode = 0
 offset_left = 10.48479
 offset_top = 209.36258
 offset_right = 153.7428
 offset_bottom = 365.6131
 scale = Vector2(1.1234008, 1)
-theme_override_icons/icon = ExtResource("6_6aj3n")
+theme_override_icons/icon = ExtResource("32_ii1fg")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_flpep")
 theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_4j130")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_vxxty")
@@ -550,18 +479,18 @@ theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_28ark"
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_g8uic")
 theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_0v2ic")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_ee1bv")
-icon = ExtResource("6_6aj3n")
+icon = ExtResource("32_ii1fg")
 icon_alignment = 1
 expand_icon = true
 
-[node name="redditButton" type="Button" parent="SocialsPanel/Dragonsight Studio"]
+[node name="redditButton" type="Button" parent="StartMenu/SocialsPanel/Dragonsight Studio"]
 layout_mode = 0
 offset_left = 180.863
 offset_top = 206.87018
 offset_right = 324.12103
 offset_bottom = 363.12073
 scale = Vector2(1.1234008, 1)
-theme_override_icons/icon = ExtResource("6_6aj3n")
+theme_override_icons/icon = ExtResource("32_ii1fg")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_flpep")
 theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_4j130")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_vxxty")
@@ -573,29 +502,29 @@ theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_28ark"
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_g8uic")
 theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_0v2ic")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_ee1bv")
-icon = ExtResource("11_dotjr")
+icon = ExtResource("37_nvrlp")
 icon_alignment = 1
 expand_icon = true
 
-[node name="GodSnail" type="Label" parent="SocialsPanel"]
+[node name="GodSnail" type="Label" parent="StartMenu/SocialsPanel"]
 layout_mode = 0
 offset_left = 23.14562
 offset_top = 24.499176
 offset_right = 977.1456
 offset_bottom = 164.49918
 scale = Vector2(0.013278421, 0.024508782)
-theme = ExtResource("3_3kyvb")
+theme = ExtResource("29_fhwr0")
 theme_override_font_sizes/font_size = 116
 text = "GodSnail"
 
-[node name="soundCloudButton" type="Button" parent="SocialsPanel/GodSnail"]
+[node name="soundCloudButton" type="Button" parent="StartMenu/SocialsPanel/GodSnail"]
 layout_mode = 0
 offset_left = -7.863632
 offset_top = 124.620575
 offset_right = 135.39438
 offset_bottom = 280.87106
 scale = Vector2(1.3589534, 1.2096782)
-theme_override_icons/icon = ExtResource("6_6aj3n")
+theme_override_icons/icon = ExtResource("32_ii1fg")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_flpep")
 theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_4j130")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_vxxty")
@@ -607,18 +536,18 @@ theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_28ark"
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_g8uic")
 theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_0v2ic")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_ee1bv")
-icon = ExtResource("12_8hnkv")
+icon = ExtResource("38_knt6f")
 icon_alignment = 1
 expand_icon = true
 
-[node name="bandLabButton" type="Button" parent="SocialsPanel/GodSnail"]
+[node name="bandLabButton" type="Button" parent="StartMenu/SocialsPanel/GodSnail"]
 layout_mode = 0
 offset_left = 193.96904
 offset_top = 142.06746
 offset_right = 337.22705
 offset_bottom = 298.31793
 scale = Vector2(1.0430766, 0.92849916)
-theme_override_icons/icon = ExtResource("6_6aj3n")
+theme_override_icons/icon = ExtResource("32_ii1fg")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_flpep")
 theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_4j130")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_vxxty")
@@ -630,29 +559,29 @@ theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_28ark"
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_g8uic")
 theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_0v2ic")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_ee1bv")
-icon = ExtResource("13_1gelb")
+icon = ExtResource("39_pgrap")
 icon_alignment = 1
 expand_icon = true
 
-[node name="Toxic_Humble" type="Label" parent="SocialsPanel"]
+[node name="Toxic_Humble" type="Label" parent="StartMenu/SocialsPanel"]
 layout_mode = 0
 offset_left = 23.118765
 offset_top = 32.515392
 offset_right = 977.1188
 offset_bottom = 172.5154
 scale = Vector2(0.013278421, 0.024508782)
-theme = ExtResource("3_3kyvb")
+theme = ExtResource("29_fhwr0")
 theme_override_font_sizes/font_size = 116
 text = "Toxic_Humble"
 
-[node name="linkedInButton" type="Button" parent="SocialsPanel/Toxic_Humble"]
+[node name="linkedInButton" type="Button" parent="StartMenu/SocialsPanel/Toxic_Humble"]
 layout_mode = 0
 offset_left = 744.4032
 offset_top = -7.8432465
 offset_right = 887.6612
 offset_bottom = 148.40724
 scale = Vector2(1.3589534, 1.2096782)
-theme_override_icons/icon = ExtResource("6_6aj3n")
+theme_override_icons/icon = ExtResource("32_ii1fg")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_flpep")
 theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_4j130")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_vxxty")
@@ -664,29 +593,29 @@ theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_28ark"
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_g8uic")
 theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_0v2ic")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_ee1bv")
-icon = ExtResource("14_1gelb")
+icon = ExtResource("40_kdcmi")
 icon_alignment = 1
 expand_icon = true
 
-[node name="Phren" type="Label" parent="SocialsPanel"]
+[node name="Phren" type="Label" parent="StartMenu/SocialsPanel"]
 layout_mode = 0
 offset_left = 1.846075
 offset_top = 29.26887
 offset_right = 955.84607
 offset_bottom = 169.26888
 scale = Vector2(0.013278421, 0.024508782)
-theme = ExtResource("3_3kyvb")
+theme = ExtResource("29_fhwr0")
 theme_override_font_sizes/font_size = 116
 text = "Phren"
 
-[node name="artStationButton" type="Button" parent="SocialsPanel/Phren"]
+[node name="artStationButton" type="Button" parent="StartMenu/SocialsPanel/Phren"]
 layout_mode = 0
 offset_left = 313.75464
 offset_top = -19.759632
 offset_right = 457.01263
 offset_bottom = 136.49086
 scale = Vector2(1.3589534, 1.2096782)
-theme_override_icons/icon = ExtResource("6_6aj3n")
+theme_override_icons/icon = ExtResource("32_ii1fg")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_flpep")
 theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_4j130")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_vxxty")
@@ -698,29 +627,29 @@ theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_28ark"
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_g8uic")
 theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_0v2ic")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_ee1bv")
-icon = ExtResource("16_28ark")
+icon = ExtResource("41_kcw8g")
 icon_alignment = 1
 expand_icon = true
 
-[node name="Rissa Baker" type="Label" parent="SocialsPanel"]
+[node name="Rissa Baker" type="Label" parent="StartMenu/SocialsPanel"]
 layout_mode = 0
 offset_left = 1.7844137
 offset_top = 18.663555
 offset_right = 955.7844
 offset_bottom = 158.66356
 scale = Vector2(0.013278421, 0.024508782)
-theme = ExtResource("3_3kyvb")
+theme = ExtResource("29_fhwr0")
 theme_override_font_sizes/font_size = 116
 text = "Rissa Baker"
 
-[node name="instagramButton" type="Button" parent="SocialsPanel/Rissa Baker"]
+[node name="instagramButton" type="Button" parent="StartMenu/SocialsPanel/Rissa Baker"]
 layout_mode = 0
 offset_left = 614.3817
 offset_top = 0.987669
 offset_right = 757.6397
 offset_bottom = 157.23816
 scale = Vector2(1.3589534, 1.2096782)
-theme_override_icons/icon = ExtResource("6_6aj3n")
+theme_override_icons/icon = ExtResource("32_ii1fg")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_flpep")
 theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_4j130")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_vxxty")
@@ -732,17 +661,17 @@ theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_28ark"
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_g8uic")
 theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_0v2ic")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_ee1bv")
-icon = ExtResource("6_6aj3n")
+icon = ExtResource("32_ii1fg")
 icon_alignment = 1
 expand_icon = true
 
-[node name="BackButton" type="Button" parent="SocialsPanel"]
+[node name="BackButton" type="Button" parent="StartMenu/SocialsPanel"]
 layout_mode = 0
 offset_left = 0.9397471
 offset_top = 0.97737557
 offset_right = 263.93976
 offset_bottom = 106.97738
 scale = Vector2(0.0267252, 0.035185397)
-theme = ExtResource("3_3kyvb")
+theme = ExtResource("29_fhwr0")
 theme_override_font_sizes/font_size = 88
 text = " Return "

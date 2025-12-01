@@ -21,7 +21,7 @@ const DAY_SENTENCES := {
 	1: "FISHING SEASON",
 	2: "QUIET SEAS",
 	3: "WL56 INCOMING SHIPMENT",
-	4: "SVAEDISH DELIVERY",
+	4: "SVAEDISH DULIVERY",
 }
 
 const MORSE: Dictionary[String, String] = {
