@@ -69,10 +69,6 @@ bg_color = Color(1, 1, 1, 0.0627451)
 
 [node name="Lockbox Minigame" type="Node2D"]
 script = ExtResource("1_mxwii")
-unlockCodeOne = 0
-unlockCodeTwo = 1
-unlockCodeThree = 2
-unlockCodeFour = 7
 
 [node name="TextureRect" type="TextureRect" parent="."]
 texture_filter = 1

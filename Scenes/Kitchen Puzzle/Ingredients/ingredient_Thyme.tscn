@@ -19,7 +19,6 @@ input_pickable = true
 physics_material_override = SubResource("PhysicsMaterial_kvk3b")
 script = ExtResource("1_bb1dm")
 ingredientName = "Thyme"
-isChoppable = true
 chopsNeeded = 10
 potDetectorArea = NodePath("potDetectionArea")
 amountLabel = NodePath("PourOrShake Amount Label")

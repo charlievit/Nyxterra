@@ -20,7 +20,7 @@ const DAY_SENTENCES := {
 	0: "ATTACK IMMINENT DISABLE LIGHT",
 	1: "FISHING SEASON",
 	2: "QUIET SEAS",
-	3: "INCOMING SHIPMENT",
+	3: "WL56 INCOMING SHIPMENT",
 	4: "SVAEDISH DELIVERY",
 }
 
@@ -81,6 +81,7 @@ func _ready() -> void:
 	
 	# TUTORIAL: Show tutorial if minigame never played before
 	if not GameManager.hasPlayedMorse:
+		TutorialManager.shouldBeHidden = false
 		var buttonCenter = morse_key.global_position + (morse_key.size / 2)
 		TutorialManager.ShowClickTutorial(TUTORIAL_ID, buttonCenter, "Morse Clicking")
 	
@@ -136,6 +137,7 @@ func _on_morse_key_down() -> void:
 	GameManager.usedMorseClicker = true
 	# TUTORIAL: Complete immediately on first interaction
 	TutorialManager.CompleteTutorial(TUTORIAL_ID)
+	TutorialManager.shouldBeHidden = true
 	
 	pressing = true
 	background.texture = TEX_DOWN
@@ -170,7 +172,7 @@ func _check_word_progress() -> void:
 		return
 	var goal := target_words[word_i]
 	if decoded_current_word == goal:
-		label_feedback.text = "Word ✓"
+		label_feedback.text = "Word Finished"
 		label_feedback.modulate = Color("#4a795c")
 		word_i += 1
 		decoded_current_word = ""

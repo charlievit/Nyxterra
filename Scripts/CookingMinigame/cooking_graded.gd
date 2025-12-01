@@ -11,13 +11,23 @@ var Dinner3 = preload("res://Assets/Images/KitchenPuzzle/dinnerrabbit.png")
 var Dinner4 = preload("res://Assets/Images/KitchenPuzzle/dinner4.png")
 
 var pathToDinnerScene: String = "res://Scenes/Cutscenes/post_cooking_scene.tscn"
+var pathToKitchenRetry: String = "res://Scenes/Kitchen Puzzle/kitchen_puzzle.tscn"
 
 var counterSound: AudioStream = preload("res://Assets/Audio/Cutscenes/SpinNoise.mp3")
 var counterSoundPlayer: AudioStreamPlayer = AudioStreamPlayer.new()
 
+var currentTaskID
+
 func _ready() -> void:
 	TutorialManager.shouldBeHidden = true
 	TaskManager.shouldBeHidden = true
+	
+	if GameManager.recipeQuality < 0:
+		GameManager.recipeQuality = 0
+	
+	for key in TaskManager.activeTasks.keys():
+		if String(key).contains("_cookMeal"):
+			currentTaskID = key
 	
 	add_child(counterSoundPlayer)
 	counterSoundPlayer.stream = counterSound
@@ -38,7 +48,21 @@ func _ready() -> void:
 	tween.tween_method(func(val):
 		GradeScore.text = str(int(val)), 0, GameManager.recipeQuality, 4.2).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
 	tween.tween_interval(2.0)
-	tween.tween_callback(ProceedToDinnerScene)
+	tween.tween_callback(CheckFailure)
+
+func CheckFailure():
+	if GameManager.recipeQuality <= 50:
+		Dialogic.start("FailureState")
+		
+		await Dialogic.timeline_ended
+	else:
+		GameManager.CompleteTask(currentTaskID)
+		ProceedToDinnerScene()
+	
+	if Dialogic.VAR.wantsRetry:
+		SceneLoader.change_scene_with_loading(pathToKitchenRetry)
+	else:
+		ProceedToDinnerScene()
 
 func ProceedToDinnerScene():
 	SceneLoader.change_scene_with_loading(pathToDinnerScene)

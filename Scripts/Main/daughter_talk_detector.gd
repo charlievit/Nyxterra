@@ -8,6 +8,9 @@ extends Area2D
 var baseLabelPos: Vector2
 var playerBody: CharacterBody2D = null
 
+var footStepsPlayer: AudioStreamPlayer2D
+@onready var footStepsSound = preload("res://Assets/Audio/Player/SFX/Footstep.mp3")
+var stepRightFoot: bool = false
 
 func _ready():
 	UpdateEliseState()
@@ -15,6 +18,11 @@ func _ready():
 	# Connect signals
 	self.body_entered.connect(OnBodyEntered)
 	self.body_exited.connect(OnBodyExited)
+	
+	footStepsPlayer = AudioStreamPlayer2D.new()
+	add_child(footStepsPlayer)
+	footStepsPlayer.stream = footStepsSound
+	footStepsPlayer.volume_db = -8.0
 	
 	if label:
 		# Hide label and store its position for bobbing
@@ -127,6 +135,26 @@ func MoveElise():
 	tween.tween_callback(func():
 		sprite.visible = false
 		player.controlsDisabled = false)
+	
+	while sprite.visible:
+		PlayFootStep()
+		if not sprite.visible:
+			break
+		await get_tree().create_timer(0.6).timeout
+
+func PlayFootStep():
+	stepRightFoot = !stepRightFoot
+	
+	var basePitch = 2.0
+	
+	if stepRightFoot:
+		footStepsPlayer.pitch_scale = basePitch + 0.1
+	else:
+		footStepsPlayer.pitch_scale = basePitch - 0.05
+	
+	footStepsPlayer.pitch_scale += randf_range(-0.05, 0.05)
+	
+	footStepsPlayer.play()
 
 func GetDuration() -> float:
 	match GameManager.currentDay:

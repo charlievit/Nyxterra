@@ -408,17 +408,18 @@ position = Vector2(12, 5)
 shape = SubResource("RectangleShape2D_aecf8")
 
 [node name="ChopButton" type="Button" parent="Ingredients Area/Chopping Area"]
-offset_left = 185.99997
-offset_top = -132.0
-offset_right = 198.43295
-offset_bottom = -66.474
-rotation = 0.32729906
+offset_left = -143.00003
+offset_top = 51.000004
+offset_right = -21.658432
+offset_bottom = 74.244
 scale = Vector2(2.5382888, 2.5382888)
+theme = ExtResource("14_ayc4h")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_1s044")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_56nxb")
 theme_override_styles/hover = SubResource("StyleBoxFlat_avvmv")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_o7q6h")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_yuwkw")
+text = "CHOP"
 
 [node name="Knife" type="Sprite2D" parent="Ingredients Area/Chopping Area"]
 position = Vector2(173, -42)
@@ -436,6 +437,7 @@ offset_left = -144.0
 offset_top = 64.0
 offset_right = 168.0
 offset_bottom = 76.0
+mouse_filter = 2
 show_percentage = false
 
 [node name="TrashIcon" type="Area2D" parent="Ingredients Area"]

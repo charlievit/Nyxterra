@@ -1,4 +1,4 @@
-[gd_scene load_steps=79 format=3 uid="uid://bty042lmdfi02"]
+[gd_scene load_steps=80 format=3 uid="uid://bty042lmdfi02"]
 
 [ext_resource type="Texture2D" uid="uid://brrqynw57auwm" path="res://Assets/Images/Lighthouse/Structure/FullTowerBuild2.png" id="1_w401g"]
 [ext_resource type="Script" uid="uid://duquj7bcb54rw" path="res://Scripts/Main/lighthouse_button_area.gd" id="1_we2es"]
@@ -68,6 +68,7 @@
 [ext_resource type="Texture2D" uid="uid://c8ytipb6iq06u" path="res://Assets/Images/Lighthouse/Props/Kitchen and Dining Room/miniLockbox.png" id="64_v23lm"]
 [ext_resource type="Script" uid="uid://ptduaxougvs3" path="res://Scripts/Main/lockbox_detection_area.gd" id="66_we2es"]
 [ext_resource type="Texture2D" uid="uid://bi3k3i52hdwlr" path="res://Assets/Images/Lighthouse/Props/Living Areas/couch_l.png" id="67_l1a87"]
+[ext_resource type="Texture2D" uid="uid://dt7sot8xv2gpu" path="res://Assets/Images/Lockbox Puzzle/UnfoldedLetter.png" id="69_ugh0q"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b2lj4"]
 size = Vector2(25.488739, 42.957886)
@@ -876,6 +877,14 @@ texture = ExtResource("55_oijgy")
 z_index = 3
 position = Vector2(224, 78)
 texture = ExtResource("38_sai28")
+
+[node name="Bunny Drawing Day_ZERO" type="Sprite2D" parent="BOTTOM"]
+z_index = 3
+position = Vector2(242.99994, 71)
+rotation = -0.2509236
+scale = Vector2(0.020614699, 0.020614699)
+skew = -1.176352
+texture = ExtResource("69_ugh0q")
 
 [node name="Plate" type="Sprite2D" parent="BOTTOM"]
 visible = false

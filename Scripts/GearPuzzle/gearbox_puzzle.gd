@@ -79,8 +79,9 @@ func _ready():
 	TaskManager.shouldBeHidden = true
 	
 	# START TUTORIAL SEQUENCE
-	TutorialManager.shouldBeHidden = true
-	StartPlacingTutorial()
+	if not GameManager.hasPlayedGearbox:
+		TutorialManager.shouldBeHidden = false
+		StartPlacingTutorial()
 	
 	for key in TaskManager.activeTasks.keys():
 		if String(key).find("GearBox") != -1:
@@ -315,6 +316,7 @@ func EndTutorialSequence():
 	currentTutorialPeg = null
 	TutorialManager.CompleteTutorial("gearboxRemove")
 	TutorialManager.ClearTutorial()
+	TutorialManager.shouldBeHidden = true
 
 func UpdateLoopVolume():
 	var currentPoweredCount = 0

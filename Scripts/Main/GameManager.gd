@@ -212,7 +212,7 @@ func CheckMorality() -> int:
 			if Dialogic.VAR.Day3_response == "Yes":
 				morality += 25
 		4:
-			if Dialogic.VAR.Day4_responce == "No":
+			if Dialogic.VAR.Day4_response == "No":
 				morality += 25
 	return morality
 
@@ -231,12 +231,12 @@ func UpdateObjective():
 					needRadio = true
 					TaskManager.AddTask("dayZERO_checkRadio", "Check the radio.")
 				2:
-					# TRIGGER NIGHT
-					emit_signal("requestNightCycle")
-					daySTATE = DayState.NIGHT_FADING
 					needMorse = true
 					TaskManager.AddTask("nightZERO_checkMorse", "Check for morse code messages.")
 				3:
+					# TRIGGER NIGHT
+					emit_signal("requestNightCycle")
+					daySTATE = DayState.NIGHT_FADING
 					needLight = true
 					TaskManager.AddTask("dayZERO_decision", "Turn off the Light")
 				4:
