@@ -164,6 +164,8 @@ func _fade_out_all_audio_and_check() -> void:
 func EndingCredits():
 	var tween = create_tween()
 	
+	tween.tween_property(songPlayer, "volume_db", -5.0, 18.0)
+  
 	tween.tween_property(credits, "position:y", -6303, 120.0)
 	tween.tween_property(animation, "modulate:a", 0.0, 3.0)
 	tween.tween_callback(EndTheGame)
