@@ -1,22 +1,37 @@
-[gd_scene load_steps=19 format=3 uid="uid://bkg5t0b12oxws"]
+[gd_scene load_steps=34 format=3 uid="uid://bkg5t0b12oxws"]
 
 [ext_resource type="Script" uid="uid://cpiilsgkrpfvj" path="res://Scripts/CookingMinigame/cooking_graded.gd" id="1_q2y2m"]
+[ext_resource type="Texture2D" uid="uid://bovyawkuo6lur" path="res://Assets/Images/Lighthouse/Structure/External/skyNightBackground.png" id="2_0s75d"]
 [ext_resource type="Texture2D" uid="uid://besx2dmee73x5" path="res://Assets/Images/KitchenPuzzle/dinner1.png" id="2_yfn86"]
 [ext_resource type="Theme" uid="uid://b4lurv8njswua" path="res://Resources/theme.tres" id="3_plywk"]
+[ext_resource type="Texture2D" uid="uid://b50ouydunlm4h" path="res://Assets/Images/Lighthouse/Structure/External/ocean.png" id="3_y08yo"]
 [ext_resource type="FontFile" uid="uid://cd5qpfhq7agn5" path="res://Assets/Fonts/Baskerville Bold.otf" id="3_yfn86"]
+[ext_resource type="Texture2D" uid="uid://0i1i1vxxbigj" path="res://Assets/Images/Lighthouse/Structure/External/oceanAnim-sheet.png" id="4_7j4eq"]
 [ext_resource type="Texture2D" uid="uid://bd1gskhtw576f" path="res://Assets/Images/KitchenPuzzle/Steam Animation/frame0000.png" id="4_8uhr8"]
+[ext_resource type="Texture2D" uid="uid://liqced3k5bpj" path="res://Assets/Images/Lighthouse/Structure/External/SnowAnim/Snow-0000.png" id="5_apugx"]
 [ext_resource type="Texture2D" uid="uid://c2rcq3ue0hxhu" path="res://Assets/Images/KitchenPuzzle/Steam Animation/frame0001.png" id="5_r5hgd"]
+[ext_resource type="Texture2D" uid="uid://dgxdq0boqv10u" path="res://Assets/Images/KitchenPuzzle/Kitchen.png" id="6_0ei6k"]
 [ext_resource type="Texture2D" uid="uid://2mbqdmcf006h" path="res://Assets/Images/KitchenPuzzle/Steam Animation/frame0002.png" id="6_jxc8f"]
+[ext_resource type="Texture2D" uid="uid://c2e3n62peibcb" path="res://Assets/Images/KitchenPuzzle/Ingredients/ingredientShaker_SaltIcon.png" id="7_8nnp5"]
 [ext_resource type="Texture2D" uid="uid://dvgl7g2cdd3f" path="res://Assets/Images/KitchenPuzzle/Steam Animation/frame0003.png" id="7_w24cu"]
+[ext_resource type="Texture2D" uid="uid://c6uhat57h7cs8" path="res://Assets/Images/KitchenPuzzle/Ingredients/ingredientShaker_PepperIcon.png" id="8_75n0q"]
 [ext_resource type="Texture2D" uid="uid://13bgj5nh544j" path="res://Assets/Images/KitchenPuzzle/Steam Animation/frame0004.png" id="8_hryyp"]
 [ext_resource type="Texture2D" uid="uid://c3hvvbss22ekb" path="res://Assets/Images/KitchenPuzzle/Steam Animation/frame0005.png" id="9_kobf3"]
+[ext_resource type="Texture2D" uid="uid://41wil12mx6ub" path="res://Assets/Images/KitchenPuzzle/Knife.png" id="9_ov0x1"]
 [ext_resource type="Texture2D" uid="uid://cgqq1yoyixq5j" path="res://Assets/Images/KitchenPuzzle/Steam Animation/frame0006.png" id="10_0llpu"]
+[ext_resource type="Texture2D" uid="uid://r85o7k4toril" path="res://Assets/Images/KitchenPuzzle/ChoppingBoard.png" id="10_ge0nq"]
 [ext_resource type="Texture2D" uid="uid://3v6l04ohuhdn" path="res://Assets/Images/KitchenPuzzle/Steam Animation/frame0007.png" id="11_quwrk"]
 [ext_resource type="Texture2D" uid="uid://bowuogmrjhjeq" path="res://Assets/Images/KitchenPuzzle/Steam Animation/frame0008.png" id="12_kbtbm"]
 [ext_resource type="Texture2D" uid="uid://b6g832jyo8y6j" path="res://Assets/Images/KitchenPuzzle/Steam Animation/frame0009.png" id="13_ujnxj"]
 [ext_resource type="Texture2D" uid="uid://b7oh5atu2ubxf" path="res://Assets/Images/KitchenPuzzle/Steam Animation/frame0010.png" id="14_nxrl5"]
 [ext_resource type="Texture2D" uid="uid://rnndc4v3m02a" path="res://Assets/Images/KitchenPuzzle/Steam Animation/frame0011.png" id="15_ly5nr"]
 [ext_resource type="Texture2D" uid="uid://bf0elhfhyy7vi" path="res://Assets/Images/KitchenPuzzle/Steam Animation/frame0012.png" id="16_0s75d"]
+[ext_resource type="Texture2D" uid="uid://dochv2w8mxac5" path="res://Assets/Images/KitchenPuzzle/Icons.png" id="27_d2kvw"]
+[ext_resource type="Texture2D" uid="uid://6weksoqcau0u" path="res://Assets/Images/KitchenPuzzle/CookerButton.png" id="28_l4wsg"]
+[ext_resource type="Texture2D" uid="uid://cf4bdb0ln48n8" path="res://Assets/Images/KitchenPuzzle/Pot.png" id="29_rk4gx"]
+[ext_resource type="Texture2D" uid="uid://b4wtcvsunfusc" path="res://Assets/Images/KitchenPuzzle/Ingredients/oilBottle_SingleIcon.png" id="30_apugx"]
+[ext_resource type="Texture2D" uid="uid://b3xyosqx7xt6a" path="res://Assets/Images/KitchenPuzzle/Ingredients/stockBox.png" id="31_0ei6k"]
+[ext_resource type="Texture2D" uid="uid://hlimddog4sqx" path="res://Assets/Images/KitchenPuzzle/Ingredients/waterBottle_SingleIcon.png" id="32_8nnp5"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_y08yo"]
 animations = [{
@@ -77,9 +92,54 @@ theme_override_constants/separation = 74
 alignment = 1
 script = ExtResource("1_q2y2m")
 
+[node name="SkyNightBackground" type="Sprite2D" parent="."]
+position = Vector2(684, 161)
+scale = Vector2(2.1394837, 2.1394837)
+texture = ExtResource("2_0s75d")
+
+[node name="Ocean" type="Sprite2D" parent="."]
+position = Vector2(741, 244)
+texture = ExtResource("3_y08yo")
+
+[node name="OceanAnimSheet" type="Sprite2D" parent="."]
+position = Vector2(226, 244)
+texture = ExtResource("4_7j4eq")
+
+[node name="Snow0000" type="Sprite2D" parent="."]
+position = Vector2(47, 152)
+scale = Vector2(10.2883005, 10.2883005)
+texture = ExtResource("5_apugx")
+
+[node name="Kitchen Background" type="Sprite2D" parent="."]
+position = Vector2(576, 324)
+scale = Vector2(2.4, 2.4)
+texture = ExtResource("6_0ei6k")
+
+[node name="IngredientShakerSaltIcon" type="Sprite2D" parent="."]
+position = Vector2(379.99997, 130.00002)
+scale = Vector2(2.2774792, 2.2774792)
+texture = ExtResource("7_8nnp5")
+
+[node name="IngredientShakerPepperIcon" type="Sprite2D" parent="."]
+position = Vector2(537.99994, 128.00012)
+scale = Vector2(2.3208919, 2.3208919)
+texture = ExtResource("8_75n0q")
+
+[node name="Knife" type="Sprite2D" parent="."]
+position = Vector2(713, 380.00003)
+rotation = 0.24463241
+scale = Vector2(3.4715083, 3.4715083)
+texture = ExtResource("9_ov0x1")
+
+[node name="ChoppingBoard" type="Sprite2D" parent="."]
+position = Vector2(547, 511)
+scale = Vector2(2.7299998, 2.7299998)
+texture = ExtResource("10_ge0nq")
+
 [node name="Header" type="Label" parent="."]
 layout_mode = 2
 theme = ExtResource("3_plywk")
+theme_override_constants/outline_size = 25
 theme_override_fonts/font = ExtResource("3_yfn86")
 theme_override_font_sizes/font_size = 65
 text = "Meal complete!"
@@ -113,6 +173,7 @@ texture = ExtResource("2_yfn86")
 [node name="Header2" type="Label" parent="."]
 layout_mode = 2
 theme = ExtResource("3_plywk")
+theme_override_constants/outline_size = 25
 theme_override_font_sizes/font_size = 65
 text = "Quality:"
 horizontal_alignment = 1
@@ -120,6 +181,37 @@ horizontal_alignment = 1
 [node name="Score" type="Label" parent="."]
 layout_mode = 2
 theme = ExtResource("3_plywk")
+theme_override_constants/outline_size = 25
 theme_override_font_sizes/font_size = 65
 text = "0"
 horizontal_alignment = 1
+
+[node name="Icons" type="Sprite2D" parent="."]
+position = Vector2(127, 580.00006)
+scale = Vector2(2.514546, 2.514546)
+texture = ExtResource("27_d2kvw")
+
+[node name="CookerButton" type="Sprite2D" parent="."]
+position = Vector2(126, 585)
+scale = Vector2(2.6981745, 2.6981745)
+texture = ExtResource("28_l4wsg")
+
+[node name="Pot" type="Sprite2D" parent="."]
+position = Vector2(138, 388)
+scale = Vector2(2.270867, 2.270867)
+texture = ExtResource("29_rk4gx")
+
+[node name="OilBottleSingleIcon" type="Sprite2D" parent="."]
+position = Vector2(1013.00006, 419)
+scale = Vector2(4.776412, 4.776412)
+texture = ExtResource("30_apugx")
+
+[node name="StockBox" type="Sprite2D" parent="."]
+position = Vector2(1094, 425)
+scale = Vector2(4.143796, 4.143796)
+texture = ExtResource("31_0ei6k")
+
+[node name="WaterBottleSingleIcon" type="Sprite2D" parent="."]
+position = Vector2(928.00006, 400)
+scale = Vector2(6.0484858, 6.0484858)
+texture = ExtResource("32_8nnp5")

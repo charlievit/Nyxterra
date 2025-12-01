@@ -49,6 +49,7 @@ var needKitchen: bool = false
 var needLight: bool = false
 var needBed: bool = false
 var needLockbox: bool = false
+var lockBoxVisible: bool = false
 
 # GLOBAL ENDING VARIABLES
 var yesterdaysMorality: int = 0
@@ -127,7 +128,7 @@ func StartNewGame():
 	relationship = 50
 	yesterdaysRelationship = 50
 	
-	ResetDailyFlags()
+	ResetFlags()
 	TaskManager.CompleteDay()
 	
 	daySTATE = DayState.SUN_RISING
@@ -174,7 +175,7 @@ func StartDay(day: int):
 			musicPlayer.set_bus("Music")
 			musicPlayer.play()
 
-func ResetDailyFlags():
+func ResetFlags():
 	usedTalk = false
 	usedRadio = false
 	usedMorse = false
@@ -363,6 +364,7 @@ func UpdateObjective():
 				GameManager.StopBGM()
 				CutsceneManager.PlayCutscene("res://Scenes/Cutscenes/bombing_cutscene.tscn", -1)
 			else:
+				lockBoxVisible = true
 				# GOOD ENDING FLOW
 				match currentTaskStep:
 					0:

@@ -34,7 +34,6 @@ func _ready() -> void:
 		4: DinnerAsset.texture = Dinner4
 	await get_tree().create_timer(1.5).timeout
 	counterSoundPlayer.play()
-	GameManager.recipeQuality = 100
 	var tween = create_tween()
 	tween.tween_method(func(val):
 		GradeScore.text = str(int(val)), 0, GameManager.recipeQuality, 4.2).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)

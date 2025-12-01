@@ -6,7 +6,7 @@ extends Control
 @onready var brokenWindow = $MIDDLE/WindowBoarded
 
 func _ready() -> void:
-	lockbox.visible = GameManager.needLockbox
+	lockbox.visible = GameManager.lockBoxVisible
 	wallCrack.visible = GameManager.introScenePlayed
 	window.visible = not GameManager.introScenePlayed
 	brokenWindow.visible = GameManager.introScenePlayed

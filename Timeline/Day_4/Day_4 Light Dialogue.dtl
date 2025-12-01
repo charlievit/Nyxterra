@@ -1,10 +1,11 @@
-- Yes
+- On
 	[voice path="res://Assets/Audio/VA/Sutherland/Knew they were coming.mp3" volume="-3.0" bus="Character Voice"]
 	Sutherland: I guess I knew they were coming...
 	set {Day4_response} = "Yes"
 	[signal arg="Yes"]
-- No
+- Off
 	audio "res://Assets/Audio/VA/Sutherland/Never again.mp3"
+	[wait time="1.8"]
 	[voice path="res://Assets/Audio/VA/Sutherland/Ill take care of Elise.mp3" volume="-1.0" bus="Character Voice"]
 	Sutherland: Not again. Never again. I love you Cath. I'll take care of Elise for you.
 	set {Day4_response} = "No"

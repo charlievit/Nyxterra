@@ -52,12 +52,6 @@ func _ready():
 	# Start Animation after a short delay
 	await get_tree().create_timer(1.0).timeout
 	
-	moralityStart = 0
-	moralityEnd = 25
-	
-	relationshipStart = 50
-	relationshipEnd = 60
-	
 	UpdateValues()
 
 func DetermineDayText():

@@ -275,7 +275,6 @@ func RegisterNodes(heatDialNode: Button, potAreaNode: Area2D, progressBarNode: P
 	TutorialManager.shouldBeHidden = true # Default to hidden
 	
 	if not GameManager.hasPlayedKitchen:
-		TutorialManager.shouldBeHidden = false
 		UpdateTutorialState("BOOK")
 
 func PrepareSounds(chopSoundFile, plopSoundFile, boilingSoundFile, stoveOffSoundFile, stoveOnSoundFile, pourSoundFile, shakerSoundFiles):
@@ -309,7 +308,7 @@ func UpdateTutorialState(state: String):
 			TutorialManager.CompleteTutorial(TUTORIAL_DRAG_BOARD)
 		"KNIFE":
 			var cursorPosition = tutorialKnifeButton.global_position + (tutorialKnifeButton.size / 2.0)
-			TutorialManager.ShowClickTutorial(TUTORIAL_CHOP, cursorPosition)
+			TutorialManager.ShowClickTutorial(TUTORIAL_CHOP, cursorPosition, "Morse Clicking")
 		"BOARD_TO_POT":
 			TutorialManager.CompleteTutorial(TUTORIAL_CHOP)
 			TutorialManager.ShowDragTutorial(TUTORIAL_DRAG_POT, tutorialCuttingBoard.global_position, tutorialPotArea.global_position)
