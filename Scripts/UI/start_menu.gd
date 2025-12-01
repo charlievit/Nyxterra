@@ -111,7 +111,7 @@ func _ready() -> void:
 	
 	oceanPlayer.play()
 	windPlayer.play()
-	music.play()
+	musicPlayer.play()
 	
 	# Signals
 	start_button.pressed.connect(_on_start_pressed)
