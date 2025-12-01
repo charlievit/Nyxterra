@@ -38,8 +38,8 @@ func _process(_delta):
 func OnBodyEntered(body):
 	if body.is_in_group("player"):
 		playerBody = body # Store the player
-	if (body.is_in_group("player") and GameManager.needKitchen and not GameManager.usedKitchen) or (body.is_in_group("player") and GameManager.needKitchen and GameManager.tutorialMode):
-		if label:
+	if body.is_in_group("player") and GameManager.needKitchen and not GameManager.usedKitchen:
+		if label and not GameManager.tutorialMode:
 			label.visible = true
 
 func OnBodyExited(body):

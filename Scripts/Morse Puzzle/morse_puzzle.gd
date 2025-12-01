@@ -81,7 +81,6 @@ func _ready() -> void:
 	
 	# TUTORIAL: Show tutorial if minigame never played before
 	if not GameManager.hasPlayedMorse:
-		TutorialManager.shouldBeHidden = false
 		var buttonCenter = morse_key.global_position + (morse_key.size / 2)
 		TutorialManager.ShowClickTutorial(TUTORIAL_ID, buttonCenter, "Morse Clicking")
 	

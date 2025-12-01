@@ -64,10 +64,16 @@ func ParseRecipeToInstructions(recipeName: String) -> Dictionary:
 			step_text += "\n" # Extra spacing between steps
 		
 		# DECIDE WHICH PAGE TO PUT TEXT ON
-		if i < STEPS_PER_PAGE:
-			output["left"] += step_text
+		if GameManager.currentDay != 4:
+			if i < STEPS_PER_PAGE:
+				output["left"] += step_text
+			else:
+				output["right"] += step_text
 		else:
-			output["right"] += step_text
+			if i < STEPS_PER_PAGE + 1:
+				output["left"] += step_text
+			else:
+				output["right"] += step_text
 			
 	return output
 

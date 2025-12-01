@@ -80,7 +80,7 @@ func _ready():
 	
 	# START TUTORIAL SEQUENCE
 	TutorialManager.shouldBeHidden = true
-	
+	StartPlacingTutorial()
 	
 	for key in TaskManager.activeTasks.keys():
 		if String(key).find("GearBox") != -1:
@@ -90,7 +90,6 @@ func _ready():
 	musicPlayer.stream = backgroundMusic
 	musicPlayer.autoplay = true
 	musicPlayer.volume_db = -17.0
-	musicPlayer.set_bus("Music")
 	musicPlayer.play()
 
 func _exit_tree():

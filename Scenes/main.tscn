@@ -71,7 +71,7 @@ cameraLimitRight = 325
 riseDuration = 50.0
 
 [node name="Elise (Daughter)" parent="." instance=ExtResource("17_h1bgf")]
-z_index = 2
+z_index = 3
 position = Vector2(172.57541, 340.13828)
 scale = Vector2(0.26596916, 0.28275225)
 animation = &"sitting"
@@ -79,7 +79,7 @@ frame_progress = 0.0
 
 [node name="Player" parent="." instance=ExtResource("2_8gbba")]
 z_index = 1
-position = Vector2(88, 278)
+position = Vector2(88.07791, 277.12317)
 slide_on_ceiling = false
 moveSpeed = 60.0
 

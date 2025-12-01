@@ -64,8 +64,6 @@ const TUTORIAL_FREQ = "radioFreq"
 
 func _ready():
 	TaskManager.shouldBeHidden = true
-	
-	# Default to hidden unless we determine this is a first-time run
 	TutorialManager.shouldBeHidden = true 
 	
 	for key in TaskManager.activeTasks.keys():
@@ -106,13 +104,8 @@ func _ready():
 	SetTargetStation(randf_range(10.0, 100.0), randf_range(1.0, 10.0))
 	# -------
 	
-	# CHECK MINIGAME TUTORIAL STATUS
 	if not GameManager.hasPlayedRadio:
-		TutorialManager.shouldBeHidden = false
-		# Wait slightly for UI layout to settle before calculating tutorial positions
 		get_tree().create_timer(0.1).timeout.connect(StartRadioTutorial)
-	else:
-		TutorialManager.shouldBeHidden = true
 
 func StartRadioTutorial():
 	# If this tutorial is already done, TutorialManager won't show it.

@@ -60,7 +60,7 @@ func Begin():
 func RollCredits():
 	var tween = create_tween()
 	
-	tween.tween_property(credits, "position:y", -6778, timeLeft)
+	tween.tween_property(credits, "position:y", -6964, timeLeft)
 	
 	tween.tween_callback(FadeToBlack)
 

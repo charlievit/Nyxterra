@@ -72,9 +72,7 @@ func _ready():
 	# START TUTORIAL SEQUENCE
 	TutorialManager.shouldBeHidden = true
 	
-	if not GameManager.hasPlayedLockbox:
-		TutorialManager.shouldBeHidden = false
-		TutorialManager.ShowClickTutorial("lockbox", dialOne.global_position)
+	TutorialManager.ShowClickTutorial("lockbox", dialOne.global_position)
 
 func _exit_tree():
 	musicPlayer.stop()

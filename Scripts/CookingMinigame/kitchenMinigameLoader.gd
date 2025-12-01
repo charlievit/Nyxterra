@@ -99,8 +99,6 @@ func _ready():
 	
 	KitchenController.StartRecipe(todaysRecipe)
 	
-	TaskManager.shouldBeHidden = true
-	
 	recipeText = recipeParser.ParseRecipeToInstructions(todaysRecipe)
 	recipeDisplayLocation.bbcode_enabled = true
 	if recipeDisplayLocation2:
