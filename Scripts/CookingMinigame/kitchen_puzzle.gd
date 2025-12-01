@@ -80,8 +80,9 @@ const STEP_END_COLOR = Color("#8c524f")
 
 var recipes = {
 	"BarfitStovies": [
-		{"heat": 50.0, "ingredients": [{"name": "Oil", "type": "Pourable", "amount": 5}], "wait": 10.0, "time": 0.0},
-		{"heat": 25.0, "ingredients": [{"name": "Onion (Chopped)", "type": "Whole", "amount": 2}, {"name": "Salt", "type": "Shaker", "amount": 5}], "wait": 45.0, "time": 30.0},
+		{"heat": 50.0, "ingredients": [{"name": "Onion (Chopped)", "type": "Whole", "amount": 1}], "wait": 10.0, "time": 0.0},
+		{"heat": 50.0, "ingredients": [{"name": "Oil", "type": "Pourable", "amount": 5}], "wait": 10.0, "time": 10.0},
+		{"heat": 25.0, "ingredients": [{"name": "Onion (Chopped)", "type": "Whole", "amount": 1}, {"name": "Salt", "type": "Shaker", "amount": 5}], "wait": 45.0, "time": 30.0},
 		{"heat": 50.0, "ingredients": [{"name": "Potato (Chopped)", "type": "Whole", "amount": 5}, {"name": "Stock", "type": "Pourable", "amount": 10}], "wait": 30.0, "time": 45.0},
 		{"heat": 25.0, "ingredients": [], "wait": 15.0, "time": 99.0},
 		{"heat": 25.0, "ingredients": [{"name": "Parsley", "type": "Whole", "amount": 1}, {"name": "Pepper", "type": "Shaker", "amount": 5}], "wait": 5.0, "time": 60.0},
@@ -188,11 +189,45 @@ func Loop():
 func OnLoopSound(player):
 	player.play()
 
-func _process(_delta): #this is purely for the progress bar
-	
+func FailureState():
+	progressBar.visible = false
+	CleanUpReferences()
+		
+	# Set dialogue flags
+	if recipeQuality >= 50 and recipeQuality <= 100:
+		Dialogic.VAR.Cooking_Response = "Good"
+			
+		if GameManager.currentDay == 1 or GameManager.currentDay == 2:
+			Dialogic.start(endCookingGoodLinesEarly.pick_random())
+		else:
+			Dialogic.start(endCookingGoodLinesLate.pick_random())
+	else:
+		Dialogic.VAR.Cooking_Response = "Bad"
+		Dialogic.start(endCookingBadLines.pick_random())
+			
+	print("Recipe complete. Final Quality: %d" % recipeQuality)
+	gameDone = true
+		
+	GameManager.AddCookingScore(recipeQuality)
+		
+	# Cleanup Tutorials
+	TutorialManager.ClearTutorial()
+		
+		
+	await get_tree().create_timer(2.0).timeout
+	kitchenGameMusicPlayer.stop()
+	GameManager.SetPlayerSpawn(returnFloorIndex, returnPosition)
+	GameManager.pending_post_source = GameManager.ReturnSource.KITCHEN
+	if ResourceLoader.exists(endGameScenePath):
+		SceneLoader.change_scene_with_loading(endGameScenePath)
+
+func _process(_delta):
 	if not is_instance_valid(progressBar) or not is_instance_valid(steamAnim):
 		set_process(false)
 		return
+	
+	if recipeQuality <= 0:
+		FailureState()
 	
 	if isWaiting:
 		# Blue bar, counts up
@@ -214,6 +249,8 @@ func _process(_delta): #this is purely for the progress bar
 		progressBar.value = progressBar.max_value
 		progressBar.modulate.a = (sin(Time.get_ticks_msec() * 0.01) + 1.0) / 2.0
 	else:
+		if gameDone:
+			return
 		# No timers active, hide bar
 		progressBar.visible = false
 		progressBar.modulate.a = 1.0
@@ -272,10 +309,11 @@ func RegisterNodes(heatDialNode: Button, potAreaNode: Area2D, progressBarNode: P
 	set_process(true)
 	
 	# START TUTORIAL SEQUENCE
-	TutorialManager.shouldBeHidden = true # Default to hidden
+	TutorialManager.shouldBeHidden = true
 	
 	if not GameManager.hasPlayedKitchen:
 		UpdateTutorialState("BOOK")
+		TutorialManager.shouldBeHidden = false
 
 func PrepareSounds(chopSoundFile, plopSoundFile, boilingSoundFile, stoveOffSoundFile, stoveOnSoundFile, pourSoundFile, shakerSoundFiles):
 	chopSound = chopSoundFile
@@ -315,6 +353,7 @@ func UpdateTutorialState(state: String):
 		"COMPLETE":
 			TutorialManager.CompleteTutorial(TUTORIAL_DRAG_POT)
 			TutorialManager.ClearTutorial()
+			TutorialManager.shouldBeHidden = true
 
 # Reset the recipe if beyond a failure threshold or on button press at player-will
 func ResetRecipe():

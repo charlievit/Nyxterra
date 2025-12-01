@@ -82,7 +82,7 @@ func _process(_delta):
 				var target_rot = CHOP_ROTATION
 				if is_done:
 					target_rot = REST_ROTATION
-					if not chopTimer.is_stopped(): chopTimer.stop()
+					#if not chopTimer.is_stopped(): chopTimer.stop()
 				if is_done:
 					knifeSprite.position = knifeSprite.position.lerp(defaultKnifePosition, _delta * 15.0)
 			
@@ -161,10 +161,3 @@ func get_total_chop_state() -> Dictionary:
 		"needed": total_chops_needed,
 		"count": total_chops_count
 	}
-func _on_chop_button_pressed():
-	# This function is empty because the chopping logic is now handled in _process().
-	pass 
-
-func _on_chop_button_released():
-	# This function is empty because the chopping logic is now handled in _process().
-	pass

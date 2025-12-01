@@ -133,6 +133,9 @@ func LoadNextDay():
 	
 	GameManager.StartDay(GameManager.currentDay + 1)
 	
+	if GameManager.morality < 50:
+		GameManager.isBadEnding = true
+	
 	if ResourceLoader.exists(mainGameScenePath):
 		SceneLoader.change_scene_with_loading(mainGameScenePath)
 	else:

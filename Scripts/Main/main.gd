@@ -111,11 +111,13 @@ func _ready() -> void:
 	SetFocusNone(self)
 
 func SetUpDay():
+	Elise.z_index = 2
 	match GameManager.currentDay:
 		0:
 			Elise.position = Vector2(170.427,338.706)
 			Elise.scale = Vector2(0.308,0.308)
 			Elise.play("sitting")
+			Elise.z_index = 3
 		1, 2, 3: 
 			Elise.position = Vector2(66.984,410)
 			Elise.scale = Vector2(0.091,0.091)

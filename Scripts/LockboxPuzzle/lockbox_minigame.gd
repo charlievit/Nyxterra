@@ -13,10 +13,10 @@ var dialFourValue
 @onready var lockBoxClosed: Sprite2D = $boxClosed
 var boxUnlocked: bool = false
 @export_group("Lockbox Code")
-@export var unlockCodeOne: int = 1
-@export var unlockCodeTwo: int = 9
-@export var unlockCodeThree: int = 3
-@export var unlockCodeFour: int = 2
+@export var unlockCodeOne: int = 0
+@export var unlockCodeTwo: int = 1
+@export var unlockCodeThree: int = 2
+@export var unlockCodeFour: int = 7
 
 @onready var lockBoxOpen: Sprite2D = $boxOpened
 @onready var letterFolded: Sprite2D = $boxOpened/letterFolded
@@ -72,12 +72,14 @@ func _ready():
 	# START TUTORIAL SEQUENCE
 	TutorialManager.shouldBeHidden = true
 	
-	TutorialManager.ShowClickTutorial("lockbox", dialOne.global_position)
+	if not GameManager.hasPlayedLockbox:
+		TutorialManager.ShowClickTutorial("lockbox", dialOne.global_position)
+		TutorialManager.shouldBeHidden = false
 
 func _exit_tree():
 	musicPlayer.stop()
 	musicPlayer.queue_free()
-	
+
 
 func _process(_delta):
 	if boxUnlocked:
@@ -86,6 +88,7 @@ func _process(_delta):
 		CheckCode()
 		if dialOneValue > 0:
 			TutorialManager.CompleteTutorial("lockbox")
+			TutorialManager.shouldBeHidden = true
 	
 
 func CheckCode():

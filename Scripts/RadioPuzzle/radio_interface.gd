@@ -106,6 +106,7 @@ func _ready():
 	
 	if not GameManager.hasPlayedRadio:
 		get_tree().create_timer(0.1).timeout.connect(StartRadioTutorial)
+		TutorialManager.shouldBeHidden = false
 
 func StartRadioTutorial():
 	# If this tutorial is already done, TutorialManager won't show it.
@@ -155,6 +156,7 @@ func _on_power_button_pressed():
 		TutorialManager.CompleteTutorial(TUTORIAL_POWER)
 		# Immediately suggest next step (Amplitude)
 		TutorialManager.ShowDialTutorial(TUTORIAL_AMP, amplitudeDial)
+		TutorialManager.ShowDialTutorial(TUTORIAL_FREQ, frequencyDial)
 		
 		if not currentStationIsTuned:
 			tuningSoundPlayer.play()
@@ -208,6 +210,7 @@ func CheckForMatch():
 			# Complete any remaining frequency tutorial
 			TutorialManager.CompleteTutorial(TUTORIAL_FREQ)
 			TutorialManager.ClearTutorial()
+			TutorialManager.shouldBeHidden = true
 			
 			# MARK MINIGAME AS PLAYED
 			GameManager.hasPlayedRadio = true
@@ -268,7 +271,6 @@ func SetPlayerAmplitude(newAmp: float):
 	# This logic allows for user exploration
 	if isPoweredOn:
 		TutorialManager.CompleteTutorial(TUTORIAL_AMP)
-		TutorialManager.ShowDialTutorial(TUTORIAL_FREQ, frequencyDial)
 
 func SetPlayerFrequency(newFreq: float):
 	playerFrequency = newFreq / 10

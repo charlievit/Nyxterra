@@ -59,8 +59,9 @@ text = "Load Game"
 [node name="MainMenuButton" type="Button" parent="CenterContainer/Buttons"]
 layout_mode = 2
 theme = ExtResource("2_238ko")
-text = "Main Menu
+text = "  Main Menu   
 "
+autowrap_trim_flags = 0
 
 [node name="OptionsButton" type="Button" parent="CenterContainer/Buttons"]
 layout_mode = 2

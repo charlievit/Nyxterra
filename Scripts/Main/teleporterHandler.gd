@@ -58,6 +58,8 @@ func OnBodyExited(body):
 			body.ExitTeleporterArea(self)
 
 func DoTeleport(body):
+	if GameManager.currentDay == 0 and GameManager.needDaughter and targetFloor == 1:
+		return # talk to elise, don't teleport
 	GameManager.usedStairs = true
 	
 	# Find the target
