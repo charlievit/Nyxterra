@@ -53,6 +53,8 @@ var currentTutorialPeg = null
 #endregion
 
 func _ready():
+	TutorialManager.shouldBeHidden = true
+	
 	# setup for gear removal
 	mouse_filter = Control.MOUSE_FILTER_PASS
 	
@@ -75,6 +77,11 @@ func _ready():
 		loopPlayer.volume_db = -25.0
 	
 	TaskManager.shouldBeHidden = true
+	
+	# START TUTORIAL SEQUENCE
+	TutorialManager.shouldBeHidden = true
+	
+	
 	for key in TaskManager.activeTasks.keys():
 		if String(key).find("GearBox") != -1:
 			currentTaskID = key
@@ -85,9 +92,7 @@ func _ready():
 	musicPlayer.volume_db = -17.0
 	musicPlayer.set_bus("Music")
 	musicPlayer.play()
-	
-	StartPlacingTutorial()
-	
+
 func _exit_tree():
 	musicPlayer.stop()
 	musicPlayer.queue_free()
@@ -229,9 +234,8 @@ func returnHeldGear():
 	isHoldingGear = false
 
 func _process(_delta):
-	if GameManager.tutorialMode and tutorialStage == 0 and not puzzleSolved:
-		if allGears.size() <= 2:
-			StartPlacingTutorial()
+	# REMOVED OLD TUTORIAL CHECK.
+	# The tutorial is now triggered exclusively in _ready() via StartPlacingTutorial()
 	
 	if puzzleSolved:
 		return
@@ -299,7 +303,7 @@ func StartRemovingTutorial(targetPeg):
 	tutorialStage = 2
 	currentTutorialPeg = targetPeg
 	
-	TutorialManager.CompleteTutorial("gearPlace")
+	TutorialManager.CompleteTutorial("gearboxPlace")
 	
 	TutorialManager.ShowClickTutorial(
 		"gearboxRemove",
@@ -339,6 +343,9 @@ func TriggerWinState():
 	puzzleSolved = true
 	#print("Puzzle Solved!")
 	loopPlayer.volume_db += 5.0
+	
+	# MARK GEARBOX AS PLAYED
+	GameManager.hasPlayedGearbox = true
 	
 	GameManager.SetPlayerSpawn(returnFloorIndex, returnPosition)
 	GameManager.gearBoxSolved = true

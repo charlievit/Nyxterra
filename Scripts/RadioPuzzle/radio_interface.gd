@@ -55,11 +55,18 @@ var tuningSoundPlayer: AudioStreamPlayer2D
 var messagePlayer: AudioStreamPlayer2D
 var backgroundMusicPlayer: AudioStreamPlayer
 
-var tutorialStage = 0
+# Tutorial IDs
+const TUTORIAL_POWER = "radioPower"
+const TUTORIAL_AMP = "radioAmp"
+const TUTORIAL_FREQ = "radioFreq"
+
 #endregion
 
 func _ready():
 	TaskManager.shouldBeHidden = true
+	
+	# Default to hidden unless we determine this is a first-time run
+	TutorialManager.shouldBeHidden = true 
 	
 	for key in TaskManager.activeTasks.keys():
 		if String(key).contains("Radio"):
@@ -99,12 +106,18 @@ func _ready():
 	SetTargetStation(randf_range(10.0, 100.0), randf_range(1.0, 10.0))
 	# -------
 	
-	call_deferred("StartRadioTutorial")
+	# CHECK MINIGAME TUTORIAL STATUS
+	if not GameManager.hasPlayedRadio:
+		TutorialManager.shouldBeHidden = false
+		# Wait slightly for UI layout to settle before calculating tutorial positions
+		get_tree().create_timer(0.1).timeout.connect(StartRadioTutorial)
+	else:
+		TutorialManager.shouldBeHidden = true
 
 func StartRadioTutorial():
+	# If this tutorial is already done, TutorialManager won't show it.
 	var buttonCenter = powerButton.global_position + powerButton.size / 2.0
-	tutorialStage = 1
-	TutorialManager.ShowClickTutorial("radioPower", buttonCenter, "Continuous Clicking")
+	TutorialManager.ShowClickTutorial(TUTORIAL_POWER, buttonCenter, "Continuous Clicking")
 
 func _process(delta):
 	if not isPoweredOn:
@@ -144,6 +157,12 @@ func _on_power_button_pressed():
 	if isPoweredOn:
 		machineOn.play()
 		UpdateAudio()
+		
+		# Mark Power tutorial as done
+		TutorialManager.CompleteTutorial(TUTORIAL_POWER)
+		# Immediately suggest next step (Amplitude)
+		TutorialManager.ShowDialTutorial(TUTORIAL_AMP, amplitudeDial)
+		
 		if not currentStationIsTuned:
 			tuningSoundPlayer.play()
 			UpdateAudio()
@@ -154,10 +173,6 @@ func _on_power_button_pressed():
 		machineOn.stop()
 		tuningSoundPlayer.stop()
 	
-	if tutorialStage == 1 and isPoweredOn:
-		tutorialStage = 2
-		TutorialManager.CompleteTutorial("radioPower")
-		TutorialManager.ShowDialTutorial("radioAmp", amplitudeDial)
 
 func ToggleButtons(toggleState: bool):
 	amplitudeDial.disabled = toggleState
@@ -196,7 +211,14 @@ func CheckForMatch():
 			playerWave.default_color = tunedInColor
 			tuningSoundPlayer.volume_db = -15.0
 			emit_signal("stationTuned")
+			
+			# Complete any remaining frequency tutorial
+			TutorialManager.CompleteTutorial(TUTORIAL_FREQ)
 			TutorialManager.ClearTutorial()
+			
+			# MARK MINIGAME AS PLAYED
+			GameManager.hasPlayedRadio = true
+			
 			await Radio()
 			GameManager.SetPlayerSpawn(returnFloorIndex, returnPosition)
 			GameManager.PlayBGM()
@@ -249,16 +271,16 @@ func SetPlayerAmplitude(newAmp: float):
 	playerAmplitude = clamp(playerAmplitude, 5.0, 100)
 	UpdateAudio()
 	
-	if tutorialStage == 2:
-		tutorialStage = 3
-		TutorialManager.CompleteTutorial("radioAmp")
-		TutorialManager.ShowDialTutorial("radioFreq", frequencyDial)
+	# If we are interacting with amplitude, we might have finished the amp tutorial
+	# This logic allows for user exploration
+	if isPoweredOn:
+		TutorialManager.CompleteTutorial(TUTORIAL_AMP)
+		TutorialManager.ShowDialTutorial(TUTORIAL_FREQ, frequencyDial)
 
 func SetPlayerFrequency(newFreq: float):
 	playerFrequency = newFreq / 10
 	playerFrequency = clamp(playerFrequency, 0.5, 10.0)
 	UpdateAudio()
 	
-	if tutorialStage == 3:
-		tutorialStage = 4
-		TutorialManager.CompleteTutorial("radioFreq")
+	if isPoweredOn:
+		TutorialManager.CompleteTutorial(TUTORIAL_FREQ)

@@ -12,8 +12,18 @@ enum DayState {
 enum ReturnSource { NONE, RADIO, MORSE, KITCHEN, GEARBOX }
 #endregion
 
+# TUTORIAL SYSTEM
+# Stores IDs of all completed tutorials (e.g., {"morseCodeTap": true})
 var completedTutorials: Dictionary = {}
-var tutorialMode = false
+# Global toggle for tutorials. Defaults to FALSE now.
+var tutorialMode: bool = false
+
+# Minigame Run-Once Flags
+var hasPlayedRadio: bool = false
+var hasPlayedMorse: bool = false
+var hasPlayedKitchen: bool = false
+var hasPlayedGearbox: bool = false
+var hasPlayedLockbox: bool = false
 
 #region SIGNALS
 signal requestDayCycle
@@ -90,16 +100,25 @@ var LightKeeperMusic = preload("res://Assets/Audio/Music/Light keeper.mp3")
 func _ready():
 	todaysRecipe = "BarfitStovies" 
 	await get_tree().process_frame
-	# Auto-load if needed, otherwise wait for StartNewGame
+	add_child(musicPlayer)
 	
 func StartNewGame():
 	# Reset all internal state
-	currentDay = 2
+	currentDay = 0
 	currentTaskStep = 0
 	
 	isIntroPlayed = false
 	introPlayed = false
 	introScenePlayed = false
+	
+	# Reset Tutorial Data for New Game
+	tutorialMode = false
+	completedTutorials = {}
+	hasPlayedRadio = false
+	hasPlayedMorse = false
+	hasPlayedKitchen = false
+	hasPlayedGearbox = false
+	hasPlayedLockbox = false
 	
 	load_from_save_next_main = false
 	pending_post_source = ReturnSource.NONE
@@ -115,7 +134,6 @@ func StartNewGame():
 	todaysRecipe = "BarfitStovies"
 	
 	morality = 0
-	relationship = 0
 	isBadEnding = false
 	
 	# Start Day 0 Gameplay directly
@@ -144,14 +162,12 @@ func StartDay(day: int):
 	match currentDay:
 		0, 4, 5:
 			if not isBadEnding:
-				add_child(musicPlayer)
 				musicPlayer.stream = backgroundMusic045
 				musicPlayer.autoplay = true
 				musicPlayer.volume_db = -5.0
 				musicPlayer.set_bus("Music")
 				musicPlayer.play()
 		1, 2, 3:
-			add_child(musicPlayer)
 			musicPlayer.stream = backgroundMusic123
 			musicPlayer.autoplay = true
 			musicPlayer.volume_db = -15.0
@@ -175,7 +191,7 @@ func CompleteTask(task_id: String):
 func AddCookingScore(quality: int):
 	recipeQuality = quality
 	# Relationship increases by an amount equal to the recipe quality /10 rounded up
-	var increase = ceil(quality / 10.0)
+	var increase = floor(quality / 10.0)
 	if currentDay == 3: # double relationship bonus for making Elise's favorite meal
 		increase *= 2
 	yesterdaysRelationship = relationship
@@ -261,7 +277,6 @@ func UpdateObjective():
 					TaskManager.AddTask("dayONE_goToBed", "Go to bed.")
 				8:
 					TaskManager.CompleteDay()
-					StartDay(2)
 
 		2: # DAY 2
 			match currentTaskStep:
@@ -288,7 +303,6 @@ func UpdateObjective():
 					TaskManager.AddTask("dayTWO_goToBed", "Go to bed.")
 				6:
 					TaskManager.CompleteDay()
-					StartDay(3)
 
 		3: # DAY 3
 			match currentTaskStep:
@@ -315,7 +329,6 @@ func UpdateObjective():
 					TaskManager.AddTask("dayTHREE_goToBed", "Go to bed.")
 				6:
 					TaskManager.CompleteDay()
-					StartDay(4)
 
 		4: # DAY 4
 			match currentTaskStep:
@@ -342,7 +355,6 @@ func UpdateObjective():
 					TaskManager.AddTask("dayFOUR_goToBed", "Go to bed.")
 				6:
 					TaskManager.CompleteDay()
-					StartDay(5)
 
 		5: # DAY 5 (Endings)
 			if isBadEnding:
@@ -413,6 +425,13 @@ func write_save_data() -> void:
 	var data := SaveManager.current_save
 	data.tutorial_mode = tutorialMode
 	data.completed_tutorials = completedTutorials
+	
+	data.has_played_radio = hasPlayedRadio
+	data.has_played_morse = hasPlayedMorse
+	data.has_played_kitchen = hasPlayedKitchen
+	data.has_played_gearbox = hasPlayedGearbox
+	data.has_played_lockbox = hasPlayedLockbox
+	
 	data.day_state = daySTATE
 	data.current_day = currentDay
 	data.currentTaskStep = currentTaskStep
@@ -439,6 +458,13 @@ func apply_save_data() -> void:
 	daySTATE = data.day_state
 	tutorialMode = data.tutorial_mode
 	completedTutorials = data.completed_tutorials
+	
+	hasPlayedRadio = data.has_played_radio
+	hasPlayedMorse = data.has_played_morse
+	hasPlayedKitchen = data.has_played_kitchen
+	hasPlayedGearbox = data.has_played_gearbox
+	hasPlayedLockbox = data.has_played_lockbox
+	
 	currentDay = data.current_day
 	currentTaskStep = data.currentTaskStep
 	needGearBox = data.need_gear_box

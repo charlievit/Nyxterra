@@ -74,10 +74,16 @@ var currentTaskID: String = ""
 
 func _ready() -> void:
 	TaskManager.shouldBeHidden = true
+	TutorialManager.shouldBeHidden = true # Default to hidden
 	
-	# TUTORIAL
-	var buttonCenter = morse_key.global_position + (morse_key.size / 2)
-	TutorialManager.ShowClickTutorial(TUTORIAL_ID, buttonCenter, "Morse Clicking")
+	sfxPlayer.stream = beepSound
+	sfxPlayer.volume_db = -22.0
+	
+	# TUTORIAL: Show tutorial if minigame never played before
+	if not GameManager.hasPlayedMorse:
+		TutorialManager.shouldBeHidden = false
+		var buttonCenter = morse_key.global_position + (morse_key.size / 2)
+		TutorialManager.ShowClickTutorial(TUTORIAL_ID, buttonCenter, "Morse Clicking")
 	
 	for key in TaskManager.activeTasks.keys():
 		if String(key).contains("Morse"):
@@ -129,7 +135,9 @@ func _process(_delta: float) -> void:
 # --- MorseKey handlers (button press duration decides dot vs dash) ---
 func _on_morse_key_down() -> void:
 	GameManager.usedMorseClicker = true
+	# TUTORIAL: Complete immediately on first interaction
 	TutorialManager.CompleteTutorial(TUTORIAL_ID)
+	
 	pressing = true
 	background.texture = TEX_DOWN
 	press_started_at = Time.get_ticks_msec() / 1000.0
@@ -138,8 +146,6 @@ func _on_morse_key_down() -> void:
 func _on_morse_key_up() -> void:
 	if !pressing:
 		return
-	sfxPlayer.stream = beepSound
-	sfxPlayer.volume_db = -22.0
 	sfxPlayer.play()
 	pressing = false
 	background.texture = TEX_UP
@@ -188,6 +194,9 @@ func _on_sentence_solved() -> void:
 	TutorialManager.ClearTutorial()
 	#label_feedback.text = "Correct!"
 	#label_feedback.modulate = Color(0, 1, 0)
+	
+	# Mark as played so tutorial doesn't run next time
+	GameManager.hasPlayedMorse = true
 	
 	# 1. Set return spawn so Player is back at the machine in Main scene
 	GameManager.SetPlayerSpawn(returnFloorIndex, returnPosition)

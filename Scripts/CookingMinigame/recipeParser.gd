@@ -76,9 +76,9 @@ func GetImgTag(path: String) -> String:
 
 func GetHeatIcons(heatValue: float) -> String:
 	var fire_tag = GetImgTag(FIRE_ICON_PATH)
-	if heatValue == 100.0: return fire_tag + fire_tag + fire_tag
-	elif heatValue == 50.0: return fire_tag + fire_tag
-	elif heatValue == 25.0: return fire_tag
+	if heatValue == 100.0: return fire_tag + fire_tag + fire_tag + " High Heat"
+	elif heatValue == 50.0: return fire_tag + fire_tag + " Medium Heat"
+	elif heatValue == 25.0: return fire_tag + " Low Heat"
 	else: return ""
 
 func GetIngredientLine(ingredientData: Dictionary) -> String:

@@ -64,7 +64,7 @@ potDetectorArea = NodePath("potDetectionArea")
 amountLabel = NodePath("PourOrShake Amount Label")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
-scale = Vector2(3.9766037, 3.9766037)
+scale = Vector2(3.5744593, 3.5744593)
 sprite_frames = SubResource("SpriteFrames_kr3yy")
 
 [node name="ChoppedSprite" type="Sprite2D" parent="."]
@@ -73,22 +73,25 @@ scale = Vector2(0.53014815, 0.53014815)
 texture = ExtResource("3_u2hyo")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["ingredients"]]
-scale = Vector2(2.519771, 5.912544)
+scale = Vector2(2.2649527, 5.3146224)
 shape = SubResource("RectangleShape2D_s4ee8")
 
 [node name="potDetectionArea" type="Area2D" parent="."]
-scale = Vector2(1.7451147, 1.7451147)
+scale = Vector2(1.5686353, 1.5686353)
 monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="potDetectionArea"]
 shape = SubResource("RectangleShape2D_kd3tk")
 
 [node name="PourOrShake Amount Label" type="RichTextLabel" parent="."]
-offset_left = 29.0
-offset_top = -60.0
-offset_right = 197.35832
-offset_bottom = 60.79698
-scale = Vector2(0.18439397, 0.18439397)
+offset_left = 27.000002
+offset_top = -86.00001
+offset_right = 1046.556
+offset_bottom = 575.62683
+scale = Vector2(0.050126914, 0.050126914)
 theme = ExtResource("4_s21o0")
+theme_override_colors/default_color = Color(0.5921569, 0.7411765, 0.7019608, 1)
+theme_override_constants/outline_size = 150
+theme_override_font_sizes/normal_font_size = 540
 bbcode_enabled = true
 text = "100"

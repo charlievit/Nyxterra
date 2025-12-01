@@ -359,28 +359,12 @@ func _on_Morse_Completed() -> void:
 			Dialogic.start("Day_4 Morse Completed")
 	await Dialogic.timeline_ended
 	
-func _on_Kitchen_Completed() -> void:
-	match GameManager.currentDay:
-		0:
-			return
-		1:
-			Dialogic.start("Day_1 Kitchen Completed")
-		2:
-			Dialogic.start("Day_2 Kitchen Completed")
-		3:
-			Dialogic.start("Day_3 Kitchen Completed")
-		4:
-			Dialogic.start("Day_4 Kitchen Completed")
-	await Dialogic.timeline_ended
-	
 func _play_pending_post_dialogue() -> void:
 	match GameManager.pending_post_source:
 		GameManager.ReturnSource.RADIO:
 			await _on_Radio_Completed()
 		GameManager.ReturnSource.MORSE:
 			await _on_Morse_Completed()
-		GameManager.ReturnSource.KITCHEN:
-			await _on_Kitchen_Completed()
 		GameManager.ReturnSource.GEARBOX:
 			await _on_Gear_Completed()
 		GameManager.ReturnSource.NONE:

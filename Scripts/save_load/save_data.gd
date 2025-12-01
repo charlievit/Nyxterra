@@ -10,6 +10,14 @@ class_name SaveData
 # --- GameManager data to persist ---
 @export var tutorial_mode: bool = false
 @export var completed_tutorials: Dictionary = {}
+
+# Minigame Flags
+@export var has_played_radio: bool = false
+@export var has_played_morse: bool = false
+@export var has_played_kitchen: bool = false
+@export var has_played_gearbox: bool = false
+@export var has_played_lockbox: bool = false
+
 @export var current_day: int = 0
 @export var currentTaskStep : int = 0
 @export var need_gear_box: bool = false
