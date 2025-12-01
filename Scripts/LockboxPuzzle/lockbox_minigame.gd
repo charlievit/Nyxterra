@@ -71,7 +71,6 @@ func _ready():
 	musicPlayer.stream = backgroundMusic
 	musicPlayer.autoplay = true
 	musicPlayer.volume_db = -17.0
-	musicPlayer.set_bus("Music")
 	musicPlayer.play()
 	
 	# START TUTORIAL SEQUENCE
