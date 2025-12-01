@@ -378,7 +378,7 @@ func StartRecipe(recipeName: String):
 	
 	currentRecipeName = recipeName #store in case of reset needed
 	
-	activeRecipe = recipes[recipeName]
+	activeRecipe = recipes[recipeName].duplicate(true) # break link here to master list for resetting later
 	currentStepIndex = 0
 	recipeQuality = 100
 	
