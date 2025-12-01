@@ -80,6 +80,10 @@ func DetermineDayText():
 			choiceText = "Tonight, the night passes..."
 
 func UpdateValues():
+	if moralityStart == moralityEnd and relationshipStart == relationshipEnd:
+		AllowToProceed()
+		return
+	
 	var tween = create_tween()
 	if moralityStart != moralityEnd:
 		countSoundPlayer.play()

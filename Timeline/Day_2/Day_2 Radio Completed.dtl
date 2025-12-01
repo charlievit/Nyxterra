@@ -1,5 +1,5 @@
 [voice path="res://Assets/Audio/VA/Misc Radio/Radio-German-American.mp3" volume="-15.0" bus="Character Voice"]
-"Suspicious voice": Hello, this is American delivery of aid for the good people of Scotland. Do you hear us, yes? Over.
+"Suspicious voice": Hello, this is the American delivery for the aid for the good people of Scotland. Do you hear us, yes? Over.
 [voice path="res://Assets/Audio/VA/Sutherland/American my Arse.mp3" volume="-2.0" bus="Character Voice"]
 Sutherland: (speaking to himself) American my arse.
 [voice path="res://Assets/Audio/VA/Sutherland/Heard Over 2.mp3" volume="-6.0"]

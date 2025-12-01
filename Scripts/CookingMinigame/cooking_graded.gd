@@ -43,7 +43,13 @@ func _ready() -> void:
 		3: DinnerAsset.texture = Dinner3
 		4: DinnerAsset.texture = Dinner4
 	await get_tree().create_timer(1.5).timeout
-	counterSoundPlayer.play()
+	
+	if not GameManager.recipeQuality == 0:
+		counterSoundPlayer.play()
+	else:
+		CheckFailure()
+		return
+	
 	var tween = create_tween()
 	tween.tween_method(func(val):
 		GradeScore.text = str(int(val)), 0, GameManager.recipeQuality, 4.2).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
@@ -56,7 +62,6 @@ func CheckFailure():
 		
 		await Dialogic.timeline_ended
 	else:
-		GameManager.CompleteTask(currentTaskID)
 		ProceedToDinnerScene()
 	
 	if Dialogic.VAR.wantsRetry:
@@ -65,4 +70,5 @@ func CheckFailure():
 		ProceedToDinnerScene()
 
 func ProceedToDinnerScene():
+	GameManager.CompleteTask(currentTaskID)
 	SceneLoader.change_scene_with_loading(pathToDinnerScene)
