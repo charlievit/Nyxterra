@@ -1,0 +1,106 @@
+[gd_scene load_steps=8 format=3 uid="uid://7hylj4nnf4i0"]
+
+[ext_resource type="Theme" uid="uid://b4lurv8njswua" path="res://Resources/theme.tres" id="1_hbx8t"]
+
+[sub_resource type="Gradient" id="Gradient_0ctys"]
+offsets = PackedFloat32Array(0, 0.40833333)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_ckqpj"]
+gradient = SubResource("Gradient_0ctys")
+width = 1
+
+[sub_resource type="Gradient" id="Gradient_us1dy"]
+colors = PackedColorArray(0.15294118, 0.19607843, 0.2627451, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_mk6cu"]
+gradient = SubResource("Gradient_us1dy")
+width = 1
+
+[sub_resource type="Gradient" id="Gradient_amuxp"]
+colors = PackedColorArray(0.14, 0.1246, 0.12845, 0.9019608, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_b30mx"]
+gradient = SubResource("Gradient_amuxp")
+width = 1
+
+[node name="Info Screen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PlaqueBorder" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -576.0
+grow_horizontal = 0
+grow_vertical = 2
+texture = SubResource("GradientTexture1D_ckqpj")
+metadata/_edit_use_anchors_ = true
+
+[node name="Plaque" type="TextureRect" parent="PlaqueBorder"]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -273.601
+offset_top = 14.519989
+offset_right = 271.3213
+offset_bottom = -10.889893
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture1D_mk6cu")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="PlaqueBorder/Plaque"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 5.4870605
+offset_top = 5.6447372
+offset_right = -0.7889404
+offset_bottom = -5.0891113
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_hbx8t")
+theme_override_colors/default_color = Color(0.9, 0.9, 0.9, 1)
+theme_override_font_sizes/normal_font_size = 16
+bbcode_enabled = true
+text = "[center][font_size=45]Fair Isle South Lighthouse[/font_size][/center]
+
+[center][font_size=20]BUILT: 1892
+ENGINEER: DAVID A. STEVENSON
+AUTOMATED: 31st MARCH 1998[/font_size][/center]
+
+[font_size=13]DURING AN AIR ATTACK IN DECEMBER 1941, MRS. CATHERINE SUTHERLAND (AGED 22) THE WIFE OF AN ASSISTANT LIGHTHOUSE KEEPER, WAS KILLED AND THEIR DAUGHTER SLIGHTLY HURT.
+
+ON 21ST OF JANUARY 1942 DURING A SECOND ATTACK A BOMB HIT THE WEST END OF THE MAIN BLOCK OF HOUSES. THE BUILDING CAUGHT FIRE AND WAS BURNT OUT. THE WIFE OF THE PRINCIPLE LIGHTHOUSE KEEPER, MRS. MARGARET HELEN SMITH (AGED 50), AND THEIR DAUGHTER MARGARET (GRETA) SMITH (AGED 10) WERE KILLED. A SOLDIER, GUNNER WILLIAM MORRIS (AGED 27) MANNING AN ANTI AIRCRAFT GUN NEARBY WAS ALSO KILLED. EXTENSIVE DAMAGE WAS DONE BY FIRE, BLAST AND FLYING DEBRIS.
+
+MR. RODERICK MACAULAY, ASSITANT KEEPER AT FAIR ISLE NORTH, WALKED THROUGH SNOW DRIFTS AND GALE FORCE WINDS TO HELP RESTORE THE SOUTH LIGHT. HE RECEIVED THE B.E.M. FOR OUTSTANDING SERVICE.[/font_size]
+
+[center][font_size=20]IN MEMORY OF
+MRS. CATHERINE SUTHERLAND
+MRS. MARGARET SMITH
+MARGARET (GRETA) SMITH
+GUNNER WILLIAM G. MORRIS R.A.[/font_size][/center]"
+scroll_active = false
+shortcut_keys_enabled = false
+
+[node name="BackGround" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -576.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture1D_b30mx")
+metadata/_edit_use_anchors_ = true

@@ -79,11 +79,14 @@ position = Vector2(0, -32.5)
 shape = SubResource("RectangleShape2D_jf0ra")
 
 [node name="PourOrShake Amount Label" type="RichTextLabel" parent="."]
-offset_left = 34.0
-offset_top = -104.0
-offset_right = 203.05249
-offset_bottom = 15.306
-scale = Vector2(0.18439397, 0.18439397)
+offset_left = 33.0
+offset_top = -133.0
+offset_right = 965.7853
+offset_bottom = 485.24146
+scale = Vector2(0.051207993, 0.051207993)
 theme = ExtResource("4_21guq")
+theme_override_colors/default_color = Color(0.5921569, 0.7411765, 0.7019608, 1)
+theme_override_constants/outline_size = 150
+theme_override_font_sizes/normal_font_size = 540
 bbcode_enabled = true
 text = "100"

@@ -12,9 +12,16 @@ var Dinner4 = preload("res://Assets/Images/KitchenPuzzle/dinner4.png")
 
 var pathToDinnerScene: String = "res://Scenes/Cutscenes/post_cooking_scene.tscn"
 
+var counterSound: AudioStream = preload("res://Assets/Audio/Cutscenes/SpinNoise.mp3")
+var counterSoundPlayer: AudioStreamPlayer = AudioStreamPlayer.new()
+
 func _ready() -> void:
 	TutorialManager.shouldBeHidden = true
 	TaskManager.shouldBeHidden = true
+	
+	add_child(counterSoundPlayer)
+	counterSoundPlayer.stream = counterSound
+	counterSoundPlayer.volume_db = -20.0
 	
 	steam.play("default")
 	steam2.frame = 6
@@ -26,9 +33,11 @@ func _ready() -> void:
 		3: DinnerAsset.texture = Dinner3
 		4: DinnerAsset.texture = Dinner4
 	await get_tree().create_timer(1.5).timeout
+	counterSoundPlayer.play()
+	GameManager.recipeQuality = 100
 	var tween = create_tween()
 	tween.tween_method(func(val):
-		GradeScore.text = str(int(val)), 0, GameManager.recipeQuality, 1.0).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
+		GradeScore.text = str(int(val)), 0, GameManager.recipeQuality, 4.2).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
 	tween.tween_interval(2.0)
 	tween.tween_callback(ProceedToDinnerScene)
 

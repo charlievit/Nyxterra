@@ -51,6 +51,8 @@ var shakeSoundThree = preload("res://Assets/Audio/Cooking Minigame/Shake.mp3")
 @export var potAreaDrop: Area2D
 
 func _ready():
+	TutorialManager.shouldBeHidden = true
+	
 	#region DEBUG SAFETY CHECKS, should be safe to remove (I will not be doing that)
 	if not heatDial:
 		push_error("No heatdial")

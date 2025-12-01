@@ -45,8 +45,6 @@ var tutorialIngredients
 var tutorialBook
 var tutorialPotArea
 
-var kitchenTutorialsCompleted: bool = false
-
 # TRACKING
 var currentTutorialState: String = "BOOK" # Defaults to book
 var lastTutorialMode: bool = false
@@ -191,10 +189,6 @@ func OnLoopSound(player):
 	player.play()
 
 func _process(_delta): #this is purely for the progress bar
-	# TUTORIAL
-	if GameManager.tutorialMode and not lastTutorialMode:
-		UpdateTutorialState("BOOK")
-	lastTutorialMode = GameManager.tutorialMode
 	
 	if not is_instance_valid(progressBar) or not is_instance_valid(steamAnim):
 		set_process(false)
@@ -277,7 +271,12 @@ func RegisterNodes(heatDialNode: Button, potAreaNode: Area2D, progressBarNode: P
 	
 	set_process(true)
 	
-	UpdateTutorialState("BOOK")
+	# START TUTORIAL SEQUENCE
+	TutorialManager.shouldBeHidden = true # Default to hidden
+	
+	if not GameManager.hasPlayedKitchen:
+		TutorialManager.shouldBeHidden = false
+		UpdateTutorialState("BOOK")
 
 func PrepareSounds(chopSoundFile, plopSoundFile, boilingSoundFile, stoveOffSoundFile, stoveOnSoundFile, pourSoundFile, shakerSoundFiles):
 	chopSound = chopSoundFile
@@ -291,15 +290,19 @@ func PrepareSounds(chopSoundFile, plopSoundFile, boilingSoundFile, stoveOffSound
 func UpdateTutorialState(state: String):
 	currentTutorialState = state
 	
-	if kitchenTutorialsCompleted and not GameManager.tutorialMode:
-		return
+	# Rely on TutorialManager to check GameManger.tutorialMode and completion status.
+	# We just request the state we are currently in.
+	
 	match state:
 		"BOOK":
 			var cursorPosition = tutorialBook.global_position + (tutorialBook.size / 2.0)
 			TutorialManager.ShowClickTutorial(TUTORIAL_BOOK, cursorPosition)
 		"DIAL":
+			# Ensure previous step is marked complete if we jumped here
+			TutorialManager.CompleteTutorial(TUTORIAL_BOOK)
 			TutorialManager.ShowDialTutorial(TUTORIAL_DIAL, heatDial)
 		"SHELF_TO_BOARD":
+			TutorialManager.CompleteTutorial(TUTORIAL_DIAL)
 			var startPosition = tutorialIngredients.global_position + (tutorialIngredients.size / 2.0)
 			TutorialManager.ShowDragTutorial(TUTORIAL_DRAG_BOARD, startPosition, tutorialCuttingBoard.global_position)
 		"PICKED_UP":
@@ -308,9 +311,11 @@ func UpdateTutorialState(state: String):
 			var cursorPosition = tutorialKnifeButton.global_position + (tutorialKnifeButton.size / 2.0)
 			TutorialManager.ShowClickTutorial(TUTORIAL_CHOP, cursorPosition)
 		"BOARD_TO_POT":
+			TutorialManager.CompleteTutorial(TUTORIAL_CHOP)
 			TutorialManager.ShowDragTutorial(TUTORIAL_DRAG_POT, tutorialCuttingBoard.global_position, tutorialPotArea.global_position)
 		"COMPLETE":
-			kitchenTutorialsCompleted = true
+			TutorialManager.CompleteTutorial(TUTORIAL_DRAG_POT)
+			TutorialManager.ClearTutorial()
 
 # Reset the recipe if beyond a failure threshold or on button press at player-will
 func ResetRecipe():
@@ -383,8 +388,12 @@ func LoadStep(index: int):
 		print("Add: %.0f of %s" % [liquidData.needed, liquidName])
 
 func OnHeatDialValueChanged(newHeatValue: float):
-	TutorialManager.CompleteTutorial("kitchenDial")
+	# Mark dial tutorial complete immediately on interaction
+	TutorialManager.CompleteTutorial(TUTORIAL_DIAL)
+	
+	# Advance state to dragging ingredients
 	KitchenController.UpdateTutorialState("SHELF_TO_BOARD")
+	
 	print("Heat set to: %.0f" % newHeatValue)
 	if newHeatValue > currentHeat:
 		oneShotAudioPlayer.volume_db = -6.0
@@ -698,8 +707,15 @@ func AdvanceToNextStep():
 		gameDone = true
 		
 		GameManager.AddCookingScore(recipeQuality)
+		
+		# Cleanup Tutorials
+		UpdateTutorialState("COMPLETE")
 		TutorialManager.ClearTutorial()
-		await get_tree().create_timer(8.0).timeout
+		
+		# MARK KITCHEN AS PLAYED
+		GameManager.hasPlayedKitchen = true
+		
+		await get_tree().create_timer(6.0).timeout
 		kitchenGameMusicPlayer.stop()
 		GameManager.CompleteTask(currentTaskID)
 		GameManager.SetPlayerSpawn(returnFloorIndex, returnPosition)

@@ -42,6 +42,10 @@ var CS_xLink: String = "https://x.com/CyberSugarGames"
 @onready var CS_tikTokButton: Button = $SocialsPanel/CyberSugar/tikTokButton
 var CS_tikTokLink: String = "https://www.tiktok.com/@cybersugarstudios"
 
+# Phren
+@onready var CS_P_artStationButton: Button = $SocialsPanel/Phren/artStationButton
+var CS_P_artStationLink: String = "https://www.artstation.com/phren"
+
 # NyxForge Studio
 @onready var NF_itchButton: Button = $"SocialsPanel/NyxForge Studio/itchButton"
 var NF_itchLink: String = "https://itch.io/profile/nyxforgestudio"
@@ -114,6 +118,8 @@ func _ready() -> void:
 	CS_itchButton.pressed.connect(CS_ItchClicked)
 	CS_xButton.pressed.connect(CS_X_ButtonClicked)
 	CS_tikTokButton.pressed.connect(CS_TikTokClicked)
+	
+	CS_P_artStationButton.pressed.connect(CS_P_ArtStationClicked)
 	
 	NF_instaButton.pressed.connect(NF_InstaClicked)
 	NF_itchButton.pressed.connect(NF_ItchClicked)
@@ -228,6 +234,9 @@ func CS_X_ButtonClicked():
 	OS.shell_open(CS_xLink)
 func CS_TikTokClicked():
 	OS.shell_open(CS_tikTokLink)
+
+func CS_P_ArtStationClicked():
+	OS.shell_open(CS_P_artStationLink)
 
 func NF_InstaClicked():
 	OS.shell_open(NF_instaLink)

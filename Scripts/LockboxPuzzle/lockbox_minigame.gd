@@ -69,7 +69,12 @@ func _ready():
 	musicPlayer.set_bus("Music")
 	musicPlayer.play()
 	
-	TutorialManager.ShowClickTutorial("lockbox", dialOne.global_position)
+	# START TUTORIAL SEQUENCE
+	TutorialManager.shouldBeHidden = true
+	
+	if not GameManager.hasPlayedLockbox:
+		TutorialManager.shouldBeHidden = false
+		TutorialManager.ShowClickTutorial("lockbox", dialOne.global_position)
 
 func _exit_tree():
 	musicPlayer.stop()
@@ -94,6 +99,11 @@ func CheckCode():
 	if unlockCodeOne == dialOneValue and unlockCodeTwo == dialTwoValue and unlockCodeThree == dialThreeValue and unlockCodeFour == dialFourValue:
 		sfxPlayer.stream = openBoxSound
 		sfxPlayer.play()
+		
+		# MARK LOCKBOX AS PLAYED
+		GameManager.hasPlayedLockbox = true
+		TutorialManager.ClearTutorial()
+		
 		boxUnlocked = true
 		lockBoxClosed.visible = false
 		letterFolded.visible = true

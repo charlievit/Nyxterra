@@ -474,12 +474,15 @@ position = Vector2(198, 125)
 
 [node name="Water Jug" parent="Ingredients Area" instance=ExtResource("14_gafdi")]
 position = Vector2(616, 453)
+pourRate = 1.5
 
 [node name="Cooking Oil Jug" parent="Ingredients Area" instance=ExtResource("15_t2jly")]
 position = Vector2(698, 431)
+pourRate = 1.0
 
 [node name="Stock Box" parent="Ingredients Area" instance=ExtResource("16_gafdi")]
 position = Vector2(773, 446)
+pourRate = 1.5
 
 [node name="Ingredients" type="HBoxContainer" parent="Ingredients Area"]
 layout_mode = 1
