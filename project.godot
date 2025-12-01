@@ -16,6 +16,10 @@ config/features=PackedStringArray("4.5", "GL Compatibility")
 config/icon="res://Assets/Images/icon.svg"
 config/windows_native_icon="res://Assets/Images/Build Resources/SolaisIcon.ico"
 
+[audio]
+
+buses/default_bus_layout="uid://sahbp4ru55pi"
+
 [autoload]
 
 TaskManager="*res://Scenes/UI/task_menu.tscn"

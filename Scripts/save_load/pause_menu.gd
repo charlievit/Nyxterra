@@ -21,8 +21,6 @@ const SETTINGS_SECTION := "audio"
 
 var _cached_volume_db: float = 0.0   # for Return (revert)
 var _cached_voice_db:  float = 0.0
-var _master_bus: int = 0
-var _voice_bus:  int = 0
 
 func _ready() -> void:
 	# Pause menu must still work while the game is paused
@@ -39,8 +37,6 @@ func _ready() -> void:
 
 	options_button.pressed.connect(_on_options_pressed)
 	options_back_button.pressed.connect(_on_back_pressed)
-	volume_slider.value_changed.connect(_on_volume_changed)
-	volume_slider2.value_changed.connect(_on_voice_volume_changed) 
 	apply_button.pressed.connect(_on_apply_pressed)
 
 	# Wire buttons
@@ -132,16 +128,12 @@ func _unhandled_input(event: InputEvent) -> void:
 		get_viewport().set_input_as_handled()
 
 func _on_options_pressed() -> void:
-	_cached_volume_db = AudioServer.get_bus_volume_db(_master_bus)
-	_cached_voice_db  = AudioServer.get_bus_volume_db(_voice_bus)
 	Contain.visible = false
 	options_panel.visible = true
 
 
 func _on_back_pressed() -> void:
 	# revert previewed changes
-	AudioServer.set_bus_volume_db(_master_bus, _cached_volume_db)
-	AudioServer.set_bus_volume_db(_voice_bus,  _cached_voice_db)
 	volume_slider.value = db_to_linear(_cached_volume_db)
 	volume_slider2.value  = db_to_linear(_cached_voice_db)
 
@@ -153,24 +145,6 @@ func _on_apply_pressed() -> void:
 	_save_volume(SETTINGS_KEY_VOICE,  volume_slider2.value)
 	options_panel.visible = false
 	Contain.visible = true;
-
-# --- Volume helpers ---
-func _on_volume_changed(value: float) -> void:
-	_set_master_linear(value)  # live preview
-
-func _on_voice_volume_changed(value: float) -> void:
-	_set_bus_linear(value)   # live preview
-
-func _set_master_linear(value: float) -> void:
-	var db := -80.0 if value <= 0.001 else linear_to_db(value)
-	AudioServer.set_bus_volume_db(_master_bus, db)
-
-func _set_bus_linear(value: float) -> void:
-	var db := -80.0 if value <= 0.001 else linear_to_db(value)
-	AudioServer.set_bus_volume_db(_voice_bus, db)
-
-func _get_master_linear() -> float:
-	return db_to_linear(AudioServer.get_bus_volume_db(_master_bus))
 
 # --- Persistence (ConfigFile) ---
 func _save_volume(key: String, value: float) -> void:

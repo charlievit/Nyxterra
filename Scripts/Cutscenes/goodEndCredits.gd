@@ -23,13 +23,19 @@ func _ready():
 	oceanPlayer = AudioStreamPlayer.new()
 	songPlayer = AudioStreamPlayer.new()
 	
+	await get_tree().process_frame
+	
 	add_child(windSoundPlayer)
 	add_child(oceanPlayer)
 	add_child(songPlayer)
 	
+	await get_tree().process_frame
+	
 	windSoundPlayer.stream = windSound
 	oceanPlayer.stream = oceanSound
 	songPlayer.stream = song
+	
+	await get_tree().process_frame
 	
 	windSoundPlayer.play()
 	oceanPlayer.play()

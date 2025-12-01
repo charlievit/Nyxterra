@@ -166,13 +166,11 @@ func StartDay(day: int):
 				musicPlayer.stream = backgroundMusic045
 				musicPlayer.autoplay = true
 				musicPlayer.volume_db = -5.0
-				musicPlayer.set_bus("Music")
 				musicPlayer.play()
 		1, 2, 3:
 			musicPlayer.stream = backgroundMusic123
 			musicPlayer.autoplay = true
 			musicPlayer.volume_db = -15.0
-			musicPlayer.set_bus("Music")
 			musicPlayer.play()
 
 func ResetFlags():

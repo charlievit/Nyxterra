@@ -66,11 +66,13 @@ func _ready():
 	codeNoteText.visible = false
 	backButton.visible = false
 	letterText.visible = false
-	
+	await get_tree().process_frame
 	add_child(musicPlayer)
+	await get_tree().process_frame
 	musicPlayer.stream = backgroundMusic
-	musicPlayer.autoplay = true
+	await get_tree().process_frame
 	musicPlayer.volume_db = -17.0
+	await get_tree().process_frame
 	musicPlayer.play()
 	
 	# START TUTORIAL SEQUENCE
