@@ -38,7 +38,6 @@ func _process(_delta):
 	
 	if playerBody:
 		if Input.is_action_just_pressed("ui_accept") and GameManager.needLight:
-			GameManager.usedKitchen = true
 			#Dialogue system
 			GameManager.player.set_physics_process(false)
 			OnBodyExited(playerBody)
