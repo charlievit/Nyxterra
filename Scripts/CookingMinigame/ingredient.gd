@@ -106,41 +106,48 @@ func OnPotAreaExited(area: Area2D):
 		sprite.play_backwards("default")
 
 func Chop():
+	# If already chopped, handle tutorial state and return immediately
 	if not isChoppable or isChopped:
 		if isChopped:
-			TutorialManager.CompleteTutorial("kitchenChop")
-			KitchenController.UpdateTutorialState("BOARD_TO_POT")
-			return
-		return
+			TutorialManager.CompleteTutorial("kitchenChop") # 
+			KitchenController.UpdateTutorialState("BOARD_TO_POT") # 
+			return # 
+		return # 
 	
-	var randomChanceToSpeak = randf_range(0, 100)
-	GameManager.chopSpeakCooldown -= 1
-	if randomChanceToSpeak >= 95 and GameManager.chopSpeakCooldown <= 0:
-		if GameManager.currentDay < 3:
-			Dialogic.start("Chop_Day1or2")
-			GameManager.chopSpeakCooldown = 50
+	# Handle Dialogue (Voice Acting) - This logic should run before the chop to avoid double-check
+	var randomChanceToSpeak = randf_range(0, 100) # 
+	GameManager.chopSpeakCooldown -= 1 # 
+	if randomChanceToSpeak >= 95 and GameManager.chopSpeakCooldown <= 0: # 
+		if GameManager.currentDay < 3: # 
+			Dialogic.start("Chop_Day1or2") # 
+			GameManager.chopSpeakCooldown = 50 # 
 		else:
-			Dialogic.start("Chop_Day3or4")
-			GameManager.chopSpeakCooldown = 50
+			Dialogic.start("Chop_Day3or4") # 
+			GameManager.chopSpeakCooldown = 50 # 
 	
-	KitchenController.oneShotAudioPlayer.stream = KitchenController.chopSound
-	KitchenController.oneShotAudioPlayer.volume_db = -10.0
-	KitchenController.oneShotAudioPlayer.play()
-	chopCount += 1
+	# 1. Play Audio (once per chop)
+	KitchenController.oneShotAudioPlayer.stream = KitchenController.chopSound # 
+	KitchenController.oneShotAudioPlayer.volume_db = -10.0 # 
+	KitchenController.oneShotAudioPlayer.play() # 
 	
-	print("Chop! %d / %d" % [chopCount, chopsNeeded])
-	#KitchenController.TESTING_RECIPE_NOTIFICATION_FEED.text += "\n"
-	#KitchenController.TESTING_RECIPE_NOTIFICATION_FEED.text += "Chop! %d / %d" % [chopCount, chopsNeeded]
+	# 2. Increment Chop Count (once per chop)
+	chopCount += 1 # 
 	
-	if chopCount >= chopsNeeded:
-		isChopped = true
-		sprite.visible = false
-		choppedSprite.visible = true
-		if not "(Chopped)" in ingredientName:
-			ingredientName += " (Chopped)"
-		print("Chopped. It's now: %s" % ingredientName)
-		choppedSprite.visible = isChopped
-		sprite.visible = not isChopped
+	# 3. Handle Completion
+	if chopCount >= chopsNeeded: # 
+		isChopped = true # 
+		sprite.visible = false # 
+		choppedSprite.visible = true # 
+		if not "(Chopped)" in ingredientName: # 
+			ingredientName += " (Chopped)" # 
+		
+		# Log Completion (Clean logging - prints only once)
+		print("Chopped. It's now: %s" % ingredientName) # NEW/Modified line
+		
+		choppedSprite.visible = isChopped # 
+		sprite.visible = not isChopped # 
+		TutorialManager.CompleteTutorial("kitchenChop") # 
+		KitchenController.UpdateTutorialState("BOARD_TO_POT") # 
 
 func ResetPosition(): # just for shaker and pourables so their "containers" can't be added to the pot
 	freeze_mode = RigidBody2D.FREEZE_MODE_STATIC

@@ -431,6 +431,13 @@ position = Vector2(14, 72)
 scale = Vector2(2.27147, 2.27147)
 texture = ExtResource("7_xey2f")
 
+[node name="ChopProgressBar" type="ProgressBar" parent="Ingredients Area/Chopping Area"]
+offset_left = -144.0
+offset_top = 64.0
+offset_right = 168.0
+offset_bottom = 76.0
+show_percentage = false
+
 [node name="TrashIcon" type="Area2D" parent="Ingredients Area"]
 position = Vector2(-787, 151)
 script = ExtResource("18_eyoxt")
@@ -752,7 +759,7 @@ volume_db = -80.0
 autoplay = true
 parameters/looping = true
 
-[connection signal="button_up" from="Ingredients Area/Chopping Area/ChopButton" to="Ingredients Area/Chopping Area" method="_on_chop_button_button_up"]
+[connection signal="button_up" from="Ingredients Area/Chopping Area/ChopButton" to="Ingredients Area/Chopping Area" method="_on_chop_button_released"]
 [connection signal="pressed" from="Ingredients Area/Chopping Area/ChopButton" to="Ingredients Area/Chopping Area" method="_on_chop_button_pressed"]
 [connection signal="pressed" from="Ingredients Area/RecipeBookButton" to="." method="_on_recipe_book_button_pressed"]
 [connection signal="pressed" from="RecipeBookScreen/Close" to="." method="_on_close_pressed"]
