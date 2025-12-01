@@ -101,7 +101,7 @@ func PlayBomb():
 	var tween = create_tween()
 	tween.tween_property(animation, "modulate:a", 0.0, 4.0)
 	tween.tween_property(bombPlayer, "volume_db", -80.0, 3.0)
-	
+	tween.tween_property(engineSoundPlayer, "volume_db", -80.0, 3.0)
 	tween.tween_callback(func() -> void:
 		bombPlayer.stop()
 
@@ -148,12 +148,12 @@ func _fade_out_all_audio_and_check() -> void:
 	tween.set_parallel(true)
 
 	# Fade every player you care about
-	if is_instance_valid(windSoundPlayer):
-		tween.tween_property(windSoundPlayer, "volume_db", -80.0, 2.0)
+	#if is_instance_valid(windSoundPlayer):
+		#tween.tween_property(windSoundPlayer, "volume_db", -80.0, 2.0)
 	if is_instance_valid(engineSoundPlayer):
 		tween.tween_property(engineSoundPlayer, "volume_db", -80.0, 2.0)
-	if is_instance_valid(oceanPlayer):
-		tween.tween_property(oceanPlayer, "volume_db", -80.0, 2.0)
+	#if is_instance_valid(oceanPlayer):
+		#tween.tween_property(oceanPlayer, "volume_db", -80.0, 2.0)
 	if is_instance_valid(hatchSoundPlayer):
 		tween.tween_property(hatchSoundPlayer, "volume_db", -80.0, 2.0)
 	if is_instance_valid(bombPlayer):
@@ -162,9 +162,9 @@ func _fade_out_all_audio_and_check() -> void:
 	tween.set_parallel(false)
 	tween.tween_callback(func() -> void:
 		# fully stop them once faded
-		if is_instance_valid(windSoundPlayer): windSoundPlayer.stop()
+		#if is_instance_valid(windSoundPlayer): windSoundPlayer.stop()
 		if is_instance_valid(engineSoundPlayer): engineSoundPlayer.stop()
-		if is_instance_valid(oceanPlayer): oceanPlayer.stop()
+		#if is_instance_valid(oceanPlayer): oceanPlayer.stop()
 		if is_instance_valid(hatchSoundPlayer): hatchSoundPlayer.stop()
 		if is_instance_valid(bombPlayer): bombPlayer.stop()
 
@@ -175,10 +175,17 @@ func EndingCredits():
 	
 	var tween = create_tween()
 	
-	tween.tween_property(songPlayer, "volume_db", -5.0, 18.0)
-	# hi
-	tween.tween_property(credits, "position:y", -6303, 120.0)
-	tween.tween_property(animation, "modulate:a", 0.0, 3.0)
+	tween.set_parallel(true)
+	tween.tween_property(oceanPlayer, "volume_db", -20.0, 15.0)
+	tween.tween_property(songPlayer, "volume_db", -5.0, 15.0)
+	tween.tween_property(windSoundPlayer, "volume_db", -20.0, 15.0)
+	tween.set_parallel(false)
+	
+	tween.tween_property(credits, "position:y", -6303, 130.0)
+	#tween.tween_property(animation, "modulate:a", 0.0, 3.0)
+	
+	tween.tween_interval(10.0)
+	
 	tween.tween_callback(EndTheGame)
 
 func EndTheGame():

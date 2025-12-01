@@ -120,7 +120,6 @@ func _process(delta):
 	var averageFrequency = (playerFrequency + targetFrequency) / 2.0
 	
 	machineOn.speed_scale = averageFrequency * lineSpeed
-	print(machineOn.speed_scale)
 	
 	# ANIMATE THE WAVES
 	animationPhase += lineSpeed * TAU * delta

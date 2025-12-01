@@ -32,6 +32,7 @@ func Begin():
 	add_child(cutsceneMusicPlayer)
 	cutsceneMusicPlayer.stream = introMusic
 	cutsceneMusicPlayer.play(18.0)
+	cutsceneMusicPlayer.volume_db = 5.0
 	
 	await get_tree().create_timer(9.0).timeout
 	FadeInTitle()

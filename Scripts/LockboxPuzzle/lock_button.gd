@@ -1,5 +1,7 @@
 extends Node2D
 
+signal dialChanged
+
 @onready var lockSection: AnimatedSprite2D = $AnimatedSprite2D
 @onready var button: Button = $Button
 
@@ -8,7 +10,6 @@ var currentAnimationIndex: int = 0
 var currentDialValue = 0
 
 @onready var dialSoundPlayer: AudioStreamPlayer2D = $AudioStreamPlayer2D
-
 @onready var clickSound: AudioStream = preload("res://Assets/Audio/Lockbox Puzzle/Input.mp3")
 
 func _ready():
@@ -23,10 +24,11 @@ func Increment():
 	currentDialValue += 1
 	if currentDialValue > 9:
 		currentDialValue = 0
-	print(currentDialValue)
 	if currentAnimationIndex > animations.size() - 1:
 		currentAnimationIndex = 1
 	lockSection.play(animations[currentAnimationIndex])
+	
+	emit_signal("dialChanged")
 
 func ReportValue() -> int:
 	return currentDialValue

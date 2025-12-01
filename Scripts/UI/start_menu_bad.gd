@@ -71,11 +71,9 @@ var _master_bus: int = 0
 var _voice_bus:  int = 0
 
 var oceanPlayer: AudioStreamPlayer
-var windPlayer: AudioStreamPlayer
-var musicPlayer: AudioStreamPlayer
 var oceanSounds: AudioStream = preload("res://Assets/Audio/Cutscenes/Ocean Waves.mp3")
+var windPlayer: AudioStreamPlayer
 var windSounds: AudioStream = preload("res://Assets/Audio/Cutscenes/Wind.mp3")
-var music: AudioStream = preload("res://Assets/Audio/Music/Music 1 lighthouse.wav")
 
 func _ready() -> void:
 	animScreen.play("default")
@@ -84,15 +82,12 @@ func _ready() -> void:
 	
 	oceanPlayer = AudioStreamPlayer.new()
 	windPlayer = AudioStreamPlayer.new()
-	musicPlayer = AudioStreamPlayer.new()
 	
 	add_child(oceanPlayer)
 	add_child(windPlayer)
-	add_child(musicPlayer)
 	
 	oceanPlayer.stream = oceanSounds
 	windPlayer.stream = windSounds
-	musicPlayer.stream = music
 	
 	_master_bus = AudioServer.get_bus_index("Master")
 	_voice_bus  = AudioServer.get_bus_index("Character Voice")
@@ -111,7 +106,6 @@ func _ready() -> void:
 	
 	oceanPlayer.play()
 	windPlayer.play()
-	music.play()
 	
 	# Signals
 	start_button.pressed.connect(_on_start_pressed)

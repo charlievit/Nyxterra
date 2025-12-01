@@ -53,6 +53,11 @@ func _ready():
 	dialThreeValue = 0
 	dialFourValue = 0
 	
+	dialOne.dialChanged.connect(CheckCode)
+	dialTwo.dialChanged.connect(CheckCode)
+	dialThree.dialChanged.connect(CheckCode)
+	dialFour.dialChanged.connect(CheckCode)
+	
 	letterFolded.visible = true
 	letterUnfolded.visible = false
 	codeNoteUnfolded.visible = false
@@ -80,22 +85,18 @@ func _exit_tree():
 	musicPlayer.stop()
 	musicPlayer.queue_free()
 
-
-func _process(_delta):
-	if boxUnlocked:
-		pass
-	else:
-		CheckCode()
-		if dialOneValue > 0:
-			TutorialManager.CompleteTutorial("lockbox")
-			TutorialManager.shouldBeHidden = true
-	
-
 func CheckCode():
+	if boxUnlocked:
+		return
+	
 	dialOneValue = dialOne.ReportValue()
 	dialTwoValue = dialTwo.ReportValue()
 	dialThreeValue = dialThree.ReportValue()
 	dialFourValue = dialFour.ReportValue()
+	
+	if dialOneValue > 0:
+		TutorialManager.CompleteTutorial("lockbox")
+		TutorialManager.shouldBeHidden = true
 	
 	if unlockCodeOne == dialOneValue and unlockCodeTwo == dialTwoValue and unlockCodeThree == dialThreeValue and unlockCodeFour == dialFourValue:
 		sfxPlayer.stream = openBoxSound
