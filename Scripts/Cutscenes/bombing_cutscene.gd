@@ -9,17 +9,24 @@ var engineSoundPlayer: AudioStreamPlayer
 var hatchSoundPlayer: AudioStreamPlayer
 var bombPlayer: AudioStreamPlayer
 var oceanPlayer: AudioStreamPlayer
+var songPlayer: AudioStreamPlayer
 
 var windSound: AudioStream = preload("res://Assets/Audio/Cutscenes/Wind.mp3")
 var engingSound: AudioStream = preload("res://Assets/Audio/Cutscenes/airplane noise.mp3")
 var hatchSound: AudioStream = preload("res://Assets/Audio/Cutscenes/hatch opening.mp3")
 var bombSound: AudioStream = preload("res://Assets/Audio/Cutscenes/Bombing.mp3")
 var oceanSound: AudioStream = preload("res://Assets/Audio/Cutscenes/Ocean Waves.mp3")
+var song: AudioStream = preload("res://Assets/Audio/Music/Light keeper.mp3")
 
 var originalScale
 var originalPosition
 
 func _ready():
+	songPlayer = AudioStreamPlayer.new()
+	add_child(songPlayer)
+	songPlayer.stream = song
+	songPlayer.play()
+	songPlayer.volume_db = -80.0
 	TaskManager.shouldBeHidden = true
 	TutorialManager.shouldBeHidden = true
 	
@@ -98,8 +105,11 @@ func PlayBomb():
 	tween.tween_callback(func() -> void:
 		bombPlayer.stop()
 
-		# Start the dialogue
-		Dialogic.start("Bombing_Cutscene Dialogue")
+		if GameManager.isBadEnding:
+			Dialogic.start("Day_5 BadEnding Dialogue")
+		else:
+			# Start the dialogue
+			Dialogic.start("Bombing_Cutscene Dialogue")
 
 		# Wait until the timeline finishes
 		await Dialogic.timeline_ended
@@ -162,10 +172,11 @@ func _fade_out_all_audio_and_check() -> void:
 	)
 
 func EndingCredits():
+	
 	var tween = create_tween()
 	
 	tween.tween_property(songPlayer, "volume_db", -5.0, 18.0)
-  
+	# hi
 	tween.tween_property(credits, "position:y", -6303, 120.0)
 	tween.tween_property(animation, "modulate:a", 0.0, 3.0)
 	tween.tween_callback(EndTheGame)
