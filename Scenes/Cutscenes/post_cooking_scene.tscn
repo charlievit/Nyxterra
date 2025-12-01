@@ -1,8 +1,9 @@
-[gd_scene load_steps=14 format=3 uid="uid://djpx22k4xnkwv"]
+[gd_scene load_steps=15 format=3 uid="uid://djpx22k4xnkwv"]
 
 [ext_resource type="Script" uid="uid://dunu3vmcn6cmy" path="res://Scripts/Cutscenes/post_cooking_scene.gd" id="1_citul"]
 [ext_resource type="Texture2D" uid="uid://brrqynw57auwm" path="res://Assets/Images/Lighthouse/Structure/FullTowerBuild2.png" id="1_h2r2y"]
 [ext_resource type="Texture2D" uid="uid://bqwod0spj8tjt" path="res://Assets/Images/Lighthouse/Props/Post-Bombing/Cracks.png" id="2_citul"]
+[ext_resource type="PackedScene" uid="uid://cpmufmthgj1px" path="res://Scenes/Environments/animated_snow_map.tscn" id="2_dvlir"]
 [ext_resource type="Texture2D" uid="uid://dus3k2emrwltj" path="res://Assets/Images/Lighthouse/Props/Kitchen and Dining Room/fridge.png" id="3_tr1ao"]
 [ext_resource type="Texture2D" uid="uid://j420r5weyj55" path="res://Assets/Images/Lighthouse/Props/Kitchen and Dining Room/kitchen.png" id="4_dvlir"]
 [ext_resource type="Texture2D" uid="uid://b6hm6oy6xlks1" path="res://Assets/Images/Lighthouse/Props/Kitchen and Dining Room/washing-machine.png" id="5_w0dos"]
@@ -23,6 +24,11 @@ width = 1
 position = Vector2(-19.133606, -75.7584)
 scale = Vector2(1.176044, 1.176044)
 script = ExtResource("1_citul")
+
+[node name="AnimatedSnowMap" parent="." instance=ExtResource("2_dvlir")]
+visible = true
+position = Vector2(-292.7677, -116.89287)
+scale = Vector2(3.7837167, 3.7837167)
 
 [node name="LightHouse" type="Sprite2D" parent="."]
 position = Vector2(345, -586)

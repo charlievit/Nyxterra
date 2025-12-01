@@ -52,7 +52,10 @@ func _ready():
 	# Start Animation after a short delay
 	await get_tree().create_timer(1.0).timeout
 	
-	UpdateValues()
+	if moralityEnd == moralityStart and relationshipEnd == relationshipStart:
+		AllowToProceed()
+	else:
+		UpdateMorality()
 
 func DetermineDayText():
 	match GameManager.currentDay:
@@ -79,9 +82,9 @@ func DetermineDayText():
 		_:
 			choiceText = "Tonight, the night passes..."
 
-func UpdateValues():
-	if moralityStart == moralityEnd and relationshipStart == relationshipEnd:
-		AllowToProceed()
+func UpdateMorality():
+	if moralityStart == moralityEnd:
+		UpdateRelationship()
 		return
 	
 	var tween = create_tween()
@@ -97,9 +100,16 @@ func UpdateValues():
 	
 	tween.tween_interval(0.5)
 	
-	tween.tween_callback(func():
-		if relationshipStart != relationshipEnd:
-			countSoundPlayer.play())
+	tween.finished.connect(UpdateRelationship)
+
+func UpdateRelationship():
+	if relationshipStart == relationshipEnd:
+		AllowToProceed()
+		return
+	
+	var tween = create_tween()
+	if relationshipStart != relationshipEnd:
+		countSoundPlayer.play()
 	
 	tween.tween_method(func(val):
 		relationshipLabel.text = str(int(val)), 
@@ -107,6 +117,8 @@ func UpdateValues():
 		relationshipEnd, 
 		4.2
 	).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
+	
+	tween.tween_interval(0.5)
 	
 	tween.finished.connect(AllowToProceed)
 
@@ -135,10 +147,16 @@ func LoadNextDay():
 		if String(key).contains("goToBed"):
 			TaskManager.CompleteTask(key)
 	
+	if GameManager.currentDay == 4:
+		if GameManager.morality < 50:
+			GameManager.isBadEnding = true
+		else:
+			GameManager.isBadEnding = false
+	
 	GameManager.StartDay(GameManager.currentDay + 1)
 	
-	if GameManager.morality < 50:
-		GameManager.isBadEnding = true
+	if GameManager.isBadEnding:
+		return
 	
 	if ResourceLoader.exists(mainGameScenePath):
 		SceneLoader.change_scene_with_loading(mainGameScenePath)
