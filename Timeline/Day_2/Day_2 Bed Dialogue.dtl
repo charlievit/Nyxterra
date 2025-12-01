@@ -3,5 +3,4 @@ if {Day2_response} == "No":
 	Sutherland: I'll protect Elise with my life.
 elif {Day2_response} == "Yes":
 	[voice path="res://Assets/Audio/VA/Sutherland/Im sorry Elise.mp3" volume="-3.0" bus="Character Voice"]
-	[voice path="res://Assets/Audio/VA/Sutherland/Im so so sorry.mp3" volume="-2.0"]
 	Sutherland: I'm sorry Elise. I-I'm so sorry.
