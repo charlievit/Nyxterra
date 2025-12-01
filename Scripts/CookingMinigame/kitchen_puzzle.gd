@@ -82,9 +82,9 @@ var recipes = {
 	"BarfitStovies": [
 		{"heat": 50.0, "ingredients": [{"name": "Onion (Chopped)", "type": "Whole", "amount": 1}], "wait": 10.0, "time": 0.0},
 		{"heat": 50.0, "ingredients": [{"name": "Oil", "type": "Pourable", "amount": 5}], "wait": 10.0, "time": 10.0},
-		{"heat": 25.0, "ingredients": [{"name": "Onion (Chopped)", "type": "Whole", "amount": 1}, {"name": "Salt", "type": "Shaker", "amount": 5}], "wait": 45.0, "time": 30.0},
-		{"heat": 50.0, "ingredients": [{"name": "Potato (Chopped)", "type": "Whole", "amount": 5}, {"name": "Stock", "type": "Pourable", "amount": 10}], "wait": 30.0, "time": 45.0},
-		{"heat": 25.0, "ingredients": [], "wait": 15.0, "time": 99.0},
+		{"heat": 25.0, "ingredients": [{"name": "Onion (Chopped)", "type": "Whole", "amount": 1}, {"name": "Salt", "type": "Shaker", "amount": 5}], "wait": 30.0, "time": 30.0},
+		{"heat": 50.0, "ingredients": [{"name": "Potato (Chopped)", "type": "Whole", "amount": 5}, {"name": "Stock", "type": "Pourable", "amount": 10}], "wait": 20.0, "time": 45.0},
+		{"heat": 25.0, "ingredients": [], "wait": 15.0, "time": 60.0},
 		{"heat": 25.0, "ingredients": [{"name": "Parsley", "type": "Whole", "amount": 1}, {"name": "Pepper", "type": "Shaker", "amount": 5}], "wait": 5.0, "time": 60.0},
 		{"heat": 0.0, "ingredients": [], "wait": 0.0, "time": 0.0}
 	],
@@ -759,7 +759,6 @@ func AdvanceToNextStep():
 		
 		await get_tree().create_timer(6.0).timeout
 		kitchenGameMusicPlayer.stop()
-		GameManager.CompleteTask(currentTaskID)
 		GameManager.SetPlayerSpawn(returnFloorIndex, returnPosition)
 		GameManager.pending_post_source = GameManager.ReturnSource.KITCHEN
 		if ResourceLoader.exists(endGameScenePath):

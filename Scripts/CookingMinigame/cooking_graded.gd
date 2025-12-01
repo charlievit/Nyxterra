@@ -46,26 +46,25 @@ func _ready() -> void:
 	
 	if not GameManager.recipeQuality == 0:
 		counterSoundPlayer.play()
+		
+		var tween = create_tween()
+		tween.tween_method(func(val):
+			GradeScore.text = str(int(val)), 0, GameManager.recipeQuality, 4.2).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
+		tween.tween_interval(2.0)
+		tween.tween_callback(CheckFailure)
 	else:
 		CheckFailure()
-		return
-	
-	var tween = create_tween()
-	tween.tween_method(func(val):
-		GradeScore.text = str(int(val)), 0, GameManager.recipeQuality, 4.2).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
-	tween.tween_interval(2.0)
-	tween.tween_callback(CheckFailure)
 
 func CheckFailure():
 	if GameManager.recipeQuality <= 50:
 		Dialogic.start("FailureState")
 		
 		await Dialogic.timeline_ended
-	else:
-		ProceedToDinnerScene()
-	
-	if Dialogic.VAR.wantsRetry:
-		SceneLoader.change_scene_with_loading(pathToKitchenRetry)
+		
+		if Dialogic.VAR.wantsRetry:
+			SceneLoader.change_scene_with_loading(pathToKitchenRetry)
+		else:
+			ProceedToDinnerScene()
 	else:
 		ProceedToDinnerScene()
 
