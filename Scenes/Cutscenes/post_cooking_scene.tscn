@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://djpx22k4xnkwv"]
+[gd_scene load_steps=14 format=3 uid="uid://djpx22k4xnkwv"]
 
 [ext_resource type="Script" uid="uid://dunu3vmcn6cmy" path="res://Scripts/Cutscenes/post_cooking_scene.gd" id="1_citul"]
 [ext_resource type="Texture2D" uid="uid://brrqynw57auwm" path="res://Assets/Images/Lighthouse/Structure/FullTowerBuild2.png" id="1_h2r2y"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://b4n6cg1y8xc61" path="res://Assets/Images/Lighthouse/Props/Kitchen and Dining Room/plate.png" id="7_uk4xp"]
 [ext_resource type="Texture2D" uid="uid://by4cblitw4xyk" path="res://Assets/Images/Daughter Elise/SittingChair.png" id="8_4x3cb"]
 [ext_resource type="Texture2D" uid="uid://ca224mbqfoasl" path="res://Assets/Images/Player/Sitting2.png" id="9_7f51c"]
+[ext_resource type="Texture2D" uid="uid://b50ouydunlm4h" path="res://Assets/Images/Lighthouse/Structure/External/ocean.png" id="11_tr1ao"]
 
 [sub_resource type="Gradient" id="Gradient_citul"]
 colors = PackedColorArray(0.13725491, 0.12156863, 0.1254902, 1, 1, 1, 1, 1)
@@ -86,3 +87,8 @@ offset_top = 55.73581
 offset_right = 1004.34705
 offset_bottom = 626.4874
 texture = SubResource("GradientTexture1D_tr1ao")
+
+[node name="Ocean" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(256.3811, 122.28148)
+texture = ExtResource("11_tr1ao")

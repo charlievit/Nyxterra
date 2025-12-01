@@ -132,6 +132,7 @@ frame_progress = 0.952234
 script = ExtResource("10_fdnlq")
 
 [node name="AnimatedSnowMap" parent="." instance=ExtResource("12_jkdf5")]
+visible = true
 
 [node name="Ground" type="Sprite2D" parent="."]
 texture_filter = 1

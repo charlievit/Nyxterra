@@ -4,6 +4,7 @@ extends Area2D
 
 var baseLabelPos: Vector2
 var playerBody: CharacterBody2D = null
+var hasEntered: bool = false
 
 @export var kitchenScenePath: String = "res://Scenes/Kitchen Puzzle/kitchen_puzzle.tscn"
 
@@ -38,8 +39,9 @@ func _process(_delta):
 func OnBodyEntered(body):
 	if body.is_in_group("player"):
 		playerBody = body # Store the player
-	if body.is_in_group("player") and GameManager.needKitchen and not GameManager.usedKitchen:
-		if label and not GameManager.tutorialMode:
+		if GameManager.needKitchen and not GameManager.usedKitchen:
+			label.visible = true
+		if GameManager.needKitchen and GameManager.tutorialMode:
 			label.visible = true
 
 func OnBodyExited(body):

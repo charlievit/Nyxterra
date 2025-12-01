@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://bkg5t0b12oxws"]
+[gd_scene load_steps=35 format=3 uid="uid://bkg5t0b12oxws"]
 
 [ext_resource type="Script" uid="uid://cpiilsgkrpfvj" path="res://Scripts/CookingMinigame/cooking_graded.gd" id="1_q2y2m"]
 [ext_resource type="Texture2D" uid="uid://bovyawkuo6lur" path="res://Assets/Images/Lighthouse/Structure/External/skyNightBackground.png" id="2_0s75d"]
@@ -8,9 +8,10 @@
 [ext_resource type="FontFile" uid="uid://cd5qpfhq7agn5" path="res://Assets/Fonts/Baskerville Bold.otf" id="3_yfn86"]
 [ext_resource type="Texture2D" uid="uid://0i1i1vxxbigj" path="res://Assets/Images/Lighthouse/Structure/External/oceanAnim-sheet.png" id="4_7j4eq"]
 [ext_resource type="Texture2D" uid="uid://bd1gskhtw576f" path="res://Assets/Images/KitchenPuzzle/Steam Animation/frame0000.png" id="4_8uhr8"]
-[ext_resource type="Texture2D" uid="uid://liqced3k5bpj" path="res://Assets/Images/Lighthouse/Structure/External/SnowAnim/Snow-0000.png" id="5_apugx"]
+[ext_resource type="PackedScene" uid="uid://cpmufmthgj1px" path="res://Scenes/Environments/animated_snow_map.tscn" id="5_0ei6k"]
 [ext_resource type="Texture2D" uid="uid://c2rcq3ue0hxhu" path="res://Assets/Images/KitchenPuzzle/Steam Animation/frame0001.png" id="5_r5hgd"]
 [ext_resource type="Texture2D" uid="uid://dgxdq0boqv10u" path="res://Assets/Images/KitchenPuzzle/Kitchen.png" id="6_0ei6k"]
+[ext_resource type="Texture2D" uid="uid://dsiywd30ai8cv" path="res://Assets/Images/KitchenPuzzle/windowTransparent.png" id="6_8nnp5"]
 [ext_resource type="Texture2D" uid="uid://2mbqdmcf006h" path="res://Assets/Images/KitchenPuzzle/Steam Animation/frame0002.png" id="6_jxc8f"]
 [ext_resource type="Texture2D" uid="uid://c2e3n62peibcb" path="res://Assets/Images/KitchenPuzzle/Ingredients/ingredientShaker_SaltIcon.png" id="7_8nnp5"]
 [ext_resource type="Texture2D" uid="uid://dvgl7g2cdd3f" path="res://Assets/Images/KitchenPuzzle/Steam Animation/frame0003.png" id="7_w24cu"]
@@ -105,10 +106,15 @@ texture = ExtResource("3_y08yo")
 position = Vector2(226, 244)
 texture = ExtResource("4_7j4eq")
 
-[node name="Snow0000" type="Sprite2D" parent="."]
-position = Vector2(47, 152)
-scale = Vector2(10.2883005, 10.2883005)
-texture = ExtResource("5_apugx")
+[node name="AnimatedSnowMap" parent="." instance=ExtResource("5_0ei6k")]
+visible = true
+position = Vector2(-208, -303)
+scale = Vector2(8.418242, 8.418242)
+
+[node name="WindowTransparent" type="Sprite2D" parent="."]
+position = Vector2(576, 324.00003)
+scale = Vector2(2.4, 2.4)
+texture = ExtResource("6_8nnp5")
 
 [node name="Kitchen Background" type="Sprite2D" parent="."]
 position = Vector2(576, 324)

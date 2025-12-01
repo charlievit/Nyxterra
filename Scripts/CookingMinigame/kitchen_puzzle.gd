@@ -192,7 +192,7 @@ func OnLoopSound(player):
 func FailureState():
 	progressBar.visible = false
 	CleanUpReferences()
-		
+	
 	# Set dialogue flags
 	if recipeQuality >= 50 and recipeQuality <= 100:
 		Dialogic.VAR.Cooking_Response = "Good"
@@ -220,6 +220,7 @@ func FailureState():
 	GameManager.pending_post_source = GameManager.ReturnSource.KITCHEN
 	if ResourceLoader.exists(endGameScenePath):
 		SceneLoader.change_scene_with_loading(endGameScenePath)
+		GameManager.PlayBGM()
 
 func _process(_delta):
 	if not is_instance_valid(progressBar) or not is_instance_valid(steamAnim):
@@ -227,6 +228,7 @@ func _process(_delta):
 		return
 	
 	if recipeQuality <= 0:
+		await get_tree().process_frame
 		FailureState()
 	
 	if isWaiting:
@@ -540,6 +542,8 @@ func SetFireAndSteamAnimations(heatLevel: float):
 				steamAnim.play("default")
 			
 			await  get_tree().create_timer(STEAM_STEP_DELAY).timeout
+			if gameDone:
+				return
 			steamAnim.speed_scale = speedToSet
 			currentSteamSpeed = speedToSet
 			
@@ -760,6 +764,7 @@ func AdvanceToNextStep():
 		GameManager.pending_post_source = GameManager.ReturnSource.KITCHEN
 		if ResourceLoader.exists(endGameScenePath):
 			SceneLoader.change_scene_with_loading(endGameScenePath)
+			GameManager.PlayBGM()
 		else:
 			push_error("ERROR: Main game scene path not found.")
 	else:
@@ -772,6 +777,8 @@ func CleanUpReferences():
 	print("KitchenController: Cleaning up node references.")
 	
 	set_process(false)
+	
+	gameDone = true
 	
 	if waitTimer: waitTimer.stop()
 	if stepTimer: stepTimer.stop()
