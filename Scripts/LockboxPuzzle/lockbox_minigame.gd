@@ -125,8 +125,6 @@ func _on_read_letter_button_pressed() -> void:
 	readLetterButton.disabled = true
 	Dialogic.start("Day_5 Final Letter")
 	
-	await Dialogic.timeline_ended
-	
 	SceneLoader.change_scene_with_loading(goodEndingScenePath)
 
 
