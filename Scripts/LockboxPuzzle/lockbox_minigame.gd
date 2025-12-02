@@ -123,13 +123,23 @@ func _on_read_letter_button_pressed() -> void:
 	sfxPlayer.play()
 	GameManager.CompleteTask(currentTaskID)
 	readLetterButton.disabled = true
-	#test fix
-	var dialogic_node = Dialogic.start("Day_5 Final Letter")
-	#testfix
-	await dialogic_node.timeline_ended
 	
-	SceneLoader.change_scene_with_loading(goodEndingScenePath)
+	# 1. Stop local music player explicitly immediately (Step 1 from previous solution)
+	if musicPlayer.is_playing():
+		musicPlayer.stop()
+		GameManager.StopBGM() # Call the global stop function too, just in case.
+	
+	# 2. Start the dialogue. This will appear over the screen.
+	Dialogic.start("Day_5 Final Letter") 
+	await Dialogic.timeline_ended
+	# 3. Defer the scene change using call_deferred(). 
+	# This guarantees the scene change runs on the next frame, 
+	# after the dialogue node is initialized and the current function finishes.
+	start_cutscene()
 
+func start_cutscene():
+	# Pass the scene path to the CutsceneManager here.
+	CutsceneManager.PlayCutscene("res://Scenes/Cutscenes/goodEndingCredits.tscn")
 
 func _on_code_button_pressed() -> void:
 	codeNoteFolded.visible = false

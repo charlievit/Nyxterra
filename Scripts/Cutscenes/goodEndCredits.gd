@@ -47,7 +47,7 @@ func _ready():
 
 func Begin():
 	var tween = create_tween()
-	var fadeInTime = 18.0
+	var fadeInTime = 5.0
 	timeLeft -= fadeInTime
 	tween.set_parallel(true)
 	tween.tween_property(animation, "modulate:a", 1.0, 18.0)
