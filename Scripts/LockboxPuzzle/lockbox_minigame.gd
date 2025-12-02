@@ -123,8 +123,9 @@ func _on_read_letter_button_pressed() -> void:
 	sfxPlayer.play()
 	GameManager.CompleteTask(currentTaskID)
 	readLetterButton.disabled = true
+	#test fix
 	var dialogic_node = Dialogic.start("Day_5 Final Letter")
-	
+	#testfix
 	await dialogic_node.timeline_ended
 	
 	SceneLoader.change_scene_with_loading(goodEndingScenePath)
