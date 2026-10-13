@@ -147,19 +147,25 @@ history/simple_history_save=false
 text/autopauses={}
 audio/channel_defaults={
 "": {
-"audio_bus": "",
+"audio_bus": "Master",
 "fade_length": 0.0,
 "loop": false,
 "volume": 0.0
 },
+"Master": {
+"audio_bus": "Master",
+"fade_length": 0.0,
+"loop": true,
+"volume": 0.0
+},
 "music": {
-"audio_bus": "",
+"audio_bus": "Master",
 "fade_length": 0.0,
 "loop": true,
 "volume": 0.0
 },
 "testing": {
-"audio_bus": "",
+"audio_bus": "Master",
 "fade_length": 0.0,
 "loop": false,
 "volume": 0.0
